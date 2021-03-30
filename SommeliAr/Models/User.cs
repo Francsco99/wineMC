@@ -14,12 +14,12 @@ namespace SommeliAr.Models
         public DateTime BirthDate { get; set; }
 
         public User() { }
-        public User(string Username, string Password, string Email, DateTime BirthDate)
+        public User(string Username, string Password, string Email)
         {
             this.Username = Username;
             this.Password = Password;
             this.Email = Email;
-            this.BirthDate = BirthDate;
+          
         }
 
         public bool CheckInformation()
