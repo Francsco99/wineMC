@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using SommeliAr.Models;
+using SommeliAr.Views.Menu;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -13,12 +14,14 @@ namespace SommeliAr.Views
             InitializeComponent();
         }
 
-        void RegistrationProcedure(object sender, EventArgs e)
+        [Obsolete]
+        async void RegistrationProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
             var email = Entry_Email.Text;
             bool emailOk = false;
             bool passOk = false;
+
 
             /* uso emailregex per verificare se la mail inserita ha una formattazione valida*/
             var emailPattern =
@@ -47,16 +50,22 @@ namespace SommeliAr.Views
 
             if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
             {
-                DisplayAlert("Error", "Passwords not matching", "Okay");
+               await DisplayAlert("Error", "Passwords not matching", "Okay");
                 passOk = false;
             }
             else
                 passOk = true;
 
-            if (emailOk && passOk)
-            {
-                DisplayAlert("Success", "Registration Success", "Okay");
+                if (emailOk && passOk)
+                {
+                    await DisplayAlert("Success", "Registration Success", "Okay");
 
+                var result = new Token();
+                if (result != null)
+                {
+                    Application.Current.MainPage = new MasterDetail();
+                }
+                
             }
         }
 
