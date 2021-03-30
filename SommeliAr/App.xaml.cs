@@ -11,7 +11,7 @@ namespace SommeliAr
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new SignUpPage();
         }
 
         protected override void OnStart()
