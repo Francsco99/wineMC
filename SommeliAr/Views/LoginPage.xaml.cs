@@ -16,8 +16,8 @@ namespace SommeliAr.Views
 
         void SignInProcedure (object sender, EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text);
-            if (user.checkInformation())
+            User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
+            if (user.CheckInformation())
             {
                 DisplayAlert("Login", "Login Success", "Oke");
             }
