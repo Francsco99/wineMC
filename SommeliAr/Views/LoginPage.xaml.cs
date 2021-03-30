@@ -12,21 +12,26 @@ namespace SommeliAr.Views
             InitializeComponent();
         }
 
-        /*commentone*/
-
-        void SignInProcedure (object sender, EventArgs e)
+        void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
-            if (user.CheckInformation())
+
+            if (Entry_Password.IsPassword == true)
             {
-                DisplayAlert("Login", "Login Success", "Oke");
+                Entry_Password.IsPassword = false;
             }
             else
             {
-                DisplayAlert("Login", "Login Not correct, Empty username or password.", "Oke");
+                Entry_Password.IsPassword = true;
             }
-
-
         }
+
+        void LoginProcedure(System.Object sender, System.EventArgs e)
+        {
+            //TODO implementare login
+
+            DisplayAlert("Success", "Login Success", "Okay");
+        }
+
+        
     }
 }
