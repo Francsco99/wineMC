@@ -12,6 +12,8 @@ namespace SommeliAr.Views
             InitializeComponent();
         }
 
+        /*commentone*/
+
         void SignInProcedure (object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text);
