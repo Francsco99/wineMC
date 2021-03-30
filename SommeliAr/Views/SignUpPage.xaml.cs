@@ -13,35 +13,56 @@ namespace SommeliAr.Views
             InitializeComponent();
         }
 
-        void SignInProcedure(object sender, EventArgs e)
+        void RegistrationProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
-            if (user.CheckInformation())
+            var email = Entry_Email.Text;
+            bool emailOk = false;
+            bool passOk = false;
+
+            /* uso emailregex per verificare se la mail inserita ha una formattazione valida*/
+            var emailPattern =
+                "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
+
+            if (email != null)
             {
-                DisplayAlert("Login", "Login Success", "Okay");
+             
+                if (Regex.IsMatch(email, emailPattern))
+                {
+                    ErrorLabelText.Opacity = 0;
+                    emailOk = true;
+                }
+                else
+                {
+                    ErrorLabelText.Opacity = 0.7;
+                    emailOk = false;
+                }
             }
             else
             {
-                DisplayAlert("Login", "Login Not correct, Empty username or password.", "Oke");
+                ErrorLabelText.Opacity = 0.7;
+                emailOk = false;
             }
 
-            if (user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
-            {
 
-                DisplayAlert("Login", "Login Success", "Okay");
+            if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
+            {
+                DisplayAlert("Error", "Passwords not matching", "Okay");
+                passOk = false;
             }
             else
+                passOk = true;
+
+            if (emailOk && passOk)
             {
-                DisplayAlert("Login", "Login Not correct, Empty username or password.", "Oke");
+                DisplayAlert("Success", "Registration Success", "Okay");
+
             }
-
-
-
         }
 
-        private void HideButton_Clicked(object sender, EventArgs e)
+        void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (Entry_Username.IsPassword == true)
+            if (Entry_Password.IsPassword == true)
             {
                 Entry_Password.IsPassword = false;
                 Entry_ConfirmPassword.IsPassword = false;
@@ -53,26 +74,6 @@ namespace SommeliAr.Views
             }
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            var email = Entry_Email.Text;
-
-            /* uso emailregex per verificare se la mail inserita ha una formattazione valida*/
-            var emailPattern =
-                "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
-
-            if (email != null)
-            {
-                if (Regex.IsMatch(email, emailPattern))
-                    ErrorLabelText.Opacity = 0;
-                else
-                    ErrorLabelText.Opacity = 0.7;
-            }
-
-            else
-                ErrorLabelText.Opacity = 0.7;
-
-        }
     }
 
 }

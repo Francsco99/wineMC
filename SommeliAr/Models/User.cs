@@ -11,12 +11,15 @@ namespace SommeliAr.Models
 
         public string Email { get; set; }
 
+        public DateTime BirthDate { get; set; }
+
         public User() { }
-        public User(string Username, string Password, string Email)
+        public User(string Username, string Password, string Email, DateTime BirthDate)
         {
             this.Username = Username;
             this.Password = Password;
             this.Email = Email;
+            this.BirthDate = BirthDate;
         }
 
         public bool CheckInformation()
@@ -29,5 +32,7 @@ namespace SommeliAr.Models
         {
             return p1.Equals(p2);
         }
+
+
     }
 }

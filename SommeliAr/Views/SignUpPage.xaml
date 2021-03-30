@@ -30,8 +30,9 @@
                 <StackLayout Grid.Row="1" Orientation="Horizontal"  Margin="0,0,0,10">
                     <Image Source="password.png" WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
                     <Entry x:Name="Entry_Password" Placeholder="Password"  FontSize="16" IsPassword="true" HorizontalOptions="FillAndExpand"/>
-                    <ImageButton Source="hide.png" WidthRequest="25" HeightRequest="25" Margin="0,0,60,0" BackgroundColor="#0000"
-                                     Clicked="HideButton_Clicked" x:Name="hideButton"/>
+                    <ImageButton Source="hide.png" WidthRequest="25" HeightRequest="25" Margin="0,0,60,0" BackgroundColor="#0000" Clicked="hideButton_Clicked"
+                                     x:Name="hideButton"/>
+
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" Orientation="Horizontal"  Margin="0,0,90,10">
@@ -59,7 +60,7 @@
 
 
                     <Button Text="Register" TextColor="#ffffff" 
-                                BorderRadius="10" FontSize="16" BackgroundColor="#8b52ff" Margin="40,20,40,15" Clicked="Button_Clicked"/>
+                                BorderRadius="10" FontSize="16" BackgroundColor="#8b52ff" Margin="40,20,40,15" Clicked="RegistrationProcedure"/>
 
 
 
