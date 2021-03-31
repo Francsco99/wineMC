@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SommeliAr.Views.SignUpPage">
+             
     <ContentPage.Content>
-        <StackLayout Padding="0,10,0,0">
+        <StackLayout Padding="0,60,0,0">
 
             <Label Text="Create Account," FontSize="26" TextColor="Black"  FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
             <Label Text="Sign up to get started!" FontSize="18" TextColor="DarkGray" Margin="40,0,0,20" />
@@ -75,9 +76,10 @@
 
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" Margin="70,0,0,0">
-                        <Label Text="Already have an account?" FontSize="16"/>
-                        <Button x:Name="SignIn_btn" Text="Sign in now!" FontSize="16" TextColor="#b794ff" Clicked="SignIn_btn_Clicked"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
+                        <Label Text="Already have an account?" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="Btn_SignIn" Text="Sign in now" FontSize="16" TextColor="#b794ff" Clicked="Btn_SignIn_Clicked" BackgroundColor="Transparent"
+                                HorizontalOptions="Center" VerticalOptions="Center"/>
 
                     </StackLayout>
 

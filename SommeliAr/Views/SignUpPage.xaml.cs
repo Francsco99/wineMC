@@ -12,6 +12,8 @@ namespace SommeliAr.Views
         public SignUpPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
+
         }
 
         async void RegistrationProcedure(object sender, EventArgs e)
@@ -82,9 +84,9 @@ namespace SommeliAr.Views
             }
         }
 
-        public void SignIn_btn_Clicked(System.Object sender, System.EventArgs e)
+        void Btn_SignIn_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new LoginPage());
+            Navigation.PopAsync();
         }
 
     }

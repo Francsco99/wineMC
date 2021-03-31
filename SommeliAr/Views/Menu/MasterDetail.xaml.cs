@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using SommeliAr.Models;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
@@ -14,7 +14,11 @@ namespace SommeliAr.Views.Menu
 
         void Avanti_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new SecondPage());
+            var result = new Token();
+            if (result != null)
+            {
+                Application.Current.MainPage = new SecondPage();
+            }
         }
 
 

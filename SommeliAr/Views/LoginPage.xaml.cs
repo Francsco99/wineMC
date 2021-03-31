@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SommeliAr.Models;
+using SommeliAr.Views.Menu;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -10,6 +11,7 @@ namespace SommeliAr.Views
         public LoginPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         void hideButton_Clicked(System.Object sender, System.EventArgs e)
@@ -25,17 +27,23 @@ namespace SommeliAr.Views
             }
         }
 
-        void LoginProcedure(System.Object sender, System.EventArgs e)
+        async void LoginProcedure(System.Object sender, System.EventArgs e)
         {
             //TODO implementare login
 
-            DisplayAlert("Success", "Login Success", "Okay");
+           await DisplayAlert("Success", "Login Success", "Okay");
+
+            var result = new Token();
+            if (result != null)
+            {
+                Application.Current.MainPage = new MasterDetail();
+            }
         }
 
-        void SignUp_btn_Clicked(System.Object sender, System.EventArgs e)
+        void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PopAsync();
+            Navigation.PushAsync(new SignUpPage());
+            
         }
-
     }
 }
