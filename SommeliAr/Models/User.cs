@@ -30,7 +30,13 @@ namespace SommeliAr.Models
 
         public bool IsPasswordMatching(string p1, string p2)
         {
-            return p1.Equals(p2);
+            if (p1 != null && p2 != null)
+
+                return p1.Equals(p2);
+
+            else
+                return false;
+
         }
 
 
