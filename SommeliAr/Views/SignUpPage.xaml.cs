@@ -14,7 +14,6 @@ namespace SommeliAr.Views
             InitializeComponent();
         }
 
-        [Obsolete]
         async void RegistrationProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
