@@ -4,7 +4,7 @@
              x:Class="SommeliAr.Views.SignUpPage">
              
     <ContentPage.Content>
-        <StackLayout Padding="0,60,0,0">
+        <StackLayout Padding="0,60,0,0" BackgroundColor="White">
 
             <Label Text="Create Account," FontSize="26" TextColor="Black"  FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
             <Label Text="Sign up to get started!" FontSize="18" TextColor="DarkGray" Margin="40,0,0,20" />
