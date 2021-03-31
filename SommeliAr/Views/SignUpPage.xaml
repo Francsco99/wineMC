@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SommeliAr.Views.SignUpPage">
+             
     <ContentPage.Content>
         <StackLayout Padding="0,60,0,0">
 
@@ -17,7 +18,6 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-
 
 
 
@@ -76,9 +76,10 @@
 
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" Margin="70,0,0,0">
-                        <Label Text="Already have an account?" FontSize="16"/>
-                        <Label Text="Sign in now!" FontSize="16" TextColor="#b794ff"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
+                        <Label Text="Already have an account?" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="Btn_SignIn" Text="Sign in now" FontSize="16" TextColor="#b794ff" Clicked="Btn_SignIn_Clicked" BackgroundColor="Transparent"
+                                HorizontalOptions="Center" VerticalOptions="Center"/>
 
                     </StackLayout>
 

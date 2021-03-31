@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\SignUpPage.xaml">

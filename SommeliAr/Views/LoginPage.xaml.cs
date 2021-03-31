@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SommeliAr.Models;
+using SommeliAr.Views.Menu;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -10,23 +11,39 @@ namespace SommeliAr.Views
         public LoginPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        /*commentone*/
-
-        void SignInProcedure (object sender, EventArgs e)
+        void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
-            if (user.CheckInformation())
+
+            if (Entry_Password.IsPassword == true)
             {
-                DisplayAlert("Login", "Login Success", "Oke");
+                Entry_Password.IsPassword = false;
             }
             else
             {
-                DisplayAlert("Login", "Login Not correct, Empty username or password.", "Oke");
+                Entry_Password.IsPassword = true;
             }
+        }
 
+        async void LoginProcedure(System.Object sender, System.EventArgs e)
+        {
+            //TODO implementare login
 
+           await DisplayAlert("Success", "Login Success", "Okay");
+
+            var result = new Token();
+            if (result != null)
+            {
+                Application.Current.MainPage = new MasterDetail();
+            }
+        }
+
+        void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPage());
+            
         }
     }
 }
