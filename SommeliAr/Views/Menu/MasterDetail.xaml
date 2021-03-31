@@ -8,9 +8,9 @@
         <StackLayout>
             <Label Text="Pagina principale" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
             </Label>
-            <Button Text="avanti" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="Avanti_Clicked">
+            <Button Text="avanti" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="Avanti_Clicked"/>
 
-            </Button>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

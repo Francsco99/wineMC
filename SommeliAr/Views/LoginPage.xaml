@@ -1,13 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="SommeliAr.Views.LoginPage">
 <ContentPage.Content>
-        <StackLayout Padding="0,60,0,0">
+        <StackLayout Padding="0,60,0,0" BackgroundColor="White">
 
             <Label Text="Welcome back," FontSize="26" TextColor="Black"  FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
-            <Label Text="Login up to get started!" FontSize="18" TextColor="DarkGray" Margin="40,0,0,20" />
+            <Label Text="Sign in to get started!" FontSize="18" TextColor="DarkGray" Margin="40,0,0,0" />
+
+            <lottie:AnimationView x:Name="AnimationView " HorizontalOptions="CenterAndExpand"
+                         Animation="swirlingwineviola.json"
+                         RepeatMode="Infinite"
+                         WidthRequest="200"
+                         HeightRequest="200"
+            />
 
 
 
@@ -21,7 +28,7 @@
 
 
 
-                <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10" >
+                <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10"  >
                     <Image Source="user.png" WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
                     <Entry x:Name="Entry_Username"  Placeholder="Username" FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,90,0"/>
                 </StackLayout>
@@ -35,13 +42,11 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" Margin="0,0,0,10">
-                    <StackLayout Orientation="Horizontal">
-                    </StackLayout>
-
+                    
 
 
                     <Button Text="Login" TextColor="#ffffff" 
-                                BorderRadius="10" FontSize="16" BackgroundColor="#8b52ff" Margin="40,20,40,15" Clicked="LoginProcedure"/>
+                                BorderRadius="10" FontSize="16" BackgroundColor="#8b52ff" Margin="40,0,40,15" Clicked="LoginProcedure"/>
 
 
 
@@ -57,7 +62,7 @@
 
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,30,0,0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
                         <Label Text="Don't have an account yet?" FontSize="16" HorizontalOptions="Center" VerticalOptions="Center" />
                         <Button x:Name="Btn_SignUp" Text="Sign up now" FontSize="16" TextColor="#b794ff" Clicked="Btn_SignUp_Clicked"
                                 BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center"  />
