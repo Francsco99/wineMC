@@ -5,9 +5,9 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class SecondPage : ContentPage
+    public partial class SecundaryPage : ContentPage
     {
-        public SecondPage()
+        public SecundaryPage()
         {
             InitializeComponent();
         }
