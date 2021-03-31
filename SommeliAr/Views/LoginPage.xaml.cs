@@ -32,6 +32,10 @@ namespace SommeliAr.Views
             DisplayAlert("Success", "Login Success", "Okay");
         }
 
-        
+        void SignUp_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PopAsync();
+        }
+
     }
 }
