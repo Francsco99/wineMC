@@ -25,4 +25,14 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\bottle.png" />
+    <None Remove="Views\camera.png" />
+    <None Remove="Views\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Views\bottle.png" />
+    <AndroidResource Include="Views\camera.png" />
+    <AndroidResource Include="Views\settings.png" />
+  </ItemGroup>
 </Project>

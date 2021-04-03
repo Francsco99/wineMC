@@ -1,16 +1,22 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<TabbedPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:SommeliAr.Views.Menu"
+    android:TabbedPage.ToolbarPlacement="Bottom"
     x:Class="SommeliAr.Views.Menu.MasterDetail">
-    
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Pagina principale" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            </Label>
-            <Button Text="avanti" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Clicked="Avanti_Clicked"/>
 
+    <local:TastesPage>
 
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </local:TastesPage>
+
+    <local:ScanPage>
+
+    </local:ScanPage>
+
+    <local:SettingsPage>
+
+    </local:SettingsPage>
+
+</TabbedPage>
