@@ -29,10 +29,12 @@
     <None Remove="Views\bottle.png" />
     <None Remove="Views\camera.png" />
     <None Remove="Views\settings.png" />
+    <None Remove="Views\home.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\bottle.png" />
     <AndroidResource Include="Views\camera.png" />
     <AndroidResource Include="Views\settings.png" />
+    <AndroidResource Include="Views\home.png" />
   </ItemGroup>
 </Project>

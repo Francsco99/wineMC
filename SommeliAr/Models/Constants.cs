@@ -7,7 +7,7 @@ namespace SommeliAr.Models
     {
         public Constants()
         {
-            public static Color BackgroundColor = Color.FromHex("#8b52ff");
+
         }
     }
 }

@@ -7,17 +7,15 @@
         <ContentPage.Content>
             <TableView Intent="Settings" Margin="0,30,0,0">
               
-    <TableRoot>
-        
-        <TableSection Title="My settings">
+    <TableRoot TextColor="#b794ff">
+        <TableSection Title="My settings" TextColor="#b794ff">
             <SwitchCell Text="Show my name" On="true"/>
             <SwitchCell Text="Update app automatically"/>
-            <TextCell Text="Change Password"/>
-            <EntryCell Placeholder="Old password"/>
-            <EntryCell Placeholder="New password"/>
-
+            <TextCell Text="Change Password" TextColor="#b794ff"/>
+            
         </TableSection>
     </TableRoot>
+                
 </TableView>
         </ContentPage.Content>
     </ContentPage>

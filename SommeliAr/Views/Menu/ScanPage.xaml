@@ -6,7 +6,7 @@
 
         <ContentPage.Content>
             <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Label Text="Pagina 2"/>
+                <Label Text="Scan Page"/>
                 </StackLayout>
         </ContentPage.Content>
 </ContentPage>

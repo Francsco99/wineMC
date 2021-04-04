@@ -7,9 +7,9 @@
     android:TabbedPage.ToolbarPlacement="Bottom"
     x:Class="SommeliAr.Views.Menu.MasterDetail">
 
-    <local:TastesPage>
+    <local:HomePage>
 
-    </local:TastesPage>
+    </local:HomePage>
 
     <local:ScanPage>
 
