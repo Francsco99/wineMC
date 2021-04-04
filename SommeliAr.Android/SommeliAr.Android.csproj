@@ -66,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\swirlingwineviola.json" />
-    <AndroidAsset Include="Assets\okcheck.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
