@@ -14389,7 +14389,7 @@ namespace SommeliAr.Droid
 			public const int btn_radio_on_to_off_mtrl_animation = 2131165286;
 			
 			// aapt resource value: 0x7F070067
-			public const int camera_purple = 2131165287;
+			public const int camera = 2131165287;
 			
 			// aapt resource value: 0x7F070068
 			public const int design_bottom_navigation_item_background = 2131165288;
@@ -14422,7 +14422,7 @@ namespace SommeliAr.Droid
 			public const int hide = 2131165297;
 			
 			// aapt resource value: 0x7F070072
-			public const int home_purple = 2131165298;
+			public const int home = 2131165298;
 			
 			// aapt resource value: 0x7F070073
 			public const int ic_mtrl_checked_circle = 2131165299;
@@ -14530,7 +14530,7 @@ namespace SommeliAr.Droid
 			public const int password = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int settings_purple = 2131165334;
+			public const int settings = 2131165334;
 			
 			// aapt resource value: 0x7F070097
 			public const int test_custom_background = 2131165335;
