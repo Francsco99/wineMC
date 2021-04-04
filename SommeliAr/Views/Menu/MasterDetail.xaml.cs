@@ -17,7 +17,7 @@ namespace SommeliAr.Views.Menu
             var result = new Token();
             if (result != null)
             {
-                Application.Current.MainPage = new SecundaryPage();
+                
             }
         }
 
