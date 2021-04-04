@@ -31,7 +31,11 @@ namespace SommeliAr.Views
         {
             //TODO implementare login
 
-           await DisplayAlert("Success", "Login Success", "Okay");
+            /*await DisplayAlert("Success", "Login Success", "Okay"); */
+           /* OkView.RepeatCount = 1;
+            OkView.Opacity = 1; */
+
+
 
             var result = new Token();
             if (result != null)

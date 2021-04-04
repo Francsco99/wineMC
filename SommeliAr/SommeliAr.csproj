@@ -18,10 +18,12 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Views\SignUpPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Tastes.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
