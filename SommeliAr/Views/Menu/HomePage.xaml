@@ -1,15 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage Title="Home" Icon="home.png"
+<ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.HomePage">
-      <ContentPage.Content>
-            <ScrollView >
-                <StackLayout  VerticalOptions="Center" HorizontalOptions="Center" >
-                    <Label Text="asaa"/>
-                    <Label Text="prova" Margin="0,5500,0,0"/>
-                </StackLayout>
-                </ScrollView>
-        </ContentPage.Content>
+    <ContentPage.Content>
+        
+    </ContentPage.Content>
 </ContentPage>
-
