@@ -5,11 +5,12 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class MasterDetail : ContentPage
+    public partial class MasterDetail : TabbedPage
     {
         public MasterDetail()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         void Avanti_Clicked(System.Object sender, System.EventArgs e)
