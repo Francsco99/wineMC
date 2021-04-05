@@ -10,12 +10,22 @@
             <Label Text="Welcome back," FontSize="26" TextColor="Black"  FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
             <Label Text="Sign in to get started!" FontSize="18" TextColor="DarkGray" Margin="40,0,0,0" />
 
-            <lottie:AnimationView x:Name="AnimationView " HorizontalOptions="CenterAndExpand"
+            <lottie:AnimationView x:Name="SwirlingView " HorizontalOptions="CenterAndExpand"
                          Animation="swirlingwineviola.json"
                          RepeatMode="Infinite"
                          WidthRequest="200"
                          HeightRequest="200"
             />
+
+            <!--
+            <lottie:AnimationView x:Name="OkView " HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                         Animation="okcheck"
+                         Opacity="1"     
+                         OnPlayAnimation="LoginProcedure"
+                         
+            
+
+            /> -->
 
 
 
