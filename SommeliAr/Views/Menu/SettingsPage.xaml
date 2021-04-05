@@ -3,19 +3,28 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.SettingsPage">
-
         <ContentPage.Content>
-            <TableView Intent="Settings" Margin="0,30,0,0">
-              
-    <TableRoot TextColor="#b794ff">
-        <TableSection Title="My settings" TextColor="#b794ff">
-            <SwitchCell Text="Show my name" On="true"/>
-            <SwitchCell Text="Update app automatically"/>
-            <TextCell Text="Change Password" TextColor="#b794ff"/>
-            
-        </TableSection>
-    </TableRoot>
-                
-</TableView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="80"/>
+            </Grid.RowDefinitions>
+                <TableView Intent="Settings" Margin="0,30,0,0" Grid.Row="0">
+                <TableRoot TextColor="#b794ff">
+                   <TableSection Title="My settings" TextColor="#b794ff">
+                    <SwitchCell Text="Show my name" On="true"/>
+                    <SwitchCell Text="Update app automatically"/>
+                    <TextCell Text="Change Password" TextColor="#b794ff"/>
+                   </TableSection>
+                </TableRoot>            
+            </TableView>
+
+                <Button x:Name="TastesSet_btn" Text="Cambia Gusti"
+                        TextColor="#b794ff" Grid.Row="1"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        Clicked="TasteSet_btn_Clicked"/>
+            </Grid>
         </ContentPage.Content>
-    </ContentPage>
+     
+</ContentPage>

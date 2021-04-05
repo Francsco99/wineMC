@@ -19,6 +19,8 @@ namespace SommeliAr.Views
 
             Preferences.Get("rosso", false);
 
+            NavigationPage.SetHasNavigationBar(this, false);
+
         }
 
        

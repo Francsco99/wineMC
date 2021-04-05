@@ -7,6 +7,7 @@
         <ScrollView>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                 <Label Text="Scan Page"/>
+                 <Label Text="Scan Page" Margin="0,1999,0,0"/>
                 </StackLayout>
             </ScrollView>
     </ContentPage.Content>

@@ -4,6 +4,7 @@
              x:Class="SommeliAr.Views.SignUpPage">
              
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="0,40,0,0" BackgroundColor="White">
 
             <Label Text="Create Account," FontSize="26" TextColor="Black"  FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
@@ -101,5 +102,6 @@
 
             </Grid>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

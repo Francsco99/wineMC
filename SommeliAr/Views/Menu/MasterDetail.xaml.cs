@@ -10,6 +10,7 @@ namespace SommeliAr.Views.Menu
         public MasterDetail()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         void Avanti_Clicked(System.Object sender, System.EventArgs e)
