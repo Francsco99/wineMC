@@ -14,7 +14,7 @@
                    <TableSection Title="My settings" TextColor="#b794ff">
                     <SwitchCell Text="Show my name" On="true"/>
                     <SwitchCell Text="Update app automatically"/>
-                    <TextCell Text="Change Password" TextColor="#b794ff"/>
+                    <TextCell Text="Change Password" TextColor="#b794ff" Tapped="TasteSet_btn_Clicked"/>
                    </TableSection>
                 </TableRoot>            
             </TableView>
@@ -22,8 +22,12 @@
                 <Button x:Name="TastesSet_btn" Text="Cambia Gusti"
                         TextColor="#b794ff" Grid.Row="1"
                         BackgroundColor="Transparent"
+                        BorderWidth="1"
+                        CornerRadius="60"
+                        BorderColor="Gray"
                         HorizontalOptions="Center" VerticalOptions="Center"
                         Clicked="TasteSet_btn_Clicked"/>
+
             </Grid>
         </ContentPage.Content>
      
