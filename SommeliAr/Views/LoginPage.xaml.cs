@@ -27,7 +27,7 @@ namespace SommeliAr.Views
             }
         }
 
-        async void LoginProcedure(System.Object sender, System.EventArgs e)
+         void LoginProcedure(System.Object sender, System.EventArgs e)
         {
             //TODO implementare login
 
@@ -40,7 +40,7 @@ namespace SommeliAr.Views
             var result = new Token();
             if (result != null)
             {
-                Application.Current.MainPage = new MasterDetail();
+                 Application.Current.MainPage = new MasterDetail();
             }
         }
 

@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class MasterDetail : ContentPage
+    public partial class MasterDetail : TabbedPage
     {
         public MasterDetail()
         {
