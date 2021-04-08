@@ -11,7 +11,7 @@ namespace SommeliAr
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Tastes());
+            MainPage = new NavigationPage(new LoginPage());
           
          
         }

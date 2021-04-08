@@ -24,48 +24,57 @@ namespace SommeliAr.Views
             bool passOk = false;
             bool userOk = false;
 
-
-            /* uso emailregex per verificare se la mail inserita ha una formattazione valida*/
-            var emailPattern =
-                "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
-
-            if (email != null)
+            void MailValidation()
             {
-             
-                if (Regex.IsMatch(email, emailPattern))
+
+                /* espressione regolare per verificare se la mail inserita ha una formattazione valida*/
+                var emailPattern =
+                    "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
+
+                if (email != null)
                 {
-                    ErrorLabelText.Opacity = 0;
-                    LabelMailError.TextColor = Color.White;
-                    emailOk = true;
+
+                    if (Regex.IsMatch(email, emailPattern)) emailOk = true;
+                    else emailOk = false;
+
+                    switch (emailOk)
+                    {
+                        case true:
+                            ErrorLabelText.Opacity = 0;
+                            LabelMailError.TextColor = Color.White;
+                            break;
+
+                        case false:
+                            ErrorLabelText.Opacity = 0.7;
+                            LabelMailError.TextColor = Color.Red;
+                            break;
+                    }
                 }
                 else
                 {
                     ErrorLabelText.Opacity = 0.7;
-                    LabelMailError.TextColor = Color.Red;
                     emailOk = false;
+                    LabelMailError.TextColor = Color.Red;
+                }
+
+            }
+            void PasswordValidation(){
+                if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
+                {
+                    ErrorPwdLabelText.Opacity = 0.7;
+                    passOk = false;
+                }
+                else
+                {
+                    ErrorPwdLabelText.Opacity = 0;
+                    passOk = true;
                 }
             }
-            else
-            {
-                ErrorLabelText.Opacity = 0.7;
-                emailOk = false;
-                LabelMailError.TextColor = Color.Red;
-            }
+                                                 
+            MailValidation();
+            PasswordValidation();
 
-
-            if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
-            {
-                ErrorPwdLabelText.Opacity = 0.7;
-                passOk = false;
-            }
-            else
-            {
-                ErrorPwdLabelText.Opacity = 0;
-                passOk = true;
-            }
-                passOk = true;
-
-                if (emailOk && passOk && userOk)
+            if (emailOk && passOk && userOk)
                 {
                     await DisplayAlert("Success", "Registration Success", "Okay");
 
