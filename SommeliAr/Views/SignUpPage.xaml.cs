@@ -26,14 +26,11 @@ namespace SommeliAr.Views
 
             void MailValidation()
             {
-
-                /* espressione regolare per verificare se la mail inserita ha una formattazione valida*/
-                var emailPattern =
+                var emailPattern = /* espressione regolare per verificare se la mail inserita ha una formattazione valida*/
                     "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
 
                 if (email != null)
                 {
-
                     if (Regex.IsMatch(email, emailPattern)) emailOk = true;
                     else emailOk = false;
 
@@ -43,7 +40,7 @@ namespace SommeliAr.Views
                             ErrorLabelText.Opacity = 0;
                             LabelMailError.TextColor = Color.White;
                             break;
-
+                        
                         case false:
                             ErrorLabelText.Opacity = 0.7;
                             LabelMailError.TextColor = Color.Red;
@@ -56,7 +53,6 @@ namespace SommeliAr.Views
                     emailOk = false;
                     LabelMailError.TextColor = Color.Red;
                 }
-
             }
             void PasswordValidation(){
                 if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
@@ -74,16 +70,12 @@ namespace SommeliAr.Views
             MailValidation();
             PasswordValidation();
 
-            if (emailOk && passOk && userOk)
+            if (emailOk && passOk && userOk) /* se tutti i campi sono rispettati la procedura ha successo */
                 {
                     await DisplayAlert("Success", "Registration Success", "Okay");
 
                 var result = new Token();
-                if (result != null)
-                {
-                    Application.Current.MainPage = new MasterDetail();
-                }
-                
+                if (result != null)  Application.Current.MainPage = new MasterDetail();
             }
         }
 
