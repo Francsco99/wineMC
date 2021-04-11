@@ -4,19 +4,100 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.FavoritesPage">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                   <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                       <Label Text="Preferiti" FontSize="16" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+              <StackLayout Grid.Row="0">
+                <Label Text="Preferiti" FontSize="25" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="40,32,0,0"/>
+              </StackLayout>
+            <StackLayout Grid.Row="1" BackgroundColor="Black">
+            </StackLayout>
+              <StackLayout Grid.Row="0">
+                <Image Source="stella_piena.png" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,35,60,0"/> 
+              </StackLayout>
+            <StackLayout Grid.Row="2">
+                <ScrollView>
+        <StackLayout>
+            <BoxView Color="CornflowerBlue"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"/>
+
+            <BoxView Color="Yellow"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="Green"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="LightCoral"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="LightSteelBlue"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
                 </StackLayout>
-                <StackLayout Grid.Column="1">
-                     <Image Source="stella_piena.png" /> 
-                </StackLayout>
+    </ScrollView>
+            </StackLayout>
             </Grid>
-        </ScrollView>
     </ContentPage.Content>
+    
+   <!--<ScrollView>
+        <StackLayout>
+            <BoxView Color="CornflowerBlue"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="Yellow"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="Green"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="LightCoral"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+
+            <BoxView Color="LightSteelBlue"
+             CornerRadius="10"
+             WidthRequest="350"
+             HeightRequest="200"
+             VerticalOptions="Center"
+             HorizontalOptions="Center" />
+                </StackLayout>
+    </ScrollView>
+   -->
 </ContentPage>

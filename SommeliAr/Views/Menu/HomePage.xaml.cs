@@ -11,5 +11,10 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
         }
+
+        void Favorites_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new FavoritesPage());
+        }
     }
 }

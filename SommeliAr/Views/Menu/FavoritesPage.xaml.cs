@@ -10,6 +10,9 @@ namespace SommeliAr.Views.Menu
         public FavoritesPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
+
+       
     }
 }

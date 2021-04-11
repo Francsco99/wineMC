@@ -6,8 +6,9 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Label Text="Scan Page"/>
-                 <Label Text="Scan Page" Margin="0,1999,0,0"/>
+                <Label Text="Home Page"/>
+            <Button x:Name="Favorites_btn" ImageSource="star_border.png" Clicked="Favorites_btn_Clicked"/>
+                <Label Text="Home Page" Margin="0,1999,0,0"/>
                 </StackLayout>
             </ScrollView>
     </ContentPage.Content>

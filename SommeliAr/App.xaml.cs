@@ -12,7 +12,7 @@ namespace SommeliAr
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new FavoritesPage());
+            MainPage = new NavigationPage(new LoginPage());
 
         }
 
