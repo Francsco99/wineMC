@@ -18,14 +18,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Update="Views\SignUpPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Tastes.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <Folder Include="Views\Autentication\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\settings_purple.png" />
