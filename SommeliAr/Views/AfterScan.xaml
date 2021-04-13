@@ -8,18 +8,15 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-
             <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
                          Animation="star-rating.json"
                          AutoPlay="False"
                          WidthRequest="200"
                          HeightRequest="200"
                          Clicked="Favourite_Clicked"
-                         Command="{Binding ClickCommand}"
-            />
-
+                         Command="{Binding ClickCommand}">
+            </lottie:AnimationView>
             <Button x:Name="Favourite" Clicked="Favourite_Clicked" />
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

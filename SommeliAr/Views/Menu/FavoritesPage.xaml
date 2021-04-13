@@ -10,94 +10,54 @@
                 <RowDefinition Height="1"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-              <StackLayout Grid.Row="0">
+            <StackLayout Grid.Row="0">
                 <Label x:Name="etichetta" Text="pppp" FontSize="25" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="40,32,0,0"/>
-              </StackLayout>
+            </StackLayout>
             <StackLayout Grid.Row="1" BackgroundColor="Black">
             </StackLayout>
-              <StackLayout Grid.Row="0">
-                <Image Source="stella_piena.png" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,35,60,0"/> 
-              </StackLayout>
+            <StackLayout Grid.Row="0">
+                <Image Source="stella_piena.png" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="0,35,60,0"/>
+            </StackLayout>
             <StackLayout Grid.Row="2">
                 <ScrollView>
-        <StackLayout>
-            <BoxView Color="CornflowerBlue"
+                    <StackLayout>
+                        <BoxView Color="CornflowerBlue"
              CornerRadius="10"
              WidthRequest="350"
              HeightRequest="200"
              VerticalOptions="Center"
              HorizontalOptions="Center"/>
 
-            <BoxView Color="Yellow"
+                        <BoxView Color="Yellow"
              CornerRadius="10"
              WidthRequest="350"
              HeightRequest="200"
              VerticalOptions="Center"
              HorizontalOptions="Center" />
 
-            <BoxView Color="Green"
+                        <BoxView Color="Green"
              CornerRadius="10"
              WidthRequest="350"
              HeightRequest="200"
              VerticalOptions="Center"
              HorizontalOptions="Center" />
 
-            <BoxView Color="LightCoral"
+                        <BoxView Color="LightCoral"
              CornerRadius="10"
              WidthRequest="350"
              HeightRequest="200"
              VerticalOptions="Center"
              HorizontalOptions="Center" />
 
-            <BoxView Color="LightSteelBlue"
+                        <BoxView Color="LightSteelBlue"
              CornerRadius="10"
              WidthRequest="350"
              HeightRequest="200"
              VerticalOptions="Center"
              HorizontalOptions="Center" />
-                </StackLayout>
-    </ScrollView>
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
-            </Grid>
+        </Grid>
     </ContentPage.Content>
-    
-   <!--<ScrollView>
-        <StackLayout>
-            <BoxView Color="CornflowerBlue"
-             CornerRadius="10"
-             WidthRequest="350"
-             HeightRequest="200"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-
-            <BoxView Color="Yellow"
-             CornerRadius="10"
-             WidthRequest="350"
-             HeightRequest="200"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-
-            <BoxView Color="Green"
-             CornerRadius="10"
-             WidthRequest="350"
-             HeightRequest="200"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-
-            <BoxView Color="LightCoral"
-             CornerRadius="10"
-             WidthRequest="350"
-             HeightRequest="200"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-
-            <BoxView Color="LightSteelBlue"
-             CornerRadius="10"
-             WidthRequest="350"
-             HeightRequest="200"
-             VerticalOptions="Center"
-             HorizontalOptions="Center" />
-                </StackLayout>
-    </ScrollView>
-   -->
 </ContentPage>

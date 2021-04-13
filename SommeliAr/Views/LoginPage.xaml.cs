@@ -31,7 +31,7 @@ namespace SommeliAr.Views
         {
             //TODO implementare login
 
-            DisplayAlert("Success", "Login Success", "Okay");
+            DisplayAlert("Success", "Logged in correctly!", "Okay");
 
             Navigation.PushAsync(new MasterDetail());
 
