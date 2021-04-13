@@ -14,6 +14,7 @@ namespace SommeliAr.Models
         public DateTime BirthDate { get; set; }
 
         public User() { }
+
         public User(string Username, string Password, string Email)
         {
             this.Username = Username;

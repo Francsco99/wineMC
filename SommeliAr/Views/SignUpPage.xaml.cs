@@ -16,7 +16,7 @@ namespace SommeliAr.Views
 
         }
 
-        async void RegistrationProcedure(object sender, EventArgs e)
+        void RegistrationProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
             var email = Entry_Email.Text;
@@ -71,12 +71,11 @@ namespace SommeliAr.Views
             MailValidation();
             PasswordValidation();
 
-            if (emailOk && passOk && userOk) /* se tutti i campi sono rispettati la procedura ha successo */
+            if (emailOk && passOk /*&& userOk*/) /* se tutti i campi sono rispettati la procedura ha successo */
             {
-                await DisplayAlert("Success", "Registration Success", "Okay");
+                DisplayAlert("Success", "Registration Success", "Okay");
 
-                var result = new Token();
-                if (result != null) Application.Current.MainPage = new MasterDetail();
+                Navigation.PushAsync(new MasterDetail());
             }
         }
 

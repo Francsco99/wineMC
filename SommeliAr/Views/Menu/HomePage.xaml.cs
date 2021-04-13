@@ -16,5 +16,10 @@ namespace SommeliAr.Views.Menu
         {
             Navigation.PushAsync(new FavoritesPage());
         }
+
+        void AfterScan_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AfterScan());
+        }
     }
 }
