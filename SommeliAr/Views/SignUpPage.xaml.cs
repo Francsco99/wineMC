@@ -76,6 +76,8 @@ namespace SommeliAr.Views
                 DisplayAlert("Success", "Registration Success", "Okay");
 
                 Navigation.PushAsync(new MasterDetail());
+
+                
             }
         }
 
