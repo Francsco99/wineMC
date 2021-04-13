@@ -13,6 +13,9 @@ namespace SommeliAr.Views.Menu
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-       
+        private void Favourite_Clicked(object sender, EventArgs e)
+        {
+            etichetta.Text = "ciaone";
+        }
     }
 }
