@@ -19,6 +19,7 @@ namespace SommeliAr.Views
         async void RegistrationProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
+            var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             bool emailOk = false;
             bool passOk = false;
@@ -65,6 +66,27 @@ namespace SommeliAr.Views
                 {
                     ErrorPwdLabelText.Opacity = 0;
                     passOk = true;
+                }
+            }
+            void UserValidation()
+            {
+                var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";
+
+                if(username != null)
+                {
+                    if (Regex.IsMatch(username, userPattern))
+                    {
+                        userOk = true;
+                        LabelUserError.Opacity = 0;
+                    }
+
+                    else
+                    {
+                        userOk = false;
+                        LabelUserError.Opacity = 0.7;
+                    }
+
+                    
                 }
             }
 
