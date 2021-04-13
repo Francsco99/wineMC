@@ -27,7 +27,7 @@ namespace SommeliAr.Views
             }
         }
 
-          void LoginProcedure(System.Object sender, System.EventArgs e)
+        void LoginProcedure(System.Object sender, System.EventArgs e)
         {
             //TODO implementare login
 
@@ -52,7 +52,7 @@ namespace SommeliAr.Views
         void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new SignUpPage());
-            
+
         }
     }
 }

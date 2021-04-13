@@ -77,7 +77,7 @@ namespace SommeliAr.Views
 
                 Navigation.PushAsync(new MasterDetail());
 
-                
+
             }
         }
 
