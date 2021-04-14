@@ -2,7 +2,8 @@
 using SommeliAr.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
+using SommeliAr.Views.Menu;
+  
 namespace SommeliAr
 {
     public partial class App : Application
@@ -12,8 +13,7 @@ namespace SommeliAr
             InitializeComponent();
 
             MainPage = new NavigationPage(new LoginPage());
-          
-         
+
         }
 
         protected override void OnStart()

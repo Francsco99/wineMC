@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage Title="Home" Icon="home.png"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SommeliAr.Views.Menu.HomePage">
+    <ContentPage.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+                    <Label Text="Welcome back -nome utente-!" FontSize="25" TextColor="#8b52ff"
+                       HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="30,22,0,0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" BackgroundColor="Gray" HorizontalOptions="Fill"/>
+
+                <StackLayout Grid.Row="2">
+                    <Frame BorderColor="DarkGoldenrod" CornerRadius="10" Padding="2"
+                           Margin="10,10,10,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Favourites" FontSize="Medium" FontAttributes="Bold"
+                                       TextColor="Black"
+                                   HorizontalOptions="StartAndExpand" VerticalOptions="Start"
+                                       Margin="10,5,0,5"/>
+                                <Button x:Name="favourites_edit_btn" ImageSource="edit_pen.png"
+                                    HorizontalOptions="End" VerticalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="10" WidthRequest="10"
+                                    Margin="0,10,30,10" Clicked="favourites_edit_btn_Clicked"/>
+                            </StackLayout>
+                            <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                            <StackLayout>
+                                <Label Padding="4" Text="Lista con i vini preferiti?"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Grid.Row="3">
+                    <Frame BorderColor="Silver" CornerRadius="10" Padding="2"
+                           Margin="10,10,10,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Recent scans" FontSize="Medium" FontAttributes="Bold"
+                                       TextColor="Black"
+                                   HorizontalOptions="StartAndExpand" VerticalOptions="Start"
+                                       Margin="10,5,0,5"/>
+                                <Button x:Name="recent_scans_edit_btn" ImageSource="edit_pen.png"
+                                    HorizontalOptions="End" VerticalOptions="Center"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="10" WidthRequest="10"
+                                    Margin="0,10,30,10" Clicked="recent_scans_edit_btn_Clicked"/>
+                            </StackLayout>
+                            <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" />
+                            <StackLayout>
+                                <Label Padding="4" Text="Lista le scansioni recenti?
+                                                            Per ora rimanda alla pagina AfterScan."/>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

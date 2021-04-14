@@ -27,27 +27,32 @@ namespace SommeliAr.Views
             }
         }
 
-        async void LoginProcedure(System.Object sender, System.EventArgs e)
+        void LoginProcedure(System.Object sender, System.EventArgs e)
         {
             //TODO implementare login
 
-            /*await DisplayAlert("Success", "Login Success", "Okay"); */
-           /* OkView.RepeatCount = 1;
-            OkView.Opacity = 1; */
+            DisplayAlert("Success", "Logged in correctly!", "Okay");
+
+            Navigation.PushAsync(new MasterDetail());
 
 
+            /*OkView.RepeatCount = 1;
+            OkView.Opacity = 1;
 
             var result = new Token();
             if (result != null)
             {
-                Application.Current.MainPage = new MasterDetail();
+                 Application.Current.MainPage = new MasterDetail();
             }
+            */
+
+
         }
 
         void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new SignUpPage());
-            
+
         }
     }
 }

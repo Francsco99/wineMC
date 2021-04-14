@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SommeliAr.Views.Tastes">
+    <ContentPage.Content>
+        <StackLayout Padding="0,60,0,0">
+            <Label Text=" Choose your preferences:" FontAttributes="Bold"
+                   TextColor="Black" FontSize="26"
+                   Margin="0,0,0,60" HorizontalOptions="CenterAndExpand"/>
+            <StackLayout Orientation="Horizontal" Margin=" 20,0,0,0">
+                <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ImageButton Source="orangeGradient.png" CornerRadius="80" WidthRequest="120"
+                                 HeightRequest="120" BackgroundColor="DarkRed" x:Name ="VinoRosso" 
+                                 Clicked="VinoRosso_Clicked" BorderWidth="2" Grid.Row="0"/>
+                    <Image Source="donecheck.png" x:Name="RossoOK"
+                           HorizontalOptions="Center" VerticalOptions="Center"
+                           Grid.Row="0" Opacity="0"/>
+                    <Label Text="Rosso" TextColor="LightYellow" Grid.Row="0"
+                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Grid>
+                <Button Text="Bianco" TextColor="#7a7a61" CornerRadius="80"
+                        WidthRequest="120" HeightRequest="120" BackgroundColor="#ededbb"
+                        BorderWidth="2" x:Name ="VinoBianco" Clicked="VinoBianco_Clicked"/>
+                <Button Text="Frizzante" TextColor="Black" CornerRadius="80"
+                        WidthRequest="120" HeightRequest="120" BorderWidth="2"
+                        x:Name ="VinoFrizzante" Clicked="VinoFrizzante_Clicked"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="-28,0,0,0">
+                <Button Text="Secco" TextColor="Black" CornerRadius="80"
+                        WidthRequest="110" HeightRequest="110" BorderWidth="2"
+                        x:Name="VinoSecco" Clicked="VinoSecco_Clicked"/>
+                <Button Text="Rosato" TextColor="#87646b" CornerRadius="80"
+                        WidthRequest="110" HeightRequest="110" BackgroundColor="#ffc0cb" BorderWidth="2"/>
+                <Button Text="Liquoroso" TextColor="#f7c4a3" CornerRadius="80"
+                        WidthRequest="110" HeightRequest="110" BackgroundColor="#bc4f0c" BorderWidth="2"/>
+                <Button Text="Leggero" CornerRadius="80"
+                        WidthRequest="110" HeightRequest="110"  />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin=" 20,0,0,0">
+                <Button Text="Intenso" TextColor="#ece1f7" CornerRadius="80"
+                        WidthRequest="120" HeightRequest="120" BackgroundColor="#9a7eb7" BorderWidth="2" />
+                <Button Text="Dessert" TextColor="LightYellow" CornerRadius="80"
+                        WidthRequest="120" HeightRequest="120" BackgroundColor="#eb9008" BorderWidth="2"/>
+                <Button Text="Fruttato" TextColor="#879c5c" CornerRadius="80"
+                        WidthRequest="120" HeightRequest="120" BackgroundColor="#dbff94" BorderWidth="2"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

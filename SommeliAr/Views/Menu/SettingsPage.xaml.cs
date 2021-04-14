@@ -5,23 +5,24 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class MasterDetail : TabbedPage
+    public partial class SettingsPage : ContentPage
     {
-        public MasterDetail()
+        public SettingsPage()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        void Avanti_Clicked(System.Object sender, System.EventArgs e)
+        void TasteSet_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            var result = new Token();
+            /*var result = new Token();
             if (result != null)
             {
-                
+                Application.Current.MainPage = new Tastes();
             }
+            */
+
+            Navigation.PushAsync(new Tastes());
         }
-
-
     }
 }
