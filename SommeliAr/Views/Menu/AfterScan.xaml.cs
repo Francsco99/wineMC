@@ -15,6 +15,7 @@ namespace SommeliAr.Views
         public AfterScan()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private void Favourite_Clicked(object sender, EventArgs e)
