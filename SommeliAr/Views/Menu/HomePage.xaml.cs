@@ -12,12 +12,12 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
         }
 
-        void Favorites_btn_Clicked(System.Object sender, System.EventArgs e)
+        void favourites_edit_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new FavoritesPage());
         }
 
-        void AfterScan_btn_Clicked(System.Object sender, System.EventArgs e)
+        void recent_scans_edit_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new AfterScan());
         }

@@ -5,7 +5,7 @@
              x:Class="SommeliAr.Views.AfterScan">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="After Scan Page"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
