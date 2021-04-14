@@ -75,10 +75,17 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" Margin="0,0,0,10">
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="birthday.png" WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
-                        <DatePicker  x:Name="BirthDate" HorizontalOptions="FillAndExpand" Margin="0,0,90,0" />
-                    </StackLayout>
+                    <StackLayout >
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="birthday.png" WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
+                                <DatePicker  x:Name="BirthDate"  MinimumDate="01/01/1921" MaximumDate="01/01/2006" 
+                                     HorizontalOptions="FillAndExpand" Margin="0,0,50,0" />
+                                <Image Source="error.png" x:Name="ErrorBirth" HorizontalOptions="Center" Opacity="0" 
+                               Margin="0,0,10,0" WidthRequest="25" HeightRequest="25"/>
+                            </StackLayout>
+
+                            <Label x:Name="ErrorBirthLabelText" Text="You must be at least 18" TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
+                        </StackLayout>
 
 
 

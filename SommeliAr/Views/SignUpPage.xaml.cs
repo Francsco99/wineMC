@@ -22,9 +22,11 @@ namespace SommeliAr.Views
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;
+            
             bool emailOk = false;
             bool passOk = false;
             bool userOk = false;
+            bool ageOk = false;
 
             void MailValidation()
             {
@@ -125,19 +127,41 @@ namespace SommeliAr.Views
                     PwdErrorIcon.Opacity = 0.7;
                 }
             }
+            void AgeValidation()
+            {
+                DateTime todayDate = DateTime.Now;
+                int timespan = (todayDate - BirthDate.Date).Days;
 
+                if (timespan >= 6570)
+                {
+                    ageOk = true;
+                    ErrorBirthLabelText.TextColor = Color.White;
+                    ErrorBirth.Opacity = 0;
+                }
+
+                else
+                {
+                    ageOk = false;
+                    ErrorBirthLabelText.TextColor = Color.Red;
+                    ErrorBirth.Opacity = 0.7;
+
+                }
+            }
+
+            UserValidation();
             MailValidation();
             PasswordValidation();
             PasswordConfirmationValidation();
-            UserValidation();
+            AgeValidation();
 
-            if (emailOk && passOk && userOk) /* se tutti i campi sono rispettati la procedura ha successo */
+            if (emailOk && passOk && userOk && ageOk) /* se tutti i campi sono rispettati la procedura ha successo */
             {
                 DisplayAlert("Success", "Registration Success", "Okay");
 
                 Navigation.PushAsync(new MasterDetail());
             }
         }
+
 
         void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -158,5 +182,7 @@ namespace SommeliAr.Views
             Navigation.PushAsync(new LoginPage());
 
         }
+
+        
     }
 }
