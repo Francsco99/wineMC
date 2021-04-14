@@ -5,13 +5,27 @@
     x:Class="SommeliAr.Views.Menu.HomePage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                <Label Text="Home Page"/>
-                <Button x:Name="Favorites_btn" ImageSource="star_border.png" Clicked="Favorites_btn_Clicked"/>
-                <Button x:Name="AfterScan_btn" ImageSource="star_border.png" Clicked="AfterScan_btn_Clicked"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <Label Text="Home Page" Margin="0,1999,0,0"/>
-            </StackLayout>
+                <StackLayout Grid.Row="0">
+                    <Label Text="Welcome back User!" FontSize="25" TextColor="#8b52ff"
+                       HorizontalOptions="FillAndExpand" VerticalOptions="Center" Margin="20,32,0,0"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" BackgroundColor="Black" HorizontalOptions="Fill"/>
+
+                <StackLayout>
+
+                </StackLayout>
+
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

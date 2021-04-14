@@ -22,7 +22,7 @@ namespace SommeliAr.Views
             var email = Entry_Email.Text;
             bool emailOk = false;
             bool passOk = false;
-            bool userOk = false;
+          //  bool userOk = false;
 
             void MailValidation()
             {
