@@ -25,12 +25,8 @@ namespace SommeliAr.Views
             
             bool emailOk = false;
             bool passOk = false;
-<<<<<<< HEAD:SommeliAr/Views/Autentication/SignUpPage.xaml.cs
-          //  bool userOk = false;
-=======
             bool userOk = false;
             bool ageOk = false;
->>>>>>> origin/master:SommeliAr/Views/SignUpPage.xaml.cs
 
             void MailValidation()
             {
