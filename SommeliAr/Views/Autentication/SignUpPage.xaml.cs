@@ -164,7 +164,6 @@ namespace SommeliAr.Views
             }
         }
 
-
         void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
             if (Entry_Password.IsPassword == true)
@@ -184,7 +183,5 @@ namespace SommeliAr.Views
             Navigation.PushAsync(new LoginPage());
 
         }
-
-        
     }
 }
