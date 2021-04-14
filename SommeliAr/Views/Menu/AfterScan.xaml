@@ -9,12 +9,12 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
-                         Animation="star-rating.json"
-                         AutoPlay="False"
-                         WidthRequest="200"
-                         HeightRequest="200"
-                         Clicked="Favourite_Clicked"
-                         Command="{Binding ClickCommand}">
+                                  Animation="star-rating.json"
+                                  AutoPlay="False"
+                                  WidthRequest="200"
+                                  HeightRequest="200"
+                                  Clicked="Favourite_Clicked"
+                                  Command="{Binding ClickCommand}">
             </lottie:AnimationView>
             <Button x:Name="Favourite" Clicked="Favourite_Clicked" />
         </StackLayout>
