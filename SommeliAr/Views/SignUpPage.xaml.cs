@@ -21,6 +21,7 @@ namespace SommeliAr.Views
             User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
+            var pwd = Entry_Password.Text;
             bool emailOk = false;
             bool passOk = false;
             bool userOk = false;
@@ -55,45 +56,82 @@ namespace SommeliAr.Views
                     LabelMailError.TextColor = Color.Red;
                 }
             }
-            void PasswordValidation()
+            void PasswordConfirmationValidation()
             {
                 if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
                 {
                     ErrorPwdLabelText.Opacity = 0.7;
                     passOk = false;
+                    LabelConfirmPwdError.TextColor = Color.Red;
                 }
                 else
                 {
                     ErrorPwdLabelText.Opacity = 0;
                     passOk = true;
+                    LabelConfirmPwdError.TextColor = Color.White;
                 }
             }
             void UserValidation()
             {
-                var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";
+                var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";         /* deve contenere tra i 6 e i 18 caratteri alfanumerici */
 
-                if(username != null)
+                if (username != null)
                 {
                     if (Regex.IsMatch(username, userPattern))
                     {
                         userOk = true;
-                        LabelUserError.Opacity = 0;
+                        LabelUserError.TextColor = Color.White;
+                        UserErrorIcon.Opacity = 0;
                     }
 
                     else
                     {
                         userOk = false;
-                        LabelUserError.Opacity = 0.7;
+                        LabelUserError.TextColor = Color.Red;
+                        UserErrorIcon.Opacity = 0.7;
+                    }
+                }
+                else
+                {
+                    userOk = false;
+                    LabelUserError.TextColor = Color.Red;
+                    UserErrorIcon.Opacity = 0.7;
+                }
+            }
+            void PasswordValidation()
+            {
+                var passwordPattern = "(?=.*[A-Z])(?=.*\\d)(?=.*[¡!@#$%*¿?\\-_.\\(\\)])[A-Za-z\\d¡!@#$%*¿?\\-\\(\\)&]{8,20}";  /* tra 8-20 cifre, un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale*/
+
+                if (pwd != null)
+                {
+                    if (Regex.IsMatch(pwd, passwordPattern))
+                    {
+                        passOk = true;
+                        LabelPwdError.TextColor = Color.White;
+                        PwdErrorIcon.Opacity = 0;
                     }
 
-                    
+                    else
+                    {
+                        passOk = false;
+                        LabelPwdError.TextColor = Color.Red;
+                        PwdErrorIcon.Opacity = 0.7;
+                    }
+                }
+                else
+                {
+                    passOk = false;
+                    LabelPwdError.TextColor = Color.Red;
+                    PwdErrorIcon.Opacity = 0.7;
                 }
             }
 
             MailValidation();
             PasswordValidation();
+            PasswordConfirmationValidation();
+            UserValidation();
 
-            if (emailOk && passOk /*&& userOk*/) /* se tutti i campi sono rispettati la procedura ha successo */
+            if (emailOk && passOk && userOk) /* se tutti i campi sono rispettati la procedura ha successo */
             {
                 DisplayAlert("Success", "Registration Success", "Okay");
 
@@ -117,9 +155,8 @@ namespace SommeliAr.Views
 
         void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PopAsync();
+            Navigation.PushAsync(new LoginPage());
+
         }
-
     }
-
 }
