@@ -33,7 +33,7 @@
             </StackLayout>
 
             <StackLayout Grid.Row="2">
-                <Label x:Name="MyEmail" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="Ciao" x:Name="MyEmail" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
 
             <StackLayout Grid.Row="3">

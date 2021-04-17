@@ -164,11 +164,12 @@ namespace SommeliAr.Views
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
                     string gettoken = auth.FirebaseToken;
-                    await App.Current.MainPage.DisplayAlert("Alert",gettoken,"Ok");
+                    await App.Current.MainPage.DisplayAlert("Alert","Sign Up Success!","Ok");
+                    await Navigation.PushAsync(new MasterDetail());
                      }
                 catch(Exception ex)
                 {
-                    await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+                    await App.Current.MainPage.DisplayAlert("Alert",ex.Message, "Ok");
                 }
 
             }

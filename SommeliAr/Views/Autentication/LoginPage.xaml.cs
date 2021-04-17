@@ -43,7 +43,7 @@ namespace SommeliAr.Views
                 Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
                 await Navigation.PushAsync(new MasterDetail());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "Invalid Email or password", "OK");
             }
