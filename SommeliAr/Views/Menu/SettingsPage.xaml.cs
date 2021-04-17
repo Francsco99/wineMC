@@ -16,8 +16,8 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            GetProfileInformationAndRefreshToken();
 
-            
         }
 
         async private void GetProfileInformationAndRefreshToken()
@@ -26,20 +26,18 @@ namespace SommeliAr.Views.Menu
             try
             {
                 //This is the saved firebaseauthentication that was saved during the time of login
-                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyFirebaseRefreshToken", ""));
+                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", ""));
                 //Here we are Refreshing the token
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
-                Preferences.Set("MyFirebaseRefreshToken", JsonConvert.SerializeObject(RefreshedContent));
+                Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                MyEmail.Text = savedfirebaseauth.User.LastName;
-
+                email_lbl.Text = savedfirebaseauth.User.Email;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 await App.Current.MainPage.DisplayAlert("Alert", "Oh no !  Token expired", "OK");
             }
-
         }
 
             void TasteSet_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -50,7 +48,7 @@ namespace SommeliAr.Views.Menu
 
         void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            Preferences.Remove("MyFirebaseRefreshToken");
+            Preferences.Remove("MyLoginToken");
             App.Current.MainPage = new NavigationPage(new LoginPage());
 
         }

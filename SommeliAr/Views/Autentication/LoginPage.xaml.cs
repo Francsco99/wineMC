@@ -41,7 +41,7 @@ namespace SommeliAr.Views
                 var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
                 var content = await auth.GetFreshAuthAsync();
                 var serializedcontnet = JsonConvert.SerializeObject(content);
-                Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
+                Preferences.Set("MyLoginToken", serializedcontnet);
                 await Navigation.PushAsync(new MasterDetail());
             }
             catch (Exception)
