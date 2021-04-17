@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using SommeliAr.Models;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
@@ -11,6 +11,8 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
         }
+
+        
 
         void favourites_edit_btn_Clicked(System.Object sender, System.EventArgs e)
         {

@@ -158,9 +158,7 @@ namespace SommeliAr.Views
             AgeValidation();
 
             if (emailOk && passOk && userOk && ageOk) /* se tutti i campi sono rispettati la procedura ha successo */
-            {
-                //DisplayAlert("Success", "Registration Success", "Okay");
-
+            { 
                 try
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
@@ -172,7 +170,6 @@ namespace SommeliAr.Views
                 {
                     await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
                 }
-
 
             }
         }
