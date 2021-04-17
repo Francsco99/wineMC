@@ -10,7 +10,7 @@ namespace SommeliAr.Views.Menu
 {
     public partial class SettingsPage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyAwqkWptVDG5gJ9VHue7AffKx5b1KqloJg";
+        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
 
         public SettingsPage()
         {
@@ -31,7 +31,7 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyFirebaseRefreshToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                MyEmail.Text = savedfirebaseauth.User.Email;
+                MyEmail.Text = savedfirebaseauth.User.LastName;
 
             }
             catch (Exception ex)

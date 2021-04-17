@@ -10,7 +10,7 @@ namespace SommeliAr.Views.Menu
 {
     public partial class HomePage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyAwqkWptVDG5gJ9VHue7AffKx5b1KqloJg";
+        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
 
         public HomePage()
         {

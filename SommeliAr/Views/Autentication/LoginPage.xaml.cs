@@ -11,7 +11,7 @@ namespace SommeliAr.Views
 {
     public partial class LoginPage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyAwqkWptVDG5gJ9VHue7AffKx5b1KqloJg";
+        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
 
         public LoginPage()
         {
@@ -52,6 +52,10 @@ namespace SommeliAr.Views
         void SignUpNow_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new SignUpPage());
+        }
+
+        void forgot_password_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }
