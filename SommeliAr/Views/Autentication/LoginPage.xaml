@@ -5,7 +5,7 @@
     xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="SommeliAr.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout Padding="0,60,0,0" BackgroundColor="White">
+        <StackLayout Padding="0,30,0,0" BackgroundColor="White">
             <Label Text="Welcome back,"
                    FontSize="26" TextColor="Black"
                    FontAttributes="Bold, Italic" Margin="40,0,0,0"  />
@@ -69,11 +69,13 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
-                        <Button x:Name="forgot_password_btn" Text="Forgot password?"
+                        <Button x:Name="forgot_password_btn" Text="Forgot password?" FontSize="16"
+                                BackgroundColor="Transparent" TextColor="#b794ff"
                                 Clicked="forgot_password_btn_Clicked"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center"
+                                 VerticalOptions="End">
                         <Label Text="Don't have an account yet?"
                                FontSize="16"
                                HorizontalOptions="Center" VerticalOptions="Center" />

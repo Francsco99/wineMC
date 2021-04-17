@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Firebase.Auth;
 using Newtonsoft.Json;
 using SommeliAr.Models;
+using SommeliAr.Views.Autentication;
 using SommeliAr.Views.Menu;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -54,8 +55,10 @@ namespace SommeliAr.Views
             Navigation.PushAsync(new SignUpPage());
         }
 
-        void forgot_password_btn_Clicked(System.Object sender, System.EventArgs e)
+         void forgot_password_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+            Navigation.PushAsync(new RecoverPasswordPage());
+            
         }
     }
 }
