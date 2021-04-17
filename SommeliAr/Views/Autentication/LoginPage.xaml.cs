@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using Firebase.Auth;
+using Newtonsoft.Json;
 using SommeliAr.Models;
 using SommeliAr.Views.Menu;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
 {
     public partial class LoginPage : ContentPage
     {
+        public string WebAPIKey = "AIzaSyAwqkWptVDG5gJ9VHue7AffKx5b1KqloJg";
+
         public LoginPage()
         {
             InitializeComponent();
@@ -27,32 +32,26 @@ namespace SommeliAr.Views
             }
         }
 
-        void LoginProcedure(System.Object sender, System.EventArgs e)
+        async void Login_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            //TODO implementare login
-
-            DisplayAlert("Success", "Logged in correctly!", "Okay");
-
-            Navigation.PushAsync(new MasterDetail());
-
-
-            /*OkView.RepeatCount = 1;
-            OkView.Opacity = 1;
-
-            var result = new Token();
-            if (result != null)
+            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+            try
             {
-                 Application.Current.MainPage = new MasterDetail();
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
+                var content = await auth.GetFreshAuthAsync();
+                var serializedcontnet = JsonConvert.SerializeObject(content);
+                Preferences.Set("MyFirebaseRefreshToken", serializedcontnet);
+                await Navigation.PushAsync(new MasterDetail());
             }
-            */
-
-
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Invalid Email or password", "OK");
+            }
         }
 
-        void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
+        void SignUpNow_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new SignUpPage());
-
         }
     }
 }

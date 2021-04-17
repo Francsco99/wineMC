@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "31293025464",
+    "project_id": "sommeliar-4395a",
+    "storage_bucket": "sommeliar-4395a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:31293025464:android:4addc4ab8873dcca18984d",
+        "android_client_info": {
+          "package_name": "ff.sommeliar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "31293025464-c3a93cj1ik231eq627mdaq7npb223ine.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA41NCQOZBXIOu9oQN_h-R4_Mv9St1dd6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "31293025464-c3a93cj1ik231eq627mdaq7npb223ine.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "31293025464-03q0bvsdbd1pnmma5vd05au5ta186erh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "FF.SommeliAr"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

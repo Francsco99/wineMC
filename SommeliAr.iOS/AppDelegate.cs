@@ -23,6 +23,8 @@ namespace SommeliAr.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            Firebase.Core.App.Configure();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
