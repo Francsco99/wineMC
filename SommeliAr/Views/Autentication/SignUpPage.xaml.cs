@@ -21,7 +21,7 @@ namespace SommeliAr.Views
 
         async void RegistrationProcedure(object sender, EventArgs e)
         {
-            Models.User user = new Models.User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
+            MyUser user = new MyUser(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;

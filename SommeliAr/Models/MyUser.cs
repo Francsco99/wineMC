@@ -1,7 +1,7 @@
 ﻿using System;
 namespace SommeliAr.Models
 {
-    public class User
+    public class MyUser
     {
         public int Id { get; set; }
 
@@ -13,9 +13,9 @@ namespace SommeliAr.Models
 
         public DateTime BirthDate { get; set; }
 
-        public User() { }
+        public MyUser() { }
 
-        public User(string Username, string Password, string Email)
+        public MyUser(string Username, string Password, string Email)
         {
             this.Username = Username;
             this.Password = Password;
