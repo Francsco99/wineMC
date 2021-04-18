@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Firebase.Auth;
 using SommeliAr.Models;
 using SommeliAr.Views.Menu;
 using Xamarin.Forms;
@@ -9,6 +10,8 @@ namespace SommeliAr.Views
 {
     public partial class SignUpPage : ContentPage
     {
+        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
+
         public SignUpPage()
         {
             InitializeComponent();
@@ -16,13 +19,13 @@ namespace SommeliAr.Views
 
         }
 
-        void RegistrationProcedure(object sender, EventArgs e)
+        async void RegistrationProcedure(object sender, EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
+            MyUser user = new MyUser(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;
-            
+
             bool emailOk = false;
             bool passOk = false;
             bool userOk = false;
@@ -155,15 +158,22 @@ namespace SommeliAr.Views
             AgeValidation();
 
             if (emailOk && passOk && userOk && ageOk) /* se tutti i campi sono rispettati la procedura ha successo */
-            {
-                DisplayAlert("Success", "Registration Success", "Okay");
-
-                Navigation.PushAsync(new MasterDetail());
-
+            { 
+                try
+                {
+                    var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+                    var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
+                    string gettoken = auth.FirebaseToken;
+                    await App.Current.MainPage.DisplayAlert("Alert","Sign Up Success!","Ok");
+                    await Navigation.PushAsync(new MasterDetail());
+                     }
+                catch(Exception ex)
+                {
+                    await App.Current.MainPage.DisplayAlert("Alert",ex.Message, "Ok");
+                }
 
             }
         }
-
 
         void hideButton_Clicked(System.Object sender, System.EventArgs e)
         {
@@ -184,7 +194,5 @@ namespace SommeliAr.Views
             Navigation.PushAsync(new LoginPage());
 
         }
-
-        
     }
 }

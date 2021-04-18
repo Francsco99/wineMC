@@ -8,6 +8,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
                 <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <TableView Intent="Settings" Margin="0,30,0,0" Grid.Row="0">
                 <TableRoot TextColor="#b794ff">
@@ -19,7 +21,8 @@
                 </TableRoot>
             </TableView>
 
-            <Button x:Name="TastesSet_btn" Text="Cambia Gusti"
+            <StackLayout Grid.Row="1">
+                <Button x:Name="TastesSet_btn" Text="Cambia Gusti"
                         TextColor="#b794ff" Grid.Row="1"
                         BackgroundColor="Transparent"
                         BorderWidth="1"
@@ -27,6 +30,15 @@
                         BorderColor="Gray"
                         HorizontalOptions="Center" VerticalOptions="Center"
                         Clicked="TasteSet_btn_Clicked"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2">
+                <Label Text="Ciao" x:Name="MyEmail" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="3">
+                <Button x:Name="Logout_btn" Text="Logout" Clicked="Logout_btn_Clicked"/>
+            </StackLayout>
 
         </Grid>
     </ContentPage.Content>

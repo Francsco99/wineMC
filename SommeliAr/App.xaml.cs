@@ -3,17 +3,25 @@ using SommeliAr.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SommeliAr.Views.Menu;
-  
+using Xamarin.Essentials;
+
 namespace SommeliAr
 {
     public partial class App : Application
     {
         public App()
         {
-            InitializeComponent();
-
-            MainPage = new NavigationPage(new LoginPage());
-
+            {
+                InitializeComponent();
+                if (!string.IsNullOrEmpty(Preferences.Get("MyFirebaseRefreshToken", "")))
+                {
+                    MainPage = new NavigationPage(new MasterDetail());
+                }
+                else
+                {
+                    MainPage = new NavigationPage(new LoginPage());
+                }
+            }
         }
 
         protected override void OnStart()
