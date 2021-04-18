@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "247143063368",
+    "firebase_url": "https://sommeliar-f6967-default-rtdb.europe-west1.firebasedatabase.app/",
+    "project_id": "sommeliar-f6967",
+    "storage_bucket": "sommeliar-f6967.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:247143063368:android:cf560fe7794fb73a47dd7d",
+        "android_client_info": {
+          "package_name": "ff.sommeliar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "247143063368-unl61757ird6u6nf9b54112eqgslsoqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "247143063368-unl61757ird6u6nf9b54112eqgslsoqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
