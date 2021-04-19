@@ -20,7 +20,7 @@
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Autentication\" />
+    <Folder Include="Autentication\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\settings_purple.png" />
