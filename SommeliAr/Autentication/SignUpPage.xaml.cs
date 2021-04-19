@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Firebase.Auth;
-using Newtonsoft.Json;
 using SommeliAr.Models;
-using SommeliAr.Views.Menu;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Firebase.Auth;
 using Newtonsoft.Json;
-using SommeliAr.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -31,7 +29,8 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                email_lbl.Text = savedfirebaseauth.User.Email;
+                user_info_txt_cell.Text = savedfirebaseauth.User.Email;
+
             }
             catch (Exception ex)
             {
@@ -40,16 +39,26 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-            void TasteSet_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            
-            Navigation.PushAsync(new Tastes());
-        }
-
-        void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
+        void logout_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("MyLoginToken");
             App.Current.MainPage = new NavigationPage(new LoginPage());
+        }
+
+        void change_tastes_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new Tastes());
+        }
+
+        async private void change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            string newUsrname = await DisplayPromptAsync("Change Username", "Enter the new username here", "OK", "Cancel", "New username");
+
+        }
+
+        async void change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            string newPwd = await DisplayPromptAsync("Change Password", "Enter the new password here", "OK", "Cancel", "New password");
 
         }
     }
