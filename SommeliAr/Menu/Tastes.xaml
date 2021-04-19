@@ -13,10 +13,68 @@
                    TextColor="Black" FontSize="26"
                    HorizontalOptions="Center"/>
             </StackLayout>
-            <StackLayout Grid.Row="1">
+            <StackLayout Grid.Row="1" >
+                <Grid Padding="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
 
-                <Button CornerRadius="25" HeightRequest="50" WidthRequest="50" Text="ciao" BorderWidth="2"
+                    <StackLayout Grid.Column="0" Grid.Row="0" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="UNO" BorderWidth="2"
                         VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="0" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="DUE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Grid.Row="0" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="TRE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+
+
+                    <StackLayout Grid.Column="0" Grid.Row="1" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="UNO" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="1" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="DUE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Grid.Row="1" >
+                        <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="TRE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="0" Grid.Row="2" >
+                         <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="UNO" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="1" Grid.Row="2" >
+                         <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="DUE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Grid.Row="2" >
+                         <Button CornerRadius="50" HeightRequest="100" WidthRequest="100" Text="TRE" BorderWidth="2"
+                        VerticalOptions="Center" HorizontalOptions="Center"/>
+                    </StackLayout>
+
+                </Grid>
+
 
             </StackLayout>
         </Grid>
@@ -25,7 +83,7 @@
 </ContentPage>
 
 
-            <!--
+<!--
             <StackLayout>
                 <StackLayout Grid.Row="1" Orientation="Horizontal" Margin=" 20,0,0,0">
                     <Grid HorizontalOptions="Center" VerticalOptions="Center">
