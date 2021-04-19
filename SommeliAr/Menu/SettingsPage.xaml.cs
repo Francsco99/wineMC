@@ -8,14 +8,16 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class HomePage : ContentPage
+    public partial class SettingsPage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
+        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
-        public HomePage()
+        public SettingsPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             GetProfileInformationAndRefreshToken();
+
         }
 
         async private void GetProfileInformationAndRefreshToken()
@@ -29,25 +31,26 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                Wb_lbl.Text = savedfirebaseauth.User.DisplayName;
-
+                email_lbl.Text = savedfirebaseauth.User.Email;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 await App.Current.MainPage.DisplayAlert("Alert", "Oh no !  Token expired", "OK");
             }
-
         }
 
-        void favourites_edit_btn_Clicked(System.Object sender, System.EventArgs e)
+            void TasteSet_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new FavoritesPage());
+            
+            Navigation.PushAsync(new Tastes());
         }
 
-        void recent_scans_edit_btn_Clicked(System.Object sender, System.EventArgs e)
+        void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new AfterScan());
+            Preferences.Remove("MyLoginToken");
+            App.Current.MainPage = new NavigationPage(new LoginPage());
+
         }
     }
 }

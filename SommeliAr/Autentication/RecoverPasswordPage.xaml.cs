@@ -8,7 +8,7 @@ namespace SommeliAr.Views.Autentication
 {
     public partial class RecoverPasswordPage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
+        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
         public RecoverPasswordPage()
         {

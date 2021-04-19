@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>31293025464-03q0bvsdbd1pnmma5vd05au5ta186erh.apps.googleusercontent.com</string>
+	<string>1036410935547-q6s2io5qv2s68d90i3rlq2m6is8p0s9v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.31293025464-03q0bvsdbd1pnmma5vd05au5ta186erh</string>
+	<string>com.googleusercontent.apps.1036410935547-q6s2io5qv2s68d90i3rlq2m6is8p0s9v</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDcrsEj1bzyZdv2NwQQEOYYUi2v0c8r7pA</string>
+	<string>AIzaSyDlWnOUZ2Y9__N7t7tVQ1Dlgo6M6S7Ltkg</string>
 	<key>GCM_SENDER_ID</key>
-	<string>31293025464</string>
+	<string>1036410935547</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>FF.SommeliAr</string>
+	<string>it.uniroma3.mc.Sommeliar</string>
 	<key>PROJECT_ID</key>
-	<string>sommeliar-4395a</string>
+	<string>sommelier-ar</string>
 	<key>STORAGE_BUCKET</key>
-	<string>sommeliar-4395a.appspot.com</string>
+	<string>sommelier-ar.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:31293025464:ios:49c994c81aff1a2618984d</string>
+	<string>1:1036410935547:ios:671bdea1a4883ea856f85e</string>
 </dict>
 </plist>
