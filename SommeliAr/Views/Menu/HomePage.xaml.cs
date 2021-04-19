@@ -29,7 +29,7 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                Wb_lbl.Text = savedfirebaseauth.User.Email;
+                Wb_lbl.Text = savedfirebaseauth.User.DisplayName;
 
             }
             catch (Exception ex)

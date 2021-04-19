@@ -31,7 +31,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10"  >
@@ -61,11 +61,11 @@
                             Margin="40,0,40,15" Clicked="Login_btn_Clicked"/>
                     <Label Text="Or connect with" FontSize="16" HorizontalOptions="Center"/>
 
-                    <StackLayout Orientation="Horizontal" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                         <ImageButton Source="facebook.png" WidthRequest="50" HeightRequest="50"
-                                     Margin="120,0,0,0" BackgroundColor="#0000" CornerRadius="80"/>
+                                     Margin="0,0,30,0" BackgroundColor="#0000" CornerRadius="80"/>
                         <ImageButton Source="google.png" WidthRequest="45" HeightRequest="45" 
-                                     Margin="70,0,0,0" BackgroundColor="#0000" />
+                                     Margin="30,0,0,0" BackgroundColor="#0000" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
@@ -75,7 +75,7 @@
                     </StackLayout>
 
                     <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Center"
-                                 VerticalOptions="End">
+                                 VerticalOptions="EndAndExpand">
                         <Label Text="Don't have an account yet?"
                                FontSize="16"
                                HorizontalOptions="Center" VerticalOptions="Center" />

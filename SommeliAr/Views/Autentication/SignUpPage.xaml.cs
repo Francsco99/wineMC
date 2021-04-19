@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Firebase.Auth;
+using Newtonsoft.Json;
 using SommeliAr.Models;
 using SommeliAr.Views.Menu;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -25,6 +27,7 @@ namespace SommeliAr.Views
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;
+        
 
             bool emailOk = false;
             bool passOk = false;
@@ -163,9 +166,10 @@ namespace SommeliAr.Views
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
+                    var usr = await authProvider.UpdateProfileAsync(auth.FirebaseToken, username,"");
                     string gettoken = auth.FirebaseToken;
                     await App.Current.MainPage.DisplayAlert("Alert","Sign Up Success!","Ok");
-                    await Navigation.PushAsync(new MasterDetail());
+                    await Navigation.PushAsync(new LoginPage());
                      }
                 catch(Exception ex)
                 {
