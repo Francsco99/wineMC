@@ -11,9 +11,10 @@
                 <RowDefinition Height="8*"/>
                 <RowDefinition Height="1"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0">
-                <Label Text="Let's scan the bottles!" TextColor="#8b52ff" FontSize="Title"
+                <Label Text="Let's scan bottles!" TextColor="#8b52ff" FontSize="Title"
                         FontAttributes="Bold" Margin="0,22,0,0"
                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
             </StackLayout>
@@ -32,6 +33,27 @@
                         Clicked="take_image_btn_Clicked"
                     VerticalOptions="End"/>
             </StackLayout>
+
+            <StackLayout Grid.Row="2">
+                <ListView x:Name="resultsListView">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <TextCell  Text="{Binding TagName}"
+                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
+                                  />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+           
+
+            <StackLayout Grid.Row="5">
+                <Button x:Name="afterScan" Text="Result list" 
+                        TextColor="White" FontSize="16" BackgroundColor="#8b52ff" 
+                        Margin="40,0,40,0" Clicked="afterScan_Clicked" CornerRadius="8"/>
+            </StackLayout>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

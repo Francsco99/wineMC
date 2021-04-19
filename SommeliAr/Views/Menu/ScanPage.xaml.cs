@@ -19,6 +19,7 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
+            /* come se nasconde ? afterScan.Visibility = ViewStates.Gone; */
         }
 
         async void take_image_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -43,21 +44,27 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                CompressionQuality= 40,
-                CustomPhotoSize = 40,
-                SaveToAlbum = true,
+                CompressionQuality= 70,
+                
             });
 
             if (file == null)
+            {
+                await DisplayAlert("Error", "There was an error with the image", "Ok");
                 return;
+            }
 
             await DisplayAlert("File Location", file.Path, "OK");
 
             var stream = file.GetStream();
 
-            resultImage.Source = ImageSource.FromStream(() => stream);
+            resultImage.Source = ImageSource.FromStream(() =>
+            {
+                var photostream = file.GetStream();
+                return photostream;
+            });
 
-            /* await MakePredictionAsync(stream);  qui ci sarà la parte succosa */
+             await MakePredictionAsync(stream); 
         }
 
         private async Task MakePredictionAsync(Stream stream)
@@ -76,6 +83,7 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
                     resultsListView.ItemsSource = predictions.Predictions;
+
                 }
             }
         }
@@ -86,5 +94,9 @@ namespace SommeliAr.Views.Menu
             return binaryReader.ReadBytes((int)stream.Length);
         }
 
+        private void afterScan_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AfterScan());
+        }
     }
 }
