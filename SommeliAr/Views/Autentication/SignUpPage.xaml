@@ -111,14 +111,14 @@
                         <Label Text="Or connect with"
                                FontSize="16" HorizontalOptions="Center"/>
 
-                        <StackLayout Orientation="Horizontal" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
                             <ImageButton Source="facebook.png"
                                          WidthRequest="50" HeightRequest="50"
-                                         Margin="120,0,0,0" BackgroundColor="#0000" CornerRadius="80"/>
+                                         Margin="0,0,30,0" BackgroundColor="#0000" CornerRadius="80"/>
 
                             <ImageButton Source="google.png"
                                          WidthRequest="45" HeightRequest="45" 
-                                         Margin="70,0,0,0" BackgroundColor="#0000" />
+                                         Margin="30,0,0,0" BackgroundColor="#0000" />
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
