@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "247143063368",
-    "project_id": "sommeliar-f6967",
-    "storage_bucket": "sommeliar-f6967.appspot.com"
+    "project_number": "1036410935547",
+    "project_id": "sommelier-ar",
+    "storage_bucket": "sommelier-ar.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:247143063368:android:cf560fe7794fb73a47dd7d",
+        "mobilesdk_app_id": "1:1036410935547:android:6a4f808874ce180d56f85e",
         "android_client_info": {
-          "package_name": "ff.sommeliar"
+          "package_name": "it.uniroma3.mc.Sommeliar"
         }
       },
       "oauth_client": [
         {
-          "client_id": "247143063368-unl61757ird6u6nf9b54112eqgslsoqo.apps.googleusercontent.com",
+          "client_id": "1036410935547-5rmit4i1hgdqv2tsbslmp9vaf9q08mfm.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE"
+          "current_key": "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "247143063368-unl61757ird6u6nf9b54112eqgslsoqo.apps.googleusercontent.com",
+              "client_id": "1036410935547-5rmit4i1hgdqv2tsbslmp9vaf9q08mfm.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
