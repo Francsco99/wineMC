@@ -9,6 +9,7 @@ namespace SommeliAr.Views
         public string TagId { get; set; }
         public string TagName { get; set; }
         public double Probability { get; set; }
+        public (double, double, double, double) BoundingBox { get; set; }
     }
 
     public class Response
