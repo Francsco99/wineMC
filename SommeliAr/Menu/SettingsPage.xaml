@@ -11,8 +11,9 @@
             </Grid.RowDefinitions>
             <TableView Intent="Settings" Grid.Row="0">
                 <TableRoot>                    
-                    <TableSection Title="User" TextColor="Black">
-                        <TextCell x:Name="user_info_txt_cell"/>
+                    <TableSection Title="User Settings" TextColor="Black">
+                        <TextCell x:Name="user_displayName_txt_cell"/>
+                        <TextCell x:Name="user_email_txt_cell"/>
                         <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" Tapped="Change_pwd_text_cell_Tapped"/>
                         <TextCell x:Name="Change_username_text_cell" Text="Change Username" Tapped="Change_username_text_cell_Tapped"/>
                         <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>             

@@ -30,7 +30,8 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                user_info_txt_cell.Text = savedfirebaseauth.User.Email;
+                user_email_txt_cell.Text = savedfirebaseauth.User.Email;
+                user_displayName_txt_cell.Text = savedfirebaseauth.User.DisplayName;
 
             }
             catch (Exception ex)
@@ -45,13 +46,13 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new Tastes());
         }
 
-        async private void Change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        private void Change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
-            string newUsrname = await DisplayPromptAsync("Change Username", "Enter the new username here", "OK", "Cancel", "New username");
+            Navigation.PushAsync(new ChangeUserNamePage());
 
         }
 
-         void Change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        void Change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ChangePwdPage());
 

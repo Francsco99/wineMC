@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SommeliAr.Autentication.ChangeUserNamePage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0">
+                <Label Text="Insert the new username" FontSize="Subtitle" HorizontalOptions="Center" Padding="10"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Padding="10">
+                <Entry x:Name="New_username_entry" Placeholder="New username" HorizontalOptions="FillAndExpand"/>
+                <!--USERNAME ERROR MESSAGE-->
+                <Label x:Name="LabelUserError"
+                       Text="Between 6-20 digits"
+                       TextColor="White" FontSize="Small"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2">
+                <Button x:Name="Change_username_btn" VerticalOptions="Start"
+                        Text="Change Username" FontSize="Medium" Clicked="Change_username_btn_Clicked"/>
+            </StackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
