@@ -8,16 +8,16 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
 {
-    public partial class SettingsPage : ContentPage
+    public partial class MasterDetail : TabbedPage
     {
-        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
+        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
-        public SettingsPage()
+        public MasterDetail()
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            
+            GetProfileInformationAndRefreshToken();
         }
 
         async private void GetProfileInformationAndRefreshToken()
@@ -26,13 +26,10 @@ namespace SommeliAr.Views.Menu
             try
             {
                 //This is the saved firebaseauthentication that was saved during the time of login
-                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyFirebaseRefreshToken", ""));
+                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", ""));
                 //Here we are Refreshing the token
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
-                Preferences.Set("MyFirebaseRefreshToken", JsonConvert.SerializeObject(RefreshedContent));
-                //Now lets grab user information
-                MyEmail.Text = savedfirebaseauth.User.LastName;
-
+                Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
             }
             catch (Exception ex)
             {
@@ -41,18 +38,15 @@ namespace SommeliAr.Views.Menu
             }
 
         }
-
-            void TasteSet_btn_Clicked(System.Object sender, System.EventArgs e)
+            void Avanti_Clicked(System.Object sender, System.EventArgs e)
         {
-            
-            Navigation.PushAsync(new Tastes());
+            var result = new Token();
+            if (result != null)
+            {
+                
+            }
         }
 
-        void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            Preferences.Remove("MyFirebaseRefreshToken");
-            App.Current.MainPage = new NavigationPage(new LoginPage());
 
-        }
     }
 }

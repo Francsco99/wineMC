@@ -10,11 +10,12 @@ namespace SommeliAr.Views.Menu
 {
     public partial class HomePage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyC2oBxLJjJPEJ_0qZE4DFWfAGdoNRTzWPE";
+        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
         public HomePage()
         {
             InitializeComponent();
+            GetProfileInformationAndRefreshToken();
         }
 
         async private void GetProfileInformationAndRefreshToken()
@@ -23,12 +24,12 @@ namespace SommeliAr.Views.Menu
             try
             {
                 //This is the saved firebaseauthentication that was saved during the time of login
-                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyFirebaseRefreshToken", ""));
+                var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", ""));
                 //Here we are Refreshing the token
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
-                Preferences.Set("MyFirebaseRefreshToken", JsonConvert.SerializeObject(RefreshedContent));
+                Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                Wb_lbl.Text = savedfirebaseauth.User.Email;
+                Wb_lbl.Text = savedfirebaseauth.User.DisplayName;
 
             }
             catch (Exception ex)
