@@ -147,9 +147,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_edit_black_20pt_1x.png" />
-    <BundleResource Include="Resources\baseline_edit_black_20pt_2x.png" />
-    <BundleResource Include="Resources\baseline_edit_black_20pt_3x.png" />
     <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>

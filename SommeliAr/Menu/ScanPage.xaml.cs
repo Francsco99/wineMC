@@ -1,15 +1,10 @@
-﻿using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Plugin.Media;
-using Plugin.Media.Abstractions;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
+using SommeliAr.Menu;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views.Menu
@@ -38,7 +33,7 @@ namespace SommeliAr.Views.Menu
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
-                DisplayAlert("No Camera", ":( No camera available.", "OK");
+               await DisplayAlert("No Camera", ":( No camera available.", "OK");
                 return;
             }
 
@@ -96,7 +91,7 @@ namespace SommeliAr.Views.Menu
 
         private void afterScan_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AfterScan());
+            Navigation.PushAsync(new AfterScanPage());
         }
     }
 }
