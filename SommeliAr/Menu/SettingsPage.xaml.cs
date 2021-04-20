@@ -33,6 +33,11 @@ namespace SommeliAr.Views.Menu
                 user_email_txt_cell.Text = savedfirebaseauth.User.Email;
                 user_displayName_txt_cell.Text = savedfirebaseauth.User.DisplayName;
 
+                if(!savedfirebaseauth.User.IsEmailVerified)
+                {
+                    user_email_txt_cell.TextColor = Color.Red;
+                }
+
             }
             catch (Exception ex)
             {

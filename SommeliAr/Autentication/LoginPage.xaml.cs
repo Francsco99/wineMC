@@ -39,14 +39,27 @@ namespace SommeliAr.Views
             try
             {
                 var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
-                var content = await auth.GetFreshAuthAsync();
+                // var content = await auth.GetFreshAuthAsync();
+                var content = await auth.LinkToAsync(Entry_Email.Text, Entry_Password.Text);
                 var serializedcontnet = JsonConvert.SerializeObject(content);
                 Preferences.Set("MyLoginToken", serializedcontnet);
                 await Navigation.PushAsync(new MasterDetail());
+
+                if (content.User.IsEmailVerified == false)
+                {
+                    var action = await App.Current.MainPage.DisplayAlert("Alert!", "Your account is not verified yet, Send verification email again?", "Yes", "No");
+
+                    if (action)
+                    {
+                        await authProvider.SendEmailVerificationAsync(content.FirebaseToken);
+                    }
+
+                }
+
             }
             catch (Exception)
             {
-                await App.Current.MainPage.DisplayAlert("Alert", "Invalid Email or password", "OK");
+                await App.Current.MainPage.DisplayAlert("Alert!", "Invalid Email or password", "OK");
             }
         }
 
