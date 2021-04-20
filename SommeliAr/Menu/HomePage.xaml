@@ -6,8 +6,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SommeliAr.Views.Menu"
     xmlns:local1="clr-namespace:SommeliAr.Menu"               
-    x:Class="SommeliAr.Views.Menu.HomePage">
-
+    x:Class="SommeliAr.Views.Menu.HomePage"
+    BarTextColor="#00b9e1"
+    BarIndicatorColor="#00b9e1"
+    BarBackgroundColor="#ffffff">
     <local1:HistoryPage>
 
     </local1:HistoryPage>

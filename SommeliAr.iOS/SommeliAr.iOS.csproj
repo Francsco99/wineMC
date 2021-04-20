@@ -113,7 +113,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -146,5 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
+    <Folder Include="Assets.xcassets\home.png.imageset\" />
   </ItemGroup>
 </Project>
