@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="SommeliAr.Views.AfterScan">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="After Scan Page"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView x:Name="resultsListView"
+                      Grid.Row="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell  Text="{Binding TagName}"
+                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
+                                  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
+                                  Animation="star-rating.json"
+                                  AutoPlay="False"
+                                  WidthRequest="200"
+                                  HeightRequest="200"
+                                  Clicked="Favourite_Clicked"
+                                  Command="{Binding ClickCommand}">
+            </lottie:AnimationView>
+            <Button x:Name="Favourite" Clicked="Favourite_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
