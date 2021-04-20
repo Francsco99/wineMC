@@ -1,6 +1,7 @@
 ﻿using System;
 using Firebase.Auth;
 using Newtonsoft.Json;
+using SommeliAr.Autentication;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -56,9 +57,9 @@ namespace SommeliAr.Views.Menu
 
         }
 
-        async void change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
+         void change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
-            string newPwd = await DisplayPromptAsync("Change Password", "Enter the new password here", "OK", "Cancel", "New password");
+            Navigation.PushAsync(new ChangePwdPage());
 
         }
 

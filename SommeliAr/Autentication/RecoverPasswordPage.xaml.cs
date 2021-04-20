@@ -13,7 +13,7 @@ namespace SommeliAr.Views.Autentication
         public RecoverPasswordPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            
         }
 
         async void forgotPwd_btn_Clicked(System.Object sender, System.EventArgs e)

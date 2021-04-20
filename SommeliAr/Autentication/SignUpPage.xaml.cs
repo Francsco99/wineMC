@@ -2,6 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 using Firebase.Auth;
 using SommeliAr.Models;
+using SommeliAr.ViewModels;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -14,7 +15,7 @@ namespace SommeliAr.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            BindingContext = new MyUsersViewModel();
         }
 
         async void RegistrationProcedure(object sender, EventArgs e)
@@ -131,7 +132,7 @@ namespace SommeliAr.Views
             void AgeValidation()
             {
                 DateTime todayDate = DateTime.Now;
-                int timespan = (todayDate - BirthDate.Date).Days;
+                int timespan = (todayDate - birthdate_entry.Date).Days;
 
                 if (timespan >= 6570)
                 {
@@ -157,12 +158,13 @@ namespace SommeliAr.Views
 
             /* se tutti i campi sono rispettati la procedura ha successo */
             if (emailOk && passwordOk && usernameOk && ageOk)
-
-            user.Username = username;
-            user.Password = pwd;
-            user.Email = email;
-           
             {
+                var viewModel= (MyUsersViewModel)BindingContext;
+                if (viewModel.AddUserCmd.CanExecute(null))
+                {
+                    viewModel.AddUserCmd.Execute(null);
+                }
+
                 try
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
@@ -178,9 +180,10 @@ namespace SommeliAr.Views
                 }
 
             }
+
         }
 
-        void hideButton_Clicked(System.Object sender, System.EventArgs e)
+        void HideButton_Clicked(System.Object sender, System.EventArgs e)
         {
             if (Entry_Password.IsPassword == true)
             {

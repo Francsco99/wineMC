@@ -1,137 +1,192 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vieWModel="clr-namespace:SommeliAr.ViewModels"
             x:Class="SommeliAr.Views.SignUpPage">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Padding="0,40,0,0" BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <vieWModel:MyUsersViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Padding="0,40,0,0" BackgroundColor="White">
 
-                <Label Text="Create Account,"
+            <Label Text="Create Account,"
                        FontSize="26" TextColor="Black"
                        FontAttributes="Bold, Italic"
                        Margin="40,0,0,0"  />
-                <Label Text="Sign up to get started!"
+            <Label Text="Sign up to get started!"
                        FontSize="18" TextColor="DarkGray"
                        Margin="40,0,0,20" />
 
-                <Grid  VerticalOptions="CenterAndExpand">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+            <Grid  VerticalOptions="CenterAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                    <StackLayout Grid.Row="0" Margin="0,0,0,10" >
-
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="user.png"
+                <!--USERNAME-->
+                <StackLayout Grid.Row="0" Margin="0,0,0,10" >
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="user.png"
                                    WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
-                            <Entry x:Name="Entry_Username"  Placeholder="Username" FontSize="16"
+                        <Entry x:Name="Entry_Username" Text="{Binding Username}"
+                                   Placeholder="Username" FontSize="16"
                                    HorizontalOptions="FillAndExpand" Margin="0,0,50,0"/>
-                            <Image Source="error.png" x:Name="UserErrorIcon"
+                        <Image Source="error.png" x:Name="UserErrorIcon"
                                    HorizontalOptions="Center" Opacity="0" 
                                    Margin="0,0,10,0" WidthRequest="25" HeightRequest="25"/>
-                        </StackLayout>
-
-                        <Label x:Name="LabelUserError" Text="Username not valid"
-                               TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="1"  Margin="0,0,0,10">
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="password.png"
-                                   WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
-                            <Entry x:Name="Entry_Password" Placeholder="Password"
-                                   FontSize="16" IsPassword="true" HorizontalOptions="FillAndExpand"/>
-                            <ImageButton Source="hide.png"
+                    <!--USERNAME ERROR MESSAGE-->
+                    <Label x:Name="LabelUserError" Text="Between 6-20 digits"
+                               TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
+                </StackLayout>
+
+                <!--PASSWORD-->
+                <StackLayout Grid.Row="1"  Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="password.png"
+                                   WidthRequest="25" HeightRequest="25"
+                                   Margin="50,0,10,0"/>
+                        <Entry x:Name="Entry_Password"
+                                   Placeholder="Password"
+                                   Text="{Binding Password}"
+                                   FontSize="16"
+                                   IsPassword="true"
+                                   HorizontalOptions="FillAndExpand"/>
+                        <ImageButton Source="hide.png"
+                                         x:Name="hideButtonSignUp"
                                          WidthRequest="25" HeightRequest="25"
-                                         Margin="0,0,20,0" BackgroundColor="#0000"
-                                         Clicked="hideButton_Clicked" x:Name="hideButtonSignUp"/>
-                            <Image Source="error.png" x:Name="PwdErrorIcon"
-                                   HorizontalOptions="Center" Opacity="0" 
-                                   Margin="0,0,10,0" WidthRequest="25" HeightRequest="25"/>
-                        </StackLayout>
-
-                        <Label x:Name="LabelPwdError" Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
-                               TextColor="White" FontSize="Small" Margin="50,0,50,0"/>
-                    </StackLayout>
-
-                    <StackLayout Grid.Row="2" Margin="0,0,0,10">
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="password.png"
-                                   WidthRequest="25" HeightRequest="25" Margin="50,10,10,0" />
-                            <Entry x:Name="Entry_ConfirmPassword" Placeholder="Confirm Password"
-                                   FontSize="16" IsPassword="true" HorizontalOptions="FillAndExpand" Margin="0,0,50,0"/>
-                            <Image Source="error.png" x:Name="ErrorPwdLabelText"
-                                   HorizontalOptions="Center" Opacity="0" Margin="0,0,10,0"
+                                         Margin="0,0,20,0"
+                                         BackgroundColor="#0000"
+                                         Clicked="HideButton_Clicked"/>
+                        <Image Source="error.png"
+                                   x:Name="PwdErrorIcon"
+                                   HorizontalOptions="Center" 
+                                   Margin="0,0,10,0" Opacity="0" 
                                    WidthRequest="25" HeightRequest="25"/>
-                        </StackLayout>
-                        <Label x:Name="LabelConfirmPwdError" Text="Not matching"
-                               TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="3" Margin="0,0,0,10">
+                    <!--PASSWORD ERROR MESSAGE-->
+                    <Label x:Name="LabelPwdError"
+                           Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
+                           TextColor="White"
+                           FontSize="Small" Margin="50,0,50,0"/>
+                </StackLayout>
+
+                <!--CONFIRM PASSWORD-->
+                <StackLayout Grid.Row="2" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="password.png"
+                                   WidthRequest="25" HeightRequest="25"
+                                   Margin="50,10,10,0" />
+                        <Entry x:Name="Entry_ConfirmPassword"
+                                   Placeholder="Confirm Password"
+                                   FontSize="16"
+                                   IsPassword="true" 
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="0,0,50,0"/>
+                        <Image Source="error.png"
+                                   x:Name="ErrorPwdLabelText"
+                                   HorizontalOptions="Center"
+                                   Opacity="0" Margin="0,0,10,0"
+                                   WidthRequest="25"
+                                   HeightRequest="25"/>
+                    </StackLayout>
+                    <Label x:Name="LabelConfirmPwdError"
+                               Text="Not matching"
+                               TextColor="White"
+                               FontSize="Small"
+                               Margin="50,0,0,0"/>
+                </StackLayout>
+
+                <!--EMAIL-->
+                <StackLayout Grid.Row="3" Margin="0,0,0,10">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="mail.png"
+                                   WidthRequest="25" HeightRequest="25"
+                                   Margin="50,0,10,0"/>
+                        <Entry  x:Name="Entry_Email"
+                                    Placeholder="Email"
+                                    Text="{Binding Email}"
+                                    FontSize="16"
+                                    HorizontalOptions="FillAndExpand"
+                                    Margin="0,0,50,0" />
+                        <Image Source="error.png"
+                                   x:Name="ErrorLabelText"
+                                   HorizontalOptions="Center"
+                                   Opacity="0" 
+                                   Margin="0,0,10,0"
+                                   WidthRequest="25" HeightRequest="25"/>
+                    </StackLayout>
+                    <Label x:Name="LabelMailError" Text="Email not valid"
+                               TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
+                </StackLayout>
+
+                <!--BIRTHDAY DATE-->
+                <StackLayout Grid.Row="4" Margin="0,0,0,10">
+                    <StackLayout >
                         <StackLayout Orientation="Horizontal">
-
-                            <Image Source="mail.png"
-                                   WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
-                            <Entry  x:Name="Entry_Email" Placeholder="Email"
-                                    FontSize="16" HorizontalOptions="FillAndExpand" Margin="0,0,50,0" />
-                            <Image Source="error.png" x:Name="ErrorLabelText"
-                                   HorizontalOptions="Center" Opacity="0" 
-                                   Margin="0,0,10,0" WidthRequest="25" HeightRequest="25"/>
+                            <Image Source="birthday.png"
+                                   WidthRequest="25" HeightRequest="25"
+                                   Margin="50,0,10,0"/>
+                            <DatePicker  x:Name="birthdate_entry"
+                                         MinimumDate="01/01/1921" MaximumDate="01/01/2006"
+                                         Date="{Binding Birthdate}"
+                                         HorizontalOptions="FillAndExpand"
+                                         Margin="0,0,50,0" />
+                            <Image Source="error.png"
+                                       x:Name="ErrorBirth"
+                                       HorizontalOptions="Center"
+                                       Opacity="0" 
+                                       Margin="0,0,10,0"
+                                       WidthRequest="25" HeightRequest="25"/>
                         </StackLayout>
-
-                        <Label x:Name="LabelMailError" Text="Email not valid"
-                               TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
+                        <Label x:Name="ErrorBirthLabelText"
+                               Text="You must be at least 18"
+                               TextColor="White"
+                               FontSize="Small" Margin="50,0,0,0"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="4" Margin="0,0,0,10">
-                        <StackLayout >
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="birthday.png"
-                                       WidthRequest="25" HeightRequest="25" Margin="50,0,10,0"/>
-                                <DatePicker  x:Name="BirthDate"
-                                             MinimumDate="01/01/1921" MaximumDate="01/01/2006" 
-                                             HorizontalOptions="FillAndExpand" Margin="0,0,50,0" />
-                                <Image Source="error.png" x:Name="ErrorBirth"
-                                       HorizontalOptions="Center" Opacity="0" 
-                                       Margin="0,0,10,0" WidthRequest="25" HeightRequest="25"/>
-                            </StackLayout>
+                    <!--REGISTER BUTTON-->
+                    <Button Text="Register" TextColor="#ffffff" 
+                            BorderRadius="10" FontSize="16"
+                            BackgroundColor="#8b52ff"
+                            Margin="40,20,40,15"
+                            
+                            Clicked="RegistrationProcedure"/>
 
-                            <Label x:Name="ErrorBirthLabelText" Text="You must be at least 18"
-                                   TextColor="White" FontSize="Small" Margin="50,0,0,0"/>
-                        </StackLayout>
+                    <Label Text="Or connect with"
+                           FontSize="16"
+                           HorizontalOptions="Center"/>
 
-                        <Button Text="Register" TextColor="#ffffff" 
-                                BorderRadius="10" FontSize="16" BackgroundColor="#8b52ff" Margin="40,20,40,15"
-                                Clicked="RegistrationProcedure"/>
-
-                        <Label Text="Or connect with"
-                               FontSize="16" HorizontalOptions="Center"/>
-
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
-                            <ImageButton Source="facebook.png"
-                                         WidthRequest="50" HeightRequest="50"
-                                         Margin="0,0,30,0" BackgroundColor="#0000" CornerRadius="80"/>
-
-                            <ImageButton Source="google.png"
-                                         WidthRequest="45" HeightRequest="45" 
-                                         Margin="30,0,0,0" BackgroundColor="#0000" />
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
-                            <Label Text="Already have an account?"
-                                   FontSize="16" HorizontalOptions="Center" VerticalOptions="Center"/>
-                            <Button x:Name="Btn_SignIn" Text="Sign in now"
-                                    FontSize="16" TextColor="#b794ff"
-                                    Clicked="Btn_SignUp_Clicked" BackgroundColor="Transparent"
-                                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </StackLayout>
+                    <!--FACEBOOK AND GOOGLE BUTTONS-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <ImageButton Source="facebook.png"
+                                     WidthRequest="50" HeightRequest="50"
+                                     Margin="0,0,30,0"
+                                     BackgroundColor="#0000"
+                                     CornerRadius="80"/>
+                        <ImageButton Source="google.png"
+                                     WidthRequest="45" HeightRequest="45" 
+                                     Margin="30,0,0,0"
+                                     BackgroundColor="#0000" />
                     </StackLayout>
-                </Grid>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+
+                    <!--SIGN IN NOW BUTTON-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20,0,0">
+                        <Label Text="Already have an account?"
+                               FontSize="16"
+                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Button x:Name="Btn_SignIn" Text="Sign in now"
+                                 FontSize="16" TextColor="#b794ff"
+                                 Clicked="Btn_SignUp_Clicked"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="Center" VerticalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
