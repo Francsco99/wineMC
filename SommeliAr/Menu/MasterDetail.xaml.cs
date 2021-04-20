@@ -38,14 +38,7 @@ namespace SommeliAr.Views.Menu
             }
 
         }
-            void Avanti_Clicked(System.Object sender, System.EventArgs e)
-        {
-            var result = new Token();
-            if (result != null)
-            {
-                
-            }
-        }
+          
 
 
     }
