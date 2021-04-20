@@ -2,25 +2,72 @@
 <ContentPage Title="Home" Icon="home.png"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vieWModel="clr-namespace:SommeliAr.ViewModels"
     x:Class="SommeliAr.Views.Menu.HomePage">
-    <ContentPage.Content>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.18*"/>
-                    <RowDefinition Height="1"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+    <ContentPage.BindingContext>
+        <vieWModel:MyUsersViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.18*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="End" >
-              <Label Margin="10,0,0,0" Text="Welcome back, " FontSize="25" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Label x:Name="Wb_lbl" FontSize="25" TextColor="#8b52ff"
+        <!--MESSAGGIO DI BENVENUTO-->
+        <StackLayout Grid.Row="0" Orientation="Horizontal" VerticalOptions="End" >
+            <Label Margin="10,0,0,0" Text="Welcome back, " FontSize="25" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Label Text="utente1" x:Name="Wb_lbl" FontSize="25" TextColor="#8b52ff"
                        HorizontalOptions="Center" VerticalOptions="Center"/>
-                </StackLayout>
+        </StackLayout>
 
-                <StackLayout Grid.Row="1" BackgroundColor="Gray" HorizontalOptions="Fill"/>
+        <!--LINEETTA SEPARATORE-->
+        <StackLayout Grid.Row="1" BackgroundColor="Gray" HorizontalOptions="Fill"/>
 
-                <StackLayout Grid.Row="2">
+        <!--SCAN RECENTI-->
+        <StackLayout Grid.Row="2">
+            <Label Text="Your recent scans" FontSize="Subtitle"/>
+            <ListView ItemsSource="{Binding MyUsers}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Username}"/>
+                                <Label Text="{Binding Email}"/>
+                                <Label Text="{Binding Password}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            </StackLayout>
+
+            <!--PREFERITI-->
+            <StackLayout Grid.Row="3">
+                <Label Text="Your favourit wines" FontSize="Subtitle"/>
+                <ListView ItemsSource="{Binding MyUsers}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Username}"/>
+                                    <Label Text="{Binding Email}"/>
+                                    <Label Text="{Binding Password}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+    </Grid>
+</ContentPage>
+
+
+
+
+<!-- <StackLayout Grid.Row="2">
                     <Frame BorderColor="DarkGoldenrod" CornerRadius="10" Padding="2"
                            Margin="10,10,10,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <StackLayout Orientation="Vertical">
@@ -65,7 +112,4 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                </StackLayout>
-            </Grid>
-    </ContentPage.Content>
-</ContentPage>
+                </StackLayout>-->
