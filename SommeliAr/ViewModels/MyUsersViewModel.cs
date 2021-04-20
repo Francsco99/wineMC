@@ -13,6 +13,7 @@ namespace SommeliAr.ViewModels
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public DateTime Birthdate { get; set; }
 
         private DBFirebase services;
 
@@ -35,12 +36,12 @@ namespace SommeliAr.ViewModels
         {
             services = new DBFirebase();
             MyUsers = services.GetMyUser();
-            AddUserCmd = new Command(async () => await AddMyUserAsync(Username,Email,Password));
+            AddUserCmd = new Command(async () => await AddMyUserAsync(Username,Email,Password, Birthdate));
         }
         
-        public async Task AddMyUserAsync(string Username, string Email, string Password)
+        public async Task AddMyUserAsync(string Username, string Email, string Password, DateTime Birthdate)
         {
-            await services.AddMyUser(Username, Email, Password);
+            await services.AddMyUser(Username, Email, Password, Birthdate);
         }
 
     }

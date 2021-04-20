@@ -26,9 +26,9 @@ namespace SommeliAr.Services
                 return myUserData;
         }
 
-        public async Task AddMyUser(string username, string email, string password)
+        public async Task AddMyUser(string username, string email, string password, DateTime birthdate)
         {
-            MyUser u = new MyUser() { Username = username, Email = email, Password = password };
+            MyUser u = new MyUser() { Username = username, Email = email, Password = password, Birthdate=birthdate};
             await client
                 .Child("MyUsers")
                 .PostAsync(u);

@@ -132,7 +132,7 @@ namespace SommeliAr.Views
             void AgeValidation()
             {
                 DateTime todayDate = DateTime.Now;
-                int timespan = (todayDate - BirthDate.Date).Days;
+                int timespan = (todayDate - birthdate_entry.Date).Days;
 
                 if (timespan >= 6570)
                 {
