@@ -40,32 +40,32 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        void logout_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            Preferences.Remove("MyLoginToken");
-            App.Current.MainPage = new NavigationPage(new LoginPage());
-        }
-
-        void change_tastes_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        void Change_tastes_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new Tastes());
         }
 
-        async private void change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
+        async private void Change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             string newUsrname = await DisplayPromptAsync("Change Username", "Enter the new username here", "OK", "Cancel", "New username");
 
         }
 
-         void change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
+         void Change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ChangePwdPage());
 
         }
 
-        void provadb_Tapped(System.Object sender, System.EventArgs e)
+        void Provadb_Tapped(System.Object sender, System.EventArgs e)
         {
             _ = Navigation.PushAsync(new UsersListPage());
+        }
+
+        void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Preferences.Remove("MyLoginToken");
+            App.Current.MainPage = new NavigationPage(new LoginPage());
         }
     }
 }

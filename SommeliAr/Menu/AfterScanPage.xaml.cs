@@ -10,7 +10,7 @@ namespace SommeliAr.Menu
         public AfterScanPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            NavigationPage.SetHasNavigationBar(this, true);
         }
 
         private void Favourite_Clicked(object sender, EventArgs e)

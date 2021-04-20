@@ -3,32 +3,42 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Autentication.ChangePwdPage">
-   <ContentPage.Content>
-       <Grid>
-           <Grid.RowDefinitions>
-               <RowDefinition Height="Auto"/>
-               <RowDefinition Height="Auto"/>
-               <RowDefinition Height="Auto"/>
-               <RowDefinition Height="Auto"/>
-           </Grid.RowDefinitions>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>                
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-           <StackLayout Grid.Row="0" >
-                <Entry x:Name="email_entry" Placeholder="Email" HorizontalOptions="FillAndExpand" />
-           </StackLayout>
+            <StackLayout Grid.Row="0">
+                <Label Text="Insert the new password" FontSize="Subtitle" HorizontalOptions="Center" Padding="10"/>
+            </StackLayout>
 
-           <StackLayout Grid.Row="1">
-                <Entry x:Name="old_pwd_entry" Placeholder="Old password" HorizontalOptions="FillAndExpand"/>
-           </StackLayout>
+            <StackLayout Grid.Row="1" Padding="10">
+                <Entry x:Name="new_pwd_entry" Placeholder="New password" HorizontalOptions="FillAndExpand"/>
+                <!--PASSWORD ERROR MESSAGE-->
+                <Label x:Name="LabelPwdError"
+                           Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
+                           TextColor="White"
+                           FontSize="Small"/>
+            </StackLayout>
 
-           <StackLayout Grid.Row="2">
-               <Entry x:Name="new_pwd_entry" Placeholder="New password" HorizontalOptions="FillAndExpand"/>
+            <StackLayout Grid.Row="2" Padding="10">
+                <Entry x:Name="repeat_pwd_entry" Placeholder="Repeat new password" HorizontalOptions="FillAndExpand"/>
+                <!--PASSWORD NOT MATCHING MESSAGE-->
+                <Label x:Name="LabelConfirmPwdError"
+                               Text="Not matching"
+                               TextColor="White"
+                               FontSize="Small"
+                               />
 
-               <Button x:Name="change_pwd_btn" VerticalOptions="Start"
-                        Text="Change Password" Clicked="change_pwd_btn_Clicked"/>
-           </StackLayout>
+                <Button x:Name="change_pwd_btn" VerticalOptions="Start"
+                        Text="Change Password" FontSize="Medium" Clicked="change_pwd_btn_Clicked"/>
+            </StackLayout>
 
-            
-       </Grid>
-            
+
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

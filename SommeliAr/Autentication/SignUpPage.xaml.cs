@@ -171,12 +171,13 @@ namespace SommeliAr.Views
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
                     var usr = await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
                     string gettoken = auth.FirebaseToken;
-                    await App.Current.MainPage.DisplayAlert("Alert", "Sign Up Success!", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Success!", "Enjoy your new account!", "OK");
                     await Navigation.PushAsync(new LoginPage());
                 }
                 catch (Exception ex)
                 {
-                    await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
+                    Console.WriteLine(ex.Message);
+                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong","Try to Sign Up again", "Ok");
                 }
 
             }

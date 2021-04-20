@@ -6,18 +6,18 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>              
+                <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>    
             </Grid.RowDefinitions>
             <TableView Intent="Settings" Grid.Row="0">
                 <TableRoot>                    
                     <TableSection Title="User" TextColor="Black">
                         <TextCell x:Name="user_info_txt_cell"/>
-                        <TextCell x:Name="change_pwd_text_cell" Text="Change password" Tapped="change_pwd_text_cell_Tapped"/>
-                        <TextCell x:Name="change_username_text_cell" Text="Change username" Tapped="change_username_text_cell_Tapped"/>
-                        <TextCell x:Name="change_tastes_text_cell" Text="Change tastes" Tapped="change_tastes_text_cell_Tapped"/>
-                        <TextCell x:Name="logout_txt_cell" Text="Logout" Tapped="logout_txt_cell_Tapped"/>
-                        <TextCell x:Name="provadb" Text="prova db" Tapped="provadb_Tapped"/>
-                    </TableSection>
+                        <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" Tapped="Change_pwd_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_username_text_cell" Text="Change Username" Tapped="Change_username_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>             
+                        <TextCell x:Name="provadb" Text="prova db" Tapped="Provadb_Tapped"/>
+                    </TableSection>               
                     <TableSection Title="General" TextColor="Black">
                         <SwitchCell Text="Setting #1"/>
                         <SwitchCell Text="Setting #2"/>
@@ -25,7 +25,12 @@
                         <SwitchCell Text="Setting #4"/>
                     </TableSection>
                 </TableRoot>
-            </TableView>  
+            </TableView>
+
+            <StackLayout Grid.Row="1" >
+                <Button Text="Logout" FontSize="Medium"
+                        x:Name="Logout_btn" Clicked="Logout_btn_Clicked"/>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

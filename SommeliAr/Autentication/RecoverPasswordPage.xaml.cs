@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Firebase.Auth;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views.Autentication

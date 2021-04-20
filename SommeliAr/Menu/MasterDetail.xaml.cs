@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Firebase.Auth;
 using Newtonsoft.Json;
-using SommeliAr.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -16,9 +14,9 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-
             GetProfileInformationAndRefreshToken();
         }
+        
 
         async private void GetProfileInformationAndRefreshToken()
         {

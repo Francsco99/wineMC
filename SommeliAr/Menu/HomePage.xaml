@@ -7,9 +7,9 @@
     xmlns:local="clr-namespace:SommeliAr.Views.Menu"
     xmlns:local1="clr-namespace:SommeliAr.Menu"               
     x:Class="SommeliAr.Views.Menu.HomePage"
-    BarTextColor="#00b9e1"
-    BarIndicatorColor="#00b9e1"
-    BarBackgroundColor="#ffffff">
+    BarTextColor="Black"
+    BarIndicatorColor="Black"
+    BarBackgroundColor="#b794ff">
     <local1:HistoryPage>
 
     </local1:HistoryPage>
