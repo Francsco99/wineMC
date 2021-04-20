@@ -22,7 +22,7 @@
                         <TextCell x:Name="change_username_text_cell" Text="Change username" Tapped="change_username_text_cell_Tapped"/>
                         <TextCell x:Name="change_tastes_text_cell" Text="Change tastes" Tapped="change_tastes_text_cell_Tapped"/>
                         <TextCell x:Name="logout_txt_cell" Text="Logout" Tapped="logout_txt_cell_Tapped"/>
-                        
+                        <TextCell x:Name="provadb" Text="prova db" Tapped="provadb_Tapped"/>
                     </TableSection>
                 </TableRoot>
             </TableView>  

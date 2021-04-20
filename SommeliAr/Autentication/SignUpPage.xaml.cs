@@ -19,16 +19,15 @@ namespace SommeliAr.Views
 
         async void RegistrationProcedure(object sender, EventArgs e)
         {
-            MyUser user = new MyUser(Entry_Username.Text, Entry_Password.Text, Entry_Email.Text);
+            MyUser user = new MyUser();
             var username = Entry_Username.Text;
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;
-        
 
-            bool emailOk = false;
-            bool passOk = false;
-            bool userOk = false;
-            bool ageOk = false;
+            var emailOk = false;
+            var passwordOk = false;
+            var usernameOk = false;
+            var ageOk = false;
 
             void MailValidation()
             {
@@ -65,17 +64,17 @@ namespace SommeliAr.Views
                 if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
                 {
                     ErrorPwdLabelText.Opacity = 0.7;
-                    passOk = false;
+                    passwordOk = false;
                     LabelConfirmPwdError.TextColor = Color.Red;
                 }
                 else
                 {
                     ErrorPwdLabelText.Opacity = 0;
-                    passOk = true;
+                    passwordOk = true;
                     LabelConfirmPwdError.TextColor = Color.White;
                 }
             }
-            void UserValidation()
+            void UsernameValidation()
             {
                 var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";         /* deve contenere tra i 6 e i 18 caratteri alfanumerici */
 
@@ -83,21 +82,21 @@ namespace SommeliAr.Views
                 {
                     if (Regex.IsMatch(username, userPattern))
                     {
-                        userOk = true;
+                        usernameOk = true;
                         LabelUserError.TextColor = Color.White;
                         UserErrorIcon.Opacity = 0;
                     }
 
                     else
                     {
-                        userOk = false;
+                        usernameOk = false;
                         LabelUserError.TextColor = Color.Red;
                         UserErrorIcon.Opacity = 0.7;
                     }
                 }
                 else
                 {
-                    userOk = false;
+                    usernameOk = false;
                     LabelUserError.TextColor = Color.Red;
                     UserErrorIcon.Opacity = 0.7;
                 }
@@ -110,21 +109,21 @@ namespace SommeliAr.Views
                 {
                     if (Regex.IsMatch(pwd, passwordPattern))
                     {
-                        passOk = true;
+                        passwordOk = true;
                         LabelPwdError.TextColor = Color.White;
                         PwdErrorIcon.Opacity = 0;
                     }
 
                     else
                     {
-                        passOk = false;
+                        passwordOk = false;
                         LabelPwdError.TextColor = Color.Red;
                         PwdErrorIcon.Opacity = 0.7;
                     }
                 }
                 else
                 {
-                    passOk = false;
+                    passwordOk = false;
                     LabelPwdError.TextColor = Color.Red;
                     PwdErrorIcon.Opacity = 0.7;
                 }
@@ -150,26 +149,32 @@ namespace SommeliAr.Views
                 }
             }
 
-            UserValidation();
+            UsernameValidation();
             MailValidation();
             PasswordValidation();
             PasswordConfirmationValidation();
             AgeValidation();
 
-            if (emailOk && passOk && userOk && ageOk) /* se tutti i campi sono rispettati la procedura ha successo */
-            { 
+            /* se tutti i campi sono rispettati la procedura ha successo */
+            if (emailOk && passwordOk && usernameOk && ageOk)
+
+            user.Username = username;
+            user.Password = pwd;
+            user.Email = email;
+           
+            {
                 try
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
-                    var usr = await authProvider.UpdateProfileAsync(auth.FirebaseToken, username,"");
+                    var usr = await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
                     string gettoken = auth.FirebaseToken;
-                    await App.Current.MainPage.DisplayAlert("Alert","Sign Up Success!","Ok");
+                    await App.Current.MainPage.DisplayAlert("Alert", "Sign Up Success!", "Ok");
                     await Navigation.PushAsync(new LoginPage());
-                     }
-                catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
-                    await App.Current.MainPage.DisplayAlert("Alert",ex.Message, "Ok");
+                    await App.Current.MainPage.DisplayAlert("Alert", ex.Message, "Ok");
                 }
 
             }

@@ -61,5 +61,10 @@ namespace SommeliAr.Views.Menu
             string newPwd = await DisplayPromptAsync("Change Password", "Enter the new password here", "OK", "Cancel", "New password");
 
         }
+
+        void provadb_Tapped(System.Object sender, System.EventArgs e)
+        {
+            _ = Navigation.PushAsync(new UsersListPage());
+        }
     }
 }
