@@ -8,14 +8,25 @@
     </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.7*"/>
+            <!--benvenuto-->
+            <RowDefinition Height="2*"/>
+            <!--username-->
             <RowDefinition Height="*"/>
+            <!--password-->
             <RowDefinition Height="*"/>
+            <!--confirm password-->
             <RowDefinition Height="*"/>
+            <!--email-->
             <RowDefinition Height="*"/>
+            <!--bday-->
             <RowDefinition Height="*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="0.5*"/>
+            <!--register-->
+            <RowDefinition Height="*"/>
+            <!--connect with-->
+            <RowDefinition Height="*"/>
+            <!--google-->
+            <RowDefinition Height="*"/>
+            <!--sign in now-->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -98,8 +109,7 @@
 
             <!--PASSWORD ERROR MESSAGE-->
             <Label x:Name="Pwd_err_lbl"
-                                Text="Between 8-20 digits, one upper case,
-                                      one lower case, one number, and one special character"
+                                Text="8-20 digits, one upper case, one lower case, one number, and one special character"
                                 TextColor="White"
                                 FontSize="Small"
                                 Margin="50,0,50,0"/>
@@ -206,21 +216,24 @@
                                 BackgroundColor="#8b52ff"
                                 Margin="40,20,40,15"
                                 Clicked="Sign_up_btn_Clicked"/>
+        </StackLayout>
 
-            <Label Text="Or connect with"
-                   FontSize="16"
-                   HorizontalOptions="Center"/>
+        <!--CONNECT WITH-->
+        <StackLayout Grid.Row="7" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="Or connect with:"
+                   FontSize="16"/>
         </StackLayout>
 
         <!--GOOGLE BUTTON-->
-        <StackLayout Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center" >
+        <StackLayout Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center" >
             <ImageButton Source="google.png"
-                         WidthRequest="45" HeightRequest="45" 
+                         WidthRequest="70"
+                         HeightRequest="70" 
                          BackgroundColor="#0000" />
         </StackLayout>
 
         <!--SIGN IN NOW BUTTON-->
-        <StackLayout Grid.Row="8" Orientation="Horizontal" HorizontalOptions="Center">
+        <StackLayout Grid.Row="9" Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="Already have an account?"
                    FontSize="16"
                    HorizontalOptions="Center"
