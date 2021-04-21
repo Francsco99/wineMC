@@ -11,12 +11,12 @@
             </Grid.RowDefinitions>
             <TableView Intent="Settings" Grid.Row="0">
                 <TableRoot>                    
-                    <TableSection Title="User Settings" TextColor="Black">
-                        <TextCell x:Name="user_displayName_txt_cell" TextColor="Gray" />
-                        <TextCell x:Name="user_email_txt_cell" TextColor="Gray"/>
-                        <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" TextColor="Gray" Tapped="Change_pwd_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_username_text_cell" Text="Change Username" TextColor="Gray" Tapped="Change_username_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Gray" Tapped="Change_tastes_text_cell_Tapped"/>             
+                    <TableSection Title="User Settings" TextColor="Black" >
+                        <TextCell x:Name="user_displayName_txt_cell" TextColor="#8b52ff" />
+                        <TextCell x:Name="user_email_txt_cell" TextColor="#8b52ff"/>
+                        <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" TextColor="Black" Tapped="Change_pwd_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_username_text_cell" Text="Change Username" TextColor="Black" Tapped="Change_username_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>             
                         <TextCell x:Name="provadb" Text="prova db" Tapped="Provadb_Tapped"/>
                     </TableSection>               
                     <TableSection Title="General" TextColor="Black">
@@ -30,7 +30,7 @@
 
             <StackLayout Grid.Row="1" >
                 <Button Text="Logout" FontSize="Medium"
-                        x:Name="Logout_btn" Clicked="Logout_btn_Clicked"/>
+                        x:Name="Logout_btn" Clicked="Logout_btn_Clicked" BackgroundColor="Transparent"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
