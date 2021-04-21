@@ -71,7 +71,6 @@
     <Compile Include="MyPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -148,9 +147,31 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\birthday.png" />
+    <BundleResource Include="Resources\donecheck.png" />
+    <BundleResource Include="Resources\edit_pen.png" />
+    <BundleResource Include="Resources\error.png" />
+    <BundleResource Include="Resources\facebook.png" />
+    <BundleResource Include="Resources\google.png" />
+    <BundleResource Include="Resources\hide.png" />
+    <BundleResource Include="Resources\mail.png" />
+    <BundleResource Include="Resources\OnlineClassifier.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <BundleResource Include="Resources\orangeGradient.png" />
+    <BundleResource Include="Resources\password.png" />
+    <BundleResource Include="Resources\star_border.png" />
+    <BundleResource Include="Resources\stella_piena.png" />
+    <BundleResource Include="Resources\user.png" />
+    <BundleResource Include="Resources\swirlingwineviola.json" />
+    <BundleResource Include="Resources\settings_24pt_2x.png" />
+    <BundleResource Include="Resources\home_24pt_2x.png" />
+    <BundleResource Include="Resources\camera_36pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
     <Folder Include="Assets.xcassets\home.png.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="swirlingwineviola.json" />
   </ItemGroup>
 </Project>
