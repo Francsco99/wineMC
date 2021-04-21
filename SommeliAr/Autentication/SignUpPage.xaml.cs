@@ -19,7 +19,8 @@ namespace SommeliAr.Views
             BindingContext = new MyUsersViewModel();
         }
 
-        async void RegistrationProcedure(object sender, EventArgs e)
+        //procedura di sign up
+        async void Sign_up_btn_Clicked(object sender, EventArgs e)
         {
             MyUser user = new MyUser();
             var username = Entry_Username.Text;
@@ -48,12 +49,12 @@ namespace SommeliAr.Views
                     {
                         case true:
                             ErrorLabelText.Opacity = 0;
-                            LabelMailError.TextColor = Color.White;
+                            Email_err_lbl.TextColor = Color.White;
                             break;
 
                         case false:
                             ErrorLabelText.Opacity = 0.7;
-                            LabelMailError.TextColor = Color.Red;
+                            Email_err_lbl.TextColor = Color.Red;
                             break;
                     }
                 }
@@ -61,7 +62,7 @@ namespace SommeliAr.Views
                 {
                     ErrorLabelText.Opacity = 0.7;
                     emailOk = false;
-                    LabelMailError.TextColor = Color.Red;
+                    Email_err_lbl.TextColor = Color.Red;
                 }
             }
             void PasswordConfirmationValidation()
@@ -70,13 +71,13 @@ namespace SommeliAr.Views
                 {
                     ErrorPwdLabelText.Opacity = 0.7;
                     passwordOk = false;
-                    LabelConfirmPwdError.TextColor = Color.Red;
+                    Pwd_conf_err_lbl.TextColor = Color.Red;
                 }
                 else
                 {
                     ErrorPwdLabelText.Opacity = 0;
                     passwordOk = true;
-                    LabelConfirmPwdError.TextColor = Color.White;
+                    Pwd_conf_err_lbl.TextColor = Color.White;
                 }
             }
             void UsernameValidation()
@@ -89,21 +90,21 @@ namespace SommeliAr.Views
                     if (Regex.IsMatch(username, userPattern))
                     {
                         usernameOk = true;
-                        LabelUserError.TextColor = Color.White;
+                        User_err_lbl.TextColor = Color.White;
                         UserErrorIcon.Opacity = 0;
                     }
 
                     else
                     {
                         usernameOk = false;
-                        LabelUserError.TextColor = Color.Red;
+                        User_err_lbl.TextColor = Color.Red;
                         UserErrorIcon.Opacity = 0.7;
                     }
                 }
                 else
                 {
                     usernameOk = false;
-                    LabelUserError.TextColor = Color.Red;
+                    User_err_lbl.TextColor = Color.Red;
                     UserErrorIcon.Opacity = 0.7;
                 }
             }
@@ -117,41 +118,41 @@ namespace SommeliAr.Views
                     if (Regex.IsMatch(pwd, passwordPattern))
                     {
                         passwordOk = true;
-                        LabelPwdError.TextColor = Color.White;
+                        Pwd_err_lbl.TextColor = Color.White;
                         PwdErrorIcon.Opacity = 0;
                     }
 
                     else
                     {
                         passwordOk = false;
-                        LabelPwdError.TextColor = Color.Red;
+                        Pwd_err_lbl.TextColor = Color.Red;
                         PwdErrorIcon.Opacity = 0.7;
                     }
                 }
                 else
                 {
                     passwordOk = false;
-                    LabelPwdError.TextColor = Color.Red;
+                    Pwd_err_lbl.TextColor = Color.Red;
                     PwdErrorIcon.Opacity = 0.7;
                 }
             }
             void AgeValidation()
             {
                 DateTime todayDate = DateTime.Now;
-                int timespan = (todayDate - birthdate_entry.Date).Days;
+                int timespan = (todayDate - Birthdate_entry.Date).Days;
 
                 if (timespan >= 6570)
                 {
                     ageOk = true;
                     ErrorBirthLabelText.TextColor = Color.White;
-                    ErrorBirth.Opacity = 0;
+                    Bday_err_lbl.Opacity = 0;
                 }
 
                 else
                 {
                     ageOk = false;
                     ErrorBirthLabelText.TextColor = Color.Red;
-                    ErrorBirth.Opacity = 0.7;
+                    Bday_err_lbl.Opacity = 0.7;
 
                 }
             }
@@ -199,8 +200,9 @@ namespace SommeliAr.Views
         }
 
         //bottone che nasconde la password
-        void HideButton_Clicked(System.Object sender, System.EventArgs e)
+        void Hide_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+
             if (Entry_Password.IsPassword == true)
             {
                 Entry_Password.IsPassword = false;
@@ -213,11 +215,10 @@ namespace SommeliAr.Views
             }
         }
 
-        //bottone che manda alla login page
-        void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
+        //bottone che manda alla sign in page
+        void Sign_in_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new LoginPage());
-
         }
     }
 }

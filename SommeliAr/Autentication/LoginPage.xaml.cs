@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using Firebase.Auth;
 using Newtonsoft.Json;
-using SommeliAr.Models;
 using SommeliAr.Views.Autentication;
 using SommeliAr.Views.Menu;
 using Xamarin.Essentials;
@@ -20,9 +18,9 @@ namespace SommeliAr.Views
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        void hideButton_Clicked(System.Object sender, System.EventArgs e)
+        //bottone per nascondere o vedere la password
+        void Hide_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-
             if (Entry_Password.IsPassword == true)
             {
                 Entry_Password.IsPassword = false;
@@ -33,7 +31,8 @@ namespace SommeliAr.Views
             }
         }
 
-        async void Login_btn_Clicked(System.Object sender, System.EventArgs e)
+        //logica per il login
+        async void Sign_in_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
             try
@@ -63,15 +62,16 @@ namespace SommeliAr.Views
             }
         }
 
-        void SignUpNow_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new SignUpPage());
-        }
-
-         void forgot_password_btn_Clicked(System.Object sender, System.EventArgs e)
+        //bottone password dimenticata
+        void Forgot_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new RecoverPasswordPage());
-            
+        }
+
+        //bottone sign up now
+        void Sign_up_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new SignUpPage());
         }
     }
 }
