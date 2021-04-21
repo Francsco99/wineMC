@@ -9,6 +9,7 @@ namespace SommeliAr.Views
 {
     public partial class SignUpPage : ContentPage
     {
+        //chiave api di firebase
         public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
         public SignUpPage()
@@ -25,20 +26,23 @@ namespace SommeliAr.Views
             var email = Entry_Email.Text;
             var pwd = Entry_Password.Text;
 
-            var emailOk = false;
-            var passwordOk = false;
-            var usernameOk = false;
-            var ageOk = false;
+            bool emailOk;
+            bool passwordOk;
+            bool usernameOk;
+            bool ageOk;
 
             void MailValidation()
             {
-                var emailPattern = /* espressione regolare per verificare se la mail inserita ha una formattazione valida*/
-                    "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
+                //espressione regolare per verificare se la mail inserita ha una formattazione valida
+                string emailPattern = "^[\\w!#$%&'*+\\-/=?\\^_`{|}~]+(\\.[\\w!#$%&'*+\\-/=?\\^_`{|}~]+)*@((([\\-\\w]+\\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\\.){3}[0-9]{1,3}))\\z";
 
                 if (email != null)
                 {
                     if (Regex.IsMatch(email, emailPattern)) emailOk = true;
-                    else emailOk = false;
+                    else
+                    {
+                        emailOk = false;
+                    }
 
                     switch (emailOk)
                     {
@@ -77,7 +81,8 @@ namespace SommeliAr.Views
             }
             void UsernameValidation()
             {
-                var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";         /* deve contenere tra i 6 e i 18 caratteri alfanumerici */
+                //Deve contenere tra i 6 e i 18 caratteri alfanumerici
+                string userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";
 
                 if (username != null)
                 {
@@ -104,7 +109,8 @@ namespace SommeliAr.Views
             }
             void PasswordValidation()
             {
-                var passwordPattern = "(?=.*[A-Z])(?=.*\\d)(?=.*[¡!@#$%*¿?\\-_.\\(\\)])[A-Za-z\\d¡!@#$%*¿?\\-\\(\\)&]{8,20}";  /* tra 8-20 cifre, un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale*/
+                //tra 8-20 cifre, un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale
+                string passwordPattern = "(?=.*[A-Z])(?=.*\\d)(?=.*[¡!@#$%*¿?\\-_.\\(\\)])[A-Za-z\\d¡!@#$%*¿?\\-\\(\\)&]{8,20}";
 
                 if (pwd != null)
                 {
@@ -156,35 +162,43 @@ namespace SommeliAr.Views
             PasswordConfirmationValidation();
             AgeValidation();
 
-            /* se tutti i campi sono rispettati la procedura ha successo */
+            //se tutti i campi sono rispettati la procedura ha successo
             if (emailOk && passwordOk && usernameOk && ageOk)
             {
-                var viewModel= (MyUsersViewModel)BindingContext;
+                //test di aggiunta utente al db firebase
+                /*
+                var viewModel = (MyUsersViewModel)BindingContext;
                 if (viewModel.AddUserCmd.CanExecute(null))
                 {
                     viewModel.AddUserCmd.Execute(null);
                 }
+                */
 
+                //try-catch di signup async
                 try
                 {
                     var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+                    //signup con email e password 
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
+                    //invia email di verifica
                     await authProvider.SendEmailVerificationAsync(auth);
                     await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
-                    await App.Current.MainPage.DisplayAlert("Success!", "Enjoy your new account!", "OK");
+                    //alert
+                    await App.Current.MainPage.DisplayAlert("Success!", "Don't forget to verify your Email!", "OK");
                     await Navigation.PushAsync(new LoginPage());
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong","Try to Sign Up again", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong", "Try to Sign Up again", "Ok");
                 }
 
             }
 
         }
 
+        //bottone che nasconde la password
         void HideButton_Clicked(System.Object sender, System.EventArgs e)
         {
             if (Entry_Password.IsPassword == true)
@@ -199,6 +213,7 @@ namespace SommeliAr.Views
             }
         }
 
+        //bottone che manda alla login page
         void Btn_SignUp_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new LoginPage());
