@@ -17,7 +17,7 @@ namespace SommeliAr.Views.Menu
             /* come se nasconde ? afterScan.Visibility = ViewStates.Gone; */
         }
 
-        async void take_image_btn_Clicked(System.Object sender, System.EventArgs e)
+        async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
 
             /* CON XAMARIN ESSENTIALS var result = await MediaPicker.CapturePhotoAsync();

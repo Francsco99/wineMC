@@ -1,40 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage Icon="camera_24pt_2x.png"
+<ContentPage Icon="camera_36pt_2x.png"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.ScanPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="1"/>
-                <RowDefinition Height="8*"/>
-                <RowDefinition Height="1"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>            
+                <RowDefinition Height="9*"/>        
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0">
-                <Label Text="Let's scan bottles!" TextColor="#8b52ff" FontSize="Title"
-                        FontAttributes="Bold" Margin="0,22,0,0"
-                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="End" HorizontalOptions="Center">
+                <Label Text="Let's scan bottles!"
+                       TextColor="#8b52ff"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       />
             </StackLayout>
-            <StackLayout Grid.Row="1" BackgroundColor="Gray"/>
-            <StackLayout Grid.Row="2">
+            
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
                 <Image x:Name="resultImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
             </StackLayout>
-            <StackLayout Grid.Row="3" BackgroundColor="Gray"/>
-            <StackLayout Grid.Row="4">
-                <Button x:Name="take_image_btn" Text="Scan!" TextColor="#8b52ff" FontAttributes="Bold"
-                        FontSize="20"
-                        HeightRequest="50" Margin="150,0,150,0"
-                        BackgroundColor="Transparent" BorderColor="Gray"
-                        BorderWidth="1"
-                        CornerRadius="30"
-                        Clicked="take_image_btn_Clicked"
-                    VerticalOptions="End"/>
-            </StackLayout>
 
-            <StackLayout Grid.Row="2">
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
                 <ListView x:Name="resultsListView">
                     <ListView.ItemTemplate >
                         <DataTemplate>
@@ -45,13 +38,28 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-
            
+            <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" >
+                <Button x:Name="Scan_btn" Text="Scan!"
+                        TextColor="#8b52ff" FontAttributes="Bold"
+                        FontSize="Large"        
+                        BackgroundColor="Transparent"
+                        BorderWidth="1"
+                        CornerRadius="15"
+                        WidthRequest="100"
+                        Clicked="Scan_btn_Clicked"/>                 
+            </StackLayout>
 
-            <StackLayout Grid.Row="5">
+            <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" >
                 <Button x:Name="afterScan" Text="Result list" 
-                        TextColor="White" FontSize="16" BackgroundColor="#8b52ff" 
-                        Margin="40,0,40,0" Clicked="afterScan_Clicked" CornerRadius="8"/>
+                        TextColor="White"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        BackgroundColor="#8b52ff" 
+                        CornerRadius="15"
+                        WidthRequest="100"
+                        BorderWidth="1"
+                        Clicked="afterScan_Clicked"/>
             </StackLayout>
             
         </Grid>
