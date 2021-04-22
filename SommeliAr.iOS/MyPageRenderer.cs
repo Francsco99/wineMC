@@ -1,10 +1,11 @@
-﻿using SommeliAr.iOS;
-using SommeliAr.Views.Menu;
+﻿/*
+using SommeliAr.iOS;
+using SommeliAr.Menu;
+using SommeliAr.Views;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-/*
-[assembly: ExportRenderer(typeof(HomePage), typeof(MyPageRenderer))]
+[assembly: ExportRenderer(typeof(MyHomePage), typeof(MyPageRenderer))]
 namespace SommeliAr.iOS
 {
     class MyPageRenderer : PageRenderer

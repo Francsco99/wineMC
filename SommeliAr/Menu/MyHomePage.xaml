@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage Title="Favourites"
+<ContentPage Icon="home_24pt_2x"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SommeliAr.Views.Menu.FavoritesPage">
+    x:Class="SommeliAr.Menu.MyHomePage">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
@@ -22,10 +23,15 @@
         </StackLayout>
 
         <StackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label x:Name="Favourites_btn"
+            <Button x:Name="Favourites_btn"
                                 Text="Favourites"
-                                FontSize="30"
-                                TextColor="#8b52ff"/>
+                                FontSize="20"
+                                TextColor="Black"
+                                Clicked="Favourites_btn_Clicked"/>
         </StackLayout>
+
+        <Label HorizontalOptions="Center"
+            Grid.Row="1" Grid.ColumnSpan="2" x:Name="eticehtta_prova"/>
     </Grid>
+
 </ContentPage>

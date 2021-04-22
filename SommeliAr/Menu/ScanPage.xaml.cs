@@ -6,6 +6,8 @@ using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SommeliAr.Views.Menu
 {
@@ -16,19 +18,11 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
             /* come se nasconde ? afterScan.Visibility = ViewStates.Gone; */
             resultsListView.BackgroundColor = Color.Transparent;
+            resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
         }
+
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-
-            /* CON XAMARIN ESSENTIALS var result = await MediaPicker.CapturePhotoAsync();
-
-            if (result != null)
-            {
-                var stream = await result.OpenReadAsync();
-
-                resultImage.Source = ImageSource.FromStream(() => stream);
-            } */
-
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -96,7 +90,18 @@ namespace SommeliAr.Views.Menu
 
         void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+         
         }
 
     }
+
+    /* CON XAMARIN ESSENTIALS var result = await MediaPicker.CapturePhotoAsync();
+
+    if (result != null)
+    {
+        var stream = await result.OpenReadAsync();
+
+        resultImage.Source = ImageSource.FromStream(() => stream);
+    } */
+
 }
