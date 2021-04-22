@@ -29,7 +29,8 @@
             </StackLayout>
 
            <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <ListView x:Name="resultsListView">
+                <ListView x:Name="resultsListView"
+                          SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell  Text="{Binding TagName}"

@@ -1,4 +1,5 @@
-﻿using SommeliAr.ViewModels;
+﻿using SommeliAr.Models;
+using SommeliAr.ViewModels;
 using SommeliAr.Views;
 using SommeliAr.Views.Menu;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace SommeliAr.Menu
         public MyHomePage()
         {
             InitializeComponent();
-            //BindingContext = new MyUsersViewModel();
+            BindingContext = new MyListPageViewModel();
         }
 
         //colore violetto chiaro
@@ -23,10 +24,7 @@ namespace SommeliAr.Menu
             History_btn.FontSize = 20;
 
             Favourites_btn.TextColor = myColor;
-            Favourites_btn.FontSize = 30;
-
-            eticehtta_prova.Text = "PREFERITI";
-            eticehtta_prova.FontSize = 50;
+            Favourites_btn.FontSize = 30;  
         }
 
         void History_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -36,11 +34,13 @@ namespace SommeliAr.Menu
 
             History_btn.TextColor = myColor;
             History_btn.FontSize = 30;
-
-            eticehtta_prova.Text = "HISTORY";
-            eticehtta_prova.FontSize = 50;
-
-
         }
+
+        private async void OnItemSelected(object sender, ItemTappedEventArgs e)
+        {
+            var mydetails = e.Item as MyListModel;
+            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Ingredients, mydetails.Image));
+        }
+
     }
 }

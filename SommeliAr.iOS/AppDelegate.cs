@@ -1,5 +1,6 @@
 ﻿
 using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using Naxam.Controls.Platform.iOS;
 using UIKit;
 
@@ -24,7 +25,7 @@ namespace SommeliAr.iOS
 
             Firebase.Core.App.Configure();
             TopTabbedRenderer.Init();
-            
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

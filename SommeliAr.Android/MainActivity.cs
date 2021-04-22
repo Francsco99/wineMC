@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Plugin.CurrentActivity;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace SommeliAr.Droid
 {
@@ -19,6 +20,7 @@ namespace SommeliAr.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
 
