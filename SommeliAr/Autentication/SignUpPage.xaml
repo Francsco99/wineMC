@@ -226,10 +226,11 @@
 
         <!--GOOGLE BUTTON-->
         <StackLayout Grid.Row="8" HorizontalOptions="Center" VerticalOptions="Center" >
-            <ImageButton Source="google.png"
+            <ImageButton x:Name="Google_sign_btn"
+                         Source="google.png"
                          WidthRequest="70"
                          HeightRequest="70" 
-                         BackgroundColor="#0000" />
+                         BackgroundColor="#0000"/>
         </StackLayout>
 
         <!--SIGN IN NOW BUTTON-->

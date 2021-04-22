@@ -15,8 +15,8 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
             /* come se nasconde ? afterScan.Visibility = ViewStates.Gone; */
+            resultsListView.BackgroundColor = Color.Transparent;
         }
-
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
 
@@ -49,7 +49,7 @@ namespace SommeliAr.Views.Menu
                 return;
             }
 
-            await DisplayAlert("File Location", file.Path, "OK");
+            //await DisplayAlert("File Location", file.Path, "OK");
 
             var stream = file.GetStream();
 
@@ -77,7 +77,7 @@ namespace SommeliAr.Views.Menu
                     var responseString = await response.Content.ReadAsStringAsync();
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
-                    //resultsListView.ItemsSource = predictions.Predictions;
+                    resultsListView.ItemsSource = predictions.Predictions;
 
                 }
             }
@@ -89,9 +89,14 @@ namespace SommeliAr.Views.Menu
             return binaryReader.ReadBytes((int)stream.Length);
         }
 
-        private void afterScan_Clicked(object sender, EventArgs e)
+        private void After_sca_btn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AfterScanPage());
         }
+
+        void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+        }
+
     }
 }
