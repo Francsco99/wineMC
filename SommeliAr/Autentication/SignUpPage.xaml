@@ -2,10 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vieWModel="clr-namespace:SommeliAr.ViewModels"
-            x:Class="SommeliAr.Views.SignUpPage">
-    <ContentPage.BindingContext>
-        <vieWModel:MyUsersViewModel/>
-    </ContentPage.BindingContext>
+            x:Class="SommeliAr.Views.SignUpPage">  
     <Grid>
         <Grid.RowDefinitions>
             <!--benvenuto-->
@@ -52,7 +49,6 @@
                        Margin="50,0,10,0"/>
 
                 <Entry x:Name="Entry_Username"
-                                    Text="{Binding Username}"
                                     Placeholder="Username"
                                     FontSize="16"
                                     HorizontalOptions="FillAndExpand"
@@ -85,7 +81,6 @@
 
                 <Entry x:Name="Entry_Password"
                                     Placeholder="Password"
-                                    Text="{Binding Password}"
                                     FontSize="16"
                                     IsPassword="true"
                                     HorizontalOptions="FillAndExpand"/>
@@ -155,7 +150,6 @@
 
                 <Entry  x:Name="Entry_Email"
                                     Placeholder="Email"
-                                    Text="{Binding Email}"
                                     FontSize="16"
                                     HorizontalOptions="FillAndExpand"
                                     Margin="0,0,50,0" />
@@ -188,7 +182,6 @@
                     <DatePicker  x:Name="Birthdate_entry"
                                          MinimumDate="01/01/1921"
                                          MaximumDate="01/01/2006"
-                                         Date="{Binding Birthdate}"
                                          HorizontalOptions="FillAndExpand"
                                          Margin="0,0,50,0" />
 

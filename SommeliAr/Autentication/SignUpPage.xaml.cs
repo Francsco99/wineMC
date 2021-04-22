@@ -16,7 +16,6 @@ namespace SommeliAr.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = new MyUsersViewModel();
         }
 
         //procedura di sign up
