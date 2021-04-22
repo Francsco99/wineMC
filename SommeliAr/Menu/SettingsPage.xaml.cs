@@ -30,12 +30,18 @@ namespace SommeliAr.Views.Menu
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
                 Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                 //Now lets grab user information
-                user_email_txt_cell.Text = savedfirebaseauth.User.Email;
-                user_displayName_txt_cell.Text = savedfirebaseauth.User.DisplayName;
+                user_email_txt_cell.Text = "Email:  " + savedfirebaseauth.User.Email;
+                user_displayName_txt_cell.Text ="Username:  " + savedfirebaseauth.User.DisplayName;
 
-                if(!savedfirebaseauth.User.IsEmailVerified)
+                if(savedfirebaseauth.User.IsEmailVerified)
                 {
-                    user_email_txt_cell.TextColor = Color.Red;
+                    user_is_verified_txt_cell.Text = "Verified!";
+                    user_is_verified_txt_cell.TextColor = Color.Green;
+                }
+                else
+                {
+                    user_is_verified_txt_cell.Text = "Verify your Email now!";
+                    user_is_verified_txt_cell.TextColor = Color.Red;
                 }
 
             }

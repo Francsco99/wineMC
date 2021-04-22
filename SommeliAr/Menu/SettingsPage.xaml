@@ -6,18 +6,20 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                  <RowDefinition Height="Auto"/>    
+                <RowDefinition Height="*"/>
+                    
             </Grid.RowDefinitions>
-            <TableView Intent="Settings" Grid.Row="0">
+            <TableView Intent="Settings"  VerticalOptions="Fill">
                 <TableRoot>                    
-                    <TableSection Title="User Settings" TextColor="Black" >
-                        <TextCell x:Name="user_displayName_txt_cell" TextColor="#8b52ff" />
-                        <TextCell x:Name="user_email_txt_cell" TextColor="#8b52ff"/>
+                    <TableSection Title="User Info" TextColor="Black">
+                        <TextCell x:Name="user_displayName_txt_cell" TextColor="Black" />
+                        <TextCell x:Name="user_email_txt_cell" TextColor="Black"/>
+                        <TextCell x:Name="user_is_verified_txt_cell"/>
+                        </TableSection>
+                    <TableSection Title="Account" TextColor="Black">
                         <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" TextColor="Black" Tapped="Change_pwd_text_cell_Tapped"/>
                         <TextCell x:Name="Change_username_text_cell" Text="Change Username" TextColor="Black" Tapped="Change_username_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>             
-                        <TextCell x:Name="provadb" Text="prova db" Tapped="Provadb_Tapped"/>
+                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>               
                     </TableSection>               
                     <TableSection Title="General" TextColor="Black">
                         <SwitchCell Text="Setting #1"/>
@@ -25,13 +27,11 @@
                         <SwitchCell Text="Setting #3"/>
                         <SwitchCell Text="Setting #4"/>
                     </TableSection>
+                    <TableSection>
+                        <TextCell x:Name="Logout_btn" Text="Logout" TextColor="#8b52ff" Tapped="Logout_btn_Clicked"/>
+                    </TableSection>
                 </TableRoot>
             </TableView>
-
-            <StackLayout Grid.Row="1" >
-                <Button Text="Logout" FontSize="Medium"
-                        x:Name="Logout_btn" Clicked="Logout_btn_Clicked" BackgroundColor="Transparent"/>
-            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
