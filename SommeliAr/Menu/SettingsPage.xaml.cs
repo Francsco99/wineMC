@@ -68,12 +68,7 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new ChangePwdPage());
 
         }
-
-        void Provadb_Tapped(System.Object sender, System.EventArgs e)
-        {
-            _ = Navigation.PushAsync(new UsersListPage());
-        }
-
+   
         void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("MyLoginToken");
