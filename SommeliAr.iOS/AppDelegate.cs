@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿
 using Foundation;
 using Naxam.Controls.Platform.iOS;
 using UIKit;
@@ -27,6 +24,7 @@ namespace SommeliAr.iOS
 
             Firebase.Core.App.Configure();
             TopTabbedRenderer.Init();
+            
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

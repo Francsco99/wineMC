@@ -77,7 +77,7 @@ namespace SommeliAr.Views.Menu
                     var responseString = await response.Content.ReadAsStringAsync();
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
-                    resultsListView.ItemsSource = predictions.Predictions;
+                    //resultsListView.ItemsSource = predictions.Predictions;
 
                 }
             }
