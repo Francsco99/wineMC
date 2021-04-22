@@ -16,7 +16,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackLayout Grid.Column="0" Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,20,0">
+        <!--HISTORY BUTTON-->
+        <StackLayout Grid.Column="0"
+                     Grid.Row="0"
+                     VerticalOptions="End"
+                     HorizontalOptions="Center"
+                     Margin="0,0,20,0">
             <Button x:Name="History_btn"
                    Text="History"
                    FontSize="20"
@@ -25,7 +30,12 @@
                    Clicked="History_btn_Clicked"/>
         </StackLayout>
 
-        <StackLayout Grid.Column="1" Grid.Row="0" VerticalOptions="End" HorizontalOptions="Center" Margin="0,0,20,0">
+        <!--FAVOURITES BUTTON-->
+        <StackLayout Grid.Column="1"
+                     Grid.Row="0"
+                     VerticalOptions="End"
+                     HorizontalOptions="Center"
+                     Margin="0,0,20,0">
             <Button x:Name="Favourites_btn"
                                 Text="Favourites"
                                 FontSize="20"
@@ -34,31 +44,32 @@
                                 Clicked="Favourites_btn_Clicked"/>
         </StackLayout>
 
+        <!--LINEETTA SEPARATRICE-->
         <StackLayout Grid.Row="1"
                      Grid.ColumnSpan="2"
-                     BackgroundColor="Black">                        
+                     BackgroundColor="Black">
         </StackLayout>
 
-       <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
-           <ListView ItemsSource="{Binding WineList}"
-                     HasUnevenRows="True"
-                    
+        <!--LISTA DEI VINI-->
+        <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
+            <ListView x:Name="my_list_view"
+                     ItemsSource="{Binding WineList}"
+                     HasUnevenRows="True"                   
                      ItemTapped="OnItemSelected">
-               <ListView.ItemTemplate>
-                   <DataTemplate>
-                       <ViewCell>
-                           <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
-                               <Grid.RowDefinitions>
-                                   <RowDefinition Height="Auto"/>
-                                   <RowDefinition Height="*"/>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                               <Grid.ColumnDefinitions>
-                                   <ColumnDefinition Width="Auto"/>
-                                   <ColumnDefinition Width="*"/>
-                               </Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                               <controls:CircleImage
-
+                                <controls:CircleImage
                                    HeightRequest="60"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand"
@@ -67,20 +78,21 @@
                                    Grid.RowSpan="2"
                                    Source="{Binding Image}"/>
 
-                               <Label Grid.Column="1"
+                                <Label Grid.Column="1"
                                       Text="{Binding Name}"
+                                      FontAttributes="Bold"  
                                       VerticalOptions="End"/>
 
-                               <Label Grid.Column="1"
+                                <Label Grid.Column="1"
                                       Grid.Row="1"
-                                      VerticalOptions="Start"
-                                      Text="{Binding Detail}"/>
-                           </Grid>
-                       </ViewCell>
-                   </DataTemplate>
-               </ListView.ItemTemplate>
-           </ListView>
-       </StackLayout>
+                                      Text="{Binding Detail}"
+                                      FontAttributes="Italic"
+                                      VerticalOptions="Start"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
     </Grid>
-
 </ContentPage>

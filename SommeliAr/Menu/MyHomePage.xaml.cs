@@ -9,8 +9,10 @@ namespace SommeliAr.Menu
         
     {
         public MyHomePage()
-        {
+        {     
             InitializeComponent();
+            //Toglie le righette di separazione delle entry della listview
+            my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
         }
 
         //colore violetto chiaro
@@ -19,6 +21,7 @@ namespace SommeliAr.Menu
         void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             BindingContext = new MyFavoritesPageViewModel();
+            my_list_view.SeparatorVisibility = 0;
             History_btn.TextColor = Color.Black;
             History_btn.FontSize = 20;
 
@@ -29,6 +32,7 @@ namespace SommeliAr.Menu
         void History_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             BindingContext = new MyHistoryPageViewModel();
+            my_list_view.SeparatorVisibility = 0;
             Favourites_btn.TextColor = Color.Black;
             Favourites_btn.FontSize = 20;
 
