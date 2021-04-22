@@ -113,7 +113,8 @@
             <!--GOOGLE BUTTON-->
             <StackLayout Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Start">
                 <ImageButton Source="google.png"
-                             WidthRequest="70" HeightRequest="70" 
+                             WidthRequest="70"
+                             HeightRequest="70" 
                              BackgroundColor="#0000" />
             </StackLayout>
 

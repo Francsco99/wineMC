@@ -113,6 +113,27 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\logo.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_180x180.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_87x87.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_40x40.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_60x60.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_58x58.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_80x80.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120-1.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_60_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_87_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-1.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-2.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_180_LAST-1.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -166,12 +187,18 @@
     <BundleResource Include="Resources\settings_24pt_2x.png" />
     <BundleResource Include="Resources\home_24pt_2x.png" />
     <BundleResource Include="Resources\camera_36pt_2x.png" />
+    <BundleResource Include="Resources\Splash_screen.png" />
+    <BundleResource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
     <Folder Include="Assets.xcassets\home.png.imageset\" />
+    <Folder Include="Assets.xcassets\MyAppIcon.appiconset\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="swirlingwineviola.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="MySplash.storyboard" />
   </ItemGroup>
 </Project>
