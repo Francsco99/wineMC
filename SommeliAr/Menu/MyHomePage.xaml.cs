@@ -53,8 +53,8 @@ namespace SommeliAr.Menu
 
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
-            var mydetails = e.Item as MyListModel;
-            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Ingredients, mydetails.Image));
+            var mydetails = e.Item as MyWineModel;
+            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image));
 
         }
 

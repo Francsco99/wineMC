@@ -30,6 +30,7 @@
     <Folder Include="Menu\" />
     <Folder Include="ViewModels\" />
     <Folder Include="SettingsViews\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\settings_purple.png" />

@@ -76,14 +76,14 @@ namespace SommeliAr.Views.Menu
             App.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
-        void FAQ_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new FAQPage());
-        }
-
         void Tutorial_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new TutorialPage());
+        }
+
+        void Add_wine_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AddNewWinePage());
         }
     }
 }

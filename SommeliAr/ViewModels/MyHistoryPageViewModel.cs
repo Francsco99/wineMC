@@ -7,13 +7,13 @@ namespace SommeliAr.ViewModels
     public class MyHistoryPageViewModel
     {
 
-        public ObservableCollection<MyListModel> WineList { get; set; }
+        public ObservableCollection<MyWineModel> WineList { get; set; }
 
         public MyHistoryPageViewModel()
         {
 
-            WineList = new ObservableCollection<MyListModel>();
-            WineList.Add(new MyListModel { Name = "Barolo", Image = "https://data.negoziodelvino.it/imgprodotto/barolo-docg_11068.jpg", Detail = "Prunotto", Ingredients = "Questo si che è un buon vino!" });
+            WineList = new ObservableCollection<MyWineModel>();
+            WineList.Add(new MyWineModel { Name = "Barolo", Image = "https://data.negoziodelvino.it/imgprodotto/barolo-docg_11068.jpg", Detail = "Prunotto", Description = "Questo si che è un buon vino!" });
         }
     }
 }

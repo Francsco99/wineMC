@@ -7,16 +7,22 @@ namespace SommeliAr.Views
 {
     public partial class MyListPageDetail : ContentPage
     {
-        public MyListPageDetail(string Name, string Ingredients, string Source)
+        public MyListPageDetail(string Name, string Description, string Source)
         {
             InitializeComponent();
 
             MyItemNameShow.Text = Name;
-            MyIngredientItemShow.Text = Ingredients;
+            MyDescriptionShow.Text = Description;
             MyImageCall.Source = new UriImageSource()
             {
                 Uri = new Uri(Source)
             };
+
+        }
+
+        void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+
         }
     }
 }
