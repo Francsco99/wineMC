@@ -29,6 +29,7 @@
     <Folder Include="Autentication\" />
     <Folder Include="Menu\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="SettingsViews\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\settings_purple.png" />
@@ -43,5 +44,15 @@
     <AndroidResource Include="Views\camera_36pt_2x.png" />
     <AndroidResource Include="Views\home_24pt_2x.png" />
     <AndroidResource Include="Views\settings_24pt_2x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="SettingsViews\ChangeUserNamePage.xaml.cs">
+      <DependentUpon>ChangeUserNamePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="SettingsViews\ChangePwdPage.xaml.cs">
+      <DependentUpon>ChangePwdPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

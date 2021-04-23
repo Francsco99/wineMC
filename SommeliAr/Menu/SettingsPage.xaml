@@ -11,21 +11,21 @@
             </Grid.RowDefinitions>
             <TableView Intent="Settings"  VerticalOptions="Fill">
                 <TableRoot>                    
-                    <TableSection Title="User Info" TextColor="Black">
+                    <TableSection Title="Personal info" TextColor="Black">
                         <TextCell x:Name="user_displayName_txt_cell" TextColor="Black" />
                         <TextCell x:Name="user_email_txt_cell" TextColor="Black"/>
                         <TextCell x:Name="user_is_verified_txt_cell"/>
                         </TableSection>
-                    <TableSection Title="Account" TextColor="Black">
+                    <TableSection Title="Personal settings" TextColor="Black">
                         <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" TextColor="Black" Tapped="Change_pwd_text_cell_Tapped"/>
                         <TextCell x:Name="Change_username_text_cell" Text="Change Username" TextColor="Black" Tapped="Change_username_text_cell_Tapped"/>
                         <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>               
                     </TableSection>               
-                    <TableSection Title="General" TextColor="Black">
-                        <SwitchCell Text="Setting #1"/>
-                        <SwitchCell Text="Setting #2"/>
-                        <SwitchCell Text="Setting #3"/>
-                        <SwitchCell Text="Setting #4"/>
+                    <TableSection Title="Support" TextColor="Black">
+                        <TextCell Text="FAQ"/>
+                        <TextCell Text="Tutorial"/>
+                        <TextCell Text="Contact us"/>
+                        <TextCell Text="Our website"/>
                     </TableSection>
                     <TableSection>
                         <TextCell x:Name="Logout_btn" Text="Logout" TextColor="#8b52ff" Tapped="Logout_btn_Clicked"/>
