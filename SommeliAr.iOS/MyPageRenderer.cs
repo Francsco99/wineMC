@@ -1,43 +1,35 @@
-﻿/*
+﻿using CoreGraphics;
 using SommeliAr.iOS;
 using SommeliAr.Menu;
 using SommeliAr.Views;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-[assembly: ExportRenderer(typeof(MyHomePage), typeof(MyPageRenderer))]
+[assembly: ExportRenderer(typeof(TabbedPage), typeof(MyPageRenderer))]
 namespace SommeliAr.iOS
 {
-    class MyPageRenderer : PageRenderer
+    class MyPageRenderer : TabbedRenderer
     {
+        private IPageController PageController => Element as IPageController;
+
+        protected override void OnElementChanged(VisualElementChangedEventArgs e)
+        {
+            base.OnElementChanged(e);
+            if (e.NewElement != null)
+            {
+                TabBar.Translucent = true;
+                TabBar.Opaque = false;
+            }
+        }
 
         public override void ViewDidLayoutSubviews()
         {
             base.ViewDidLayoutSubviews();
-
-            //move up Tab
-            var tab = this.TabBarController.TabBar;
-            var frame = tab.Frame;
-            if (this.NavigationController != null)
-            {
-                frame.Y = 64;
-            }
-            else
-            {
-                frame.Y = 0;
-            }
-
-            tab.Frame = frame;
-
-
-            //move down this.View
-            var viewFrame = View.Frame;
-            viewFrame.Y = tab.Frame.Height;
-            View.Frame = viewFrame;
-
-            //color
-            tab.BarTintColor = UIColor.Purple;
+            var frame = View.Frame;
+            PageController.ContainerArea = new Rectangle(0, 0, frame.Width, frame.Height);
+            TabBar.UnselectedItemTintColor = UIColor.Black;
+            TabBar.TintColor = UIColor.FromRGB(139,82,255);
         }
+
     }
 }
-*/
