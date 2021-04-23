@@ -22,8 +22,8 @@
                         <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>               
                     </TableSection>               
                     <TableSection Title="Support" TextColor="Black">
-                        <TextCell Text="FAQ"/>
-                        <TextCell Text="Tutorial"/>
+                        <TextCell x:Name="FAQ_txt_cell" Text="FAQ" Tapped="FAQ_txt_cell_Tapped"/>
+                        <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
                         <TextCell Text="Contact us"/>
                         <TextCell Text="Our website"/>
                     </TableSection>

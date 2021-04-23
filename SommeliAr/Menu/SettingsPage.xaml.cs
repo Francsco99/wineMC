@@ -2,6 +2,7 @@
 using Firebase.Auth;
 using Newtonsoft.Json;
 using SommeliAr.Autentication;
+using SommeliAr.SettingsViews;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -73,6 +74,16 @@ namespace SommeliAr.Views.Menu
         {
             Preferences.Remove("MyLoginToken");
             App.Current.MainPage = new NavigationPage(new LoginPage());
+        }
+
+        void FAQ_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new FAQPage());
+        }
+
+        void Tutorial_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new TutorialPage());
         }
     }
 }
