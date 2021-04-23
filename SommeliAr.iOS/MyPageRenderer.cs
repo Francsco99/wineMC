@@ -1,4 +1,5 @@
-﻿using CoreGraphics;
+﻿using System;
+using CoreGraphics;
 using SommeliAr.iOS;
 using SommeliAr.Menu;
 using SommeliAr.Views;
@@ -11,6 +12,7 @@ namespace SommeliAr.iOS
     class MyPageRenderer : TabbedRenderer
     {
         private IPageController PageController => Element as IPageController;
+
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {

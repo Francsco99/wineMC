@@ -189,6 +189,9 @@
     <BundleResource Include="Resources\camera_36pt_2x.png" />
     <BundleResource Include="Resources\Splash_screen.png" />
     <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\swirlingviolablack.json" />
+    <BundleResource Include="swirlingviolablack.json" />
+    <BundleResource Include="Resources\home_white_24pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

@@ -31,7 +31,8 @@ namespace SommeliAr.Menu
             Welcome_lbl.Text = "";
             BindingContext = new MyFavoritesPageViewModel();
             my_list_view.SeparatorVisibility = 0;
-            History_btn.TextColor = Color.Black;
+           // History_btn.TextColor =Color.Black;
+            History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
             History_btn.FontSize = 20;
 
             Favourites_btn.TextColor = myColor;
@@ -44,7 +45,8 @@ namespace SommeliAr.Menu
             Welcome_lbl.Text = "";
             BindingContext = new MyHistoryPageViewModel();
             my_list_view.SeparatorVisibility = 0;
-            Favourites_btn.TextColor = Color.Black;
+            //Favourites_btn.TextColor = Color.Black;
+            Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
             Favourites_btn.FontSize = 20;
 
             History_btn.TextColor = myColor;

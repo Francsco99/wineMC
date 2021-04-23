@@ -11,17 +11,17 @@
             </Grid.RowDefinitions>
             <TableView Intent="Settings"  VerticalOptions="Fill">
                 <TableRoot>                    
-                    <TableSection Title="Personal info" TextColor="Black">
-                        <TextCell x:Name="user_displayName_txt_cell" TextColor="Black" />
-                        <TextCell x:Name="user_email_txt_cell" TextColor="Black"/>
+                    <TableSection Title="Personal info">
+                        <TextCell x:Name="user_displayName_txt_cell"/>
+                        <TextCell x:Name="user_email_txt_cell"/>
                         <TextCell x:Name="user_is_verified_txt_cell"/>
                         </TableSection>
-                    <TableSection Title="Personal settings" TextColor="Black">
-                        <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" TextColor="Black" Tapped="Change_pwd_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_username_text_cell" Text="Change Username" TextColor="Black" Tapped="Change_username_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" TextColor="Black" Tapped="Change_tastes_text_cell_Tapped"/>               
+                    <TableSection Title="Personal settings">
+                        <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" Tapped="Change_pwd_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_username_text_cell" Text="Change Username" Tapped="Change_username_text_cell_Tapped"/>
+                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>               
                     </TableSection>               
-                    <TableSection Title="Support" TextColor="Black">
+                    <TableSection Title="Support">
                         <TextCell x:Name="Add_wine_txt_cell" Text="Add a wine!" Tapped="Add_wine_txt_cell_Tapped"/>
                         <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
                         <TextCell Text="Contact us"/>
