@@ -98,7 +98,7 @@
                     TextColor="#ffffff" 
                     BorderRadius="10"
                     FontSize="16"
-                    WidthRequest="100"
+                    
                     BackgroundColor="#8b52ff"
                     Clicked="Sign_in_btn_Clicked"/>
                 </StackLayout>
