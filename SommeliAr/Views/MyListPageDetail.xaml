@@ -7,11 +7,10 @@
 
         <StackLayout>
             <Label x:Name="MyItemNameShow" HorizontalTextAlignment="Center" FontSize="Title"/>
-            <Image x:Name="MyImageCall" HeightRequest="200" WidthRequest="200"/>
+            <Image x:Name="MyImageCall" HeightRequest="300" WidthRequest="300"/>
             <Label Text="Description" Margin="20,20" FontSize="Subtitle"/>
             <Label x:Name="MyIngredientItemShow" Margin="20,0,0,0" FontSize="Medium"/>
             <Button x:Name="Add_to_fav_btn"/>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>
