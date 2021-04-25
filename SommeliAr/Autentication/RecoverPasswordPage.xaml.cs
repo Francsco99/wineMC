@@ -14,11 +14,11 @@ namespace SommeliAr.Views.Autentication
             
         }
 
-        async void forgotPwd_btn_Clicked(System.Object sender, System.EventArgs e)
+        async void ForgotPwd_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             var Email = Forgot_email.Text;
 
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new(new FirebaseConfig(WebAPIKey));
             try
             {
                 await authProvider.SendPasswordResetEmailAsync(Email);

@@ -18,30 +18,19 @@ namespace SommeliAr.Views
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        //bottone per nascondere o vedere la password
-        void Hide_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            if (Entry_Password.IsPassword == true)
-            {
-                Entry_Password.IsPassword = false;
-            }
-            else
-            {
-                Entry_Password.IsPassword = true;
-            }
-        }
-
-        //logica per il login
+        //procedura per il login
         async void Sign_in_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new(new FirebaseConfig(WebAPIKey));
             try
             {
-                var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
-                // var content = await auth.GetFreshAuthAsync();
+                var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);     
                 var content = await auth.LinkToAsync(Entry_Email.Text, Entry_Password.Text);
                 var serializedcontnet = JsonConvert.SerializeObject(content);
+                //setting del token
                 Preferences.Set("MyLoginToken", serializedcontnet);
+                //setting della mail togliendo @ e .
+                Preferences.Set("UserEmailFirebase", Entry_Email.Text.Replace(".","-").Replace("@","-"));
                 await Navigation.PushAsync(new MasterDetail());
 
                 if (content.User.IsEmailVerified == false)
