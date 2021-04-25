@@ -201,11 +201,11 @@
     <BundleResource Include="Resources\user.png" />
     <BundleResource Include="Resources\swirlingwineviola.json" />
     <BundleResource Include="Resources\settings_24pt_2x.png" />
-    <BundleResource Include="Resources\home_24pt_2x.png" />
     <BundleResource Include="Resources\camera_36pt_2x.png" />
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\swirlingviolablack.json" />
     <BundleResource Include="swirlingviolablack.json" />
+    <BundleResource Include="Resources\home_black_24pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

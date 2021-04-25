@@ -149,6 +149,7 @@
                                    Margin="50,0,10,0"/>
 
                 <Entry  x:Name="Entry_Email"
+                                 Text="{Binding Email}"
                                     Placeholder="Email"
                                     FontSize="16"
                                     HorizontalOptions="FillAndExpand"

@@ -26,12 +26,30 @@ namespace SommeliAr.Services
             return myWinesData;
         }
 
+        public ObservableCollection<MyUser> GetMyUsers()
+        {
+            var myUsersData = client
+                .Child("MyUsers")
+                .AsObservable<MyUser>()
+                .AsObservableCollection();
+
+            return myUsersData;
+        }
+
         public async Task AddMyWine(string name, string detail, string image, string description)
         {
             MyWineModel w = new MyWineModel() { Name = name, Detail = detail, Image = image, Description=description };
             await client
                 .Child("MyWines")
                 .PostAsync(w);
+        }
+
+        public async Task AddMyUser(string email)
+        {
+            MyUser u = new MyUser() {Email = email };
+            await client
+                .Child("MyUsers")
+                .PostAsync(u);
         }
     }
 }

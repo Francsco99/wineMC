@@ -3,7 +3,6 @@ namespace SommeliAr.Models
 {
     public class MyUser
     {
-        public int Id { get; set; }
 
         public string Username { get; set; }
 
@@ -22,6 +21,11 @@ namespace SommeliAr.Models
             this.Email = Email;
             this.Birthdate = Birthdate;
 
+        }
+
+        public MyUser(string Email)
+        {
+            this.Email = Email;
         }
 
         public bool CheckInformation()

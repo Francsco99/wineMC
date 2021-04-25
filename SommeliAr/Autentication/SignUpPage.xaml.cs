@@ -16,6 +16,7 @@ namespace SommeliAr.Views
         {
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
+            BindingContext = new AllUsersViewModel();
         }
 
         //procedura di sign up
@@ -166,15 +167,7 @@ namespace SommeliAr.Views
             //se tutti i campi sono rispettati la procedura ha successo
             if (emailOk && passwordOk && passwordConfirmOk && usernameOk && ageOk)
             {
-                //test di aggiunta utente al db firebase
-                /*
-                var viewModel = (MyUsersViewModel)BindingContext;
-                if (viewModel.AddUserCmd.CanExecute(null))
-                {
-                    viewModel.AddUserCmd.Execute(null);
-                }
-                */
-
+                
                 //try-catch di signup async
                 try
                 {
@@ -186,6 +179,13 @@ namespace SommeliAr.Views
                     await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
                     //alert
                     await App.Current.MainPage.DisplayAlert("Success!", "Don't forget to verify your Email!", "OK");
+
+                    var viewModel = (AllUsersViewModel)BindingContext;
+                    if (viewModel.AddUserCommand.CanExecute(null))
+                    {
+                        viewModel.AddUserCommand.Execute(null);
+                    }
+
                     await Navigation.PushAsync(new LoginPage());
 
                 }
