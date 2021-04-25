@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -23,6 +24,8 @@ namespace SommeliAr.Views.Menu
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+
+
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -52,11 +55,20 @@ namespace SommeliAr.Views.Menu
                 return photostream;
             });
 
-             await MakePredictionAsync(stream); 
+
+            await MakePredictionAsync(stream); 
         }
 
         private async Task MakePredictionAsync(Stream stream)
         {
+            var current = Connectivity.NetworkAccess;
+
+            if (current != NetworkAccess.Internet)
+            {
+                DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
+                return;
+            }
+
             var imageBytes = GetImageAsByteData(stream);
             var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
             using (HttpClient client = new HttpClient())

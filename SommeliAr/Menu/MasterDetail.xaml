@@ -13,7 +13,7 @@
 
     </local:MyHomePage>
 
-    <local1:ScanPage Icon="scanicon.png">
+    <local1:ScanPage>
 
     </local1:ScanPage>
 

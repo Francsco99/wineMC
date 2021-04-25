@@ -16,6 +16,9 @@ namespace SommeliAr
 
             {
                 InitializeComponent();
+                
+
+                
                 if (!string.IsNullOrEmpty(Preferences.Get("MyLoginToken", "")))
                 {
                     MainPage = new NavigationPage(new MasterDetail());

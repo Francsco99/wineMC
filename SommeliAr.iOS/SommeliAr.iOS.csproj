@@ -134,16 +134,36 @@
     <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_180_LAST-1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST-1.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-1.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-2.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_20_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_29_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST-1.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_76_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_152_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_167_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_1024_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_20_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_29_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_76_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_152_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_167_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_1024_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
