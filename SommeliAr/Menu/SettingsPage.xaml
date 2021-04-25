@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.SettingsPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid Padding="0,60,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                     

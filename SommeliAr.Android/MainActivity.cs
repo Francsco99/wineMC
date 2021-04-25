@@ -6,21 +6,26 @@ using Android.Runtime;
 using Android.OS;
 using Plugin.CurrentActivity;
 using ImageCircle.Forms.Plugin.Droid;
+using Xamarin.Forms;
 
 namespace SommeliAr.Droid
 {
-    [Activity(Label = "SommeliAr", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "SommeliAr", Icon = "@mipmap/wineicon", Theme = "@style/Theme.Splash", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+
+
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            SetTheme(Resource.Style.MainTheme); // <-- Added
+
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
+
             base.OnCreate(savedInstanceState);
-
-            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);    // da modificare forse
-
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             ImageCircleRenderer.Init();
+            Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
 

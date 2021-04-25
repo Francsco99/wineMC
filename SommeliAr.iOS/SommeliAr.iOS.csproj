@@ -113,27 +113,69 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\logo.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_180x180.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_87x87.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_40x40.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_60x60.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_58x58.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_80x80.png" />
-    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120-1.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_60_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_87_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-1.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-2.png" />
-    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_180_LAST-1.png" />
+    <ImageAsset Include="Resources\Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\logo.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\logoSommeliAr.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_180x180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_87x87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_40x40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_60x60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_58x58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_80x80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Assets.xcassets\myAppIcon.appiconset\logo_no_scritta_120x120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_60_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_87_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_120_LAST-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_180_LAST-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -146,6 +188,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction">
       <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Naxam.BottomTabbedPage">
+      <Version>0.3.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Naxam.TopTabbedPage.Forms">
+      <Version>0.0.3.5</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
