@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Autentication.ChangePwdPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid VerticalOptions="CenterAndExpand">
             <Grid.RowDefinitions>                
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -16,25 +16,27 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Padding="10">
-                <Entry x:Name="new_pwd_entry" Placeholder="New password" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="new_pwd_entry" Placeholder="New password" HorizontalOptions="FillAndExpand" Margin="20,0,20,0"/>
                 <!--PASSWORD ERROR MESSAGE-->
                 <Label x:Name="LabelPwdError"
                            Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
                            TextColor="White"
-                           FontSize="Small"/>
+                           FontSize="Small" Margin="20,0,20,0"/>
             </StackLayout>
 
             <StackLayout Grid.Row="2" Padding="10">
-                <Entry x:Name="repeat_pwd_entry" Placeholder="Repeat new password" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="repeat_pwd_entry" Placeholder="Repeat new password" HorizontalOptions="FillAndExpand" Margin="20,0,20,0"/>
                 <!--PASSWORD NOT MATCHING MESSAGE-->
                 <Label x:Name="LabelConfirmPwdError"
                                Text="Not matching"
                                TextColor="White"
                                FontSize="Small"
+                               Margin="20,0,20,0"
                                />
 
-                <Button x:Name="change_pwd_btn" VerticalOptions="Start"
-                        Text="Change Password" FontSize="Medium" Clicked="change_pwd_btn_Clicked"/>
+                <Button x:Name="change_pwd_btn" VerticalOptions="Start" BackgroundColor="#8b52ff" TextColor="White"
+                        Text="Change Password" FontSize="Medium" Clicked="change_pwd_btn_Clicked" 
+                        Margin="20,40,20,0" CornerRadius="10"/>
             </StackLayout>
 
 

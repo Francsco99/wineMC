@@ -17,6 +17,7 @@ namespace SommeliAr.Autentication
         public ChangePwdPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
 
         }
 

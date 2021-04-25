@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Autentication.ChangeUserNamePage">
     <ContentPage.Content>
-        <Grid>
+        <Grid VerticalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -16,15 +16,16 @@
             </StackLayout>
 
             <StackLayout Grid.Row="1" Padding="10">
-                <Entry x:Name="New_username_entry" Placeholder="New username" HorizontalOptions="FillAndExpand"/>
+                <Entry x:Name="New_username_entry" Placeholder="New username" HorizontalOptions="FillAndExpand" Margin="20,0,20,0"/>
                 <!--USERNAME ERROR MESSAGE-->
                 <Label x:Name="LabelUserError"
                        Text="Between 6-20 digits"
-                       TextColor="White" FontSize="Small"/>
+                       TextColor="White" FontSize="Small" Margin="20,0,20,0"/>
             </StackLayout>
             <StackLayout Grid.Row="2">
                 <Button x:Name="Change_username_btn" VerticalOptions="Start"
-                        Text="Change Username" FontSize="Medium" Clicked="Change_username_btn_Clicked"/>
+                        Text="Change Username" FontSize="Medium" Clicked="Change_username_btn_Clicked"
+                        BackgroundColor="#8b52ff" TextColor="White" CornerRadius="10" Margin="20,40,20,0"/>
             </StackLayout>
 
         </Grid>

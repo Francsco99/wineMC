@@ -16,6 +16,7 @@ namespace SommeliAr.Views
         public Tastes()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         /*
