@@ -21,7 +21,7 @@ namespace SommeliAr.Views.Menu
 
         private void GetProfileInformationAndRefreshToken()
         {
-            AuthFirebase services = new();
+            AuthFirebase services = new AuthFirebase();
             User user;
             try
             {

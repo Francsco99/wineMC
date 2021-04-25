@@ -18,7 +18,7 @@ namespace SommeliAr.Views.Autentication
         {
             var Email = Forgot_email.Text;
 
-            FirebaseAuthProvider authProvider = new(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
             try
             {
                 await authProvider.SendPasswordResetEmailAsync(Email);

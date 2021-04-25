@@ -27,7 +27,7 @@ namespace SommeliAr.Menu
 
         private void GetProfileInformationAndRefreshToken()
         {
-            AuthFirebase services = new();
+            AuthFirebase services = new AuthFirebase();
             User user;
             try
             {
@@ -38,7 +38,7 @@ namespace SommeliAr.Menu
             catch
             {
                 services.RefreshToken();
-                user = services.GetUserInfo()
+                user = services.GetUserInfo();
                 Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-"));
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }

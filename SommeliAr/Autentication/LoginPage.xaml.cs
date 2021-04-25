@@ -21,7 +21,7 @@ namespace SommeliAr.Views
         //procedura per il login
         async void Sign_in_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            FirebaseAuthProvider authProvider = new(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
             try
             {
                 var auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);     
@@ -55,6 +55,21 @@ namespace SommeliAr.Views
         void Forgot_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new RecoverPasswordPage());
+        }
+
+
+        //bottone che nasconde la password
+        void Hide_pwd_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+
+            if (Entry_Password.IsPassword == true)
+            {
+                Entry_Password.IsPassword = false;
+            }
+            else
+            {
+                Entry_Password.IsPassword = true;
+            }
         }
 
         //bottone sign up now
