@@ -40,6 +40,7 @@
     <None Remove="Views\camera_36pt_2x.png" />
     <None Remove="Views\home_24pt_2x.png" />
     <None Remove="Views\settings_24pt_2x.png" />
+    <None Remove="Views\swirlingviolablack.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
@@ -56,5 +57,8 @@
       <DependentUpon>ChangePwdPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Views\swirlingviolablack.json" />
   </ItemGroup>
 </Project>
