@@ -41,7 +41,6 @@
     <None Remove="Views\home_24pt_2x.png" />
     <None Remove="Views\settings_24pt_2x.png" />
     <None Remove="Views\swirlingviolablack.json" />
-    <None Remove="Views\home_white_24pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
@@ -61,8 +60,5 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Views\swirlingviolablack.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Views\home_white_24pt_2x.png" />
   </ItemGroup>
 </Project>

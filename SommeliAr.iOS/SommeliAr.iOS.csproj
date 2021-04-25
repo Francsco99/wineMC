@@ -71,48 +71,6 @@
     <Compile Include="MyPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Resources\Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -176,6 +134,16 @@
     <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_180_LAST-1.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_80_LAST-1.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-1.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_40_LAST-2.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_20_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_29_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_58_LAST-1.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_76_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_152_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_167_LAST.png" />
+    <ImageAsset Include="Assets.xcassets\MyAppIcon.appiconset\logo_no_scritta_1024_LAST.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -235,11 +203,9 @@
     <BundleResource Include="Resources\settings_24pt_2x.png" />
     <BundleResource Include="Resources\home_24pt_2x.png" />
     <BundleResource Include="Resources\camera_36pt_2x.png" />
-    <BundleResource Include="Resources\Splash_screen.png" />
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\swirlingviolablack.json" />
     <BundleResource Include="swirlingviolablack.json" />
-    <BundleResource Include="Resources\home_white_24pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
