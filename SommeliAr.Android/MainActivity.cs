@@ -24,6 +24,7 @@ namespace SommeliAr.Droid
 
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            ImageCircleRenderer.Init();
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
         }

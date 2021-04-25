@@ -15103,31 +15103,34 @@ namespace SommeliAr.Droid
 			public const int password = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
-			public const int settings_24pt_2x = 2131165359;
+			public const int scanicon = 2131165359;
 			
 			// aapt resource value: 0x7F0700B0
-			public const int splash_screen = 2131165360;
+			public const int settings_24pt_2x = 2131165360;
 			
 			// aapt resource value: 0x7F0700B1
-			public const int star_border = 2131165361;
+			public const int splash_screen = 2131165361;
 			
 			// aapt resource value: 0x7F0700B2
-			public const int stella_piena = 2131165362;
+			public const int star_border = 2131165362;
 			
 			// aapt resource value: 0x7F0700B3
-			public const int test_custom_background = 2131165363;
+			public const int stella_piena = 2131165363;
 			
 			// aapt resource value: 0x7F0700B4
-			public const int tooltip_frame_dark = 2131165364;
+			public const int test_custom_background = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int tooltip_frame_light = 2131165365;
+			public const int tooltip_frame_dark = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int user = 2131165366;
+			public const int tooltip_frame_light = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int wineicon = 2131165367;
+			public const int user = 2131165367;
+			
+			// aapt resource value: 0x7F0700B8
+			public const int wineicon = 2131165368;
 			
 			static Drawable()
 			{

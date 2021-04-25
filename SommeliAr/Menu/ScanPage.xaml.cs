@@ -39,7 +39,6 @@ namespace SommeliAr.Views.Menu
 
             if (file == null)
             {
-                await DisplayAlert("Error", "There was an error with the image", "Ok");
                 return;
             }
 

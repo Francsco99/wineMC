@@ -28,6 +28,7 @@ namespace SommeliAr.Views
 
             bool emailOk;
             bool passwordOk;
+            bool passwordConfirmOk;
             bool usernameOk;
             bool ageOk;
 
@@ -69,13 +70,13 @@ namespace SommeliAr.Views
                 if (!user.IsPasswordMatching(Entry_Password.Text, Entry_ConfirmPassword.Text))
                 {
                     ErrorPwdLabelText.Opacity = 0.7;
-                    passwordOk = false;
+                    passwordConfirmOk = false;
                     Pwd_conf_err_lbl.TextColor = Color.Red;
                 }
                 else
                 {
                     ErrorPwdLabelText.Opacity = 0;
-                    passwordOk = true;
+                    passwordConfirmOk = true;
                     Pwd_conf_err_lbl.TextColor = Color.White;
                 }
             }
@@ -163,7 +164,7 @@ namespace SommeliAr.Views
             AgeValidation();
 
             //se tutti i campi sono rispettati la procedura ha successo
-            if (emailOk && passwordOk && usernameOk && ageOk)
+            if (emailOk && passwordOk && passwordConfirmOk && usernameOk && ageOk)
             {
                 //test di aggiunta utente al db firebase
                 /*

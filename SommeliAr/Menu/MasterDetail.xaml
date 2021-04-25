@@ -6,13 +6,14 @@
     xmlns:local="clr-namespace:SommeliAr.Menu"
     xmlns:local1="clr-namespace:SommeliAr.Views.Menu"
     android:TabbedPage.ToolbarPlacement="Bottom"
+    
     x:Class="SommeliAr.Views.Menu.MasterDetail">
 
     <local:MyHomePage>
 
     </local:MyHomePage>
 
-    <local1:ScanPage>
+    <local1:ScanPage Icon="scanicon.png">
 
     </local1:ScanPage>
 
