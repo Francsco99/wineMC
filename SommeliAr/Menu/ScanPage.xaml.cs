@@ -59,7 +59,7 @@ namespace SommeliAr.Views.Menu
         private async Task MakePredictionAsync(Stream stream)
         {
             var imageBytes = GetImageAsByteData(stream);
-            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration4/image";
+            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Prediction-Key", "0b8a0ea4568b49a68d802140f9c494d1");
