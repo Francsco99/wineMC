@@ -10,16 +10,7 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <ListView x:Name="resultsListView"
-                      Grid.Row="2">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextCell  Text="{Binding TagName}"
-                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
-                                  />
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+          
 
             <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
                                   Animation="star-rating.json"

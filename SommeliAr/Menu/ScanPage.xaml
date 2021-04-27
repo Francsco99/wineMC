@@ -23,36 +23,13 @@
                        FontAttributes="Bold"
                        />
             </StackLayout>
-            
-            <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <Image x:Name="resultImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="3" Margin="0,60,0,0">
+                <Image x:Name="resultImage" Scale="1" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
 
-           <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <ListView x:Name="resultsListView"
-                          SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell  Text="{Binding TagName}"
-                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
-                                  />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
 
-            <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" >
-                <Button x:Name="Clear_btn" Text="Clear result"
-                        TextColor="#8b52ff" FontAttributes="Bold"
-                        FontSize="Large"        
-                        BackgroundColor="White"
-                        BorderWidth="1"
-                        CornerRadius="15"
-                        WidthRequest="120"
-                        Clicked="Clear_btn_Clicked"/>                 
-            </StackLayout>
-
-            <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" >
+            <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,60,0,0">
                 <Button x:Name="Scan_btn" Text="Scan!"
                         TextColor="White" FontAttributes="Bold"
                         FontSize="Large"        
@@ -60,21 +37,34 @@
                         BorderWidth="1"
                         CornerRadius="15"
                         WidthRequest="100"
-                        Clicked="Scan_btn_Clicked"/>                 
+                        Clicked="Scan_btn_Clicked"/>
+
             </StackLayout>
 
-            <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" >
-                <Button x:Name="After_sca_btn" Text="Result list" 
+            <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,-20,0,0">
+                <Button x:Name="After_sca_btn" Text="Result list"
+                        BorderColor="#8b52ff"
                         TextColor="#8b52ff"
-                        FontSize="Large"
+                        FontSize="Medium"
                         FontAttributes="Bold"
                         BackgroundColor="White" 
                         CornerRadius="15"
                         WidthRequest="120"
-                        BorderWidth="1"
+                        BorderWidth="3"
                         Clicked="After_sca_btn_Clicked"/>
             </StackLayout>
-            
+
+            <ListView x:Name="resultsListView" Grid.Row="1"
+                      VerticalOptions="CenterAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell  Text="{Binding TagName}"
+                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
+                                  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

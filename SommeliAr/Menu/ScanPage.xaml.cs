@@ -2,7 +2,9 @@
 using Plugin.Media;
 using SommeliAr.Menu;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -71,9 +73,10 @@ namespace SommeliAr.Views.Menu
 
             var imageBytes = GetImageAsByteData(stream);
             var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
+            var predictionKey = "0b8a0ea4568b49a68d802140f9c494d1";
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Prediction-Key", "0b8a0ea4568b49a68d802140f9c494d1");
+                client.DefaultRequestHeaders.Add("Prediction-Key", predictionKey);
 
                 using (var content = new ByteArrayContent(imageBytes))
                 {
@@ -82,8 +85,11 @@ namespace SommeliAr.Views.Menu
                     var responseString = await response.Content.ReadAsStringAsync();
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
-                    resultsListView.ItemsSource = predictions.Predictions;
 
+                    var setProbability = 0.4;  
+                    
+                    var result= predictions.Predictions.Where(p => p.Probability >= setProbability); /* visualizza solo predizioni con sicurezza superiore a setProbability */
+                    resultsListView.ItemsSource = result;
                 }
             }
         }

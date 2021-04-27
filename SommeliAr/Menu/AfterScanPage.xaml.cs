@@ -1,7 +1,10 @@
-﻿using System;
+﻿using SommeliAr.Menu;
+using System;
 using System.Collections.Generic;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SommeliAr.Menu
 {
@@ -10,7 +13,8 @@ namespace SommeliAr.Menu
         public AfterScanPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, true);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            
         }
 
         private void Favourite_Clicked(object sender, EventArgs e)
