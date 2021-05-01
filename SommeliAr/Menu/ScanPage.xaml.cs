@@ -1,5 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.Models;
+using Newtonsoft.Json;
 using Plugin.Media;
+using SkiaSharp;
+using SkiaSharp.Views.Forms;
 using SommeliAr.Menu;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,17 @@ namespace SommeliAr.Views.Menu
 {
     public partial class ScanPage : ContentPage
     {
+        const float radius = 2.0f;
+        const float xDrop = 2.0f;
+        const float yDrop = 2.0f;
+
+        IEnumerable<PredictionModel> predictionsResult;
+
+        Stream streamDraw;
+
+        Boolean isBusy;
+
+
         public ScanPage()
         {
             InitializeComponent();
@@ -26,20 +40,18 @@ namespace SommeliAr.Views.Menu
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-
-
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
-               await DisplayAlert("No Camera", ":( No camera available.", "OK");
+                await DisplayAlert("No Camera", ":( No camera available.", "OK");
                 return;
             }
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                CompressionQuality= 70,
-                
+                CompressionQuality = 70,
+
             });
 
             if (file == null)
@@ -47,18 +59,22 @@ namespace SommeliAr.Views.Menu
                 return;
             }
 
-            //await DisplayAlert("File Location", file.Path, "OK");
-
             var stream = file.GetStream();
 
+            IsBusy = true;                                         // faccio capire all'animazione che è tempo di andare in scena
+
+            await MakePredictionAsync(stream);                     //                 esegui le predictions                    
+
+            IsBusy = false;
+
             resultImage.Source = ImageSource.FromStream(() =>
-            {
-                var photostream = file.GetStream();
-                return photostream;
-            });
-
-
-            await MakePredictionAsync(stream); 
+           {
+               var photostream = file.GetStream();                // visualizza la foto solo dopo aver ricevuto le predictions 
+               streamDraw = photostream; //PROVAA 
+            
+               return photostream;
+           });
+            ImageCanvas.InvalidateSurface();
         }
 
         private async Task MakePredictionAsync(Stream stream)
@@ -86,10 +102,13 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.4;  
+                    var setProbability = 0.4;                   // probabilità minima impostata
+
+                    var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
                     
-                    var result= predictions.Predictions.Where(p => p.Probability >= setProbability); /* visualizza solo predizioni con sicurezza superiore a setProbability */
                     resultsListView.ItemsSource = result;
+
+                    predictionsResult = result;
                 }
             }
         }
@@ -105,20 +124,189 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new AfterScanPage());
         }
 
-        void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
+        public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
-         
+            var info = args.Info;
+            var canvas = args.Surface.Canvas;
+
+            ClearCanvas(info, canvas);
+
+
+            if (streamDraw != null)
+            {
+                var skImage = SKBitmap.Decode(streamDraw);                     // converto l'immagine in un formato adatto a SKIASharp 
+
+                if (skImage != null)
+                {
+                    var scale = Math.Min((float)info.Width / (float)skImage.Width, (float)info.Height / (float)skImage.Height);
+
+                    var scaleHeight = (scale * skImage.Height);
+                    var scaleWidth = (scale * skImage.Width);
+
+                    var top = (info.Height - scaleHeight) / 2;
+                    var left = (info.Width - scaleWidth) / 2;
+
+                    canvas.DrawBitmap(skImage, new SKRect(left, top, left + scaleWidth, top + scaleHeight));
+                    DrawBorder(canvas, left, top, scaleWidth, scaleHeight);
+                    DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
+                }
+            }
+                
+
+               
+            streamDraw = new MemoryStream();
+                
         }
 
+            static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
+            {
+                if (SKPrediction == null) return;
+
+                if (!SKPrediction.Any())
+                {
+                    LabelPrediction(canvas, "Nothing detected", new BoundingBox(0, 0, 1, 1), left, top, scaleWidth, scaleHeight, false);
+                }
+                else if (SKPrediction.All(p => p.BoundingBox != null))
+                {
+                    foreach (var prediction in SKPrediction)
+                    {
+                        LabelPrediction(canvas, prediction.TagName, prediction.BoundingBox, left, top, scaleWidth, scaleHeight);
+                    }
+                }
+                else
+                {
+                    var best = SKPrediction.OrderByDescending(p => p.Probability).First();
+                    LabelPrediction(canvas, best.TagName, new BoundingBox(0, 0, 1, 1), left, top, scaleWidth, scaleHeight, false);
+                }
+            }
+
+            static void ClearCanvas(SKImageInfo info, SKCanvas canvas)
+            {
+                var paint = new SKPaint
+                {
+                    Style = SKPaintStyle.Fill,
+                    Color = SKColors.White
+                };
+
+                canvas.DrawRect(info.Rect, paint);
+            }
+
+            static void LabelPrediction(SKCanvas canvas, string tag, BoundingBox box, float left, float top, float width, float height, bool addBox = true)
+            {
+                var scaledBoxLeft = left + (width * (float)box.Left);
+                var scaledBoxWidth = width * (float)box.Width;
+                var scaledBoxTop = top + (height * (float)box.Top);
+                var scaledBoxHeight = height * (float)box.Height;
+
+                if (addBox)
+                    DrawBox(canvas, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
+
+                DrawText(canvas, tag, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
+            }
+
+            static void DrawText(SKCanvas canvas, string tag, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                var textPaint = new SKPaint
+                {
+                    IsAntialias = true,
+                    Color = SKColors.White,
+                    Style = SKPaintStyle.Fill,
+                    Typeface = SKTypeface.FromFamilyName("Arial")
+                };
+
+                var text = tag; // DA CAPIRE 
+
+                var textWidth = textPaint.MeasureText(text);
+                textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
+
+                var textBounds = new SKRect();
+                textPaint.MeasureText(text, ref textBounds);
+
+                var xText = (startLeft + (scaledBoxWidth / 2)) - textBounds.MidX;
+                var yText = (startTop + (scaledBoxHeight / 2)) + textBounds.MidY;
+
+                var paint = new SKPaint
+                {
+                    Style = SKPaintStyle.Fill,
+                    Color = new SKColor(139, 82, 255, 120)  //viola caratteristico dell'app
+                };
+
+                var backgroundRect = textBounds;
+                backgroundRect.Offset(xText, yText);
+                backgroundRect.Inflate(10, 10);
+
+                canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
+
+                canvas.DrawText(text,
+                                xText,
+                                yText,
+                                textPaint);
+            }
+
+            static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                var strokePaint = new SKPaint
+                {
+                    IsAntialias = true,
+                    Style = SKPaintStyle.Stroke,
+                    Color = SKColors.White,
+                    StrokeWidth = 5,
+                    PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f)
+                };
+                DrawBox(canvas, strokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+
+                var blurStrokePaint = new SKPaint
+                {
+                    Style = SKPaintStyle.Stroke,
+                    StrokeWidth = 5,
+                    PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f),
+                    IsAntialias = true,
+                    MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 0.57735f * radius + 0.5f)
+                };
+                DrawBox(canvas, blurStrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+            }
+
+            static void DrawBorder(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                var strokePaint = new SKPaint
+                {
+                    IsAntialias = true,
+                    Style = SKPaintStyle.Stroke,
+                    Color = new SKColor(139, 82, 255, 120),
+                    StrokeWidth = 1
+                };
+
+                DrawBox(canvas, strokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+            }
+
+            static void DrawBox(SKCanvas canvas, SKPaint paint, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                var path = CreateBoxPath(startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+                canvas.DrawPath(path, paint);
+            }
+
+            static SKPath CreateBoxPath(float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                var path = new SKPath();
+                path.MoveTo(startLeft, startTop);
+
+                path.LineTo(startLeft + scaledBoxWidth, startTop);
+                path.LineTo(startLeft + scaledBoxWidth, startTop + scaledBoxHeight);
+                path.LineTo(startLeft, startTop + scaledBoxHeight);
+                path.LineTo(startLeft, startTop);
+
+                return path;
+            }
+
+            void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
+            {
+
+            }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
-
-    /* CON XAMARIN ESSENTIALS var result = await MediaPicker.CapturePhotoAsync();
-
-    if (result != null)
-    {
-        var stream = await result.OpenReadAsync();
-
-        resultImage.Source = ImageSource.FromStream(() => stream);
-    } */
 
 }
