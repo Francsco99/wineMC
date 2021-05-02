@@ -2,11 +2,11 @@
 <ContentPage Icon="wineicon.png"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="SommeliAr.Views.Menu.ScanPage">
 
-
-    <Grid>
+    <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
         <Grid.RowDefinitions>
         
             <RowDefinition Height="660"/>
@@ -19,6 +19,16 @@
 
         <skia:SKCanvasView x:Name="ImageCanvas"  PaintSurface="OnCanvasViewPaintSurface"
                            Grid.Row="0" Margin="0,40,0,0"/>
+
+        <lottie:AnimationView x:Name="Loading" Grid.Row="0"
+                                  HorizontalOptions="Center"
+                                  Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
+                                  RepeatMode="Infinite"
+                                  WidthRequest="600"
+                                  HeightRequest="600"
+                                  Scale="1.4"
+                                  Speed="1.5"
+                                  IsVisible = "false"/>
 
         <StackLayout  Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,-630,0,0">
                 <Label Text="Let's scan bottles!"
@@ -44,7 +54,7 @@
             </StackLayout>
 
             <StackLayout VerticalOptions="Start" HorizontalOptions="EndAndExpand" Grid.Row="2" Margin="0,-60,0,0">
-                <Button x:Name="After_sca_btn" Text="Result list"
+                <Button x:Name="Afterscan" Text="Result list"
                         BorderColor="#8b52ff"
                         TextColor="#8b52ff"
                         FontSize="Medium"
@@ -54,6 +64,7 @@
                         CornerRadius="15"
                         WidthRequest="120"
                         BorderWidth="3"
+                        IsVisible="false"
                         Clicked="After_sca_btn_Clicked"/>
             </StackLayout>
 

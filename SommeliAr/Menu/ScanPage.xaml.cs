@@ -27,13 +27,12 @@ namespace SommeliAr.Views.Menu
 
         Stream streamDraw;
 
-        Boolean isBusy;
-
+        SKBitmap skImage;
 
         public ScanPage()
         {
             InitializeComponent();
-            /* come se nasconde ? afterScan.Visibility = ViewStates.Gone; */
+            
             resultsListView.BackgroundColor = Color.Transparent;
             resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
         }
@@ -51,7 +50,6 @@ namespace SommeliAr.Views.Menu
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 CompressionQuality = 70,
-
             });
 
             if (file == null)
@@ -61,20 +59,19 @@ namespace SommeliAr.Views.Menu
 
             var stream = file.GetStream();
 
-            IsBusy = true;                                         // faccio capire all'animazione che è tempo di andare in scena
+            streamDraw = file.GetStream();
 
-            await MakePredictionAsync(stream);                     //                 esegui le predictions                    
+            Loading.IsVisible = true;                                        // faccio capire all'animazione che è tempo di andare in scena
 
-            IsBusy = false;
+            await MakePredictionAsync(stream);                               // esegui le predictions                    
 
-            resultImage.Source = ImageSource.FromStream(() =>
-           {
-               var photostream = file.GetStream();                // visualizza la foto solo dopo aver ricevuto le predictions 
-               streamDraw = photostream; //PROVAA 
-            
-               return photostream;
-           });
+            Loading.IsVisible = false;
+
+            skImage = SKBitmap.Decode(streamDraw);
+
             ImageCanvas.InvalidateSurface();
+
+            Afterscan.IsVisible = true;
         }
 
         private async Task MakePredictionAsync(Stream stream)
@@ -86,7 +83,6 @@ namespace SommeliAr.Views.Menu
                 DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
                 return;
             }
-
             var imageBytes = GetImageAsByteData(stream);
             var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
             var predictionKey = "0b8a0ea4568b49a68d802140f9c494d1";
@@ -102,12 +98,10 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.4;                   // probabilità minima impostata
-
+                    var setProbability = 0.6;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
                     
                     resultsListView.ItemsSource = result;
-
                     predictionsResult = result;
                 }
             }
@@ -134,8 +128,6 @@ namespace SommeliAr.Views.Menu
 
             if (streamDraw != null)
             {
-                var skImage = SKBitmap.Decode(streamDraw);                     // converto l'immagine in un formato adatto a SKIASharp 
-
                 if (skImage != null)
                 {
                     var scale = Math.Min((float)info.Width / (float)skImage.Width, (float)info.Height / (float)skImage.Height);
@@ -151,11 +143,7 @@ namespace SommeliAr.Views.Menu
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
                 }
             }
-                
-
-               
-            streamDraw = new MemoryStream();
-                
+            
         }
 
             static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
@@ -249,7 +237,7 @@ namespace SommeliAr.Views.Menu
                 {
                     IsAntialias = true,
                     Style = SKPaintStyle.Stroke,
-                    Color = SKColors.White,
+                    Color = new SKColor(139, 82, 255, 120),
                     StrokeWidth = 5,
                     PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f)
                 };

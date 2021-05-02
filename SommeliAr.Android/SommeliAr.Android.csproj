@@ -87,6 +87,8 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\swirlingwineviola.json" />
     <AndroidAsset Include="Assets\star-rating.json" />
+    <AndroidAsset Include="Assets\loading.json" />
+    <AndroidAsset Include="Assets\loadingblack.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
