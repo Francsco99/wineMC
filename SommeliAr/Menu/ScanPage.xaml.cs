@@ -4,6 +4,7 @@ using Plugin.Media;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SommeliAr.Menu;
+using SommeliAr.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,6 +113,7 @@ namespace SommeliAr.Views.Menu
                     {
                         tagnames.Add(p.TagName);
                     }
+                    await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
                 }
             }
         }
