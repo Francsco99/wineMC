@@ -31,15 +31,13 @@ namespace SommeliAr.Menu
             User user;
             try
             {
-                user = services.GetUserInfo();
-                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-"));
+                user = services.GetUserFromDB();
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }
             catch
             {
                 services.RefreshToken();
-                user = services.GetUserInfo();
-                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-"));
+                user = services.GetUserFromDB();
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }
         }

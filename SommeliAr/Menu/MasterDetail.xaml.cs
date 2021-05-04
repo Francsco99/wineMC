@@ -23,14 +23,14 @@ namespace SommeliAr.Views.Menu
             User user;
             try
             {
-                user = services.GetUserInfo();
-                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-"));
+                user = services.GetUserFromDB();
+                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-at-"));
             }
             catch
             {
                 services.RefreshToken();
-                user = services.GetUserInfo();
-                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-"));
+                user = services.GetUserFromDB();
+                Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-at-"));
             }
         }
 

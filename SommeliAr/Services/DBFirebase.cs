@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -12,93 +15,92 @@ namespace SommeliAr.Services
     public class DBFirebase
     {
         FirebaseClient client;
+        static AuthFirebase authServices = new AuthFirebase();
 
-        public DBFirebase()
+        private static DBFirebase instance;
+
+        private DBFirebase()
         {
             client = new FirebaseClient("https://sommelier-ar-default-rtdb.europe-west1.firebasedatabase.app/");
         }
 
-        public ObservableCollection<MyWineModel> GetMyWines()
+
+        public static DBFirebase Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DBFirebase();
+                }
+                return instance;
+            }
+        }
+
+        //aggiunge un user al db realtime
+        public async Task AddMyUser(string email, DateTime birthdate, string firebaseMail )
+        {
+            MyUser u = new MyUser() { Email = email, Birthdate = birthdate };
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .PutAsync(u);
+        }
+
+        //aggiunge un vino al db realtime
+        public async Task AddMyWine(string name, string detail, string image, string description)
+        {
+            MyWineModel w = new MyWineModel() { Name = name, Detail = detail, Image = image, Description = description };
+            await client
+                .Child("MyWines")
+                .Child(name)
+                .PutAsync(w);
+        }
+
+        public async Task AddFavWine(string wineName, string firebaseMail)
+        {
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("favourites")
+                .Child(wineName)
+                .PutAsync(true);
+        }
+
+        //restituisce la lista dei vini
+        public ObservableCollection<MyWineModel> GetAllWines()
         {
             var myWinesData = client
                 .Child("MyWines")
                 .AsObservable<MyWineModel>()
                 .AsObservableCollection();
-
             return myWinesData;
         }
-
-        public ObservableCollection<MyUser> GetMyUsers()
+        
+        public async Task<List<MyWineModel>> GetMyFavouriteWines(string firebaseMail)
         {
-            var myUsersData = client
-                .Child("MyUsers")
-                .AsObservable<MyUser>()
-                .AsObservableCollection();
-
-            return myUsersData;
-        }
-
-        public async Task<Favourites> GetMyFavouriteWines()
-        {
-            var userMail = Preferences.Get("UserEmailFirebase", "");
-
-            var favouriteWines = await client
+            var favouriteWines = new List<MyWineModel>();
+            var wineNames = await client
                 .Child("Users")
-                .Child(userMail)
+                .Child(firebaseMail)
                 .Child("favourites")
-                .OrderByKey()
-                .OnceAsync<Favourites>();
+                .OnceAsync<bool>();
 
-            foreach (var element in favouriteWines)
+            foreach (var v in wineNames)
             {
-                Console.WriteLine(element.Object.ToString());
+                var wines = await client
+                    .Child("MyWines")
+                    .OrderByKey()
+                    .StartAt(v.Key)
+                    .LimitToFirst(1)
+                    .OnceAsync<MyWineModel>();
 
-                return element.Object;
+                foreach(var w in wines)
+                {
+                    favouriteWines.Add(w.Object);
+                }
             }
-            return null;
-        }
-
-        public async Task AddMyWine(string name, string detail, string image, string description)
-        {
-            MyWineModel w = new MyWineModel() { Name = name, Detail = detail, Image = image, Description=description };
-            await client
-                .Child("MyWines")
-                .PostAsync(w);
-        }
-
-        public async Task AddMyUser(string email)
-        {
-            MyUser u = new MyUser() {Email = email };
-            var userMail = Preferences.Get("UserEmailFirebase", "");
-
-            await client
-                .Child("Users")
-                .Child(userMail)
-                .PutAsync(u);
-        }
-
-        public async Task AddFavouriteWine(string name)
-        {
-            var userMail = Preferences.Get("UserEmailFirebase","");
-            var favouritesDB = await this.GetMyFavouriteWines();
-            var favourites = new Favourites();
-            if (favouritesDB!=null)
-            {
-                favourites = favouritesDB;   
-            }
-
-            favourites.addToFavourites(name);
-
-            if (!userMail.Equals(""))
-            {
-                await client
-                    .Child("Users")
-                    .Child(userMail)
-                    .PutAsync(favourites);
-            }
-
-            Console.WriteLine(userMail);
-
+            return favouriteWines;
         }
     }
 }

@@ -6,19 +6,21 @@ using Xamarin.Essentials;
 namespace SommeliAr.Services
 {
     public class AuthFirebase
+
     {
-        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
+
+        private const string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
         async public void RefreshToken()
         {
-            var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
             try
             {
                 //This is the saved firebaseauthentication that was saved during the time of login
                 var savedfirebaseauth = JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", ""));
                 //Here we are Refreshing the token
                 var RefreshedContent = await authProvider.RefreshAuthAsync(savedfirebaseauth);
-                Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));           
+                RefreshLoginToken(RefreshedContent);           
 
             }
             catch (Exception ex)
@@ -28,10 +30,19 @@ namespace SommeliAr.Services
             }
         }
 
-        public User GetUserInfo()
+        public void SetLoginToken(string content)
         {
-            return JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", "")).User;
-            
+            Preferences.Set("MyLoginToken", content);
+        }
+
+        public void RefreshLoginToken(FirebaseAuth auth)
+        {
+            Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(auth));
+        }
+
+        public User GetUserFromDB()
+        {
+            return JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", "")).User;      
         }
     }
 }

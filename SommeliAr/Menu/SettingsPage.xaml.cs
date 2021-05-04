@@ -25,7 +25,7 @@ namespace SommeliAr.Views.Menu
             User user;
             try
             {
-                user = services.GetUserInfo();
+                user = services.GetUserFromDB();
                 user_email_txt_cell.Text = "Email:  " + user.Email;
                 user_displayName_txt_cell.Text = "Username:  " + user.DisplayName;
                 if (user.IsEmailVerified)

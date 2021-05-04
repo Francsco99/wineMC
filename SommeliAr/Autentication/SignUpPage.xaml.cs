@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using Firebase.Auth;
 using SommeliAr.Models;
 using SommeliAr.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -18,7 +19,7 @@ namespace SommeliAr.Views
 
             NavigationPage.SetHasNavigationBar(this, false);
 
-            BindingContext = new AllUsersViewModel();
+            BindingContext = new MyUserViewModel();
         }
 
         bool MailValidation(string email)
@@ -168,17 +169,20 @@ namespace SommeliAr.Views
         {
             MyUser user = new MyUser();
             string username = Entry_Username.Text;
-            string email = Entry_Email.Text;
+            string emailLowerCase = Entry_Email.Text.ToLower();
             string pwd = Entry_Password.Text;
 
+            /*
             bool isEmailOk = MailValidation(email);
             bool isPassConfOk = PasswordConfirmationValidation(user);
             bool isUsernameOk = UsernameValidation(username);
             bool isPassOk = PasswordValidation(pwd);
             bool isAgeOk = AgeValidation();
-
-            //se tutti i campi sono rispettati la procedura ha successo
-            if (isEmailOk && isPassConfOk && isUsernameOk && isPassOk && isAgeOk)
+            bool test = true;
+            */
+            bool test = true;
+            //se tutti i campi sono rispettati la procedura ha successos
+            if (/*isEmailOk && isPassConfOk && isUsernameOk && isPassOk && isAgeOk*/test)
             {
                 try
                 {
@@ -188,11 +192,12 @@ namespace SommeliAr.Views
                     //invia email di verifica
                     await authProvider.SendEmailVerificationAsync(auth);
                     await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
+                    Preferences.Set("UserEmailFirebase", emailLowerCase.Replace(".", "-").Replace("@", "-at-"));
                     //alert
                     await App.Current.MainPage.DisplayAlert("Success!", "Don't forget to verify your Email!", "OK");
 
                     //aggiunto utente nel database
-                    var viewModel = (AllUsersViewModel)BindingContext;
+                    var viewModel = (MyUserViewModel)BindingContext;
                     if (viewModel.AddUserCommand.CanExecute(null))
                     {
                         viewModel.AddUserCommand.Execute(null);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SommeliAr.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
@@ -30,7 +31,7 @@ namespace SommeliAr.Views
 
         void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            new Command(async () => await new DBFirebase().AddFavouriteWine(itemName)).Execute(null);
+            new Command(async () => await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
         }
     }
 }

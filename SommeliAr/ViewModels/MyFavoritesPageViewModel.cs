@@ -1,20 +1,24 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using SommeliAr.Models;
+using SommeliAr.Services;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace SommeliAr.ViewModels
 {
     public class MyFavoritesPageViewModel
     {
-
         public ObservableCollection<MyWineModel> WineList { get; set; }
+
 
         public MyFavoritesPageViewModel()
         {
-
             WineList = new ObservableCollection<MyWineModel>();
-            WineList.Add(new MyWineModel { Name = "San Crispino", Image = "https://content.dambros.it/uploads/2018/01/18180734/0000091987.jpg", Detail = "Il nostro vino! Cit.", Description = "(Quasi certamente) Uva" });
-            WineList.Add(new MyWineModel { Name = "Tavernello", Image = "https://www.cicalia.com/it/img/imgproducts/17582/l_17582.jpg", Detail = "È un succo de sulfiti! Cit.", Description = "(Forse) Uva" });
+  
         }
+
+       
     }
 }

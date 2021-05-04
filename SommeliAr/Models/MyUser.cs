@@ -23,29 +23,20 @@ namespace SommeliAr.Models
 
         }
 
-        public MyUser(string Email)
+        public MyUser(string Email, DateTime Birthdate)
         {
             this.Email = Email;
-        }
-
-        public bool CheckInformation()
-        {
-            return (!this.Username.Equals("") && !this.Password.Equals(""));
-
+            this.Birthdate = Birthdate;
         }
 
         public bool IsPasswordMatching(string p1, string p2)
         {
-
             if (p1 != null && p2 != null)
                 return p1.Equals(p2);
 
             else
                 return false;
-
         }
-
-
     }
 
 }
