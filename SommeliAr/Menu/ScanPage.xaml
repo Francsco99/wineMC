@@ -9,14 +9,14 @@
     <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="2*"/> <!--Scritta let's scan...-->
+            <RowDefinition Height="1.4*"/> <!--Scritta let's scan...-->
             <RowDefinition Height="10*"/><!--Canvas e animazione lottie-->
-            <RowDefinition Height="2.7*"/><!--bottone scan e bottone result-->
+            <RowDefinition Height="1.5*"/><!--bottone scan e bottone result-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1.2*"/>
         </Grid.ColumnDefinitions>
 
         <!--SCRITTA LET'S SCAN BOTTLES-->
@@ -57,7 +57,7 @@
 
         </StackLayout>
 
-        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="2" Margin="0,0,0,0">
+        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="2" Margin="-20,0,0,0">
             <Button x:Name="Afterscan" Text="Result list"
                         BorderColor="#8b52ff"
                         TextColor="#8b52ff"
