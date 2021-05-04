@@ -12,8 +12,6 @@ namespace SommeliAr
     {
         public App()
         {
-            
-
             {
                 InitializeComponent();
                 

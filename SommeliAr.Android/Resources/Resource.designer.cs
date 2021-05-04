@@ -14992,7 +14992,7 @@ namespace SommeliAr.Droid
 			public const int hide = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int home_24pt_2x = 2131165322;
+			public const int home_black_24pt_2x = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
 			public const int ic_mtrl_checked_circle = 2131165323;

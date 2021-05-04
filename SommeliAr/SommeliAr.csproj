@@ -38,14 +38,12 @@
     <None Remove="Views\camera_purple.png" />
     <None Remove="Views\star_border.png" />
     <None Remove="Views\camera_36pt_2x.png" />
-    <None Remove="Views\home_24pt_2x.png" />
     <None Remove="Views\settings_24pt_2x.png" />
     <None Remove="Views\swirlingviolablack.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
     <AndroidResource Include="Views\camera_36pt_2x.png" />
-    <AndroidResource Include="Views\home_24pt_2x.png" />
     <AndroidResource Include="Views\settings_24pt_2x.png" />
   </ItemGroup>
   <ItemGroup>
