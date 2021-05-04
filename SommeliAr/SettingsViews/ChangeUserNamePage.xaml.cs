@@ -17,7 +17,7 @@ namespace SommeliAr.Autentication
         public ChangeUserNamePage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
 
        async void Change_username_btn_Clicked(System.Object sender, System.EventArgs e)

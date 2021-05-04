@@ -10,7 +10,7 @@ namespace SommeliAr.SettingsViews
         public TutorialPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
