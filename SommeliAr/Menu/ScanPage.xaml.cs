@@ -211,7 +211,7 @@ namespace SommeliAr.Views.Menu
                     Typeface = SKTypeface.FromFamilyName("Arial")
                 };
 
-                var text = tag; // DA CAPIRE 
+                var text = tag;
 
                 var textWidth = textPaint.MeasureText(text);
                 textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
@@ -240,6 +240,11 @@ namespace SommeliAr.Views.Menu
                                 textPaint);
             }
 
+            static void DrawCircle(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+            {
+                
+            }
+
             static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
             {
                 var strokePaint = new SKPaint
@@ -255,11 +260,12 @@ namespace SommeliAr.Views.Menu
                 var blurStrokePaint = new SKPaint
                 {
                     Style = SKPaintStyle.Stroke,
-                    StrokeWidth = 5,
+                    Color = SKColors.White,
+                    StrokeWidth = 3,
                     PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f),
                     IsAntialias = true,
                     MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 0.57735f * radius + 0.5f)
-                };
+               };
                 DrawBox(canvas, blurStrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
             }
 
