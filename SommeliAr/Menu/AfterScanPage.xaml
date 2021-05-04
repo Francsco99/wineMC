@@ -10,8 +10,6 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-          
-
             <lottie:AnimationView x:Name="StarView" HorizontalOptions="CenterAndExpand"
                                   Animation="star-rating.json"
                                   AutoPlay="False"

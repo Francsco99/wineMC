@@ -14,6 +14,10 @@ namespace SommeliAr.SettingsViews
             //NavigationPage.SetHasNavigationBar(this, false);
         }
 
+
+
+
+        /*
         List<string> wineNames = new List<string>();
         
 
@@ -23,6 +27,6 @@ namespace SommeliAr.SettingsViews
             wineNames.Add("Barolo");
 
             await DBFirebase.Instance.AddHistoryWines(wineNames, Preferences.Get("UserEmailFirebase", ""));
-        }
+        }*/
     }
 }

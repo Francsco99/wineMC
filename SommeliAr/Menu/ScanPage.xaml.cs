@@ -74,7 +74,7 @@ namespace SommeliAr.Views.Menu
 
             ImageCanvas.InvalidateSurface();
 
-            Afterscan.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
+            After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
         }
 
         private async Task MakePredictionAsync(Stream stream)
