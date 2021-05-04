@@ -222,23 +222,20 @@
     <BundleResource Include="Resources\star_border.png" />
     <BundleResource Include="Resources\stella_piena.png" />
     <BundleResource Include="Resources\user.png" />
-    <BundleResource Include="Resources\swirlingwineviola.json" />
     <BundleResource Include="Resources\settings_24pt_2x.png" />
     <BundleResource Include="Resources\camera_36pt_2x.png" />
     <BundleResource Include="Resources\logo.png" />
-    <BundleResource Include="Resources\swirlingviolablack.json" />
-    <BundleResource Include="swirlingviolablack.json" />
     <BundleResource Include="Resources\home_black_24pt_2x.png" />
+    <BundleResource Include="loading.json" />
+    <BundleResource Include="loadingblack.json" />
+    <BundleResource Include="star-rating.json" />
+    <BundleResource Include="swirlingviolablack.json" />
+    <BundleResource Include="swirlingwineviola.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
     <Folder Include="Assets.xcassets\home.png.imageset\" />
     <Folder Include="Assets.xcassets\MyAppIcon.appiconset\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="swirlingwineviola.json" />
-    <AndroidAsset Include="Resources\loading.json" />
-    <AndroidAsset Include="Resources\loadingblack.json" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MySplash.storyboard" />
