@@ -65,7 +65,7 @@ namespace SommeliAr.Views.Menu
 
             if (current != NetworkAccess.Internet)
             {
-                DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
+               await DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
                 return;
             }
 
