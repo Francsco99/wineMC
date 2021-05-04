@@ -12,7 +12,7 @@ namespace SommeliAr.SettingsViews
         public AddNewWinePage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new AllWinesViewModel();
         }
 
