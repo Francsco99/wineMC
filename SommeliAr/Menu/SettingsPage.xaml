@@ -3,12 +3,14 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.Menu.SettingsPage">
+
     <ContentPage.Content>
-        <Grid Padding="0,0,0,0">
+        <Grid VerticalOptions="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                     
             </Grid.RowDefinitions>
+
             <TableView Intent="Settings"  VerticalOptions="Fill">
                 <TableRoot>                    
                     <TableSection Title="Personal info">

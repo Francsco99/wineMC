@@ -105,6 +105,13 @@ namespace SommeliAr.Views.Menu
                     
                     resultsListView.ItemsSource = result;
                     predictionsResult = result;
+
+                    //lista tagnames
+                    List<string> tagnames = new List<string>();
+                    foreach(var p in predictions.Predictions)
+                    {
+                        tagnames.Add(p.TagName);
+                    }
                 }
             }
         }
