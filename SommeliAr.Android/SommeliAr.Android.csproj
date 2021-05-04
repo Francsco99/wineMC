@@ -64,6 +64,9 @@
     <PackageReference Include="Naxam.TopTabbedPage.Forms">
       <Version>0.0.3.5</Version>
     </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.2</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Firebase.Analytics">
@@ -84,6 +87,8 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\swirlingwineviola.json" />
     <AndroidAsset Include="Assets\star-rating.json" />
+    <AndroidAsset Include="Assets\loading.json" />
+    <AndroidAsset Include="Assets\loadingblack.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

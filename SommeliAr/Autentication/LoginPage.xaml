@@ -5,7 +5,7 @@
     xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="SommeliAr.Views.LoginPage">
     <ContentPage.Content>
-        <Grid>
+        <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
             <Grid.RowDefinitions>
                 <!--benvenuto-->
                 <RowDefinition Height="*"/> 
@@ -22,9 +22,9 @@
                 <!--google-->
                 <RowDefinition Height="0.1*"/>
                 <!--forgot pwd-->
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.0*"/>
                  <!--sign up now-->
-                <RowDefinition Height="0.7*"/> 
+                <RowDefinition Height="0.4*"/> 
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -34,7 +34,8 @@
             </Grid.ColumnDefinitions>
 
             <!--MESSAGGIO BENVENUTO-->
-            <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Padding="0,50,0,0" BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+            
+            <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Padding="0,50,0,0">
                 <Label Text="Welcome back,"
                        FontSize="26"
                        FontAttributes="Bold, Italic"
@@ -53,7 +54,8 @@
                                   Animation="{AppThemeBinding Light=swirlingwineviola.json,Dark=swirlingviolablack.json}"
                                   RepeatMode="Infinite"
                                   WidthRequest="300"
-                                  HeightRequest="300"/>
+                                  HeightRequest="300"
+                                  />
             </StackLayout>
 
             <!--ENTRY EMAIL-->
@@ -110,7 +112,7 @@
             </StackLayout>
 
             <!--GOOGLE BUTTON-->
-            <StackLayout Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Grid.Row="6" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End">
                 <ImageButton Source="google.png"
                              WidthRequest="50"
                              HeightRequest="50" 

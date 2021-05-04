@@ -14,17 +14,16 @@ namespace SommeliAr
         {
             {
                 InitializeComponent();
-                
 
-                
-                if (!string.IsNullOrEmpty(Preferences.Get("MyLoginToken", "")))
-                {
-                    MainPage = new NavigationPage(new MasterDetail());
-                }
-                else
-                {
-                    MainPage = new NavigationPage(new LoginPage());
-                }
+                 if (!string.IsNullOrEmpty(Preferences.Get("MyLoginToken", "")))
+                 {
+                     MainPage = new NavigationPage(new MasterDetail());
+                 }
+                 else
+                 {
+                     MainPage = new NavigationPage(new LoginPage());
+                 } 
+
             }
         }
 

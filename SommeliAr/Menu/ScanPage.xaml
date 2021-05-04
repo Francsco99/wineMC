@@ -1,80 +1,83 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage Icon="camera_36pt_2x.png"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SommeliAr.Views.Menu.ScanPage">
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>            
-                <RowDefinition Height="8*"/>        
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="1.5*"/>
-            </Grid.ColumnDefinitions>
-            
-            <StackLayout Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="End" HorizontalOptions="Center">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" 
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="SommeliAr.Views.Menu.ScanPage">
+
+    <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+        <Grid.RowDefinitions>
+        
+            <RowDefinition Height="660"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+
+        </Grid.RowDefinitions>
+
+        <Image x:Name="resultImage" IsVisible="True" Grid.Row="0"/>
+
+        <skia:SKCanvasView x:Name="ImageCanvas"  PaintSurface="OnCanvasViewPaintSurface"
+                           Grid.Row="0" Margin="0,40,0,0"/>
+
+        <lottie:AnimationView x:Name="Loading" Grid.Row="0"
+                                  HorizontalOptions="Center"
+                                  Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
+                                  RepeatMode="Infinite"
+                                  WidthRequest="600"
+                                  HeightRequest="600"
+                                  Scale="1.4"
+                                  Speed="1.5"
+                                  IsVisible = "false"/>
+
+        <StackLayout  Grid.Row="1" VerticalOptions="Start" HorizontalOptions="Center" Margin="0,-630,0,0">
                 <Label Text="Let's scan bottles!"
-                       TextColor="#8b52ff"
+                       TextColor="#b794ff"
                        FontSize="Title"
                        FontAttributes="Bold"
                        />
-            </StackLayout>
-            
-            <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <Image x:Name="resultImage" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-            </StackLayout>
+        </StackLayout>
 
-           <StackLayout Grid.Row="1" Grid.ColumnSpan="3">
-                <ListView x:Name="resultsListView"
-                          SeparatorVisibility="None">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell  Text="{Binding TagName}"
-                                  Detail="{Binding Probability, StringFormat='{0:P}'}"
-                                  />
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
 
-            <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" >
-                <Button x:Name="Clear_btn" Text="Clear result"
-                        TextColor="#8b52ff" FontAttributes="Bold"
-                        FontSize="Large"        
-                        BackgroundColor="White"
-                        BorderWidth="1"
-                        CornerRadius="15"
-                        WidthRequest="120"
-                        Clicked="Clear_btn_Clicked"/>                 
-            </StackLayout>
-
-            <StackLayout Grid.Row="2" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" >
-                <Button x:Name="Scan_btn" Text="Scan!"
-                        TextColor="White" FontAttributes="Bold"
-                        FontSize="Large"        
+        <StackLayout  VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Grid.Row="2" Margin="0,-60,0,0">
+            <Button x:Name="Scan_btn" Text="SCAN"
+                        TextColor="White"
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        CharacterSpacing="1"
                         BackgroundColor="#8b52ff"
                         BorderWidth="1"
-                        CornerRadius="15"
-                        WidthRequest="100"
-                        Clicked="Scan_btn_Clicked"/>                 
+                        CornerRadius="10"
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="Scan_btn_Clicked"/>
+
             </StackLayout>
 
-            <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" HorizontalOptions="Center" >
-                <Button x:Name="After_sca_btn" Text="Result list" 
+            <StackLayout VerticalOptions="Start" HorizontalOptions="EndAndExpand" Grid.Row="2" Margin="0,-60,0,0">
+                <Button x:Name="Afterscan" Text="Result list"
+                        BorderColor="#8b52ff"
                         TextColor="#8b52ff"
-                        FontSize="Large"
+                        FontSize="Medium"
+                        Opacity="0.9"
                         FontAttributes="Bold"
                         BackgroundColor="White" 
                         CornerRadius="15"
                         WidthRequest="120"
-                        BorderWidth="1"
+                        BorderWidth="3"
+                        IsVisible="false"
                         Clicked="After_sca_btn_Clicked"/>
             </StackLayout>
-            
-        </Grid>
-    </ContentPage.Content>
+
+            <ListView x:Name="resultsListView" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <TextCell  Text="{Binding TagName}"
+                                  Detail="{Binding Probability}"
+                                  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+    </Grid>
+
 </ContentPage>

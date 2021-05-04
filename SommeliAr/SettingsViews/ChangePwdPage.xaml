@@ -13,6 +13,7 @@
 
             <StackLayout Grid.Row="0">
                 <Label Text="Insert the new password" FontSize="Subtitle" HorizontalOptions="Center" Padding="10"/>
+                
             </StackLayout>
 
             <StackLayout Grid.Row="1" Padding="10">
