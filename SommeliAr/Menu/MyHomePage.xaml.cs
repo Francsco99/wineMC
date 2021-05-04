@@ -11,19 +11,16 @@ using Xamarin.Forms;
 namespace SommeliAr.Menu
 {
     public partial class MyHomePage : ContentPage
-
-    {
-        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
-
+    {     
         public MyHomePage()
         {
             InitializeComponent();
-
             //Toglie le righette di separazione delle entry della listview
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
-
             GetProfileInformationAndRefreshToken();
         }
+
+        private static Color violetto = Color.FromHex("#8b52ff");
 
         private void GetProfileInformationAndRefreshToken()
         {
@@ -41,38 +38,38 @@ namespace SommeliAr.Menu
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }
         }
-        
+
         private void DeleteWelcomeLabels()
         {
             User_name_lbl.Text = "";
             Welcome_lbl.Text = "";
         }
-        
-        //colore violetto chiaro
-        public Color myColor = Color.FromHex("#8b52ff");
-
-       private async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
+       
+        private async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             DeleteWelcomeLabels();
+
+            //setting del BindingContext
             MyFavoritesPageViewModel fav = new MyFavoritesPageViewModel();
             await fav.GetInfoAsync();
-
             BindingContext = fav;
             my_list_view.SeparatorVisibility = 0;
 
-            //new Command(async () => await DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", ""))).Execute(null);
             //setting del colore in base al tema del dispositivo
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
 
             History_btn.FontSize = 20;
-            Favourites_btn.TextColor = myColor;
+            Favourites_btn.TextColor = violetto;
             Favourites_btn.FontSize = 30;
         }
 
-        void History_btn_Clicked(System.Object sender, System.EventArgs e)
+        async void History_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             DeleteWelcomeLabels();
+
+            //setting del BindingContext
             MyHistoryPageViewModel his = new MyHistoryPageViewModel();
+            await his.GetInfoAsync();
             BindingContext = his;
             my_list_view.SeparatorVisibility = 0;
 
@@ -80,7 +77,7 @@ namespace SommeliAr.Menu
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
 
             Favourites_btn.FontSize = 20;
-            History_btn.TextColor = myColor;
+            History_btn.TextColor = violetto;
             History_btn.FontSize = 30;
         }
 

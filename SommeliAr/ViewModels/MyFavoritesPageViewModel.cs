@@ -32,7 +32,7 @@ namespace SommeliAr.ViewModels
 
         public async Task GetInfoAsync()
         {
-            var result = await Task.Run(() => DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", "")));
+            ObservableCollection<MyWineModel> result = await Task.Run(() => DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", "")));
             WineList = result;
         }
     }
