@@ -52,7 +52,7 @@ namespace SommeliAr.Services
         {
             MyWineModel w = new MyWineModel() { Name = name, Detail = detail, Image = image, Description = description };
             await client
-                .Child("MyWines")
+                .Child("AllWines")
                 .Child(name)
                 .PutAsync(w);
         }
@@ -61,7 +61,7 @@ namespace SommeliAr.Services
         public ObservableCollection<MyWineModel> GetAllWines()
         {
             var myWinesData = client
-                .Child("MyWines")
+                .Child("AllWines")
                 .AsObservable<MyWineModel>()
                 .AsObservableCollection();
             return myWinesData;
@@ -79,6 +79,16 @@ namespace SommeliAr.Services
                 .PutAsync(true);
         }
 
+        public async Task DeleteFavWine(string wineName, string firebaseMail)
+        {
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("favourites")
+                .Child(wineName)
+                .DeleteAsync();
+        }
+
         //restituisce la lista dei vini preferiti
         public async Task<ObservableCollection<MyWineModel>> GetMyFavouriteWines(string firebaseMail)
         {
@@ -92,7 +102,7 @@ namespace SommeliAr.Services
             foreach (var v in wineNames)
             {
                 var wines = await client
-                    .Child("MyWines")
+                    .Child("AllWines")
                     .OrderByKey()
                     .StartAt(v.Key)
                     .LimitToFirst(1)
