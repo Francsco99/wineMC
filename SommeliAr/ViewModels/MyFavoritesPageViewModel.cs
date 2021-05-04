@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using MvvmHelpers;
 using SommeliAr.Models;
 using SommeliAr.Services;
 using Xamarin.Essentials;
@@ -8,17 +10,30 @@ using Xamarin.Forms;
 
 namespace SommeliAr.ViewModels
 {
-    public class MyFavoritesPageViewModel
+    public class MyFavoritesPageViewModel : BaseViewModel
     {
-        public ObservableCollection<MyWineModel> WineList { get; set; }
+        private ObservableCollection<MyWineModel> _wineList = new ObservableCollection<MyWineModel>();
+        
+        public ObservableCollection<MyWineModel> WineList
+        {
+            get { return _wineList; }
 
+            set
+            {
+                _wineList = value;
+                OnPropertyChanged();
+            }
+        }
 
         public MyFavoritesPageViewModel()
         {
-            WineList = new ObservableCollection<MyWineModel>();
-  
+            
         }
 
-       
+        public async Task GetInfoAsync()
+        {
+            var result = await Task.Run(() => DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", "")));
+            WineList = result;
+        }
     }
 }

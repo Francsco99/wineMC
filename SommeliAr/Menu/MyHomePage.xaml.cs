@@ -51,12 +51,16 @@ namespace SommeliAr.Menu
         //colore violetto chiaro
         public Color myColor = Color.FromHex("#8b52ff");
 
-        void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
+       private async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             DeleteWelcomeLabels();
-            BindingContext = new MyFavoritesPageViewModel();
+            MyFavoritesPageViewModel fav = new MyFavoritesPageViewModel();
+            await fav.GetInfoAsync();
+
+            BindingContext = fav;
             my_list_view.SeparatorVisibility = 0;
 
+            //new Command(async () => await DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", ""))).Execute(null);
             //setting del colore in base al tema del dispositivo
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
 
@@ -68,7 +72,8 @@ namespace SommeliAr.Menu
         void History_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             DeleteWelcomeLabels();
-            BindingContext = new MyHistoryPageViewModel();
+            MyHistoryPageViewModel his = new MyHistoryPageViewModel();
+            BindingContext = his;
             my_list_view.SeparatorVisibility = 0;
 
             //setting del colore in base al tema del dispositivo

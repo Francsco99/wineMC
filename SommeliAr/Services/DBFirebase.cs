@@ -57,6 +57,18 @@ namespace SommeliAr.Services
                 .PutAsync(w);
         }
 
+        //restituisce la lista di tutti i vini
+        public ObservableCollection<MyWineModel> GetAllWines()
+        {
+            var myWinesData = client
+                .Child("MyWines")
+                .AsObservable<MyWineModel>()
+                .AsObservableCollection();
+            return myWinesData;
+        }
+
+
+        //aggiunge un vino ai preferiti dell'utente corrente
         public async Task AddFavWine(string wineName, string firebaseMail)
         {
             await client
@@ -67,19 +79,10 @@ namespace SommeliAr.Services
                 .PutAsync(true);
         }
 
-        //restituisce la lista dei vini
-        public ObservableCollection<MyWineModel> GetAllWines()
+        //restituisce la lista dei vini preferiti
+        public async Task<ObservableCollection<MyWineModel>> GetMyFavouriteWines(string firebaseMail)
         {
-            var myWinesData = client
-                .Child("MyWines")
-                .AsObservable<MyWineModel>()
-                .AsObservableCollection();
-            return myWinesData;
-        }
-        
-        public async Task<List<MyWineModel>> GetMyFavouriteWines(string firebaseMail)
-        {
-            var favouriteWines = new List<MyWineModel>();
+            var favouriteWines = new ObservableCollection<MyWineModel>();
             var wineNames = await client
                 .Child("Users")
                 .Child(firebaseMail)
