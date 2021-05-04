@@ -39,6 +39,8 @@ namespace SommeliAr.Views.Menu
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+            skImage = null;                                                // svuoto skImage ad ogni Scan
+
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -71,7 +73,7 @@ namespace SommeliAr.Views.Menu
 
             ImageCanvas.InvalidateSurface();
 
-            Afterscan.IsVisible = true;
+            Afterscan.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
         }
 
         private async Task MakePredictionAsync(Stream stream)
