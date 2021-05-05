@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.SettingsViews.TutorialPage">
 
+    <StackLayout>
     <CarouselView x:Name="TheCarousel">
     <CarouselView.ItemsSource>
         <x:Array Type="{x:Type x:String}">
@@ -20,12 +21,12 @@
         </DataTemplate>
     </CarouselView.ItemTemplate>
 </CarouselView>
-    </ContentPage>
+   
 
-    <!--<ContentPage.Content>
-        <StackLayout>
+   
+        
             <Label Text="TUTORIAL PAGE" VerticalOptions="Center" HorizontalOptions="Center"/>
             <Button x:Name="Test_cronologia_btn" Text="Test cronologia" Clicked="Test_cronologia_btn_Clicked"/>
         </StackLayout>
 
-    </ContentPage.Content>-->
+</ContentPage>
