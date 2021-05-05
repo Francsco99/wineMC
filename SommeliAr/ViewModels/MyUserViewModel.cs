@@ -14,11 +14,8 @@ namespace SommeliAr.ViewModels
         public string Email { get; set; }
         public DateTime Birthdate { get; set; }
 
-        private DBFirebase services;
-
         public Command AddUserCommand { get; set; }
 
-        
         private ObservableCollection<MyUser> _myUsers = new ObservableCollection<MyUser>();
         public ObservableCollection<MyUser> MyUsersList
         {
@@ -28,20 +25,17 @@ namespace SommeliAr.ViewModels
             {
                 _myUsers = value;
                 OnPropertyChanged();
-
             }
         }
         
         public MyUserViewModel()
         {
-            // MyUsersList = services.GetMyUsers();
             AddUserCommand = new Command(async () =>  await AddMyUserAsync(Email, Birthdate));
         }
 
         public async Task AddMyUserAsync(string Email, DateTime Birthdate)
         {
-            string firebaseMail = Preferences.Get("UserEmailFirebase", "");
-            await DBFirebase.Instance.AddMyUser(Email, Birthdate, firebaseMail);
+            await DBFirebase.Instance.AddMyUser(Email, Birthdate, Preferences.Get("UserEmailFirebase", ""));
         }
         
     }
