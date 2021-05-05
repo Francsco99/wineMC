@@ -19,10 +19,6 @@ namespace SommeliAr.SettingsViews
         }
 
 
-<<<<<<< HEAD
-=======
-        
->>>>>>> origin/master
         List<string> wineNames = new List<string>();
 
 
