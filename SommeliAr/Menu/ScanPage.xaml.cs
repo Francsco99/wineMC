@@ -97,7 +97,7 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.6;                   // probabilità minima impostata
+                    var setProbability = 0.2;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
 
                     resultsListView.ItemsSource = result;
@@ -107,10 +107,13 @@ namespace SommeliAr.Views.Menu
                     List<string> tagnames = new List<string>();
                     foreach (var p in predictions.Predictions)
                     {
-                       await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
+                        if (!p.TagName.Contains("Products"))
+                            {
+                            await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
+                        }
                     }
 
-                    Console.WriteLine("tagnames" + tagnames);
+                    //Console.WriteLine("tagnames" + tagnames.First().ToString());
                     //await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
                 }
             }

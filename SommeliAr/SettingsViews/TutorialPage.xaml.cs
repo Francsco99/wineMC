@@ -27,7 +27,7 @@ namespace SommeliAr.SettingsViews
             wineNames.Add("San Crispino");
             wineNames.Add("Barolo");
 
-            await DBFirebase.Instance.AddHistoryWines(wineNames, Preferences.Get("UserEmailFirebase", ""));
+            //await DBFirebase.Instance.AddHistoryWines(wineNames, Preferences.Get("UserEmailFirebase", ""));
         }
     }
 }
