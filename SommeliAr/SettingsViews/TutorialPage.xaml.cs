@@ -12,22 +12,6 @@ namespace SommeliAr.SettingsViews
         {
             InitializeComponent();
             //NavigationPage.SetHasNavigationBar(this, false);
-
-            var size = Application.Current.MainPage.Height;
-            Console.WriteLine(size);
-  
-        }
-
-
-        List<string> wineNames = new List<string>();
-
-
-        async void Test_cronologia_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            wineNames.Add("San Crispino");
-            wineNames.Add("Barolo");
-
-            //await DBFirebase.Instance.AddHistoryWines(wineNames, Preferences.Get("UserEmailFirebase", ""));
-        }
+        }        
     }
 }
