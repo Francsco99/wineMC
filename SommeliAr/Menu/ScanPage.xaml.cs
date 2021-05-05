@@ -4,6 +4,7 @@ using Plugin.Media;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SommeliAr.Menu;
+using SommeliAr.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +33,7 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
-            
+
             resultsListView.BackgroundColor = Color.Transparent;
             resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
         }
@@ -73,7 +74,7 @@ namespace SommeliAr.Views.Menu
 
             ImageCanvas.InvalidateSurface();
 
-            Afterscan.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
+            After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
         }
 
         private async Task MakePredictionAsync(Stream stream)
@@ -82,7 +83,7 @@ namespace SommeliAr.Views.Menu
 
             if (current != NetworkAccess.Internet)
             {
-               await DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
+                await DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
                 return;
             }
             var imageBytes = GetImageAsByteData(stream);
@@ -100,18 +101,19 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.3;                   // probabilità minima impostata
+                    var setProbability = 0.6;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
-                    
+
                     resultsListView.ItemsSource = result;
                     predictionsResult = result;
 
                     //lista tagnames
                     List<string> tagnames = new List<string>();
-                    foreach(var p in predictions.Predictions)
+                    foreach (var p in predictions.Predictions)
                     {
                         tagnames.Add(p.TagName);
                     }
+                    await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
                 }
             }
         }
@@ -122,7 +124,7 @@ namespace SommeliAr.Views.Menu
             return binaryReader.ReadBytes((int)stream.Length);
         }
 
-        private void After_sca_btn_Clicked(object sender, EventArgs e)
+        private void After_scan_btn_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AfterScanPage());
         }
@@ -148,10 +150,11 @@ namespace SommeliAr.Views.Menu
                     var left = (info.Width - scaleWidth) / 2;
 
                     canvas.DrawBitmap(skImage, new SKRect(left, top, left + scaleWidth, top + scaleHeight));
+                    DrawBorder(canvas, left, top, scaleWidth, scaleHeight);
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
                 }
             }
-            
+
         }
 
         static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
@@ -197,11 +200,7 @@ namespace SommeliAr.Views.Menu
             if (addBox)
                 DrawBox(canvas, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
 
-                DrawText(canvas, tag, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
-
-                DrawCircle(canvas, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
-
-
+            DrawText(canvas, tag, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
         }
 
         static void DrawText(SKCanvas canvas, string tag, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
@@ -214,7 +213,7 @@ namespace SommeliAr.Views.Menu
                 Typeface = SKTypeface.FromFamilyName("Arial")
             };
 
-            var text = tag;
+            var text = tag; // DA CAPIRE 
 
             var textWidth = textPaint.MeasureText(text);
             textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
@@ -243,18 +242,6 @@ namespace SommeliAr.Views.Menu
                             textPaint);
         }
 
-        static void DrawCircle(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
-        {
-            var circlePaint = new SKPaint
-            {
-                IsAntialias = true,
-                Style = SKPaintStyle.Fill,
-                Color = new SKColor(139, 82, 255, 100),
-            };
-            canvas.DrawCircle(scaledBoxWidth/ 2, scaledBoxHeight/ 2, 50, circlePaint);
-        }
-
-       
         static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var strokePaint = new SKPaint
@@ -270,8 +257,7 @@ namespace SommeliAr.Views.Menu
             var blurStrokePaint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
-                Color = SKColors.White,
-                StrokeWidth = 3,
+                StrokeWidth = 5,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f),
                 IsAntialias = true,
                 MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 0.57735f * radius + 0.5f)
@@ -279,10 +265,22 @@ namespace SommeliAr.Views.Menu
             DrawBox(canvas, blurStrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
         }
 
+        static void DrawBorder(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+        {
+            var strokePaint = new SKPaint
+            {
+                IsAntialias = true,
+                Style = SKPaintStyle.Stroke,
+                Color = new SKColor(139, 82, 255, 120),
+                StrokeWidth = 1
+            };
+
+            DrawBox(canvas, strokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+        }
+
         static void DrawBox(SKCanvas canvas, SKPaint paint, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
-            var path =
-            CreateBoxPath(startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+            var path = CreateBoxPath(startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
             canvas.DrawPath(path, paint);
         }
 
@@ -304,6 +302,8 @@ namespace SommeliAr.Views.Menu
 
         }
 
+
+        //che fa questo??????
         private void Button_Clicked(object sender, EventArgs e)
         {
 

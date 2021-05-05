@@ -8,23 +8,23 @@
         <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
             <Grid.RowDefinitions>
                 <!--benvenuto-->
-                <RowDefinition Height="*"/> 
+                <RowDefinition Height="*"/>
                 <!--lottie-->
                 <RowDefinition Height="2.5*"/>
                 <!--email-->
-                <RowDefinition Height="0.6*"/> 
+                <RowDefinition Height="0.6*"/>
                 <!--password-->
                 <RowDefinition Height="0.6*"/>
                 <!--sign in-->
-                <RowDefinition Height="0.7*"/> 
+                <RowDefinition Height="0.7*"/>
                 <!--connect with-->
                 <RowDefinition Height="0.5*"/>
                 <!--google-->
                 <RowDefinition Height="0.1*"/>
                 <!--forgot pwd-->
                 <RowDefinition Height="1.0*"/>
-                 <!--sign up now-->
-                <RowDefinition Height="0.4*"/> 
+                <!--sign up now-->
+                <RowDefinition Height="0.4*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
             </Grid.ColumnDefinitions>
 
             <!--MESSAGGIO BENVENUTO-->
-            
+
             <StackLayout Grid.Row="0" Grid.ColumnSpan="3" Padding="0,50,0,0">
                 <Label Text="Welcome back,"
                        FontSize="26"
@@ -54,8 +54,7 @@
                                   Animation="{AppThemeBinding Light=swirlingwineviola.json,Dark=swirlingviolablack.json}"
                                   RepeatMode="Infinite"
                                   WidthRequest="300"
-                                  HeightRequest="300"
-                                  />
+                                  HeightRequest="300"/>
             </StackLayout>
 
             <!--ENTRY EMAIL-->
@@ -102,7 +101,7 @@
                     
                     BackgroundColor="#8b52ff"
                     Clicked="Sign_in_btn_Clicked"/>
-                </StackLayout>
+            </StackLayout>
 
             <!--CONNECT WITH-->
             <StackLayout Grid.Row="5" Grid.ColumnSpan="3" Padding="10">

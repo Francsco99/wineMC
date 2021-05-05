@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
-using Newtonsoft.Json;
 using SommeliAr.Models;
-using Xamarin.Essentials;
 
 namespace SommeliAr.Services
 {
@@ -18,12 +14,6 @@ namespace SommeliAr.Services
         static AuthFirebase authServices = new AuthFirebase();
 
         private static DBFirebase instance;
-
-        private DBFirebase()
-        {
-            client = new FirebaseClient("https://sommelier-ar-default-rtdb.europe-west1.firebasedatabase.app/");
-        }
-
 
         public static DBFirebase Instance
         {
@@ -35,6 +25,11 @@ namespace SommeliAr.Services
                 }
                 return instance;
             }
+        }
+
+        private DBFirebase()
+        {
+            client = new FirebaseClient("https://sommelier-ar-default-rtdb.europe-west1.firebasedatabase.app/");
         }
 
         //aggiunge un user al db realtime
@@ -67,7 +62,6 @@ namespace SommeliAr.Services
             return myWinesData;
         }
 
-
         //aggiunge un vino ai preferiti dell'utente corrente
         public async Task AddFavWine(string wineName, string firebaseMail)
         {
@@ -77,16 +71,6 @@ namespace SommeliAr.Services
                 .Child("favourites")
                 .Child(wineName)
                 .PutAsync(true);
-        }
-
-        public async Task DeleteFavWine(string wineName, string firebaseMail)
-        {
-            await client
-                .Child("Users")
-                .Child(firebaseMail)
-                .Child("favourites")
-                .Child(wineName)
-                .DeleteAsync();
         }
 
         //restituisce la lista dei vini preferiti
@@ -108,12 +92,63 @@ namespace SommeliAr.Services
                     .LimitToFirst(1)
                     .OnceAsync<MyWineModel>();
 
-                foreach(var w in wines)
+                foreach (var w in wines)
                 {
                     favouriteWines.Add(w.Object);
                 }
             }
             return favouriteWines;
+        }
+
+        //aggiunta vini alla cronologia sul db
+        public async Task AddHistoryWines(List<string> wineNames, string firebaseMail)
+        {
+            foreach(var w in wineNames)
+            {
+                await client
+                    .Child("Users")
+                    .Child(firebaseMail)
+                    .Child("history")
+                    .Child(w)
+                    .PutAsync(true);
+            }
+        }
+
+        //restituisce la lista della cronologia
+        public async Task<ObservableCollection<MyWineModel>> GetMyHistoryWines(string firebaseMail)
+        {
+            var historyWines = new ObservableCollection<MyWineModel>();
+            var wineNames = await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("history")
+                .OnceAsync<bool>();
+
+            foreach (var v in wineNames)
+            {
+                var wines = await client
+                    .Child("AllWines")
+                    .OrderByKey()
+                    .StartAt(v.Key)
+                    .LimitToFirst(1)
+                    .OnceAsync<MyWineModel>();
+
+                foreach (var w in wines)
+                {
+                    historyWines.Add(w.Object);
+                }
+            }
+            return historyWines;
+        }
+
+        public async Task DeleteFavWine(string wineName, string firebaseMail)
+        {
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("favourites")
+                .Child(wineName)
+                .DeleteAsync();
         }
     }
 }

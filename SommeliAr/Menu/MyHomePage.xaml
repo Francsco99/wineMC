@@ -2,74 +2,74 @@
 <ContentPage Icon="home_black_24pt_2x.png"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="SommeliAr.Menu.MyHomePage">
     <ContentPage.Content>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.2*"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="10*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <!--HISTORY BUTTON-->
-        <StackLayout Grid.Column="0"
+            <!--HISTORY BUTTON-->
+            <StackLayout Grid.Column="0"
                      Grid.Row="0"
                      VerticalOptions="End"
                      HorizontalOptions="Center"
                      Margin="0,0,20,0">
-            <Button x:Name="History_btn"
+                <Button x:Name="History_btn"
                    Text="History"
                    FontSize="20"
                    BackgroundColor="Transparent"
                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
                    Clicked="History_btn_Clicked"/>
-        </StackLayout>
+            </StackLayout>
 
-        <!--FAVOURITES BUTTON-->
-        <StackLayout Grid.Column="1"
+            <!--FAVOURITES BUTTON-->
+            <StackLayout Grid.Column="1"
                      Grid.Row="0"
                      VerticalOptions="End"
                      HorizontalOptions="Center"
                      Margin="0,0,20,0">
-            <Button x:Name="Favourites_btn"
+                <Button x:Name="Favourites_btn"
                                 Text="Favourites"
                                 FontSize="20"
                                 TextColor="{AppThemeBinding Light=Black, Dark=White}"
                                 BackgroundColor="Transparent"
                                 Clicked="Favourites_btn_Clicked"/>
-        </StackLayout>
+            </StackLayout>
 
-        <!--LINEETTA SEPARATRICE-->
-        <StackLayout Grid.Row="1"
+            <!--LINEETTA SEPARATRICE-->
+            <StackLayout Grid.Row="1"
                      Grid.ColumnSpan="2"
                      BackgroundColor="Black">
-        </StackLayout>
+            </StackLayout>
 
-        <!--LISTA DEI VINI-->
-        <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
-            <ListView x:Name="my_list_view"
+            <!--LISTA DEI VINI-->
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
+                <ListView x:Name="my_list_view"
                      ItemsSource="{Binding WineList}"
                      HasUnevenRows="True"                   
                      ItemTapped="OnItemSelected">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <controls:CircleImage
+                                    <controls:CircleImage
                                    HeightRequest="60"
                                    HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand"
@@ -78,33 +78,48 @@
                                    Grid.RowSpan="2"
                                    Source="{Binding Image}"/>
 
-                                <Label Grid.Column="1"
+                                    <Label Grid.Column="1"
                                       Text="{Binding Name}"
                                       FontAttributes="Bold"  
                                       VerticalOptions="End"/>
 
-                                <Label Grid.Column="1"
+                                    <Label Grid.Column="1"
                                       Grid.Row="1"
                                       Text="{Binding Detail}"
                                       FontAttributes="Italic"
                                       VerticalOptions="Start"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
 
-        <StackLayout 
+            <!--LOTTIE CARICAMENTO-->
+            <StackLayout Grid.Row="2"
+                         Grid.ColumnSpan="2"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Start">
+                 <lottie:AnimationView x:Name="Loading"
+                                  Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
+                                  RepeatMode="Infinite"
+                                  WidthRequest="600"
+                                  HeightRequest="600"
+                                  Scale="1.4"
+                                  Speed="1.5"
+                                  IsVisible = "false"/>
+            </StackLayout>
+
+            <StackLayout 
                      Grid.ColumnSpan="2"
                      Grid.Row="2"
                      HorizontalOptions="Center"
                      VerticalOptions="Start">
-            <Label x:Name="User_name_lbl" FontSize="Title" FontAttributes="Bold" Margin="0,50,0,0"
+                <Label x:Name="User_name_lbl" FontSize="Title" FontAttributes="Bold" Margin="0,50,0,0"
                    TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-            <Label x:Name="Welcome_lbl" Text="Welcome back to SommeliAr!" FontSize="Subtitle" Margin="0,20,0,0"/>
-        </StackLayout>
+                <Label x:Name="Welcome_lbl" Text="Welcome back to SommeliAr!" FontSize="Subtitle" Margin="0,20,0,0"/>
+            </StackLayout>
 
-    </Grid>
-        </ContentPage.Content>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
