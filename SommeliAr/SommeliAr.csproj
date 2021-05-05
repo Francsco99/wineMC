@@ -39,6 +39,7 @@
     <None Remove="Views\star_border.png" />
     <None Remove="Views\camera_36pt_2x.png" />
     <None Remove="Views\settings_24pt_2x.png" />
+    <None Remove="Views\Tutorial_Screen_1.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
@@ -54,5 +55,8 @@
       <DependentUpon>ChangePwdPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Tutorial_Screen_1.png" />
   </ItemGroup>
 </Project>

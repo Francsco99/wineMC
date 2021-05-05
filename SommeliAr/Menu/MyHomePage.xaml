@@ -117,7 +117,7 @@
                      VerticalOptions="Start">
                 <Label x:Name="User_name_lbl" FontSize="Title" FontAttributes="Bold" Margin="0,50,0,0"
                    TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-                <Label x:Name="Welcome_lbl" Text="Welcome back to SommeliAr!" FontSize="Subtitle" Margin="0,20,0,0"/>
+                <Label x:Name="Welcome_lbl" Text="Welcome back to SommeliAR!" FontSize="Subtitle" Margin="0,20,0,0"/>
             </StackLayout>
 
         </Grid>

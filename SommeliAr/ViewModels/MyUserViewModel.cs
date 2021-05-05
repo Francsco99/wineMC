@@ -32,7 +32,7 @@ namespace SommeliAr.ViewModels
             }
         }
         */
-
+        /*
         public MyUserViewModel()
         {
             // MyUsersList = services.GetMyUsers();
@@ -44,6 +44,6 @@ namespace SommeliAr.ViewModels
             string firebaseMail = Preferences.Get("UserEmailFirebase", "");
             await DBFirebase.Instance.AddMyUser(Email, Birthdate, firebaseMail);
         }
-
+        */
     }
 }

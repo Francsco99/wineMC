@@ -240,4 +240,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="MySplash.storyboard" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Tutorial_Screen_1.png" />
+  </ItemGroup>
 </Project>
