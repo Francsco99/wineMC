@@ -105,8 +105,8 @@
                                   RepeatMode="Infinite"
                                   WidthRequest="600"
                                   HeightRequest="600"
-                                  Scale="1.4"
-                                  Speed="1.5"
+                                  Scale="1"
+                                  Speed="3.5"
                                   IsVisible = "false"/>
             </StackLayout>
 

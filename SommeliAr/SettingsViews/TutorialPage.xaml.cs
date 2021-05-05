@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using SommeliAr.Services;
 using Xamarin.Essentials;
@@ -19,6 +19,10 @@ namespace SommeliAr.SettingsViews
         }
 
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> origin/master
         List<string> wineNames = new List<string>();
 
 

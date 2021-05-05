@@ -25,9 +25,7 @@ namespace SommeliAr.Views.Menu
         const float yDrop = 2.0f;
 
         IEnumerable<PredictionModel> predictionsResult;
-
         Stream streamDraw;
-
         SKBitmap skImage;
 
         public ScanPage()
@@ -52,7 +50,7 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                CompressionQuality = 70,
+                CompressionQuality = 70,                                    // fattore di compressione
             });
 
             if (file == null)
@@ -61,7 +59,6 @@ namespace SommeliAr.Views.Menu
             }
 
             var stream = file.GetStream();
-
             streamDraw = file.GetStream();
 
             Loading.IsVisible = true;                                        // faccio capire all'animazione che è tempo di andare in scena
@@ -71,7 +68,6 @@ namespace SommeliAr.Views.Menu
             Loading.IsVisible = false;
 
             skImage = SKBitmap.Decode(streamDraw);
-
             ImageCanvas.InvalidateSurface();
 
             After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
@@ -150,7 +146,6 @@ namespace SommeliAr.Views.Menu
                     var left = (info.Width - scaleWidth) / 2;
 
                     canvas.DrawBitmap(skImage, new SKRect(left, top, left + scaleWidth, top + scaleHeight));
-                    DrawBorder(canvas, left, top, scaleWidth, scaleHeight);
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
                 }
             }
@@ -212,8 +207,7 @@ namespace SommeliAr.Views.Menu
                 Style = SKPaintStyle.Fill,
                 Typeface = SKTypeface.FromFamilyName("Arial")
             };
-
-            var text = tag; // DA CAPIRE 
+            var text = tag;
 
             var textWidth = textPaint.MeasureText(text);
             textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
@@ -244,38 +238,26 @@ namespace SommeliAr.Views.Menu
 
         static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
-            var strokePaint = new SKPaint
+            var outerstrokePaint = new SKPaint
             {
                 IsAntialias = true,
                 Style = SKPaintStyle.Stroke,
-                Color = new SKColor(139, 82, 255, 120),
+                Color = new SKColor(139, 82, 255, 100),
                 StrokeWidth = 5,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f)
             };
-            DrawBox(canvas, strokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
+            DrawBox(canvas, outerstrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
 
             var blurStrokePaint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
-                StrokeWidth = 5,
+                StrokeWidth = 3,
+                Color = SKColors.White,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f),
                 IsAntialias = true,
                 MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal, 0.57735f * radius + 0.5f)
             };
             DrawBox(canvas, blurStrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
-        }
-
-        static void DrawBorder(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
-        {
-            var strokePaint = new SKPaint
-            {
-                IsAntialias = true,
-                Style = SKPaintStyle.Stroke,
-                Color = new SKColor(139, 82, 255, 120),
-                StrokeWidth = 1
-            };
-
-            DrawBox(canvas, strokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
         }
 
         static void DrawBox(SKCanvas canvas, SKPaint paint, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
@@ -298,13 +280,6 @@ namespace SommeliAr.Views.Menu
         }
 
         void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-
-        }
-
-
-        //che fa questo??????
-        private void Button_Clicked(object sender, EventArgs e)
         {
 
         }
