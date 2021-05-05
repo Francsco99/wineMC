@@ -11,17 +11,19 @@ namespace SommeliAr.Views
         private string itemName { get; set; }
         private string itemDescription { get; set; }
         private string itemImageSrc { get; set; }
+        private string voto { get; set; }
 
-        public MyListPageDetail(string Name, string Description, string Source)
+        public MyListPageDetail(string Name, string Description, string Source, string Rating)
         {
             InitializeComponent();
 
             this.itemName = Name;
             this.itemDescription = Description;
             this.itemImageSrc = Source;
-
+            this.voto = Rating;
             MyItemNameShow.Text = Name;
             MyDescriptionShow.Text = Description;
+            Voto.Text = "Voto: " + voto;
             MyImageCall.Source = new UriImageSource()
             {
                 Uri = new Uri(Source)
