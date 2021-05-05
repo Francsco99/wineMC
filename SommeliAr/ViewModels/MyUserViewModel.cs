@@ -18,7 +18,7 @@ namespace SommeliAr.ViewModels
 
         public Command AddUserCommand { get; set; }
 
-        /*
+        
         private ObservableCollection<MyUser> _myUsers = new ObservableCollection<MyUser>();
         public ObservableCollection<MyUser> MyUsersList
         {
@@ -31,8 +31,7 @@ namespace SommeliAr.ViewModels
 
             }
         }
-        */
-        /*
+        
         public MyUserViewModel()
         {
             // MyUsersList = services.GetMyUsers();
@@ -44,6 +43,6 @@ namespace SommeliAr.ViewModels
             string firebaseMail = Preferences.Get("UserEmailFirebase", "");
             await DBFirebase.Instance.AddMyUser(Email, Birthdate, firebaseMail);
         }
-        */
+        
     }
 }

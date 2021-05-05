@@ -107,9 +107,11 @@ namespace SommeliAr.Views.Menu
                     List<string> tagnames = new List<string>();
                     foreach (var p in predictions.Predictions)
                     {
-                        tagnames.Add(p.TagName);
+                       await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
                     }
-                    await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
+
+                    Console.WriteLine("tagnames" + tagnames);
+                    //await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
                 }
             }
         }

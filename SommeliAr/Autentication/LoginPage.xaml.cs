@@ -22,32 +22,37 @@ namespace SommeliAr.Views
         //procedura per il login
         async void Sign_in_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            string emailLowerCase = Entry_Email.Text.ToLower();
-            string password = Entry_Password.Text;
-            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
-            try
+            if (Entry_Email.Text != null && Entry_Password.Text != null)
             {
-                FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
-                FirebaseAuthLink content = await auth.LinkToAsync(Entry_Email.Text, Entry_Password.Text);
-                string serializedcontnet = JsonConvert.SerializeObject(content);
+                string emailLowerCase = Entry_Email.Text.ToLower();
+                string password = Entry_Password.Text;
 
-                Preferences.Set("MyLoginToken", serializedcontnet);
-                Preferences.Set("UserEmailFirebase", emailLowerCase.Replace(".", "-").Replace("@", "-at-"));
-                await Navigation.PushAsync(new MasterDetail());
 
-                if (content.User.IsEmailVerified == false)
+                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+                try
                 {
-                    bool action = await App.Current.MainPage.DisplayAlert("Alert!", "Your account is not verified yet, Send verification email again?", "Yes", "No");
-                    if (action)
+                    FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
+                    FirebaseAuthLink content = await auth.LinkToAsync(Entry_Email.Text, Entry_Password.Text);
+                    string serializedcontnet = JsonConvert.SerializeObject(content);
+
+                    Preferences.Set("MyLoginToken", serializedcontnet);
+                    Preferences.Set("UserEmailFirebase", emailLowerCase.Replace(".", "-").Replace("@", "-at-"));
+                    await Navigation.PushAsync(new MasterDetail());
+
+                    if (content.User.IsEmailVerified == false)
                     {
-                        await authProvider.SendEmailVerificationAsync(content.FirebaseToken);
+                        bool action = await App.Current.MainPage.DisplayAlert("Alert!", "Your account is not verified yet, Send verification email again?", "Yes", "No");
+                        if (action)
+                        {
+                            await authProvider.SendEmailVerificationAsync(content.FirebaseToken);
+                        }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                await App.Current.MainPage.DisplayAlert("Alert!", "Invalid Email or password", "OK");
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    await App.Current.MainPage.DisplayAlert("Alert!", "Invalid Email or password", "OK");
+                }
             }
         }
 

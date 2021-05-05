@@ -35,7 +35,7 @@ namespace SommeliAr.Services
         //aggiunge un user al db realtime
         public async Task AddMyUser(string email, DateTime birthdate, string firebaseMail )
         {
-            MyUser u = new MyUser() { Email = email, Birthdate = birthdate };
+            MyUser u = new MyUser() { Email = email, Birthdate = birthdate, };
             await client
                 .Child("Users")
                 .Child(firebaseMail)
@@ -101,17 +101,14 @@ namespace SommeliAr.Services
         }
 
         //aggiunta vini alla cronologia sul db
-        public async Task AddHistoryWines(List<string> wineNames, string firebaseMail)
+        public async Task AddHistoryWines(string wineName, string firebaseMail)
         {
-            foreach(var w in wineNames)
-            {
                 await client
                     .Child("Users")
                     .Child(firebaseMail)
                     .Child("history")
-                    .Child(w)
+                    .Child(wineName)
                     .PutAsync(true);
-            }
         }
 
         //restituisce la lista della cronologia
