@@ -17,6 +17,7 @@
                 <Entry Text="{Binding Detail}" Placeholder="Wine detail"/>
                 <Entry Text="{Binding Image}" Placeholder="Wine image"/>
                 <Entry Text="{Binding Description}" Placeholder="Wine description"/>
+                <Entry Text="{Binding Rating}" Placeholder="Wine rating"/>
                 <Button WidthRequest="200" Text="Add" Command="{Binding AddWineCommand}"/>
             </StackLayout>
             <StackLayout Grid.Row="1">
