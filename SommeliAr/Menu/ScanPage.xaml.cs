@@ -30,7 +30,6 @@ namespace SommeliAr.Views.Menu
 
         List<string> tagnames = new List<string>();
 
-
         public ScanPage()
         {
             InitializeComponent();
@@ -112,11 +111,9 @@ namespace SommeliAr.Views.Menu
                         if (!p.TagName.Contains("Products"))
                             {
                             await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
+                            tagnames.Add(p.TagName);
                         }
                     }
-
-                    //Console.WriteLine("tagnames" + tagnames.First().ToString());
-                    //await DBFirebase.Instance.AddHistoryWines(tagnames, Preferences.Get("UserEmailFirebase", ""));
                 }
             }
         }
@@ -129,7 +126,8 @@ namespace SommeliAr.Views.Menu
 
         private void After_scan_btn_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new AfterScanPage());
+            Preferences.Set("ResultList", tagnames.ToString());
+            Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
         }
 
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

@@ -138,6 +138,28 @@ namespace SommeliAr.Services
             return historyWines;
         }
 
+        public async Task<ObservableCollection<MyWineModel>> GetResultWines(List<string> wineNames)
+        {
+            var resultList = new ObservableCollection<MyWineModel>();
+    
+            foreach (var v in wineNames)
+            {
+                var wines = await client
+                    .Child("AllWines")
+                    .OrderByKey()
+                    .StartAt(v)
+                    .LimitToFirst(1)
+                    .OnceAsync<MyWineModel>();
+
+                foreach (var w in wines)
+                {
+                    resultList.Add(w.Object);
+                }
+            }
+            return resultList;
+        }
+
+
         public async Task DeleteFavWine(string wineName, string firebaseMail)
         {
             await client
