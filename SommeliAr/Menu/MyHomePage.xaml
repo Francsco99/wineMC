@@ -100,7 +100,7 @@
                          Grid.ColumnSpan="2"
                          HorizontalOptions="Center"
                          VerticalOptions="Start">
-                 <lottie:AnimationView x:Name="Loading"
+                <lottie:AnimationView x:Name="Loading"
                                   Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
                                   RepeatMode="Infinite"
                                   WidthRequest="600"
@@ -110,14 +110,21 @@
                                   IsVisible = "false"/>
             </StackLayout>
 
+            <!--MESSAGGIO BENVENUTO-->
             <StackLayout 
                      Grid.ColumnSpan="2"
                      Grid.Row="2"
                      HorizontalOptions="Center"
                      VerticalOptions="Start">
-                <Label x:Name="User_name_lbl" FontSize="Title" FontAttributes="Bold" Margin="0,50,0,0"
-                   TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-                <Label x:Name="Welcome_lbl" Text="Welcome back to SommeliAR!" FontSize="Subtitle" Margin="0,20,0,0"/>
+                <Label x:Name="User_name_lbl"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       Margin="0,50,0,0"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                <Label x:Name="Welcome_lbl"
+                       Text="Welcome back to SommeliAR!"
+                       FontSize="Subtitle"
+                       Margin="0,20,0,0"/>
             </StackLayout>
 
         </Grid>

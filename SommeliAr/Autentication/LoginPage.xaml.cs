@@ -11,8 +11,7 @@ namespace SommeliAr.Views
 {
     public partial class LoginPage : ContentPage
     {
-        string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
-
+       
         public LoginPage()
         {
             InitializeComponent();
@@ -25,10 +24,8 @@ namespace SommeliAr.Views
             if (Entry_Email.Text != null && Entry_Password.Text != null)
             {
                 string emailLowerCase = Entry_Email.Text.ToLower();
-                string password = Entry_Password.Text;
 
-
-                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(AuthFirebase.Instance.GetKey()));
                 try
                 {
                     FirebaseAuthLink auth = await authProvider.SignInWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);

@@ -1,13 +1,12 @@
 ﻿using System;
 using Firebase.Auth;
+using SommeliAr.Services;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views.Autentication
 {
     public partial class RecoverPasswordPage : ContentPage
     {
-        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
-
         public RecoverPasswordPage()
         {
             InitializeComponent();
@@ -19,7 +18,7 @@ namespace SommeliAr.Views.Autentication
         {
             var Email = Forgot_email.Text;
 
-            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+            FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(AuthFirebase.Instance.GetKey()));
             try
             {
                 await authProvider.SendPasswordResetEmailAsync(Email);

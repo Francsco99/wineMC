@@ -2,6 +2,7 @@ using System;
 using System.Text.RegularExpressions;
 using Firebase.Auth;
 using SommeliAr.Models;
+using SommeliAr.Services;
 using SommeliAr.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -10,15 +11,10 @@ namespace SommeliAr.Views
 {
     public partial class SignUpPage : ContentPage
     {
-        //chiave api di firebase
-        public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
-
         public SignUpPage()
         {
             InitializeComponent();
-
             NavigationPage.SetHasNavigationBar(this, false);
-
             BindingContext = new MyUserViewModel();
         }
 
@@ -163,7 +159,6 @@ namespace SommeliAr.Views
             return ageOk;
         }
 
-
         //procedura di sign up
         async void Sign_up_btn_Clicked(object sender, EventArgs e)
         {
@@ -171,7 +166,6 @@ namespace SommeliAr.Views
             string username = Entry_Username.Text;
             string emailLowerCase = Entry_Email.Text.ToLower();
             string pwd = Entry_Password.Text;
-
             /*
             bool isEmailOk = MailValidation(email);
             bool isPassConfOk = PasswordConfirmationValidation(user);
@@ -186,7 +180,7 @@ namespace SommeliAr.Views
             {
                 try
                 {
-                    var authProvider = new FirebaseAuthProvider(new FirebaseConfig(WebAPIKey));
+                    var authProvider = new FirebaseAuthProvider(new FirebaseConfig(AuthFirebase.Instance.GetKey()));
                     //signup con email e password 
                     var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(Entry_Email.Text, Entry_Password.Text);
                     //invia email di verifica

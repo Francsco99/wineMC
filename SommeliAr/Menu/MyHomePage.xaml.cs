@@ -17,24 +17,22 @@ namespace SommeliAr.Menu
             InitializeComponent();
             //Toglie le righette di separazione delle entry della listview
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
-            GetProfileInformationAndRefreshToken();
+            GetUserInformationAndRefreshToken();
         }
 
         private static Color violetto = Color.FromHex("#8b52ff");
 
-        private void GetProfileInformationAndRefreshToken()
+        private void GetUserInformationAndRefreshToken()
         {
-            AuthFirebase services = new AuthFirebase();
-            User user;
+            
+            User user = AuthFirebase.Instance.GetUserFromDB();
             try
             {
-                user = services.GetUserFromDB();
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }
             catch
             {
-                services.RefreshToken();
-                user = services.GetUserFromDB();
+                AuthFirebase.Instance.RefreshToken();
                 User_name_lbl.Text = "Hi, " + user.DisplayName;
             }
         }

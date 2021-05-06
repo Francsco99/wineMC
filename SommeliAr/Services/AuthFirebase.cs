@@ -8,8 +8,26 @@ namespace SommeliAr.Services
     public class AuthFirebase
 
     {
+       public string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
 
-        private const string WebAPIKey = "AIzaSyB8W5Hq33E8rGn0Bn1CFf3-mzZDydeJSyA";
+        public string GetKey()
+        {
+            return this.WebAPIKey;
+        }
+
+        private static AuthFirebase instance;
+
+        public static AuthFirebase Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new AuthFirebase();
+                }
+                return instance;
+            }
+        }
 
         async public void RefreshToken()
         {
