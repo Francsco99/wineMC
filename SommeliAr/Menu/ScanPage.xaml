@@ -75,7 +75,10 @@
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
 
-        <ListView x:Name="resultsListView" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="False">
+        <ListView x:Name="resultsListView"
+                  VerticalOptions="CenterAndExpand"
+                  HorizontalOptions="CenterAndExpand"
+                  IsVisible="False" >
             <ListView.ItemTemplate>
                 <DataTemplate >
                     <TextCell  Text="{Binding TagName}"
