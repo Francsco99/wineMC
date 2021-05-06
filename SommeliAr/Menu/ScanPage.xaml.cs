@@ -74,7 +74,26 @@ namespace SommeliAr.Views.Menu
             skImage = SKBitmap.Decode(streamDraw);
             ImageCanvas.InvalidateSurface();
 
-            After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
+            if (predictionsResult != null)
+            {
+                var predictionsFiltered = new List<string>();
+                foreach (var pred in predictionsResult)
+                {
+                    if (!pred.TagName.Contains("Products"))
+                    {
+                        predictionsFiltered.Add(pred.TagName);
+                    }
+                }
+                if (predictionsFiltered.FirstOrDefault() != null)
+                {
+                    After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
+                }
+                else
+                {
+                    After_scan_btn.IsVisible = false;
+                }
+
+            }       
         }
 
         private async Task MakePredictionAsync(Stream stream)

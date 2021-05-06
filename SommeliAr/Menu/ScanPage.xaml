@@ -71,7 +71,7 @@
                         CornerRadius="15"
                         WidthRequest="120"
                         BorderWidth="3"
-                        IsVisible="true"
+                        IsVisible="false"
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
 
