@@ -13,7 +13,7 @@
             <!--Scritta let's scan...-->
             <RowDefinition Height="10*"/>
             <!--Canvas e animazione lottie-->
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2*"/>
             <!--bottone scan e bottone result-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -71,7 +71,7 @@
                         CornerRadius="15"
                         WidthRequest="120"
                         BorderWidth="3"
-                        IsVisible="false"
+                        IsVisible="true"
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
 

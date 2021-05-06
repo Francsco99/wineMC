@@ -1,6 +1,8 @@
 ﻿using SommeliAr.Menu;
 using SommeliAr.Models;
 using SommeliAr.Services;
+using SommeliAr.ViewModels;
+using SommeliAr.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,15 +17,26 @@ namespace SommeliAr.Menu
     public partial class AfterScanPage : ContentPage
     {
         
-        public AfterScanPage()
+         public AfterScanPage()
         {
             InitializeComponent();
-            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            //Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            //setting del BindingContext
+        }
+ 
+
+
+        private async void OnItemSelected(object sender, ItemTappedEventArgs e)
+        {
+            var mydetails = e.Item as MyWineModel;
+            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
         }
 
-        private void Favourite_Clicked(object sender, EventArgs e)
+       async void Result_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            StarView.PlayAnimation();
+            MyResultListViewModel res = new MyResultListViewModel();
+            await res.GetInfoAsync();
+            BindingContext = res;
         }
     }
 }

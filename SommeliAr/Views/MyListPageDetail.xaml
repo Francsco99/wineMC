@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Views.MyListPageDetail">
     <ContentPage.Content>
-
+        <ScrollView>
         <StackLayout>
             <Label x:Name="MyItemNameShow" HorizontalTextAlignment="Center" FontSize="Title"/>
             <Image x:Name="MyImageCall" HeightRequest="300" WidthRequest="300"/>
@@ -13,5 +13,6 @@
             <Label x:Name="MyDescriptionShow" Margin="20,0,0,0" FontSize="Medium"/>
             <Button x:Name="Add_to_fav_btn" Text="ADD TO FAV" Clicked="Add_to_fav_btn_Clicked"/>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -40,6 +40,8 @@ namespace SommeliAr.Views.Menu
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+            Preferences.Remove("ResultList");
+
             skImage = null;                                                // svuoto skImage ad ogni Scan
 
             await CrossMedia.Current.Initialize();
@@ -126,8 +128,13 @@ namespace SommeliAr.Views.Menu
 
         private void After_scan_btn_Clicked(object sender, EventArgs e)
         {
-            Preferences.Set("ResultList", tagnames.ToString());
-            Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
+            Preferences.Remove("ResultList");
+            string delimiter = ",";
+            string listone = String.Join(delimiter, tagnames);
+
+            Preferences.Set("ResultList", listone);
+            Navigation.PushAsync(new AfterScanPage());
+           // Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
         }
 
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)

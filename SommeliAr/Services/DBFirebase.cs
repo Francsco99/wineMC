@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -138,8 +139,10 @@ namespace SommeliAr.Services
             return historyWines;
         }
 
-        public async Task<ObservableCollection<MyWineModel>> GetResultWines(List<string> wineNames)
+        public async Task<ObservableCollection<MyWineModel>> GetResultWines(string listaVini)
         {
+            List<string> wineNames = listaVini.Split(',').ToList();
+
             var resultList = new ObservableCollection<MyWineModel>();
     
             foreach (var v in wineNames)
