@@ -28,12 +28,12 @@ namespace SommeliAr.Views.Menu
         Stream streamDraw;
         SKBitmap skImage;
 
-        List<string> tagnames = new List<string>();
+        List<string> tagnames;
 
         public ScanPage()
         {
             InitializeComponent();
-
+            
             resultsListView.BackgroundColor = Color.Transparent;
             resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
         }
@@ -43,6 +43,7 @@ namespace SommeliAr.Views.Menu
             Preferences.Remove("ResultList");
 
             skImage = null;                                                // svuoto skImage ad ogni Scan
+            tagnames = new List<string>();
 
             await CrossMedia.Current.Initialize();
 
@@ -101,7 +102,7 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.2;                   // probabilità minima impostata
+                    var setProbability = 0.6;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
 
                     resultsListView.ItemsSource = result;
