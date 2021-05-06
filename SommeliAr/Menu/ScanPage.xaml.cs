@@ -28,6 +28,9 @@ namespace SommeliAr.Views.Menu
         Stream streamDraw;
         SKBitmap skImage;
 
+        List<string> tagnames = new List<string>();
+
+
         public ScanPage()
         {
             InitializeComponent();
@@ -104,7 +107,6 @@ namespace SommeliAr.Views.Menu
                     predictionsResult = result;
 
                     //lista tagnames
-                    List<string> tagnames = new List<string>();
                     foreach (var p in predictions.Predictions)
                     {
                         if (!p.TagName.Contains("Products"))
@@ -284,10 +286,7 @@ namespace SommeliAr.Views.Menu
             return path;
         }
 
-        void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-
-        }
+   
     }
 
 }
