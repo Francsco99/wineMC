@@ -85,8 +85,8 @@
             <StackLayout Grid.Row="3" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center">
                 <ImageButton Source="hide.png"
                                  x:Name="Hide_pwd_btn"
-                                 WidthRequest="30"
-                                 HeightRequest="30"
+                                 WidthRequest="28"
+                                 HeightRequest="28"
                                  BackgroundColor="#0000"
                                  Clicked="Hide_pwd_btn_Clicked"/>
             </StackLayout>

@@ -61,7 +61,7 @@ namespace SommeliAr.Menu
 
             History_btn.FontSize = 20;
             Favourites_btn.TextColor = violetto;
-            Favourites_btn.FontSize = 30;
+            Favourites_btn.FontSize = 25;
             
         }
 
@@ -83,7 +83,7 @@ namespace SommeliAr.Menu
 
             Favourites_btn.FontSize = 20;
             History_btn.TextColor = violetto;
-            History_btn.FontSize = 30;
+            History_btn.FontSize = 25;
         }
 
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)

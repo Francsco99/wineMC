@@ -87,8 +87,8 @@
 
                 <ImageButton Source="hide.png"
                              x:Name="Hide_pwd_btn"
-                                        WidthRequest="25"
-                                        HeightRequest="25"
+                                        WidthRequest="28"
+                                        HeightRequest="28"
                                         Margin="0,0,20,0"
                                         BackgroundColor="#0000"
                                         Clicked="Hide_pwd_btn_Clicked"/>

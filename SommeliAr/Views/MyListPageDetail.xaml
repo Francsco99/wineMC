@@ -5,10 +5,10 @@
     x:Class="SommeliAr.Views.MyListPageDetail">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
+            <StackLayout BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
             <Label x:Name="MyItemNameShow" HorizontalTextAlignment="Center" FontSize="Title"/>
             <Image x:Name="MyImageCall" HeightRequest="300" WidthRequest="300"/>
-            <Label x:Name="Voto" Margin="20,20" FontSize="Subtitle" Text="Voto: "/>
+            <Label x:Name="Voto" Margin="20,20" FontSize="Subtitle" Text="Rating: "/>
             <Label Text="Description" Margin="20,20" FontSize="Subtitle"/>
             <Label x:Name="MyDescriptionShow" Margin="20,0,0,0" FontSize="Medium"/>
             <Button x:Name="Add_to_fav_btn" Text="ADD TO FAV" Clicked="Add_to_fav_btn_Clicked"/>
