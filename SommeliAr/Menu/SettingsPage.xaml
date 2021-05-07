@@ -16,7 +16,7 @@
                     <TableSection Title="Personal info">
                         <TextCell x:Name="user_displayName_txt_cell"/>
                         <TextCell x:Name="user_email_txt_cell"/>
-                        <TextCell x:Name="user_is_verified_txt_cell"/>
+                        <TextCell x:Name="user_is_verified_txt_cell" />
                         </TableSection>
                     <TableSection Title="Personal settings">
                         <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" Tapped="Change_pwd_text_cell_Tapped"/>

@@ -10,7 +10,7 @@ namespace SommeliAr.Views.Autentication
         public RecoverPasswordPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+            //NavigationPage.SetHasNavigationBar(this, false);
 
         }
 

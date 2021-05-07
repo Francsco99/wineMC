@@ -231,6 +231,7 @@
     <BundleResource Include="star-rating.json" />
     <BundleResource Include="swirlingviolablack.json" />
     <BundleResource Include="swirlingwineviola.json" />
+    <BundleResource Include="Resources\unhide.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

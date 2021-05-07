@@ -17,15 +17,16 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             GetProfileInformationAndRefreshToken();
+            
         }
 
         private void GetProfileInformationAndRefreshToken()
         {
-            AuthFirebase services = new AuthFirebase();
+            
             User user;
             try
             {
-                user = services.GetUserFromDB();
+                user = AuthFirebase.Instance.GetUserFromDB();
                 user_email_txt_cell.Text = "Email:  " + user.Email;
                 user_displayName_txt_cell.Text = "Username:  " + user.DisplayName;
                 if (user.IsEmailVerified)
@@ -41,7 +42,7 @@ namespace SommeliAr.Views.Menu
             }
             catch
             {
-                services.RefreshToken();
+                AuthFirebase.Instance.RefreshToken();
             }
         }
 
@@ -77,5 +78,28 @@ namespace SommeliAr.Views.Menu
         {
             Navigation.PushAsync(new AddNewWinePage());
         }
+
+        /*
+        async void user_is_verified_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            User user = AuthFirebase.Instance.GetUserFromDB();
+            if (!user.IsEmailVerified)
+            {
+                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(AuthFirebase.Instance.GetKey()));
+                try
+                {
+                    AuthFirebase.Instance.RefreshToken();
+                    await authProvider.SendEmailVerificationAsync(Preferences.Get("MyLoginToken", ""));
+                    await App.Current.MainPage.DisplayAlert("Alert!", "Email sent!", "Ok");
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    await App.Current.MainPage.DisplayAlert("Alert!", "Ops... something went wrong :----(", "Ok");
+
+                }
+            }    
+        }
+        */
     }
 }
