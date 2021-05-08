@@ -33,6 +33,5 @@ namespace SommeliAr.Views.Menu
                 Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-at-"));
             }
         }
-
     }
 }

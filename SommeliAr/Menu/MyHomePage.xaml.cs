@@ -18,10 +18,21 @@ namespace SommeliAr.Menu
             //Toglie le righette di separazione delle entry della listview
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
+            ResetView();
         }
         private bool favClicked = false;
         private bool histClicked = false;
         private static Color violetto = Color.FromHex("#8b52ff");
+
+        private void ResetView()
+        {
+            History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
+            Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
+            History_btn.FontSize = 20;
+            Favourites_btn.FontSize = 20;
+            ShowWelcomeLabels();
+
+        }
 
         private void GetUserInformationAndRefreshToken()
         {
@@ -38,10 +49,15 @@ namespace SommeliAr.Menu
             }
         }
 
+        private void ShowWelcomeLabels()
+        {
+            Welcome_msg.IsVisible = true;
+
+        }
+
         private void DeleteWelcomeLabels()
         {
-            User_name_lbl.Text = "";
-            Welcome_lbl.Text = "";
+            Welcome_msg.IsVisible = false;
         }
 
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -61,7 +77,6 @@ namespace SommeliAr.Menu
 
             //setting del colore in base al tema del dispositivo
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
-
             History_btn.FontSize = 20;
             Favourites_btn.TextColor = violetto;
             Favourites_btn.FontSize = 25;

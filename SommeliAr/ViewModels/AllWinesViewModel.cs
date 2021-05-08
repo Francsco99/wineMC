@@ -40,9 +40,10 @@ namespace SommeliAr.ViewModels
 
         public async Task AddMyWineAsync(string Name, string Detail, string Image, string Description, string Rating)
         {
-            await DBFirebase.Instance.AddMyWine(Name, Detail, Image, Description, Rating);
-            //await DBFirebase.Instance.GetMyFavouriteWines(Preferences.Get("UserEmailFirebase", ""));
-            //Console.WriteLine(c);
+            if(Name!=null && Detail!= null && Image!=null && Description != null && Rating != null)
+            {
+                await DBFirebase.Instance.AddMyWine(Name, Detail, Image, Description, Rating);
+            }
         }
         
     }

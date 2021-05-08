@@ -111,7 +111,7 @@
             </StackLayout>
 
             <!--MESSAGGIO BENVENUTO-->
-            <StackLayout 
+            <StackLayout x:Name="Welcome_msg"
                      Grid.ColumnSpan="2"
                      Grid.Row="2"
                      HorizontalOptions="Center"

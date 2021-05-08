@@ -9,7 +9,7 @@
     x:Class="SommeliAr.Views.Menu.MasterDetail">
 
     <local:MyHomePage>
-
+        
     </local:MyHomePage>
 
     <local1:ScanPage>
