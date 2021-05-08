@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using SommeliAr.Menu;
 using SommeliAr.Services;
+using SommeliAr.Views.Menu;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace SommeliAr.Views
 {
-    public partial class MyListPageDetail : ContentPage
+    public partial class MyFavouritePageDetail : ContentPage
     {
         private string itemName { get; set; }
         private string itemDescription { get; set; }
         private string itemImageSrc { get; set; }
         private string voto { get; set; }
-
-        public MyListPageDetail(string Name, string Description, string Source, string Rating)
+        public MyFavouritePageDetail(string Name, string Description, string Source, string Rating)
         {
             InitializeComponent();
 
@@ -23,7 +24,7 @@ namespace SommeliAr.Views
             this.voto = Rating;
             MyItemNameShow.Text = Name;
             MyDescriptionShow.Text = Description;
-            Voto.Text = "Rating: " + voto + "/100";
+            Voto.Text = "Rating: " + voto +"/100";
             MyImageCall.Source = new UriImageSource()
             {
                 Uri = new Uri(Source)
@@ -31,11 +32,11 @@ namespace SommeliAr.Views
 
         }
 
-        async void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)
+        async void Remove_from_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            new Command(async () => await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
-            await DisplayAlert("Success!", itemName + " added correctly", "Ok");
-
+            await DBFirebase.Instance.DeleteFavWine(itemName, Preferences.Get("UserEmailFirebase", ""));
+            await DisplayAlert("Success!", itemName + " removed correctly", "Ok");
+            Navigation.RemovePage(this);
         }
     }
 }

@@ -2,8 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SommeliAr.Views.MyListPageDetail">
-  <ContentPage.Content>
+    x:Class="SommeliAr.Views.MyFavouritePageDetail">
+    <ContentPage.Content>
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
@@ -31,11 +31,11 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" HorizontalOptions="Center">
-                    <Button x:Name="Add_to_fav_btn"
-                            Text="Add to favourites"
+                    <Button x:Name="Remove_from_fav_btn"
+                            Text="Remove from favourites"
                             FontSize="Subtitle"
                             TextColor="#8b52ff"
-                            Clicked="Add_to_fav_btn_Clicked"
+                            Clicked="Remove_from_fav_btn_Clicked"
                             WidthRequest="250"/>
                 </StackLayout>
             </Grid>

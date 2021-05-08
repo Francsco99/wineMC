@@ -11,7 +11,7 @@ using Xamarin.Forms;
 namespace SommeliAr.Menu
 {
     public partial class MyHomePage : ContentPage
-    {     
+    {
         public MyHomePage()
         {
             InitializeComponent();
@@ -19,12 +19,13 @@ namespace SommeliAr.Menu
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
         }
-
+        private bool favClicked = false;
+        private bool histClicked = false;
         private static Color violetto = Color.FromHex("#8b52ff");
 
         private void GetUserInformationAndRefreshToken()
         {
-            
+
             User user = AuthFirebase.Instance.GetUserFromDB();
             try
             {
@@ -42,9 +43,11 @@ namespace SommeliAr.Menu
             User_name_lbl.Text = "";
             Welcome_lbl.Text = "";
         }
-       
-        private async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
+
+        async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+            this.favClicked = true;
+            this.histClicked = false;
             DeleteWelcomeLabels();
             my_list_view.IsVisible = false;
             //setting del BindingContext
@@ -55,18 +58,20 @@ namespace SommeliAr.Menu
             my_list_view.IsVisible = true;
             BindingContext = fav;
             my_list_view.SeparatorVisibility = 0;
-          
+
             //setting del colore in base al tema del dispositivo
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
 
             History_btn.FontSize = 20;
             Favourites_btn.TextColor = violetto;
             Favourites_btn.FontSize = 25;
-            
+
         }
 
         async void History_btn_Clicked(System.Object sender, System.EventArgs e)
-        {           
+        {
+            this.favClicked = false;
+            this.histClicked = true;
             DeleteWelcomeLabels();
             my_list_view.IsVisible = false;
             //setting del BindingContext
@@ -89,8 +94,14 @@ namespace SommeliAr.Menu
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var mydetails = e.Item as MyWineModel;
-            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+            if (histClicked)
+            {
+                await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+            }
+            else if (favClicked)
+            {
+                await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+            }
         }
-
     }
 }
