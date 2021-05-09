@@ -181,9 +181,10 @@
                                    Margin="50,0,10,0"/>
 
                     <DatePicker  x:Name="Birthdate_entry"
-                                 Date="{Binding Birthdate}"
+                                 Date="01/01/2006"
                                          MinimumDate="01/01/1921"
                                          MaximumDate="01/01/2006"
+                       
                                          HorizontalOptions="FillAndExpand"
                                          Margin="0,0,50,0" />
 

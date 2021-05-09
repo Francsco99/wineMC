@@ -30,12 +30,12 @@ namespace SommeliAr.ViewModels
         
         public MyUserViewModel()
         {
-            AddUserCommand = new Command(async () =>  await AddMyUserAsync(Email, Birthdate));
+            AddUserCommand = new Command(async () =>  await AddMyUserAsync(Email));
         }
 
-        public async Task AddMyUserAsync(string Email, DateTime Birthdate)
+        public async Task AddMyUserAsync(string Email)
         {
-            await DBFirebase.Instance.AddMyUser(Email, Birthdate, Preferences.Get("UserEmailFirebase", ""));
+            await DBFirebase.Instance.AddMyUser(Email, Preferences.Get("UserEmailFirebase", ""));
         }
         
     }

@@ -10,23 +10,13 @@ namespace SommeliAr.Models
 
         public string Email { get; set; }
 
-        public DateTime Birthdate { get; set; }
+       // public DateTime Birthdate { get; set; }
 
         public MyUser() { }
 
-        public MyUser(string Username, string Password, string Email, DateTime Birthdate)
-        {
-            this.Username = Username;
-            this.Password = Password;
-            this.Email = Email;
-            this.Birthdate = Birthdate;
-
-        }
-
-        public MyUser(string Email, DateTime Birthdate)
+        public MyUser(string Email)
         {
             this.Email = Email;
-            this.Birthdate = Birthdate;
         }
 
         public bool IsPasswordMatching(string p1, string p2)

@@ -34,9 +34,9 @@ namespace SommeliAr.Services
         }
 
         //aggiunge un user al db realtime
-        public async Task AddMyUser(string email, DateTime birthdate, string firebaseMail )
+        public async Task AddMyUser(string email,string firebaseMail )
         {
-            MyUser u = new MyUser() { Email = email, Birthdate = birthdate, };
+            MyUser u = new MyUser() { Email = email};
             await client
                 .Child("Users")
                 .Child(firebaseMail)
