@@ -4,9 +4,9 @@ using SkiaSharp;
 
 namespace SommeliAr.Services
 {
-    public class Skiasharp
+    public class SkiasharpServices
     {
-        public Skiasharp()
+        public SkiasharpServices()
         {
 
         }
@@ -17,12 +17,14 @@ namespace SommeliAr.Services
             {
                 var rotated = new SKBitmap(bitmap.Height, bitmap.Width);
 
-                using (var surface = new SKCanvas(rotated))
+                using (SKCanvas canvas = new SKCanvas(rotated))
                 {
-                    surface.Translate(rotated.Width, 0);
-                    surface.RotateDegrees(90);
-                    surface.DrawBitmap(bitmap, 0, 0);
+                    canvas.Clear();
+                    canvas.Translate(bitmap.Height, 0);
+                    canvas.RotateDegrees(90);
+                    canvas.DrawBitmap(bitmap, new SKPoint());
                 }
+
 
                 return rotated;
             }

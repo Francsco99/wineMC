@@ -33,10 +33,9 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
-            
+
             resultsListView.BackgroundColor = Color.Transparent;
             resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
-            
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -66,15 +65,21 @@ namespace SommeliAr.Views.Menu
 
             var stream = file.GetStream();
             streamDraw = file.GetStream();
-
+            var streamRotated = file.GetStream();
             Loading.IsVisible = true;                                        // faccio capire all'animazione che è tempo di andare in scena
 
             await MakePredictionAsync(stream);                               // esegui le predictions                    
 
             Loading.IsVisible = false;
 
-            skImage = Skiasharp.Rotate(streamDraw);
-
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                skImage = SkiasharpServices.Rotate(streamRotated);
+            }
+            else if(Device.RuntimePlatform == Device.Android)
+            {
+                skImage = SKBitmap.Decode(streamDraw);
+            }
             ImageCanvas.InvalidateSurface();
 
             if (predictionsResult != null)
@@ -96,10 +101,8 @@ namespace SommeliAr.Views.Menu
                     After_scan_btn.IsVisible = false;
                 }
 
-            }       
+            }
         }
-
-      
 
         private async Task MakePredictionAsync(Stream stream)
         {
@@ -125,7 +128,7 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.1;                   // probabilità minima impostata
+                    var setProbability = 0.4;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
 
                     resultsListView.ItemsSource = result;
@@ -135,7 +138,7 @@ namespace SommeliAr.Views.Menu
                     foreach (var p in predictions.Predictions)
                     {
                         if (!p.TagName.Contains("Products"))
-                            {
+                        {
                             await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
                             tagnames.Add(p.TagName);
                         }
@@ -158,13 +161,14 @@ namespace SommeliAr.Views.Menu
 
             Preferences.Set("ResultList", listone);
             Navigation.PushAsync(new AfterScanPage());
-           // Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
+            // Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
         }
 
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             var info = args.Info;
             var canvas = args.Surface.Canvas;
+
             ClearCanvas(info, canvas);
 
 
@@ -180,10 +184,8 @@ namespace SommeliAr.Views.Menu
                     var top = (info.Height - scaleHeight) / 2;
                     var left = (info.Width - scaleWidth) / 2;
 
-                    //canvas.RotateDegrees(-90, 0, 0);
                     canvas.DrawBitmap(skImage, new SKRect(left, top, left + scaleWidth, top + scaleHeight));
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
-                    
                 }
             }
 
@@ -316,7 +318,7 @@ namespace SommeliAr.Views.Menu
             return path;
         }
 
-   
+
     }
 
 }
