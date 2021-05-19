@@ -9,11 +9,11 @@
     <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="1.4*"/>
+            <RowDefinition Height="*"/>
             <!--Scritta let's scan...-->
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="5*"/>
             <!--Canvas e animazione lottie-->
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
             <!--bottone scan e bottone result-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>

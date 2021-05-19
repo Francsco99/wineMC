@@ -36,6 +36,7 @@ namespace SommeliAr.Views.Menu
             
             resultsListView.BackgroundColor = Color.Transparent;
             resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
+            
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -72,7 +73,8 @@ namespace SommeliAr.Views.Menu
 
             Loading.IsVisible = false;
 
-            skImage = SKBitmap.Decode(streamDraw);
+            skImage = Skiasharp.Rotate(streamDraw);
+
             ImageCanvas.InvalidateSurface();
 
             if (predictionsResult != null)
@@ -96,6 +98,8 @@ namespace SommeliAr.Views.Menu
 
             }       
         }
+
+      
 
         private async Task MakePredictionAsync(Stream stream)
         {
@@ -121,7 +125,7 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    var setProbability = 0.6;                   // probabilità minima impostata
+                    var setProbability = 0.1;                   // probabilità minima impostata
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); // visualizza solo predizioni con sicurezza superiore a setProbability 
 
                     resultsListView.ItemsSource = result;
@@ -161,7 +165,6 @@ namespace SommeliAr.Views.Menu
         {
             var info = args.Info;
             var canvas = args.Surface.Canvas;
-
             ClearCanvas(info, canvas);
 
 
@@ -177,8 +180,10 @@ namespace SommeliAr.Views.Menu
                     var top = (info.Height - scaleHeight) / 2;
                     var left = (info.Width - scaleWidth) / 2;
 
+                    //canvas.RotateDegrees(-90, 0, 0);
                     canvas.DrawBitmap(skImage, new SKRect(left, top, left + scaleWidth, top + scaleHeight));
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
+                    
                 }
             }
 
