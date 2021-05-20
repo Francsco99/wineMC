@@ -24,6 +24,7 @@
                      Margin="0,0,20,0">
                 <Button x:Name="History_btn"
                    Text="History"
+                   FontFamily="OpenSans-Regular.ttf"
                    FontSize="20"
                    BackgroundColor="Transparent"
                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
@@ -38,6 +39,7 @@
                      Margin="0,0,20,0">
                 <Button x:Name="Favourites_btn"
                                 Text="Favourites"
+                                FontFamily="OpenSans-Regular.ttf"
                                 FontSize="20"
                                 TextColor="{AppThemeBinding Light=Black, Dark=White}"
                                 BackgroundColor="Transparent"
@@ -71,8 +73,8 @@
 
                                     <controls:CircleImage
                                    HeightRequest="130"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
                                    Aspect="AspectFill"
                                    WidthRequest="60"
                                    Grid.RowSpan="2"
@@ -80,13 +82,15 @@
 
                                     <Label Grid.Column="1"
                                       Text="{Binding Name}"
-                                      FontAttributes="Bold"  
+                                      FontFamily="OpenSans-Bold.ttf"
+                                      FontSize="20"
                                       VerticalOptions="End"/>
 
                                     <Label Grid.Column="1"
                                       Grid.Row="1"
+                                           Margin="0,10,0,0"
                                       Text="{Binding Detail}"
-                                      FontAttributes="Italic"
+                                      FontFamily="OpenSans-Italic.ttf"
                                       VerticalOptions="Start"/>
                                 </Grid>
                             </ViewCell>

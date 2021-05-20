@@ -9,11 +9,11 @@
     <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
         <Grid.RowDefinitions>
 
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.11*"/>
             <!--Scritta let's scan...-->
-            <RowDefinition Height="5*"/>
-            <!--Canvas e animazione lottie-->
             <RowDefinition Height="*"/>
+            <!--Canvas e animazione lottie-->
+            <RowDefinition Height="0.25*"/>
             <!--bottone scan e bottone result-->
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,18 +23,29 @@
         </Grid.ColumnDefinitions>
 
         <!--SCRITTA LET'S SCAN BOTTLES-->
-        <StackLayout  Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="Center" HorizontalOptions="Center" >
+        <StackLayout  Grid.Row="0"
+                      Grid.ColumnSpan="3"
+                      HorizontalOptions="Center"
+                      VerticalOptions="End"
+                      Padding="0,15,0,0">
             <Label Text="Let's scan bottles!"
                        TextColor="#b794ff"
                        FontSize="Title"
-                       FontAttributes="Bold"
+                       FontFamily="OpenSans-Bold.ttf"
                        />
         </StackLayout>
 
         <!--IMAGE CANVAS-->
-        <skia:SKCanvasView x:Name="ImageCanvas"  PaintSurface="OnCanvasViewPaintSurface"
-                           Grid.Row="1" Grid.ColumnSpan="3" Margin="0,0,0,0"/>
-
+       
+           <skia:SKCanvasView x:Name="ImageCanvas"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="3"
+                              HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand"
+                              Margin="10"
+                              PaintSurface="OnCanvasViewPaintSurface"/>
+       
+        
         <!--LOTTIE CARICAMENTO-->
         <lottie:AnimationView x:Name="Loading" Grid.Row="1" Grid.ColumnSpan="3"
                                   HorizontalOptions="Center"
@@ -46,9 +57,10 @@
                                   Speed="1.5"
                                   IsVisible = "false"/>
 
-        <StackLayout  VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" Margin="0,0,0,0">
+        <StackLayout   Grid.Row="2" Grid.Column="1" VerticalOptions="Start">
             <Button x:Name="Scan_btn" Text="SCAN"
                         TextColor="White"
+                        FontFamily="OpenSans-Regular.ttf"
                         FontSize="Large"
                         FontAttributes="Bold"
                         CharacterSpacing="1"
@@ -60,7 +72,7 @@
 
         </StackLayout>
 
-        <StackLayout VerticalOptions="Start" HorizontalOptions="Center" Grid.Row="2" Grid.Column="2" Margin="-20,0,0,0">
+        <StackLayout VerticalOptions="Start" Grid.Row="2" Grid.Column="2" Margin="-20,0,0,0">
             <Button x:Name="After_scan_btn" Text="Result list"
                         BorderColor="#8b52ff"
                         TextColor="#8b52ff"

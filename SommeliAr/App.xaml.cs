@@ -5,6 +5,10 @@ using Xamarin.Forms.Xaml;
 using SommeliAr.Views.Menu;
 using Xamarin.Essentials;
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
+[assembly: ExportFont("OpenSans-Regular.ttf")]
+[assembly: ExportFont("OpenSans-Bold.ttf")]
+[assembly: ExportFont("OpenSans-Italic.ttf")]
+
 
 namespace SommeliAr
 {

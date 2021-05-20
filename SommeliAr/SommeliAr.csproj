@@ -32,6 +32,8 @@
     <Folder Include="Menu\" />
     <Folder Include="SettingsViews\" />
     <Folder Include="Services\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Resources\Fonts\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Views\settings_purple.png" />
@@ -40,6 +42,9 @@
     <None Remove="Views\camera_36pt_2x.png" />
     <None Remove="Views\settings_24pt_2x.png" />
     <None Remove="Views\Tutorial_Screen_1.png" />
+    <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-Italic.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
@@ -58,5 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Tutorial_Screen_1.png" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-Italic.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
   </ItemGroup>
 </Project>
