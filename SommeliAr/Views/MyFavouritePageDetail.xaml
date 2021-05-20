@@ -14,7 +14,10 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0">
-                    <Label x:Name="MyItemNameShow" HorizontalTextAlignment="Center" FontSize="Title"/>
+                    <Label x:Name="MyItemNameShow"
+                           HorizontalTextAlignment="Center"
+                           FontFamily="OpenSans-Regular"
+                           FontSize="Title"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1">
@@ -22,17 +25,21 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" Padding="15">
-                    <Label x:Name="Voto" FontSize="Subtitle" Text="Rating:"/>
+                    <Label x:Name="Voto"
+                           FontSize="Subtitle"
+                           FontFamily="OpenSans-Regular"
+                           Text="Rating:"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="3" Padding="15">
-                    <Label Text="Description:" FontSize="Subtitle"/>
-                    <Label x:Name="MyDescriptionShow" FontSize="Medium"/>
+                    <Label Text="Description:" FontSize="Subtitle" FontFamily="OpenSans-Regular"/>
+                    <Label x:Name="MyDescriptionShow" FontSize="Medium" FontFamily="OpenSans-Regular"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" HorizontalOptions="Center">
                     <Button x:Name="Remove_from_fav_btn"
                             Text="Remove from favourites"
+                            FontFamily="OpenSans-Regular"
                             FontSize="Subtitle"
                             TextColor="#8b52ff"
                             Clicked="Remove_from_fav_btn_Clicked"

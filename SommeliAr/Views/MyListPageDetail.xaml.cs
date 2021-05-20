@@ -23,7 +23,7 @@ namespace SommeliAr.Views
             this.voto = Rating;
             MyItemNameShow.Text = Name;
             MyDescriptionShow.Text = Description;
-            Voto.Text = "Rating: " + voto + " /100";
+            Voto.Text = "Rating: " + voto + " / 100";
             MyImageCall.Source = new UriImageSource()
             {
                 Uri = new Uri(Source)
