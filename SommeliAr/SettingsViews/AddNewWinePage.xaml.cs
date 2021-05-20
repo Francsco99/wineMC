@@ -13,7 +13,7 @@ namespace SommeliAr.SettingsViews
         {
             InitializeComponent();
             //NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = new AllWinesViewModel();
+            BindingContext = new AllWinesViewModel();   
         }
 
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
@@ -22,6 +22,7 @@ namespace SommeliAr.SettingsViews
             await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
 
         }
+
     }
 
 }
