@@ -19,7 +19,7 @@ namespace SommeliAr.SettingsViews
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)
         {
             var mydetails = e.Item as MyWineModel;
-            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
 
         }
 

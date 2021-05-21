@@ -16,6 +16,9 @@ namespace SommeliAr.ViewModels
         public string Detail { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
+        public string SensorialNotes { get; set; }
+        public string ProductionArea { get; set; }
+        public string Dishes { get; set; }
         public string Rating { get; set; }
 
         public Command AddWineCommand { get; set; }
@@ -35,14 +38,14 @@ namespace SommeliAr.ViewModels
         public AllWinesViewModel()
         {
             MyWineList = DBFirebase.Instance.GetAllWines();
-            AddWineCommand = new Command(async () => await AddMyWineAsync(Name, Detail, Image, Description, Rating));
+            AddWineCommand = new Command(async () => await AddMyWineAsync(Name, Detail, Image, Description,SensorialNotes,ProductionArea,Dishes, Rating));
         }
 
-        public async Task AddMyWineAsync(string Name, string Detail, string Image, string Description, string Rating)
+        public async Task AddMyWineAsync(string Name, string Detail, string Image, string Description, string SensorialNotes,string ProductionArea, string Dishes, string Rating)
         {
             if(Name!=null && Detail!= null && Image!=null && Description != null && Rating != null)
             {
-                await DBFirebase.Instance.AddMyWine(Name, Detail, Image, Description, Rating);
+                await DBFirebase.Instance.AddMyWine(Name, Detail, Image, Description,SensorialNotes,ProductionArea,Dishes, Rating);
             }
         }
         

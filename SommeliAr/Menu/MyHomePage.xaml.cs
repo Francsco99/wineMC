@@ -111,11 +111,11 @@ namespace SommeliAr.Menu
             var mydetails = e.Item as MyWineModel;
             if (histClicked)
             {
-                await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+                await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
             }
             else if (favClicked)
             {
-                await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description, mydetails.Image, mydetails.Rating));
+                await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
             }
         }
     }

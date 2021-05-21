@@ -13,27 +13,46 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
                     <Label x:Name="MyItemNameShow"
                            HorizontalTextAlignment="Center"
                            FontFamily="OpenSans-Regular"
-                           FontSize="Title"/>
+                           FontSize="24"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1">
-                    <Image x:Name="MyImageCall" HeightRequest="300" WidthRequest="300"/>
+                <StackLayout Grid.Row="1" Grid.Column="0" Padding="70,10,0,0" HorizontalOptions="End">
+                    <Image x:Name="MyImageCall" HeightRequest="250" WidthRequest="250" HorizontalOptions="End"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2" Padding="15">
-                    <Label x:Name="Voto"
-                           FontSize="Subtitle"
-                           FontFamily="OpenSans-Regular"
-                           Text="Rating:"/>
+                <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <Frame
+                        CornerRadius="45"
+                           HeightRequest="50"
+                           WidthRequest="50" BackgroundColor="Gold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center">
+                        <Label x:Name="Voto"
+                            TextColor="White"
+                                 VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                           FontSize="30"
+                           FontFamily="OpenSans-Bold"
+                          />
+                    </Frame>
+
+
                 </StackLayout>
 
-                <StackLayout Grid.Row="3" Padding="15">
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Padding="15">
                     <Label Text="Description:" FontSize="Subtitle" FontFamily="OpenSans-Regular"/>
-                    <Label x:Name="MyDescriptionShow" FontSize="Medium" FontFamily="OpenSans-Regular"/>
+                   <Label Text="&#x2022;" x:Name="SensNotes" TextColor="Red" FontFamily="OpenSans-Regular"/>
+                    <Label x:Name="ProdArea" TextColor="Green" FontFamily="OpenSans-Regular"/>
+                    <Label x:Name="MyDishes" TextColor="Purple" FontFamily="OpenSans-Regular"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" HorizontalOptions="Center">

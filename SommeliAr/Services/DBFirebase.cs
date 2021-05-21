@@ -44,9 +44,15 @@ namespace SommeliAr.Services
         }
 
         //aggiunge un vino al db realtime
-        public async Task AddMyWine(string name, string detail, string image, string description, string rating)
+        public async Task AddMyWine(string name,
+            string detail, string image, string description,
+            string sensorialNotes, string productionArea, string dishes,string rating)
         {
-            MyWineModel w = new MyWineModel() { Name = name, Detail = detail, Image = image, Description = description, Rating=rating };
+            MyWineModel w = new MyWineModel()
+            { Name = name, Detail = detail, Image = image,
+                Description = description,
+                SensorialNotes=sensorialNotes,
+                ProductionArea=productionArea, Dishes=dishes, Rating=rating };
             await client
                 .Child("AllWines")
                 .Child(name)
