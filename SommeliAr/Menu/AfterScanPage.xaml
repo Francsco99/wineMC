@@ -18,7 +18,7 @@
             <StackLayout Grid.Row="1">
                 <ListView x:Name="my_list_view"
                      ItemsSource="{Binding WineList}"
-                     RowHeight="150"                 
+                    HasUnevenRows="True"              
                      ItemTapped="OnItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -34,11 +34,11 @@
                                     </Grid.ColumnDefinitions>
 
                                     <controls:CircleImage
-                                   HeightRequest="130"
-                                   HorizontalOptions="CenterAndExpand"
                                    VerticalOptions="CenterAndExpand"
-                                   Aspect="AspectFill"
+                                    HeightRequest="100"
+                                    WidthRequest="100"
                                    Grid.RowSpan="2"
+                                   Grid.Column="0"
                                    Source="{Binding Image}"/>
 
                                     <Label Grid.Column="1"

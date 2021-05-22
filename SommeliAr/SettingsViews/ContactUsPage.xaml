@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SommeliAr.SettingsViews.ContactUsPage">
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        <Label Grid.Row="0"
+               Grid.ColumnSpan="2"
+            x:Name="rotatingLabel"
+               Text="CHANGE PROBABILITY"
+               FontSize="Large"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />
+
+        <Slider Grid.Row="1"
+               Grid.ColumnSpan="2"
+            Maximum="1"
+                 Minimum="0"
+                Value="0.5"
+                ValueChanged="OnSliderValueChanged" />
+
+        <Label Grid.Row="2"
+               Grid.ColumnSpan="2"
+            x:Name="displayLabel"
+               Text="(uninitialized)"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />
+
+        <Button Grid.Row="3"
+               Grid.Column="1"
+            x:Name="set_btn"
+            Text="set value"
+            Clicked="set_btn_Clicked"
+            Margin="0,0,0,50"/>
+
+              <Button Grid.Row="3"
+               Grid.Column="0"
+            x:Name="clear_btn"
+            Text="clear value"
+            Clicked="clear_btn_Clicked"
+            Margin="0,0,0,50"/>
+            </Grid>
+    </StackLayout>
+</ContentPage>

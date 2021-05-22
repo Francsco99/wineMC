@@ -79,6 +79,10 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new AddNewWinePage());
         }
 
+        void Contact_us_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new ContactUsPage());
+        }
         /*
         async void user_is_verified_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
