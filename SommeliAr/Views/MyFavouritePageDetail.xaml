@@ -13,46 +13,88 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="0" Grid.ColumnSpan="2">
+                <StackLayout Grid.Row="0" Padding="0,10,0,0">
                     <Label x:Name="MyItemNameShow"
                            HorizontalTextAlignment="Center"
-                           FontFamily="OpenSans-Regular"
-                           FontSize="24"/>
+                           FontFamily="OpenSans-Bold"
+                           FontSize="22"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1" Grid.Column="0" Padding="70,10,0,0" HorizontalOptions="End">
-                    <Image x:Name="MyImageCall" HeightRequest="250" WidthRequest="250" HorizontalOptions="End"/>
-                </StackLayout>
-
-                <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-
-                    <Frame
+                <StackLayout Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="MyImageCall"
+                               HeightRequest="250"
+                               WidthRequest="250"
+                               HorizontalOptions="End"
+                               />
+                        <Frame x:Name="Round_frame"
                         CornerRadius="45"
                            HeightRequest="50"
                            WidthRequest="50" BackgroundColor="Gold"
                            HorizontalOptions="Center"
-                           VerticalOptions="Center">
-                        <Label x:Name="Voto"
-                            TextColor="White"
-                                 VerticalOptions="Center"
+                           VerticalOptions="Center"
+                               Margin="200,30,0,0">
+                            <Label x:Name="Voto"
+                               TextColor="White"
+                               VerticalOptions="Center"
                                HorizontalOptions="Center"
-                           FontSize="30"
-                           FontFamily="OpenSans-Bold"
-                          />
-                    </Frame>
-
-
+                               FontSize="30"
+                               FontFamily="OpenSans-Bold"/>
+                        </Frame>
+                    </Grid>
                 </StackLayout>
 
-                <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Padding="15">
-                    <Label Text="Description:" FontSize="Subtitle" FontFamily="OpenSans-Regular"/>
-                   <Label Text="&#x2022;" x:Name="SensNotes" TextColor="Red" FontFamily="OpenSans-Regular"/>
-                    <Label x:Name="ProdArea" TextColor="Green" FontFamily="OpenSans-Regular"/>
-                    <Label x:Name="MyDishes" TextColor="Purple" FontFamily="OpenSans-Regular"/>
+                <StackLayout Grid.Row="3" Padding="15">
+                    <Grid RowSpacing="10"
+                          ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Row="0"
+                               Grid.Column="0"
+                               Source="baseline_wine_bar_black_48pt_1x.png"   
+                               VerticalOptions="Start"
+                               HeightRequest="24"
+                               WidthRequest="24"/>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               x:Name="SensNotes"
+                               TextColor="Red"
+                               FontFamily="OpenSans-Regular"/>
+                        <Image Grid.Row="2"
+                               Grid.Column="0"
+                               Source="baseline_restaurant_black_48pt_1x.png"
+                               HeightRequest="24"
+                               WidthRequest="24"
+                               VerticalOptions="Start"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               x:Name="MyDishes"
+                               TextColor="Purple"
+                               FontFamily="OpenSans-Regular"/>
+                        <Image Grid.Row="1"
+                               Grid.Column="0"
+                               Source="baseline_location_on_black_48pt_1x.png"
+                               HeightRequest="24"
+                               WidthRequest="24"
+                               VerticalOptions="Start"/>
+                        <Label Grid.Row="2"
+                               Grid.Column="1"
+                               x:Name="ProdArea"
+                               TextColor="Green"
+                               FontFamily="OpenSans-Regular"/>
+                    </Grid>
                 </StackLayout>
 
                 <StackLayout Grid.Row="4" HorizontalOptions="Center">

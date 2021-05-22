@@ -16,7 +16,9 @@ namespace SommeliAr.Views
         private string dishes { get; set; }
         private string voto { get; set; }
 
-        public MyListPageDetail(string Name, string Description, string SensorialNotes, string ProductionArea, string Dishes, string Source, string Rating)
+        public MyListPageDetail(string Name,
+            string Description, string SensorialNotes,
+            string ProductionArea, string Dishes, string Source, string Rating)
         {
             InitializeComponent();
 
@@ -27,6 +29,7 @@ namespace SommeliAr.Views
             this.dishes = Dishes;
             this.itemImageSrc = Source;
             this.voto = Rating;
+
             MyItemNameShow.Text = Name;
             ProdArea.Text = ProductionArea;
             SensNotes.Text =SensorialNotes;
@@ -36,11 +39,33 @@ namespace SommeliAr.Views
             {
                 Uri = new Uri(Source)
             };
+
+            Round_frame.BackgroundColor = this.SetFrameColor(voto);
         }
 
+        private Color SetFrameColor(string voto)
+        {
+            double votoDouble = Convert.ToDouble(voto);
+
+            if (votoDouble >= 0 && votoDouble < 6)
+            {
+                return Color.Red;
+            }
+
+            else if (votoDouble >= 6 && votoDouble <= 8)
+            {
+                return Color.Gold;
+            }
+
+            else
+                return Color.Green;
+        }
+        
         async void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            new Command(async () => await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
+            new Command(async () =>
+            await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
+
             await DisplayAlert("Success!", itemName + " added correctly", "Ok");
 
         }
