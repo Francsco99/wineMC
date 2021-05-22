@@ -27,7 +27,7 @@
                     <TableSection Title="Support">
                         <TextCell x:Name="Add_wine_txt_cell" Text="Add a wine!" Tapped="Add_wine_txt_cell_Tapped"/>
                         <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
-                        <TextCell x:Name="Contact_us_txt_cell" Text="Contact us" Tapped="Contact_us_txt_cell_Tapped"/>
+                        <TextCell x:Name="Contact_us_txt_cell" Text="Change Probability" Tapped="Contact_us_txt_cell_Tapped"/>
                         <TextCell Text="Our website"/>
                     </TableSection>
                     <TableSection>

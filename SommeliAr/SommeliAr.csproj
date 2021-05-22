@@ -45,11 +45,17 @@
     <None Remove="Resources\Fonts\OpenSans-Bold.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Italic.ttf" />
     <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Views\baseline_location_on_black_48pt_1x.png" />
+    <None Remove="Views\baseline_restaurant_black_48pt_1x.png" />
+    <None Remove="Views\baseline_wine_bar_black_48pt_1x.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
     <AndroidResource Include="Views\camera_36pt_2x.png" />
     <AndroidResource Include="Views\settings_24pt_2x.png" />
+    <AndroidResource Include="Views\baseline_location_on_black_48pt_1x.png" />
+    <AndroidResource Include="Views\baseline_restaurant_black_48pt_1x.png" />
+    <AndroidResource Include="Views\baseline_wine_bar_black_48pt_1x.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="SettingsViews\ChangeUserNamePage.xaml.cs">

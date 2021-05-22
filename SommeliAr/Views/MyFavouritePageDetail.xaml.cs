@@ -37,8 +37,27 @@ namespace SommeliAr.Views
             {
                 Uri = new Uri(Source)
             };
+
+            Round_frame.BackgroundColor = this.SetFrameColor(voto);
         }
-        
+
+        private Color SetFrameColor(string voto)
+        {
+            double votoDouble = Convert.ToDouble(voto);
+
+            if (votoDouble >= 0 && votoDouble < 6)
+            {
+                return Color.Red;
+            }
+
+            else if (votoDouble >= 6 && votoDouble <= 8)
+            {
+                return Color.Gold;
+            }
+
+            else
+                return Color.Green;
+        }
 
         async void Remove_from_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {

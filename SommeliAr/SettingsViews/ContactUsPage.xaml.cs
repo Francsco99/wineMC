@@ -18,7 +18,7 @@ namespace SommeliAr.SettingsViews
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
         {           
             double value = args.NewValue;
-            rotatingLabel.Rotation = value;
+            //rotatingLabel.Rotation = value;
             //displayLabel.Text = String.Format("The Slider value is {0:F1}", value);
             decimal decimalValue = Math.Round((decimal)value, 1);
             probability = decimalValue.ToString();
