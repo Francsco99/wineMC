@@ -114,7 +114,7 @@ namespace SommeliAr.Views.Menu
                 return;
             }
             var imageBytes = GetImageAsByteData(stream);
-            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
+            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration7/url";
             var predictionKey = "0b8a0ea4568b49a68d802140f9c494d1";
             using (HttpClient client = new HttpClient())
             {

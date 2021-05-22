@@ -17,7 +17,6 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             GetProfileInformationAndRefreshToken();
-            
         }
 
         private void GetProfileInformationAndRefreshToken()
@@ -83,7 +82,11 @@ namespace SommeliAr.Views.Menu
         {
             Navigation.PushAsync(new ContactUsPage());
         }
-        /*
+
+        void Min_probability_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            min_probability_txt_cell.Text = "Min. Probability: " + Preferences.Get("Probability", "");
+        }        /*
         async void user_is_verified_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             User user = AuthFirebase.Instance.GetUserFromDB();
