@@ -48,6 +48,7 @@
     <None Remove="Views\baseline_location_on_black_48pt_1x.png" />
     <None Remove="Views\baseline_restaurant_black_48pt_1x.png" />
     <None Remove="Views\baseline_wine_bar_black_48pt_1x.png" />
+    <None Remove="Resources\Fonts\OpenSans-BoldItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Views\star_border.png" />
@@ -72,5 +73,6 @@
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Italic.ttf" />
     <EmbeddedResource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\OpenSans-BoldItalic.ttf" />
   </ItemGroup>
 </Project>

@@ -30,14 +30,15 @@
         <!--MESSAGGIO DI BENVENUTO-->
         <StackLayout Grid.Row="0" Padding="0,50,0,0">
             <Label Text="Create Account,"
-                       FontSize="26"
-                       FontAttributes="Bold, Italic"
+                       FontSize="30"
+                       FontFamily="OpenSans-BoldItalic"
                        Margin="40,0,0,0"  />
 
             <Label Text="Sign up to get started!"
-                       FontSize="18"
+                       FontSize="20"
+                   FontFamily="OpenSans-Regular"
                        TextColor="DarkGray"
-                       Margin="40,0,0,20" />
+                       Margin="40,0,0,0" />
         </StackLayout>
 
         <!--USERNAME-->
@@ -51,6 +52,7 @@
                 <Entry x:Name="Entry_Username"
                                     Placeholder="Username"
                                     FontSize="16"
+                                    FontFamily="OpenSans-Regular"
                                     HorizontalOptions="FillAndExpand"
                                     Margin="0,0,50,0"/>
 
@@ -68,6 +70,7 @@
                                 Text="Between 6-20 digits"
                                 TextColor="{AppThemeBinding Light=White, Dark=Black}"
                                 FontSize="Small"
+                   FontFamily="OpenSans-Regular"
                                 Margin="50,0,0,0"/>
         </StackLayout>
 
@@ -82,6 +85,7 @@
                 <Entry x:Name="Entry_Password"
                                     Placeholder="Password"
                                     FontSize="16"
+                       FontFamily="OpenSans-Regular"
                                     IsPassword="true"
                                     HorizontalOptions="FillAndExpand"/>
 
@@ -107,6 +111,7 @@
                                 Text="8-20 digits, one upper case, one lower case, one number, and one special character"
                                 TextColor="{AppThemeBinding Light=White, Dark=Black}"
                                 FontSize="Small"
+                   FontFamily="OpenSans-Regular"
                                 Margin="50,0,20,0"/>
         </StackLayout>
 
@@ -121,6 +126,7 @@
                 <Entry x:Name="Entry_ConfirmPassword"
                                    Placeholder="Confirm Password"
                                    FontSize="16"
+                       FontFamily="OpenSans-Regular"
                                    IsPassword="true" 
                                    HorizontalOptions="FillAndExpand"
                                    Margin="0,0,50,0"/>
@@ -137,6 +143,7 @@
                                Text="Not matching"
                                TextColor="{AppThemeBinding Light=White, Dark=Black}"
                                FontSize="Small"
+                   FontFamily="OpenSans-Regular"
                                Margin="50,0,0,0"/>
         </StackLayout>
 
@@ -152,6 +159,7 @@
                                  Text="{Binding Email}"
                                     Placeholder="Email"
                                     FontSize="16"
+                        FontFamily="OpenSans-Regular"
                                     HorizontalOptions="FillAndExpand"
                                     Margin="0,0,50,0" />
 
@@ -168,6 +176,7 @@
                                 Text="Email not valid"
                                 TextColor="{AppThemeBinding Light=White, Dark=Black}"
                                 FontSize="Small"
+                   FontFamily="OpenSans-Regular"
                                 Margin="50,0,0,0"/>
         </StackLayout>
 
@@ -200,7 +209,9 @@
                 <Label x:Name="ErrorBirthLabelText"
                                Text="You must be at least 18"
                                TextColor="{AppThemeBinding Light=White, Dark=Black}"
-                               FontSize="Small" Margin="50,0,0,0"/>
+                               FontSize="Small"
+                       FontFamily="OpenSans-Regular"
+                       Margin="50,0,0,0"/>
             </StackLayout>
         </StackLayout>
 
@@ -209,7 +220,9 @@
             <Button x:Name="Sign_up_btn"
                                 Text="Register"
                                 TextColor="#ffffff" 
-                                BorderRadius="10" FontSize="16"
+                                BorderRadius="10"
+                    FontSize="20"
+                    FontFamily="OpenSans-Regular"
                                 BackgroundColor="#8b52ff"                 
                                 Clicked="Sign_up_btn_Clicked"/>
         </StackLayout>
@@ -217,6 +230,7 @@
         <!--CONNECT WITH-->
         <StackLayout Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0">
             <Label Text="Or connect with:"
+                   FontFamily="OpenSans-Regular"
                    FontSize="16"/>
         </StackLayout>
 
@@ -233,12 +247,14 @@
         <StackLayout Grid.Row="9" Orientation="Horizontal" HorizontalOptions="Center">
             <Label Text="Already have an account?"
                    FontSize="16"
+                   FontFamily="OpenSans-Regular"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"/>
 
             <Button x:Name="Sign_in_btn"
                                 Text="Sign in now"
                                 FontSize="16"
+                    FontFamily="OpenSans-Regular"
                                 TextColor="#b794ff"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="Center"

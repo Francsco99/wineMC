@@ -16,7 +16,7 @@ namespace SommeliAr.Menu
         {
             InitializeComponent();
             //Toglie le righette di separazione delle entry della listview
-            my_list_view.SeparatorVisibility = (SeparatorVisibility)5;
+            my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
             ResetView();
         }

@@ -5,3 +5,4 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("OpenSans-Regular.ttf")]
 [assembly: ExportFont("OpenSans-Bold.ttf")]
 [assembly: ExportFont("OpenSans-Italic.ttf")]
+[assembly: ExportFont("OpenSans-BoldItalic.ttf")]
