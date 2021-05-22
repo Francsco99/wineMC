@@ -63,36 +63,38 @@
 
                         <Image Grid.Row="0"
                                Grid.Column="0"
-                               Source="baseline_wine_bar_black_48pt_1x.png"   
+                               Source="baseline_wine_bar_black_48pt_1x_color.png"   
                                VerticalOptions="Start"
                                HeightRequest="24"
                                WidthRequest="24"/>
                         <Label Grid.Row="0"
                                Grid.Column="1"
                                x:Name="SensNotes"
-                               TextColor="Red"
+                               TextColor="#b794ff"
                                FontFamily="OpenSans-Regular"/>
-                        <Image Grid.Row="2"
+
+                        <Image Grid.Row="1"
                                Grid.Column="0"
-                               Source="baseline_restaurant_black_48pt_1x.png"
+                               Source="baseline_restaurant_black_48pt_1x_color.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>
                         <Label Grid.Row="1"
                                Grid.Column="1"
                                x:Name="MyDishes"
-                               TextColor="Purple"
+                               TextColor="#ffa694"
                                FontFamily="OpenSans-Regular"/>
-                        <Image Grid.Row="1"
+
+                        <Image Grid.Row="2"
                                Grid.Column="0"
-                               Source="baseline_location_on_black_48pt_1x.png"
+                               Source="baseline_location_on_black_48pt_1x_color.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>
                         <Label Grid.Row="2"
                                Grid.Column="1"
                                x:Name="ProdArea"
-                               TextColor="Green"
+                               TextColor="#94bd3d"
                                FontFamily="OpenSans-Regular"/>
                     </Grid>
                 </StackLayout>
@@ -101,8 +103,10 @@
                     <Button x:Name="Remove_from_fav_btn"
                             Text="Remove from favourites"
                             FontFamily="OpenSans-Regular"
-                            FontSize="Subtitle"
-                            TextColor="#8b52ff"
+                            FontSize="20"
+                            CornerRadius="15"
+                            BackgroundColor="#b794ff"
+                            TextColor="White"
                             Clicked="Remove_from_fav_btn_Clicked"
                             WidthRequest="250"/>
                 </StackLayout>

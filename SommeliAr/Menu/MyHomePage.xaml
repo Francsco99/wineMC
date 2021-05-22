@@ -25,7 +25,7 @@
                 <Button x:Name="History_btn"
                    Text="History"
                    FontFamily="OpenSans-Regular.ttf"
-                   FontSize="20"
+                   FontSize="25"
                    BackgroundColor="Transparent"
                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
                    Clicked="History_btn_Clicked"/>
@@ -40,7 +40,7 @@
                 <Button x:Name="Favourites_btn"
                                 Text="Favourites"
                                 FontFamily="OpenSans-Regular.ttf"
-                                FontSize="20"
+                                FontSize="25"
                                 TextColor="{AppThemeBinding Light=Black, Dark=White}"
                                 BackgroundColor="Transparent"
                                 Clicked="Favourites_btn_Clicked"/>
@@ -49,7 +49,7 @@
             <!--LINEETTA SEPARATRICE-->
             <StackLayout Grid.Row="1"
                      Grid.ColumnSpan="2"
-                     BackgroundColor="Black">
+                     BackgroundColor="{AppThemeBinding Light=Black, Dark=White}">
             </StackLayout>
 
             <!--LISTA DEI VINI-->

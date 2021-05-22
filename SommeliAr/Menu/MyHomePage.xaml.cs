@@ -16,7 +16,7 @@ namespace SommeliAr.Menu
         {
             InitializeComponent();
             //Toglie le righette di separazione delle entry della listview
-            my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
+            my_list_view.SeparatorVisibility = (SeparatorVisibility)5;
             GetUserInformationAndRefreshToken();
             ResetView();
         }
@@ -28,8 +28,8 @@ namespace SommeliAr.Menu
         {
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
-            History_btn.FontSize = 20;
-            Favourites_btn.FontSize = 20;
+            History_btn.FontSize = 25;
+            Favourites_btn.FontSize = 25;
             ShowWelcomeLabels();
 
         }
@@ -77,9 +77,9 @@ namespace SommeliAr.Menu
 
             //setting del colore in base al tema del dispositivo
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
-            History_btn.FontSize = 20;
+            History_btn.FontSize = 25;
             Favourites_btn.TextColor = violetto;
-            Favourites_btn.FontSize = 25;
+            Favourites_btn.FontSize = 28;
 
         }
 
@@ -101,9 +101,9 @@ namespace SommeliAr.Menu
             //setting del colore in base al tema del dispositivo
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
 
-            Favourites_btn.FontSize = 20;
+            Favourites_btn.FontSize = 25;
             History_btn.TextColor = violetto;
-            History_btn.FontSize = 25;
+            History_btn.FontSize = 28;
         }
 
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)

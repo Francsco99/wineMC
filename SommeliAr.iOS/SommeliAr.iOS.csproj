@@ -235,6 +235,9 @@
     <BundleResource Include="Resources\baseline_wine_bar_black_48pt_1x.png" />
     <BundleResource Include="Resources\baseline_location_on_black_48pt_1x.png" />
     <BundleResource Include="Resources\baseline_restaurant_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_location_on_black_48pt_1x_color.png" />
+    <BundleResource Include="Resources\baseline_restaurant_black_48pt_1x_color.png" />
+    <BundleResource Include="Resources\baseline_wine_bar_black_48pt_1x_color.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />
