@@ -111,7 +111,7 @@ namespace SommeliAr.Views
             //tra 8-20 cifre, un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale
             string passwordPattern = "(?=.*[A-Z])(?=.*\\d)(?=.*[¡!@#$%*¿?\\-_.\\(\\)])[A-Za-z\\d¡!@#$%*¿?\\-\\(\\)&]{8,20}";
 
-            if (pwd != null)
+            if (pwd != null )
             {
                 if (Regex.IsMatch(pwd, passwordPattern))
                 {
@@ -164,19 +164,22 @@ namespace SommeliAr.Views
         {
             MyUser user = new MyUser();
             string username = Entry_Username.Text;
-            string emailLowerCase = Entry_Email.Text.ToLower();
+            string emailLowerCase = Entry_Email.Text;
+            if (Entry_Email.Text != null)
+            {
+                emailLowerCase = Entry_Email.Text.ToLower();
+            }
             string pwd = Entry_Password.Text;
-            /*
-            bool isEmailOk = MailValidation(email);
+            
+            bool isEmailOk = MailValidation(emailLowerCase);
             bool isPassConfOk = PasswordConfirmationValidation(user);
             bool isUsernameOk = UsernameValidation(username);
             bool isPassOk = PasswordValidation(pwd);
             bool isAgeOk = AgeValidation();
-            bool test = true;
-            */
-            bool test = true;
+            //bool test = true;
+            
             //se tutti i campi sono rispettati la procedura ha successos
-            if (/*isEmailOk && isPassConfOk && isUsernameOk && isPassOk && isAgeOk*/test)
+            if (isEmailOk && isPassConfOk && isUsernameOk && isPassOk && isAgeOk)
             {
                 try
                 {
