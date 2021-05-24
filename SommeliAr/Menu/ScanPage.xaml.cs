@@ -116,7 +116,7 @@ namespace SommeliAr.Views.Menu
                 return;
             }
             var imageBytes = GetImageAsByteData(stream);
-            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration5/image";
+            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration7/image";
             var predictionKey = "0b8a0ea4568b49a68d802140f9c494d1";
             using (HttpClient client = new HttpClient())
             {
@@ -199,22 +199,31 @@ namespace SommeliAr.Views.Menu
 
         static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
         {
+            List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
+            foreach(var element in SKPrediction)
+            {
+                if (element.TagName.Contains("Other"))
+                {
+                    filteredSKPrediction.Remove(element);
+                }
+            }
+
             if (SKPrediction == null) return;
 
-            if (!SKPrediction.Any())
+            if (!filteredSKPrediction.Any())
             {
                 LabelPrediction(canvas, "Nothing detected", new BoundingBox(0, 0, 1, 1), left, top, scaleWidth, scaleHeight, false);
             }
-            else if (SKPrediction.All(p => p.BoundingBox != null))
+            else if (filteredSKPrediction.All(p => p.BoundingBox != null))
             {
-                foreach (var prediction in SKPrediction)
+                foreach (var prediction in filteredSKPrediction)
                 {
                     LabelPrediction(canvas, prediction.TagName, prediction.BoundingBox, left, top, scaleWidth, scaleHeight);
                 }
             }
             else
             {
-                var best = SKPrediction.OrderByDescending(p => p.Probability).First();
+                var best = filteredSKPrediction.OrderByDescending(p => p.Probability).First();
                 LabelPrediction(canvas, best.TagName, new BoundingBox(0, 0, 1, 1), left, top, scaleWidth, scaleHeight, false);
             }
         }

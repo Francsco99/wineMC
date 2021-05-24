@@ -19,7 +19,11 @@ namespace SommeliAr.Menu
         
          public AfterScanPage()
         {
-            InitializeComponent();
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            }
+                InitializeComponent();
             //Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             //setting del BindingContext
         }
