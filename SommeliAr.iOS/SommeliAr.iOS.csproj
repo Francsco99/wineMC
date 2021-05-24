@@ -212,32 +212,25 @@
     <BundleResource Include="Resources\donecheck.png" />
     <BundleResource Include="Resources\edit_pen.png" />
     <BundleResource Include="Resources\error.png" />
-    <BundleResource Include="Resources\facebook.png" />
     <BundleResource Include="Resources\google.png" />
     <BundleResource Include="Resources\hide.png" />
     <BundleResource Include="Resources\mail.png" />
     <BundleResource Include="Resources\OnlineClassifier.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <BundleResource Include="Resources\orangeGradient.png" />
     <BundleResource Include="Resources\password.png" />
-    <BundleResource Include="Resources\star_border.png" />
-    <BundleResource Include="Resources\stella_piena.png" />
     <BundleResource Include="Resources\user.png" />
-    <BundleResource Include="Resources\settings_24pt_2x.png" />
-    <BundleResource Include="Resources\camera_36pt_2x.png" />
     <BundleResource Include="Resources\logo.png" />
-    <BundleResource Include="Resources\home_black_24pt_2x.png" />
     <BundleResource Include="loading.json" />
     <BundleResource Include="loadingblack.json" />
     <BundleResource Include="star-rating.json" />
     <BundleResource Include="swirlingviolablack.json" />
     <BundleResource Include="swirlingwineviola.json" />
     <BundleResource Include="Resources\unhide.png" />
-    <BundleResource Include="Resources\baseline_wine_bar_black_48pt_1x.png" />
-    <BundleResource Include="Resources\baseline_location_on_black_48pt_1x.png" />
-    <BundleResource Include="Resources\baseline_restaurant_black_48pt_1x.png" />
     <BundleResource Include="Resources\baseline_location_on_black_48pt_1x_color.png" />
     <BundleResource Include="Resources\baseline_restaurant_black_48pt_1x_color.png" />
     <BundleResource Include="Resources\baseline_wine_bar_black_48pt_1x_color.png" />
+    <BundleResource Include="Resources\baseline_camera_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_home_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_manage_accounts_black_48pt_1x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

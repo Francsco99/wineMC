@@ -19,10 +19,20 @@ namespace SommeliAr.Menu
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
             ResetView();
+           
         }
         private bool favClicked = false;
         private bool histClicked = false;
         private static Color violetto = Color.FromHex("#8b52ff");
+
+        private Color WineColor(string detail)
+        {
+            if (detail.Equals("Red"))
+            {
+                return Color.Red;
+            }
+            else return Color.Black;
+        }
 
         private void ResetView()
         {
