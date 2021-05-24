@@ -40,6 +40,7 @@ namespace SommeliAr.Views.Menu
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+
             Preferences.Remove("ResultList");
 
             skImage = null;                                                // svuoto skImage ad ogni Scan
@@ -102,6 +103,7 @@ namespace SommeliAr.Views.Menu
                 }
 
             }
+            
         }
 
         private async Task MakePredictionAsync(Stream stream)

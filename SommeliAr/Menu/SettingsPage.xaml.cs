@@ -108,5 +108,10 @@ namespace SommeliAr.Views.Menu
             }    
         }
         */
+
+        void Our_website_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new OurWebsitePage());
+        }
     }
 }

@@ -49,7 +49,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="3" Padding="15">
-                    <Grid RowSpacing="10"
+                    <Grid RowSpacing="15"
                           ColumnSpacing="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>

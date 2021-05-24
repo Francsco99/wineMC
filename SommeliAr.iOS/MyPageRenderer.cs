@@ -20,7 +20,7 @@ namespace SommeliAr.iOS
             if (e.NewElement != null)
             {
                 TabBar.Translucent = true;
-                TabBar.Opaque = false;
+                TabBar.Opaque = true;
             }
         }
 
@@ -29,9 +29,14 @@ namespace SommeliAr.iOS
             base.ViewDidLayoutSubviews();
             var frame = View.Frame;
             PageController.ContainerArea = new Rectangle(0, 0, frame.Width, frame.Height);
-            TabBar.UnselectedItemTintColor = UIColor.Black;
+            //TabBar.UnselectedItemTintColor = UIColor.Black;
             TabBar.TintColor = UIColor.FromRGB(139,82,255);
+            for(int i=0; i<3; i++)
+            {
+                var item = TabBar.Items[i];
+                item.ImageInsets = new UIEdgeInsets(15, 0, -15, 0);
+            }
+            
         }
-
     }
 }
