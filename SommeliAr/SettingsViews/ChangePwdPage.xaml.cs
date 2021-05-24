@@ -16,9 +16,11 @@ namespace SommeliAr.Autentication
 
         public ChangePwdPage()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            }
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
-
         }
 
 

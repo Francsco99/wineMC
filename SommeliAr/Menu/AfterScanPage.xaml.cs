@@ -24,7 +24,6 @@ namespace SommeliAr.Menu
                 Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             }
                 InitializeComponent();
-            //Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             //setting del BindingContext
         }
  

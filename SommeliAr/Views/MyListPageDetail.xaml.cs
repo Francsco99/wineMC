@@ -22,6 +22,18 @@ namespace SommeliAr.Views
         {
             InitializeComponent();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                if (WineName != null)
+                {
+                    Thickness margin = WineName.Margin;
+                    margin.Top = 60;
+                    WineName.Margin = margin;
+                }
+            }
+
+
             this.itemName = Name;
             this.itemDescription = Description;
             this.sensorialNotes = SensorialNotes;

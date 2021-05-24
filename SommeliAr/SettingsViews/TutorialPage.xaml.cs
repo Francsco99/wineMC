@@ -10,8 +10,11 @@ namespace SommeliAr.SettingsViews
     {
         public TutorialPage()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            }
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
         }        
     }
 }

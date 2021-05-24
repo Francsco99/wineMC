@@ -16,8 +16,11 @@ namespace SommeliAr.Autentication
 
         public ChangeUserNamePage()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            }
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
         }
 
        async void Change_username_btn_Clicked(System.Object sender, System.EventArgs e)
