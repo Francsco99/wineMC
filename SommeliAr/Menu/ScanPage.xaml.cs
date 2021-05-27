@@ -33,9 +33,6 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
-
-            resultsListView.BackgroundColor = Color.Transparent;
-            resultsListView.On<iOS>().SetRowAnimationsEnabled(false);
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -137,13 +134,12 @@ namespace SommeliAr.Views.Menu
                     // visualizza solo predizioni con sicurezza superiore a setProbability
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); 
 
-                    resultsListView.ItemsSource = result;
                     predictionsResult = result;
 
                     //lista tagnames
-                    foreach (var p in predictions.Predictions)
+                    foreach (var p in result)
                     {
-                        if (!p.TagName.Contains("Products"))
+                        if (!p.TagName.Contains("Products") )
                         {
                             await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
                             tagnames.Add(p.TagName);
@@ -163,6 +159,8 @@ namespace SommeliAr.Views.Menu
         {
             Preferences.Remove("ResultList");
             string delimiter = ",";
+            tagnames = tagnames.Distinct().ToList<String>(); // rendo la lista dei tagname composta da soli elementi distinti (filtro da eventuali doppioni)
+              
             string listone = String.Join(delimiter, tagnames);
 
             Preferences.Set("ResultList", listone);
@@ -263,31 +261,63 @@ namespace SommeliAr.Views.Menu
             };
             var text = tag;
 
-            var textWidth = textPaint.MeasureText(text);
-            textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
+            //var textWidth = textPaint.MeasureText(text);
+            //textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
+            textPaint.TextSize = 40;
+            //float lineHeight = textPaint.TextSize * 1.2f;
+            string[] subs = text.Split(' ');
 
-            var textBounds = new SKRect();
-            textPaint.MeasureText(text, ref textBounds);
-
-            var xText = (startLeft + (scaledBoxWidth / 2)) - textBounds.MidX;
-            var yText = (startTop + (scaledBoxHeight / 2)) + textBounds.MidY;
+            float yText = (startTop) + (scaledBoxHeight / 6);
+            float xText = 0;
 
             var paint = new SKPaint
             {
                 Style = SKPaintStyle.Fill,
-                Color = new SKColor(139, 82, 255, 120)  //viola caratteristico dell'app
+                Color = new SKColor(139, 82, 255, 120)  //violetto caratteristico dell'app
             };
 
-            var backgroundRect = textBounds;
-            backgroundRect.Offset(xText, yText);
-            backgroundRect.Inflate(10, 10);
+            xText = startLeft;
+            float yBackgroundText = yText;
 
+            if (subs.Length < 5)
+            {
+                yBackgroundText += 50 * (subs.Length);
+            }
+
+            else yBackgroundText += 250;
+
+            var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
+            backgroundRect.Inflate(10, 10);
+            
             canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
 
-            canvas.DrawText(text,
-                            xText,
-                            yText,
-                            textPaint);
+            foreach (var subtext in subs)  // per ogni parola del tag se sborda dal riquadro del vino accorcia il nome e aggiunge ...
+            {
+                var textWidth = textPaint.MeasureText(subtext);
+                String subShortened = subtext;
+
+                if (Array.IndexOf(subs, subtext) <= 3){
+                    if (textWidth > scaledBoxWidth || ((Array.IndexOf(subs, subtext) == 3) && (subs.Length >= 5)))  // se il testo sborda o il nome è composto da più di quattro parole
+                    {
+                        while (textPaint.MeasureText(subShortened) > scaledBoxWidth * 0.8F)
+                        {
+                            subShortened = subShortened.Remove(subShortened.Length - 2);
+                            textWidth = textPaint.MeasureText(subShortened);
+                        }
+                        subShortened = subShortened.Replace(subShortened, subShortened + "...");  // mi voglio far dare la posizione di subs per eliminare tutte le parole successive
+
+                        textWidth = textPaint.MeasureText(subShortened);
+                    }
+
+                    xText = startLeft + (scaledBoxWidth / 2) - (textWidth / 2); // calcolo di quanto spostare ciascuna parola per renderla centrata
+                    yText += 50;   // scalo riga per ogni parola del tag
+
+                    canvas.DrawText(subShortened,
+                                xText,
+                               yText,
+                                textPaint);
+                }
+            }
         }
 
         static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
@@ -297,7 +327,7 @@ namespace SommeliAr.Views.Menu
                 IsAntialias = true,
                 Style = SKPaintStyle.Stroke,
                 Color = new SKColor(139, 82, 255, 100),
-                StrokeWidth = 5,
+                StrokeWidth = 7,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f)
             };
             DrawBox(canvas, outerstrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
@@ -305,7 +335,7 @@ namespace SommeliAr.Views.Menu
             var blurStrokePaint = new SKPaint
             {
                 Style = SKPaintStyle.Stroke,
-                StrokeWidth = 3,
+                StrokeWidth = 5,
                 Color = SKColors.White,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f),
                 IsAntialias = true,
@@ -332,8 +362,5 @@ namespace SommeliAr.Views.Menu
 
             return path;
         }
-
-
     }
-
 }

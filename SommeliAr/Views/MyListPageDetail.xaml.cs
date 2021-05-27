@@ -57,20 +57,22 @@ namespace SommeliAr.Views
 
         private Color SetFrameColor(string voto)
         {
-            double votoDouble = Convert.ToDouble(voto);
+            double votoDouble = Convert.ToDouble(voto); // non funziona bene con i voti puntati: es 7.2
 
-            if (votoDouble >= 0 && votoDouble < 6)
+            if (votoDouble >= 0.0 && votoDouble < 6.0)
             {
                 return Color.Red;
             }
 
-            else if (votoDouble >= 6 && votoDouble <= 8)
+            else if (votoDouble >= 6.0 && votoDouble <= 8.0)
             {
                 return Color.Gold;
             }
 
-            else
+            else 
+            {
                 return Color.Green;
+            }
         }
         
         async void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)

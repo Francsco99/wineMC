@@ -71,7 +71,9 @@
                                Grid.Column="1"
                                x:Name="SensNotes"
                                TextColor="#b794ff"
+                               FontSize="16"
                                FontFamily="OpenSans-Regular"/>
+                        
                         <Image Grid.Row="1"
                                Grid.Column="0"
                                Source="baseline_restaurant_black_48pt_1x_color.png"
@@ -82,6 +84,7 @@
                                Grid.Column="1"
                                x:Name="MyDishes"
                                TextColor="#ffa694"
+                               FontSize="16"
                                FontFamily="OpenSans-Regular"/>
 
                         <Image Grid.Row="2"
@@ -94,6 +97,7 @@
                                Grid.Column="1"
                                x:Name="ProdArea"
                                TextColor="#94bd3d"
+                               FontSize="16"
                                FontFamily="OpenSans-Regular"/>
                     </Grid>
                 </StackLayout>

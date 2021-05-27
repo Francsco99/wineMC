@@ -81,19 +81,6 @@
                         IsVisible="false"
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
-
-        <ListView x:Name="resultsListView"
-                  VerticalOptions="CenterAndExpand"
-                  HorizontalOptions="CenterAndExpand"
-                  IsVisible="False" >
-            <ListView.ItemTemplate>
-                <DataTemplate >
-                    <TextCell  Text="{Binding TagName}"
-                               Detail="{Binding Probability}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
     </Grid>
 
 </ContentPage>
