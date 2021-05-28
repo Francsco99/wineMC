@@ -128,8 +128,16 @@ namespace SommeliAr.Views.Menu
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
                     // probabilità minima impostata
-                   var setProbability = Convert.ToDouble(Preferences.Get("Probability", ""));
-                   //var setProbability = 0.7;
+                     Double SetProbability()
+                    {
+                        if (Preferences.Get("Probability", "") != null)
+                        {
+                            return Convert.ToDouble(Preferences.Get("Probability", ""));
+                        }
+                        else return 0.5;
+                    }
+                    var setProbability = SetProbability();
+                   
                     Console.WriteLine(setProbability);
                     // visualizza solo predizioni con sicurezza superiore a setProbability
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); 
