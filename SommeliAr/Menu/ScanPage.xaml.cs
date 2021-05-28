@@ -35,12 +35,24 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
         }
 
+
+        /*Imposta la probabilità minima*/
+        private Double SetProbability()
+        {
+            if (Preferences.Get("Probability", "") != null)
+            {
+                return Convert.ToDouble(Preferences.Get("Probability", ""));
+            }
+            else return 0.5;
+        }
+
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
 
             Preferences.Remove("ResultList");
 
-            skImage = null;                                                // svuoto skImage ad ogni Scan
+            // svuoto skImage ad ogni Scan
+            skImage = null;                                               
             tagnames = new List<string>();
 
             await CrossMedia.Current.Initialize();
@@ -53,7 +65,8 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                CompressionQuality = 70,                                    // fattore di compressione
+                // fattore di compressione
+                CompressionQuality = 70,                                    
             });
 
             if (file == null)
@@ -64,10 +77,11 @@ namespace SommeliAr.Views.Menu
             var stream = file.GetStream();
             streamDraw = file.GetStream();
             var streamRotated = file.GetStream();
-            Loading.IsVisible = true;                                        // faccio capire all'animazione che è tempo di andare in scena
 
-            await MakePredictionAsync(stream);                               // esegui le predictions                    
-
+            // faccio capire all'animazione che è tempo di andare in scena
+            Loading.IsVisible = true;
+            // esegui le predictions   
+            await MakePredictionAsync(stream);
             Loading.IsVisible = false;
 
             if (Device.RuntimePlatform == Device.iOS)
@@ -78,6 +92,7 @@ namespace SommeliAr.Views.Menu
             {
                 skImage = SKBitmap.Decode(streamDraw);
             }
+
             ImageCanvas.InvalidateSurface();
 
             if (predictionsResult != null)
@@ -92,7 +107,8 @@ namespace SommeliAr.Views.Menu
                 }
                 if (predictionsFiltered.FirstOrDefault() != null)
                 {
-                    After_scan_btn.IsVisible = true;                                      // ora il bottone per la lista dei risultati deve diventare visibile
+                    /*ora il bottone per la lista dei risultati deve diventare visibile*/
+                    After_scan_btn.IsVisible = true;
                 }
                 else
                 {
@@ -127,24 +143,15 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    // probabilità minima impostata
-                     Double SetProbability()
-                    {
-                        if (Preferences.Get("Probability", "") != null)
-                        {
-                            return Convert.ToDouble(Preferences.Get("Probability", ""));
-                        }
-                        else return 0.5;
-                    }
+                    /*imposta la probabilità minima*/
                     var setProbability = SetProbability();
-                   
-                    Console.WriteLine(setProbability);
-                    // visualizza solo predizioni con sicurezza superiore a setProbability
+                    
+                    /*visualizza solo predizioni con sicurezza superiore a setProbability*/
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability); 
 
                     predictionsResult = result;
 
-                    //lista tagnames
+                    /*lista tagnames*/
                     foreach (var p in result)
                     {
                         if (!p.TagName.Contains("Products") )
@@ -166,14 +173,15 @@ namespace SommeliAr.Views.Menu
         private void After_scan_btn_Clicked(object sender, EventArgs e)
         {
             Preferences.Remove("ResultList");
+
+            /*rendo la lista dei tagname composta da soli elementi distinti (filtro da eventuali doppioni)*/
+            tagnames = tagnames.Distinct().ToList<String>();
+
             string delimiter = ",";
-            tagnames = tagnames.Distinct().ToList<String>(); // rendo la lista dei tagname composta da soli elementi distinti (filtro da eventuali doppioni)
-              
             string listone = String.Join(delimiter, tagnames);
 
             Preferences.Set("ResultList", listone);
             Navigation.PushAsync(new AfterScanPage());
-            // Console.WriteLine("resultList    "+Preferences.Get("ResultList", ""));
         }
 
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -201,7 +209,9 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
+        static void DrawPredictions(SKCanvas canvas,
+            float left, float top, float scaleWidth, float scaleHeight,
+            IEnumerable<PredictionModel> SKPrediction)
         {
             List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
            
@@ -270,12 +280,14 @@ namespace SommeliAr.Views.Menu
 
             //textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
             textPaint.TextSize = 40;
-            
-            if(text.Equals("Nothing detected"))   // dimensione tag speciale nel caso non venga identificato alcun vino
+
+            /*dimensione tag speciale nel caso non venga identificato alcun vino*/
+            if (text.Equals("Nothing detected"))
             {
                 var textWidth = textPaint.MeasureText(text);
                 textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
             }
+
             //float lineHeight = textPaint.TextSize * 1.2f;
             string[] subs = text.Split(' ');
 
@@ -285,7 +297,8 @@ namespace SommeliAr.Views.Menu
             var paint = new SKPaint
             {
                 Style = SKPaintStyle.Fill,
-                Color = new SKColor(139, 82, 255, 120)  //violetto caratteristico dell'app
+                /*violetto caratteristico dell'app*/
+                Color = new SKColor(139, 82, 255, 120)
             };
 
             xText = startLeft;
@@ -307,25 +320,29 @@ namespace SommeliAr.Views.Menu
             
             canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
 
-            foreach (var subtext in subs)  // per ogni parola del tag se sborda dal riquadro del vino accorcia il nome e aggiunge ...
+            /*per ogni parola del tag se sborda dal riquadro del vino accorcia il nome e aggiunge ...*/
+            foreach (var subtext in subs)
             {
                 var textWidth = textPaint.MeasureText(subtext);
                 String subShortened = subtext;
 
                 if (Array.IndexOf(subs, subtext) <= 3) {
-                    if (textWidth > scaledBoxWidth || ((Array.IndexOf(subs, subtext) == 3) && (subs.Length >= 5)))  // se il testo sborda o il nome è composto da più di quattro parole
+                    /*se il testo sborda o il nome è composto da più di quattro parole*/
+                    if (textWidth > scaledBoxWidth || ((Array.IndexOf(subs, subtext) == 3) && (subs.Length >= 5)))
                     {
                         while (textPaint.MeasureText(subShortened) > scaledBoxWidth * 0.8F)
                         {
                             subShortened = subShortened.Remove(subShortened.Length - 2);
                             textWidth = textPaint.MeasureText(subShortened);
                         }
-                        subShortened = subShortened.Replace(subShortened, subShortened + "...");  // mi voglio far dare la posizione di subs per eliminare tutte le parole successive
+                        /*mi voglio far dare la posizione di subs per eliminare tutte le parole successive*/
+                        subShortened = subShortened.Replace(subShortened, subShortened + "...");
 
                         textWidth = textPaint.MeasureText(subShortened);
                     }
 
-                    xText = startLeft + (scaledBoxWidth / 2) - (textWidth / 2); // calcolo di quanto spostare ciascuna parola per renderla centrata
+                    /*calcolo di quanto spostare ciascuna parola per renderla centrata*/
+                    xText = startLeft + (scaledBoxWidth / 2) - (textWidth / 2);
                     if (!text.Equals("Nothing detected"))
                     {
                         yText += 50;   // scalo riga per ogni parola del tag

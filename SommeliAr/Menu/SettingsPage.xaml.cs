@@ -21,7 +21,7 @@ namespace SommeliAr.Views.Menu
 
         private void GetProfileInformationAndRefreshToken()
         {
-            
+
             User user;
             try
             {
@@ -45,6 +45,18 @@ namespace SommeliAr.Views.Menu
             }
         }
 
+        private string CheckProbabilityPreference()
+        {
+            if (Preferences.Get("Probability", "") != null)
+            {
+                return "Min. Probability: " + Preferences.Get("Probability", "");
+            }
+            else
+            {
+                return "Min. Probability: not set yet.";
+            }
+        }
+
         void Logout_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("MyLoginToken");
@@ -59,13 +71,11 @@ namespace SommeliAr.Views.Menu
         void Change_username_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ChangeUserNamePage());
-
         }
 
         void Change_pwd_text_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ChangePwdPage());
-
         }
 
         void Tutorial_txt_cell_Tapped(System.Object sender, System.EventArgs e)
@@ -85,29 +95,8 @@ namespace SommeliAr.Views.Menu
 
         void Min_probability_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
-            min_probability_txt_cell.Text = "Min. Probability: " + Preferences.Get("Probability", "");
-        }        /*
-        async void user_is_verified_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            User user = AuthFirebase.Instance.GetUserFromDB();
-            if (!user.IsEmailVerified)
-            {
-                FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig(AuthFirebase.Instance.GetKey()));
-                try
-                {
-                    AuthFirebase.Instance.RefreshToken();
-                    await authProvider.SendEmailVerificationAsync(Preferences.Get("MyLoginToken", ""));
-                    await App.Current.MainPage.DisplayAlert("Alert!", "Email sent!", "Ok");
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    await App.Current.MainPage.DisplayAlert("Alert!", "Ops... something went wrong :----(", "Ok");
-
-                }
-            }    
+            min_probability_txt_cell.Text = CheckProbabilityPreference();
         }
-        */
 
         void Our_website_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {

@@ -4,66 +4,152 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
     x:Class="SommeliAr.SettingsViews.AddNewWinePage">
     <ContentPage.Content>
-        <Grid>
+        <Grid RowSpacing="20">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
-            <ScrollView>
-            <StackLayout Grid.Row="0" VerticalOptions="Start">
-                <Entry Text="{Binding Name}" Placeholder="Wine name"/>
-                <Entry Text="{Binding Detail}" Placeholder="Wine detail"/>
-                <Entry Text="{Binding Image}" Placeholder="Wine image url"/>
-                <Entry Text="{Binding Description}" Placeholder="Wine description"/>
-                <Entry Text="{Binding SensorialNotes}" Placeholder="Sensorial notes"/>
-                <Entry Text="{Binding ProductionArea}" Placeholder="Production area"/>
-                <Entry Text="{Binding Dishes}" Placeholder="Dishes"/>
-                <Entry Text="{Binding Rating}" Placeholder="Wine rating"/>
-                <Button WidthRequest="200" Text="Add" FontSize="Subtitle" Command="{Binding AddWineCommand}"/>
+
+            <StackLayout Grid.Row="0" Padding="0,10,0,10">
+                <Grid RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.ColumnSpan="3" Grid.Row="0" Text="Add a wine!"
+                       FontFamily="OpenSans-Regular"
+                       FontSize="30"
+                       HorizontalOptions="Center"
+                           Margin="10,0,0,0"/>
+
+                    <Image Grid.Row="1"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_edit_black_48pt_1x.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="1"
+                       Text="{Binding Name}"
+                       Placeholder="Name"/>
+
+                    <Image Grid.Row="2"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_invert_colors_black_48pt_1x_color.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="2"
+                       Text="{Binding Detail}"
+                       Placeholder="Color"/>
+
+                    <Image Grid.Row="3"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_link_black_48pt_1x.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="3"
+                       Text="{Binding Image}"
+                       Placeholder="Image URL"/>
+
+                    <Image Grid.Row="4"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_wine_bar_black_48pt_1x_color.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="4"
+                       Text="{Binding SensorialNotes}"
+                       Placeholder="Sensorial notes"/>
+
+                    <Image Grid.Row="5"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_location_on_black_48pt_1x_color.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="5"
+                       Text="{Binding ProductionArea}"
+                       Placeholder="Production area"/>
+
+                    <Image Grid.Row="6"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_restaurant_black_48pt_1x_color.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="6"
+                       Text="{Binding Dishes}"
+                       Placeholder="Dishes"/>
+
+                    <Image Grid.Row="7"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_stars_black_48pt_1x_color.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="7"
+                       Text="{Binding Rating}"
+                       Placeholder="Rating"/>
+
+                    <Image Grid.Row="8"
+                           Grid.Column="0"
+                           HeightRequest="30"
+                           Source="baseline_description_black_48pt_1x.png"/>
+                    <Entry Grid.Column="1"
+                       Grid.Row="8"
+                       Text="{Binding Description}"
+                       Placeholder="Description"/>
+
+
+                </Grid>
             </StackLayout>
-                </ScrollView>
-            <StackLayout Grid.Row="1">
-                <ListView x:Name="my_list_view"
-                     ItemsSource="{Binding MyWineList}"
-                     HasUnevenRows="True"                   
-                     ItemTapped="OnItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
 
-                                    <controls:CircleImage
-                                   HeightRequest="60"
-                                   HorizontalOptions="CenterAndExpand"
-                                   VerticalOptions="CenterAndExpand"
-                                   Aspect="AspectFill"
-                                   WidthRequest="60"
-                                   Grid.RowSpan="2"
-                                   Source="{Binding Image}"/>
+            <StackLayout Grid.Row="1" VerticalOptions="Start" Padding="10,0,10,10">
 
-                                    <Label Grid.Column="1"
-                                      Text="{Binding Name}"
-                                      FontAttributes="Bold"  
-                                      VerticalOptions="End"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                                    <Label Grid.Column="1"
-                                      Grid.Row="1"
-                                      Text="{Binding Detail}"
-                                      FontAttributes="Italic"
-                                      VerticalOptions="Start"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <Button Grid.Column="0"
+                        Grid.Row="0"
+                        x:Name="Add_wine_btn"
+                            HorizontalOptions="Center"
+                        WidthRequest="250"
+                        Text="Add"
+                        FontSize="20"
+                            CornerRadius="15"
+                            FontFamily="OpenSans-Regular"
+                            BackgroundColor="#b794ff"
+                            TextColor="White"
+                            Clicked="Add_wine_btn_Clicked"
+                        Command="{Binding AddWineCommand}"/>
+
+                    <Button Grid.Column="1"
+                        Grid.Row="0"
+                    x:Name="All_wines_btn"
+                        Text="View all the wines"
+                        HorizontalOptions="Center"
+                        WidthRequest="250"
+                        FontSize="20"
+                            CornerRadius="15"
+                            FontFamily="OpenSans-Regular"
+                            BackgroundColor="#b794ff"
+                            TextColor="White"
+                        Clicked="All_wines_btn_Clicked"/>
+                </Grid>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

@@ -234,6 +234,11 @@
     <BundleResource Include="Resources\baseline_camera_black_36pt_2x.png" />
     <BundleResource Include="Resources\baseline_home_black_36pt_2x.png" />
     <BundleResource Include="Resources\baseline_manage_accounts_black_36pt_2x.png" />
+    <BundleResource Include="Resources\baseline_invert_colors_black_48pt_1x_color.png" />
+    <BundleResource Include="Resources\baseline_link_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_edit_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_description_black_48pt_1x.png" />
+    <BundleResource Include="Resources\baseline_stars_black_48pt_1x_color.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

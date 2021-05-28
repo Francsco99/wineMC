@@ -23,11 +23,13 @@
                         <TextCell x:Name="Change_username_text_cell" Text="Change Username" Tapped="Change_username_text_cell_Tapped"/>
                         <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>
                         <TextCell x:Name="min_probability_txt_cell" Tapped="Min_probability_txt_cell_Tapped"/>
-                    </TableSection>               
-                    <TableSection Title="Support">
+                    </TableSection>
+                    <TableSection Title="Wines database">
                         <TextCell x:Name="Add_wine_txt_cell" Text="Add a wine!" Tapped="Add_wine_txt_cell_Tapped"/>
-                        <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
                         <TextCell x:Name="Contact_us_txt_cell" Text="Change Probability" Tapped="Contact_us_txt_cell_Tapped"/>
+                    </TableSection>
+                    <TableSection Title="Support">
+                        <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
                         <TextCell x:Name="Our_website_txt_cell"  Text="Our website" Tapped="Our_website_txt_cell_Tapped"/>
                     </TableSection>
                     <TableSection>

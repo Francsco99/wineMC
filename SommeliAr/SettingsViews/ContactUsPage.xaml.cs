@@ -9,31 +9,43 @@ namespace SommeliAr.SettingsViews
     {
         string probability;
 
+        private string SetDisplayLabelText()
+        {
+            if (Preferences.Get("Probability", "") != null)
+            {
+                return Preferences.Get("Probability", "");
+            }
+            else
+            {
+                return "Probability value not set";
+            }
+        }
+
         public ContactUsPage()
         {
             InitializeComponent();
-            displayLabel.Text = Preferences.Get("Probability", "");
+            SetDisplayLabelText();
         }
 
+
         void OnSliderValueChanged(object sender, ValueChangedEventArgs args)
-        {           
+        {
             double value = args.NewValue;
-            //rotatingLabel.Rotation = value;
-            //displayLabel.Text = String.Format("The Slider value is {0:F1}", value);
+            displayLabel.Text = String.Format("Minimum probability value {0:F1}", value);
             decimal decimalValue = Math.Round((decimal)value, 1);
             probability = decimalValue.ToString();
         }
 
-        void set_btn_Clicked(System.Object sender, System.EventArgs e)
+        void Set_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Set("Probability", probability);
-            displayLabel.Text = Preferences.Get("Probability", "");
+            displayLabel.Text = "Minimum probability value "+Preferences.Get("Probability", "");
         }
 
-        void clear_btn_Clicked(System.Object sender, System.EventArgs e)
+        void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("Probability");
-            displayLabel.Text = "(uninitialized)";
+            displayLabel.Text = "Probability value not set";
         }
     }
 }

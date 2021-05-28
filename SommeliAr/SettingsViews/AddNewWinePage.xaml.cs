@@ -11,18 +11,24 @@ namespace SommeliAr.SettingsViews
     {
         public AddNewWinePage()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+            }
             InitializeComponent();
-            //NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new AllWinesViewModel();   
         }
 
-        private async void OnItemSelected(object sender, ItemTappedEventArgs e)
+        void All_wines_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            var mydetails = e.Item as MyWineModel;
-            await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
-
+            Navigation.PushAsync(new AllWinesPage());
         }
 
+        async void Add_wine_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await DisplayAlert("Success!", "Wine correctly added.", "Ok");
+           await Navigation.PushAsync(new AllWinesPage());
+        }
     }
 
 }

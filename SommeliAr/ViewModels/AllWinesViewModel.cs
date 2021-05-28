@@ -46,6 +46,7 @@ namespace SommeliAr.ViewModels
             if(Name!=null && Detail!= null && Image!=null && Description != null && Rating != null)
             {
                 await DBFirebase.Instance.AddMyWine(Name, Detail, Image, Description,SensorialNotes,ProductionArea,Dishes, Rating);
+
             }
         }
         
