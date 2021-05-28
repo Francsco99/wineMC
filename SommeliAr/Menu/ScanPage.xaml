@@ -42,7 +42,9 @@
                               HorizontalOptions="FillAndExpand"
                               VerticalOptions="FillAndExpand"
                               Margin="10"
-                              PaintSurface="OnCanvasViewPaintSurface"/>
+                              PaintSurface="OnCanvasViewPaintSurface"
+                              EnableTouchEvents="True"
+                              Touch="ImageCanvas_Touch"/>
 
 
         <!--LOTTIE CARICAMENTO-->

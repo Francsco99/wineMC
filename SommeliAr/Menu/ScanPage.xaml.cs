@@ -29,7 +29,7 @@ namespace SommeliAr.Views.Menu
         SKBitmap skImage;
 
         List<string> tagnames;
-
+        List<SKRect> listbackgroundRect;
         public ScanPage()
         {
             InitializeComponent();
@@ -175,7 +175,6 @@ namespace SommeliAr.Views.Menu
 
             ClearCanvas(info, canvas);
 
-
             if (streamDraw != null)
             {
                 if (skImage != null)
@@ -192,13 +191,13 @@ namespace SommeliAr.Views.Menu
                     DrawPredictions(canvas, left, top, scaleWidth, scaleHeight, predictionsResult);
                 }
             }
-
         }
 
         static void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
         {
             List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
-            foreach(var element in SKPrediction)
+           
+            foreach (var element in SKPrediction)
             {
                 if (element.TagName.Contains("Other"))
                 {
@@ -261,9 +260,14 @@ namespace SommeliAr.Views.Menu
             };
             var text = tag;
 
-            //var textWidth = textPaint.MeasureText(text);
             //textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
             textPaint.TextSize = 40;
+            
+            if(text.Equals("Nothing detected"))   // dimensione tag speciale nel caso non venga identificato alcun vino
+            {
+                var textWidth = textPaint.MeasureText(text);
+                textPaint.TextSize = 0.9f * scaledBoxWidth * textPaint.TextSize / textWidth;
+            }
             //float lineHeight = textPaint.TextSize * 1.2f;
             string[] subs = text.Split(' ');
 
@@ -279,14 +283,18 @@ namespace SommeliAr.Views.Menu
             xText = startLeft;
             float yBackgroundText = yText;
 
-            if (subs.Length < 5)
+            if (subs.Length < 5 && (!text.Equals("Nothing detected")))
             {
                 yBackgroundText += 50 * (subs.Length);
             }
 
-            else yBackgroundText += 250;
+            else if (!text.Equals("Nothing detected")) yBackgroundText += 250;
+
+            else yBackgroundText += 330;
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
+
+            //listbackgroundRect.Add(backgroundRect);   da implementare
             backgroundRect.Inflate(10, 10);
             
             canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
@@ -296,7 +304,7 @@ namespace SommeliAr.Views.Menu
                 var textWidth = textPaint.MeasureText(subtext);
                 String subShortened = subtext;
 
-                if (Array.IndexOf(subs, subtext) <= 3){
+                if (Array.IndexOf(subs, subtext) <= 3) {
                     if (textWidth > scaledBoxWidth || ((Array.IndexOf(subs, subtext) == 3) && (subs.Length >= 5)))  // se il testo sborda o il nome è composto da più di quattro parole
                     {
                         while (textPaint.MeasureText(subShortened) > scaledBoxWidth * 0.8F)
@@ -310,7 +318,13 @@ namespace SommeliAr.Views.Menu
                     }
 
                     xText = startLeft + (scaledBoxWidth / 2) - (textWidth / 2); // calcolo di quanto spostare ciascuna parola per renderla centrata
-                    yText += 50;   // scalo riga per ogni parola del tag
+                    if (!text.Equals("Nothing detected"))
+                    {
+                        yText += 50;   // scalo riga per ogni parola del tag
+                    }
+
+                    else
+                        yText += 150;
 
                     canvas.DrawText(subShortened,
                                 xText,
@@ -361,6 +375,16 @@ namespace SommeliAr.Views.Menu
             path.LineTo(startLeft, startTop);
 
             return path;
+        }
+
+        private void ImageCanvas_Touch(object sender, SKTouchEventArgs e)
+        {
+            var selectedPoint = e.Location;
+            
+            /*foreach(SKRect rect in listbackgroundRect)
+            {
+
+            }*/
         }
     }
 }
