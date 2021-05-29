@@ -59,7 +59,7 @@
                     <Image Grid.Row="3"
                            Grid.Column="0"
                            HeightRequest="25"
-                           Source="icons8-link-64.png"/>
+                           Source="{AppThemeBinding Dark=icons8-link-64_white.png, Light=icons8-link-64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="3"
                        Text="{Binding Image}"
@@ -99,7 +99,7 @@
                     <Image Grid.Row="7"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-thumbs-up-64.png"/>
+                           Source="{AppThemeBinding Dark=icons8-thumbs-up-64_white.png, Light=icons8-thumbs-up-64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="7"
                        Text="{Binding Rating}"
@@ -109,7 +109,7 @@
                     <Image Grid.Row="8"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-regular-document-64.png"/>
+                           Source="{AppThemeBinding Dark=icons8-regular-document-64_white.png, Light=icons8-regular-document-64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="8"
                        Text="{Binding Description}"
@@ -137,10 +137,10 @@
                             HorizontalOptions="Center"
                         WidthRequest="250"
                         Text="Add"
-                        FontSize="20"
+                        FontSize="18"
                             CornerRadius="15"
                             FontFamily="OpenSans-Regular"
-                            BackgroundColor="#b794ff"
+                            BackgroundColor="#8b52ff"
                             TextColor="White"
                             Clicked="Add_wine_btn_Clicked"
                         Command="{Binding AddWineCommand}"/>
@@ -151,10 +151,10 @@
                         Text="View all the wines"
                         HorizontalOptions="Center"
                         WidthRequest="250"
-                        FontSize="20"
+                        FontSize="18"
                             CornerRadius="15"
                             FontFamily="OpenSans-Regular"
-                            BackgroundColor="#b794ff"
+                            BackgroundColor="#8b52ff"
                             TextColor="White"
                         Clicked="All_wines_btn_Clicked"/>
                 </Grid>

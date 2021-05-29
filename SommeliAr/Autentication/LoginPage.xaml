@@ -60,7 +60,7 @@
 
             <!--ENTRY EMAIL-->
             <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" >
-                <Image Source="mail.png"
+                <Image Source="icons8-mail-50.png"
                        WidthRequest="30"
                        HeightRequest="30"/>
             </StackLayout>
@@ -74,7 +74,7 @@
 
             <!--ENTRY PASSWORD-->
             <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" >
-                <Image Source="password.png"
+                <Image Source="icons8-key-2-50.png"
                            WidthRequest="28"
                            HeightRequest="28"/>
             </StackLayout>
@@ -86,7 +86,7 @@
                                    IsPassword="true"/>
             </StackLayout>
             <StackLayout Grid.Row="3" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center">
-                <ImageButton Source="hide.png"
+                <ImageButton Source="icons8-closed-eye-64.png"
                                  x:Name="Hide_pwd_btn"
                                  WidthRequest="28"
                                  HeightRequest="28"
@@ -98,9 +98,11 @@
             <StackLayout Grid.Row="4" Grid.ColumnSpan="3"  HorizontalOptions="Fill" Padding="10">
                 <Button x:Name="Sign_in_btn"
                     Text="Sign in"
-                    TextColor="#ffffff"
+                    TextColor="White"
+                        HorizontalOptions="Center"
+                        WidthRequest="300"
                     FontFamily="OpenSans-Regular"
-                    BorderRadius="10"
+                    BorderRadius="15"
                     FontSize="20"
                     BackgroundColor="#8b52ff"
                     Clicked="Sign_in_btn_Clicked"/>
@@ -129,7 +131,7 @@
                         FontSize="16"
                         FontFamily="OpenSans-Regular"
                         BackgroundColor="Transparent"
-                        TextColor="#b794ff"
+                        TextColor="#8b52ff"
                         Clicked="Forgot_pwd_btn_Clicked"/>
             </StackLayout>
 
@@ -145,7 +147,7 @@
                         Text="Sign up now"
                         FontSize="16"
                         FontFamily="OpenSans-Regular"
-                        TextColor="#b794ff"
+                        TextColor="#8b52ff"
                         BackgroundColor="Transparent"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"

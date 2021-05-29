@@ -65,12 +65,12 @@ namespace SommeliAr.Views
             if (Entry_Password.IsPassword == true)
             {
                 Entry_Password.IsPassword = false;
-                Hide_pwd_btn.Source = "unhide.png";
+                Hide_pwd_btn.Source = "icons8-eye-64.png";
             }
             else
             {
                 Entry_Password.IsPassword = true;
-                Hide_pwd_btn.Source = "hide.png";
+                Hide_pwd_btn.Source = "icons8-closed-eye-64.png";
             }
         }
 

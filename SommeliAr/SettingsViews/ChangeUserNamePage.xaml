@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SommeliAr.Autentication.ChangeUserNamePage">
     <ContentPage.Content>
-        <Grid VerticalOptions="CenterAndExpand">
+        <Grid VerticalOptions="Start" Margin="0,30,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -12,20 +12,39 @@
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="0">
-                <Label Text="Insert the new username" FontSize="Subtitle" HorizontalOptions="Center" Padding="10"/>
+                <Label Text="Insert the new username"
+                       FontSize="28"
+                       FontFamily="OpenSans-Regular"
+                       HorizontalOptions="Center"
+                       Padding="10"/>
             </StackLayout>
 
             <StackLayout Grid.Row="1" Padding="10">
-                <Entry x:Name="New_username_entry" Placeholder="New username" HorizontalOptions="FillAndExpand" Margin="20,0,20,0"/>
+                <Entry x:Name="New_username_entry"
+                       Placeholder="New username"
+                       HorizontalOptions="FillAndExpand"
+                       FontFamily="OpenSans-Regular"
+                       Margin="20,0,20,0"/>
                 <!--USERNAME ERROR MESSAGE-->
                 <Label x:Name="LabelUserError"
                        Text="Between 6-20 digits"
-                       TextColor="White" FontSize="Small" Margin="20,0,20,0"/>
+                       FontFamily="OpenSans-Regular"
+                       TextColor="{AppThemeBinding Dark=Black,Light=White}"
+                       FontSize="Small"
+                       Margin="20,0,20,0"/>
             </StackLayout>
             <StackLayout Grid.Row="2">
-                <Button x:Name="Change_username_btn" VerticalOptions="Start"
-                        Text="Change Username" FontSize="Medium" Clicked="Change_username_btn_Clicked"
-                        BackgroundColor="#8b52ff" TextColor="White" CornerRadius="10" Margin="20,40,20,0"/>
+                <Button x:Name="Change_username_btn"
+                        VerticalOptions="Start"
+                        HorizontalOptions="Center"
+                        WidthRequest="250"
+                        Text="Change Username"
+                        FontSize="18"
+                        Clicked="Change_username_btn_Clicked"
+                        BackgroundColor="#8b52ff"
+                        TextColor="White"
+                        CornerRadius="15"
+                        Margin="0,30,0,0"/>
             </StackLayout>
 
         </Grid>

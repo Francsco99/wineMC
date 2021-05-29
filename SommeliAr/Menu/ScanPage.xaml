@@ -64,22 +64,22 @@
                         TextColor="White"
                         FontFamily="OpenSans-Regular.ttf"
                         FontSize="25"                       
-                        BackgroundColor="#b794ff"
+                        BackgroundColor="#8b52ff"
                         CornerRadius="15"
                         HorizontalOptions="FillAndExpand"
                         Clicked="Scan_btn_Clicked"/>
 
         </StackLayout>
 
-        <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" Padding="0,0,10,0" >
+        <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" Margin="0,0,10,0" >
             <Button x:Name="After_scan_btn" Text="Result list"
-                        BorderColor="#8b52ff"
+                        BackgroundColor="White"
+                    BorderColor="#8b52ff"
                         TextColor="#8b52ff"
-                        FontSize="Medium"
-                        Opacity="0.9"
-                        BackgroundColor="White" 
+                    BorderWidth="4"
+                        FontSize="20"
+                        FontFamily="OpenSans-Regular.ttf"
                         CornerRadius="15"
-                        BorderWidth="3"
                         IsVisible="false"
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>

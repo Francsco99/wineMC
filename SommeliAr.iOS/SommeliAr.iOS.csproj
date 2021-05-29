@@ -240,6 +240,16 @@
     <BundleResource Include="Resources\icons8-camera-64.png" />
     <BundleResource Include="Resources\icons8-link-64.png" />
     <BundleResource Include="Resources\icons8-invert-colors-64.png" />
+    <BundleResource Include="Resources\icons8-birthday-cake-50.png" />
+    <BundleResource Include="Resources\icons8-mail-50.png" />
+    <BundleResource Include="Resources\icons8-user-50.png" />
+    <BundleResource Include="Resources\icons8-key-2-50.png" />
+    <BundleResource Include="Resources\icons8-regular-document-64_white.png" />
+    <BundleResource Include="Resources\icons8-thumbs-up-64_white.png" />
+    <BundleResource Include="Resources\icons8-link-64_white.png" />
+    <BundleResource Include="Resources\icons8-closed-eye-64.png" />
+    <BundleResource Include="Resources\icons8-eye-64.png" />
+    <BundleResource Include="Resources\icons8-box-important-64.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

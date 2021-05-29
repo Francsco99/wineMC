@@ -48,7 +48,7 @@
                  FontSize="20"
                  CornerRadius="15"
                  FontFamily="OpenSans-Regular"
-                 BackgroundColor="#b794ff"
+                 BackgroundColor="#8b52ff"
                  TextColor="White"
                  Clicked="Set_btn_Clicked"/>
 
@@ -60,7 +60,7 @@
                FontSize="20"
                CornerRadius="15"
                FontFamily="OpenSans-Regular"
-               BackgroundColor="#b794ff"
+               BackgroundColor="#8b52ff"
                TextColor="White"
                Clicked="Clear_btn_Clicked"/>
         </Grid>

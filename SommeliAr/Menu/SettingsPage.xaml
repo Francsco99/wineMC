@@ -21,7 +21,7 @@
                     <TableSection Title="Personal settings">
                         <TextCell x:Name="Change_pwd_text_cell" Text="Change Password" Tapped="Change_pwd_text_cell_Tapped"/>
                         <TextCell x:Name="Change_username_text_cell" Text="Change Username" Tapped="Change_username_text_cell_Tapped"/>
-                        <TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>
+                        <!--<TextCell x:Name="Change_tastes_text_cell" Text="Change Tastes" Tapped="Change_tastes_text_cell_Tapped"/>-->
                         <TextCell x:Name="min_probability_txt_cell" Tapped="Min_probability_txt_cell_Tapped"/>
                     </TableSection>
                     <TableSection Title="Wines database">

@@ -108,7 +108,7 @@
                             FontFamily="OpenSans-Regular"
                             FontSize="20"
                             CornerRadius="15"
-                            BackgroundColor="#b794ff"
+                            BackgroundColor="#8b52ff"
                             TextColor="White"
                             Clicked="Remove_from_fav_btn_Clicked"
                             WidthRequest="250"/>
