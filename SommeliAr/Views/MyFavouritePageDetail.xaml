@@ -17,7 +17,7 @@
                     <Label x:Name="MyItemNameShow"
                            HorizontalTextAlignment="Center"
                            FontFamily="OpenSans-Bold"
-                           FontSize="25"/>
+                           FontSize="30"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1">
@@ -34,7 +34,7 @@
                         <Frame x:Name="Round_frame"
                         CornerRadius="45"
                            HeightRequest="50"
-                           WidthRequest="50" BackgroundColor="Gold"
+                           WidthRequest="50"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
                                Margin="200,30,0,0">
@@ -63,7 +63,7 @@
 
                         <Image Grid.Row="0"
                                Grid.Column="0"
-                               Source="baseline_wine_bar_black_48pt_1x_color.png"   
+                               Source="icons8-wine-and-grapes-64_purple.png"   
                                VerticalOptions="Start"
                                HeightRequest="24"
                                WidthRequest="24"/>
@@ -76,7 +76,7 @@
 
                         <Image Grid.Row="1"
                                Grid.Column="0"
-                               Source="baseline_restaurant_black_48pt_1x_color.png"
+                               Source="icons8-dining-room-64.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>
@@ -89,7 +89,7 @@
 
                         <Image Grid.Row="2"
                                Grid.Column="0"
-                               Source="baseline_location_on_black_48pt_1x_color.png"
+                               Source="icons8-place-marker-64.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>

@@ -33,7 +33,7 @@ namespace SommeliAr.Services
             client = new FirebaseClient("https://sommelier-ar-default-rtdb.europe-west1.firebasedatabase.app/");
         }
 
-        //aggiunge un user al db realtime
+        /*aggiunge un user al db realtime*/
         public async Task AddMyUser(string email,string firebaseMail )
         {
             MyUser u = new MyUser() { Email = email};
@@ -43,7 +43,7 @@ namespace SommeliAr.Services
                 .PutAsync(u);
         }
 
-        //aggiunge un vino al db realtime
+        /*aggiunge un vino al db realtime*/
         public async Task AddMyWine(string name,
             string detail, string image, string description,
             string sensorialNotes, string productionArea, string dishes,string rating)
@@ -59,7 +59,7 @@ namespace SommeliAr.Services
                 .PutAsync(w);
         }
 
-        //restituisce la lista di tutti i vini
+        /*restituisce la lista di tutti i vini*/
         public ObservableCollection<MyWineModel> GetAllWines()
         {
             var myWinesData = client
@@ -69,7 +69,7 @@ namespace SommeliAr.Services
             return myWinesData;
         }
 
-        //aggiunge un vino ai preferiti dell'utente corrente
+        /*aggiunge un vino ai preferiti dell'utente corrente*/
         public async Task AddFavWine(string wineName, string firebaseMail)
         {
             await client
@@ -80,7 +80,7 @@ namespace SommeliAr.Services
                 .PutAsync(true);
         }
 
-        //restituisce la lista dei vini preferiti
+        /*restituisce la lista dei vini preferiti*/
         public async Task<ObservableCollection<MyWineModel>> GetMyFavouriteWines(string firebaseMail)
         {
             var favouriteWines = new ObservableCollection<MyWineModel>();
@@ -107,7 +107,7 @@ namespace SommeliAr.Services
             return favouriteWines;
         }
 
-        //aggiunta vini alla cronologia sul db
+        /*aggiunta vini alla cronologia sul db*/
         public async Task AddHistoryWines(string wineName, string firebaseMail)
         {
                 await client
@@ -118,7 +118,7 @@ namespace SommeliAr.Services
                     .PutAsync(true);
         }
 
-        //restituisce la lista della cronologia
+        /*restituisce la lista della cronologia*/
         public async Task<ObservableCollection<MyWineModel>> GetMyHistoryWines(string firebaseMail)
         {
             var historyWines = new ObservableCollection<MyWineModel>();
