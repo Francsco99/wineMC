@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Firebase.Auth;
 using Newtonsoft.Json;
 using SommeliAr.Models;
@@ -15,16 +16,18 @@ namespace SommeliAr.Menu
         public MyHomePage()
         {
             InitializeComponent();
-            //Toglie le righette di separazione delle entry della listview
+
+            /*Toglie le righette di separazione delle entry della listview*/
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
             ResetView();
-           
         }
+        private List<string> wineUrlList = new List<string>();
         private bool favClicked = false;
         private bool histClicked = false;
         private static Color violetto = Color.FromHex("#8b52ff");
 
+        /*
         private Color WineColor(string detail)
         {
             if (detail.Equals("Red"))
@@ -33,6 +36,7 @@ namespace SommeliAr.Menu
             }
             else return Color.Black;
         }
+        */
 
         private void ResetView()
         {
@@ -41,7 +45,8 @@ namespace SommeliAr.Menu
             History_btn.FontSize = 25;
             Favourites_btn.FontSize = 25;
             ShowWelcomeLabels();
-
+            WineURLlistSetup();
+            WineURLSetup();
         }
 
         private void GetUserInformationAndRefreshToken()
@@ -70,6 +75,20 @@ namespace SommeliAr.Menu
             Welcome_msg.IsVisible = false;
         }
 
+        private void WineURLlistSetup()
+        {
+            wineUrlList.Add("https://i.postimg.cc/x1xvbYRM/BARBARESCODOCGARPATINTDI-8012666505012-1.png");
+            wineUrlList.Add("https://i.postimg.cc/Pf3RTsGp/BAROLODOCGASCHERI-8018510001204-1.png");
+            wineUrlList.Add("https://i.postimg.cc/FRNwVD3N/AMARONEVALPOLICELLACLASDOCG-8008960146068-1.png");
+        }
+
+        private void WineURLSetup()
+        {
+            Random rnd = new Random();
+            int r = rnd.Next(wineUrlList.Count);
+            Wine_bottle_img.Source = wineUrlList[r];
+        }
+
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             this.favClicked = true;
@@ -90,7 +109,6 @@ namespace SommeliAr.Menu
             History_btn.FontSize = 25;
             Favourites_btn.TextColor = violetto;
             Favourites_btn.FontSize = 28;
-
         }
 
         async void History_btn_Clicked(System.Object sender, System.EventArgs e)

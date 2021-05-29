@@ -31,6 +31,7 @@ namespace SommeliAr.iOS
             PageController.ContainerArea = new Rectangle(0, 0, frame.Width, frame.Height);
             //TabBar.UnselectedItemTintColor = UIColor.Black;
             TabBar.TintColor = UIColor.FromRGB(139,82,255);
+            
             for(int i=0; i<3; i++)
             {
                 var item = TabBar.Items[i];

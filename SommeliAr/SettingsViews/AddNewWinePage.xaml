@@ -13,7 +13,7 @@
             <StackLayout Grid.Row="0" Padding="0,10,0,10">
                 <Grid RowSpacing="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="0.15*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="0.1*"/>
                     </Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.ColumnSpan="3" Grid.Row="0" Text="Add a wine!"
+                    <Label Grid.ColumnSpan="3" Grid.Row="0" Text="Add a wine"
                        FontFamily="OpenSans-Regular"
                        FontSize="30"
                        HorizontalOptions="Center"
@@ -39,73 +39,81 @@
                     <Image Grid.Row="1"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_edit_black_48pt_1x.png"/>
+                           Source="icons8-wine-glass-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="1"
                        Text="{Binding Name}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Name"/>
 
                     <Image Grid.Row="2"
                            Grid.Column="0"
-                           HeightRequest="30"
-                           Source="baseline_invert_colors_black_48pt_1x_color.png"/>
+                           HeightRequest="25"
+                           Source="icons8-invert-colors-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="2"
                        Text="{Binding Detail}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Color"/>
 
                     <Image Grid.Row="3"
                            Grid.Column="0"
-                           HeightRequest="30"
-                           Source="baseline_link_black_48pt_1x.png"/>
+                           HeightRequest="25"
+                           Source="icons8-link-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="3"
                        Text="{Binding Image}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Image URL"/>
 
                     <Image Grid.Row="4"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_wine_bar_black_48pt_1x_color.png"/>
+                           Source="icons8-wine-and-grapes-64_purple.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="4"
                        Text="{Binding SensorialNotes}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Sensorial notes"/>
 
                     <Image Grid.Row="5"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_location_on_black_48pt_1x_color.png"/>
+                           Source="icons8-place-marker-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="5"
                        Text="{Binding ProductionArea}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Production area"/>
 
                     <Image Grid.Row="6"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_restaurant_black_48pt_1x_color.png"/>
+                           Source="icons8-dining-room-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="6"
                        Text="{Binding Dishes}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Dishes"/>
 
                     <Image Grid.Row="7"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_stars_black_48pt_1x_color.png"/>
+                           Source="icons8-thumbs-up-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="7"
                        Text="{Binding Rating}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Rating"/>
 
                     <Image Grid.Row="8"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="baseline_description_black_48pt_1x.png"/>
+                           Source="icons8-regular-document-64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="8"
                        Text="{Binding Description}"
+                       FontFamily="OpenSans-Regular"
                        Placeholder="Description"/>
 
 
