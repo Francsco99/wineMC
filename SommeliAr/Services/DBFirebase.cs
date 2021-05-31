@@ -34,9 +34,9 @@ namespace SommeliAr.Services
         }
 
         /*aggiunge un user al db realtime*/
-        public async Task AddMyUser(string email,string firebaseMail )
+        public async Task AddMyUser(string email, string firebaseMail)
         {
-            MyUser u = new MyUser() { Email = email};
+            MyUser u = new MyUser() { Email = email };
             await client
                 .Child("Users")
                 .Child(firebaseMail)
@@ -46,13 +46,13 @@ namespace SommeliAr.Services
         /*aggiunge un vino al db realtime*/
         public async Task AddMyWine(string name,
             string detail, string image, string description,
-            string sensorialNotes, string productionArea, string dishes,string rating)
+            string sensorialNotes, string productionArea, string dishes, string rating)
         {
             MyWineModel w = new MyWineModel()
             { Name = name, Detail = detail, Image = image,
                 Description = description,
-                SensorialNotes=sensorialNotes,
-                ProductionArea=productionArea, Dishes=dishes, Rating=rating };
+                SensorialNotes = sensorialNotes,
+                ProductionArea = productionArea, Dishes = dishes, Rating = rating };
             await client
                 .Child("AllWines")
                 .Child(name)
@@ -110,12 +110,12 @@ namespace SommeliAr.Services
         /*aggiunta vini alla cronologia sul db*/
         public async Task AddHistoryWines(string wineName, string firebaseMail)
         {
-                await client
-                    .Child("Users")
-                    .Child(firebaseMail)
-                    .Child("history")
-                    .Child(wineName)
-                    .PutAsync(true);
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("history")
+                .Child(wineName)
+                .PutAsync(true);
         }
 
         /*restituisce la lista della cronologia*/
@@ -145,12 +145,13 @@ namespace SommeliAr.Services
             return historyWines;
         }
 
+        /*Restituisce la collezione di vini riconosciuti*/
         public async Task<ObservableCollection<MyWineModel>> GetResultWines(string listaVini)
         {
             List<string> wineNames = listaVini.Split(',').ToList();
 
             var resultList = new ObservableCollection<MyWineModel>();
-    
+
             foreach (var v in wineNames)
             {
                 var wines = await client
@@ -169,6 +170,7 @@ namespace SommeliAr.Services
         }
 
 
+        /*Elimina il vino wineName dai preferiti dell'utente*/
         public async Task DeleteFavWine(string wineName, string firebaseMail)
         {
             await client
@@ -176,6 +178,26 @@ namespace SommeliAr.Services
                 .Child(firebaseMail)
                 .Child("favourites")
                 .Child(wineName)
+                .DeleteAsync();
+        }
+
+        /*Elimina la cronologia*/
+        public async Task DeleteHistory(string firebaseMail)
+        {
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("history")
+                .DeleteAsync();
+        }
+
+        /*Elimina tutti i vini preferiti*/
+        public async Task DeleteAllFavourites(string firebaseMail)
+        {
+            await client
+                .Child("Users")
+                .Child(firebaseMail)
+                .Child("favourites")
                 .DeleteAsync();
         }
     }

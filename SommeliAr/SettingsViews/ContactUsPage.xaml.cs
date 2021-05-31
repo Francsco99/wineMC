@@ -40,12 +40,14 @@ namespace SommeliAr.SettingsViews
         {
             Preferences.Set("Probability", probability);
             displayLabel.Text = "Minimum probability value "+Preferences.Get("Probability", "");
+            DisplayAlert("Success!", "Probability set to "+ Preferences.Get("Probability", ""), "Ok");
         }
 
         void Clear_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("Probability");
             displayLabel.Text = "Probability value not set";
+            DisplayAlert("Success!", "Probability Cleared", "Ok");
         }
     }
 }
