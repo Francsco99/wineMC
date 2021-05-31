@@ -39,7 +39,7 @@
                     <Image Grid.Row="1"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-wine-glass-64.png"/>
+                           Source="wine_glass_64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="1"
                        Text="{Binding Name}"
@@ -49,7 +49,7 @@
                     <Image Grid.Row="2"
                            Grid.Column="0"
                            HeightRequest="25"
-                           Source="icons8-invert-colors-64.png"/>
+                           Source="invert_colors_64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="2"
                        Text="{Binding Detail}"
@@ -59,7 +59,7 @@
                     <Image Grid.Row="3"
                            Grid.Column="0"
                            HeightRequest="25"
-                           Source="{AppThemeBinding Dark=icons8-link-64_white.png, Light=icons8-link-64.png}"/>
+                           Source="{AppThemeBinding Dark=link_64_white.png, Light=link_64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="3"
                        Text="{Binding Image}"
@@ -69,7 +69,7 @@
                     <Image Grid.Row="4"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-wine-and-grapes-64_purple.png"/>
+                           Source="wine_and_grapes_64_purple.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="4"
                        Text="{Binding SensorialNotes}"
@@ -79,7 +79,7 @@
                     <Image Grid.Row="5"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-place-marker-64.png"/>
+                           Source="place_marker_64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="5"
                        Text="{Binding ProductionArea}"
@@ -89,7 +89,7 @@
                     <Image Grid.Row="6"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="icons8-dining-room-64.png"/>
+                           Source="dining_room_64.png"/>
                     <Entry Grid.Column="1"
                        Grid.Row="6"
                        Text="{Binding Dishes}"
@@ -99,7 +99,7 @@
                     <Image Grid.Row="7"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="{AppThemeBinding Dark=icons8-thumbs-up-64_white.png, Light=icons8-thumbs-up-64.png}"/>
+                           Source="{AppThemeBinding Dark=thumbs_up_64_white.png, Light=thumbs_up_64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="7"
                        Text="{Binding Rating}"
@@ -109,7 +109,7 @@
                     <Image Grid.Row="8"
                            Grid.Column="0"
                            HeightRequest="30"
-                           Source="{AppThemeBinding Dark=icons8-regular-document-64_white.png, Light=icons8-regular-document-64.png}"/>
+                           Source="{AppThemeBinding Dark=regular_document_64_white.png, Light=regular_document_64.png}"/>
                     <Entry Grid.Column="1"
                        Grid.Row="8"
                        Text="{Binding Description}"

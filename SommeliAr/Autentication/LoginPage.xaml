@@ -60,7 +60,7 @@
 
             <!--ENTRY EMAIL-->
             <StackLayout Grid.Row="2" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" >
-                <Image Source="icons8-mail-50.png"
+                <Image Source="mail_50.png"
                        WidthRequest="30"
                        HeightRequest="30"/>
             </StackLayout>
@@ -74,7 +74,7 @@
 
             <!--ENTRY PASSWORD-->
             <StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Center" >
-                <Image Source="icons8-key-2-50.png"
+                <Image Source="key_2_50.png"
                            WidthRequest="28"
                            HeightRequest="28"/>
             </StackLayout>
@@ -86,7 +86,7 @@
                                    IsPassword="true"/>
             </StackLayout>
             <StackLayout Grid.Row="3" Grid.Column="2" HorizontalOptions="Start" VerticalOptions="Center">
-                <ImageButton Source="icons8-closed-eye-64.png"
+                <ImageButton Source="closed_eye_64.png"
                                  x:Name="Hide_pwd_btn"
                                  WidthRequest="28"
                                  HeightRequest="28"

@@ -63,7 +63,7 @@
 
                         <Image Grid.Row="0"
                                Grid.Column="0"
-                               Source="icons8-wine-and-grapes-64_purple.png"   
+                               Source="wine_and_grapes_64_purple.png"   
                                VerticalOptions="Start"
                                HeightRequest="24"
                                WidthRequest="24"/>
@@ -76,7 +76,7 @@
 
                         <Image Grid.Row="1"
                                Grid.Column="0"
-                               Source="icons8-dining-room-64.png"
+                               Source="dining_room_64.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>
@@ -89,7 +89,7 @@
 
                         <Image Grid.Row="2"
                                Grid.Column="0"
-                               Source="icons8-place-marker-64.png"
+                               Source="place_marker_64.png"
                                HeightRequest="24"
                                WidthRequest="24"
                                VerticalOptions="Start"/>
