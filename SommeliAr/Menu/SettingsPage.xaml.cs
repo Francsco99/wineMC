@@ -102,5 +102,36 @@ namespace SommeliAr.Views.Menu
         {
             Navigation.PushAsync(new OurWebsitePage());
         }
+
+        async void Delete_history_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                await DBFirebase.Instance.DeleteHistory(Preferences.Get("UserEmailFirebase", ""));
+                await DisplayAlert("Success!", "History cleared.", "Ok");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Oops!", "Something went wrong, try again!", "Ok");
+                Console.WriteLine(ex.Message);
+            }
+           
+           
+        }
+
+       async void Delete_all_favourites_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                await DisplayAlert("Attention!", "You are going to delete ALL your favourite wines,\n are you sure?", "Yes","No");
+                await DBFirebase.Instance.DeleteAllFavourites(Preferences.Get("UserEmailFirebase", ""));
+                await DisplayAlert("Success!", "Favourites cleared.", "Ok");
+            }
+            catch(Exception ex)
+            {
+                await DisplayAlert("Oops!", "Something went wrong, try again!", "Ok");
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
