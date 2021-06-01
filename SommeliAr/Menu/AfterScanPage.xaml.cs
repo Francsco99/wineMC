@@ -7,12 +7,13 @@ namespace SommeliAr.Menu
 {
     public partial class AfterScanPage : ContentPage
     {
-        async void OnPageSelected()
+        private async void OnPageSelected()
         {
             MyResultListViewModel res = new MyResultListViewModel();
             await res.GetInfoAsync();
             BindingContext = res;
         }
+
         public AfterScanPage()
         {
             if (Device.RuntimePlatform == Device.Android)
@@ -28,6 +29,5 @@ namespace SommeliAr.Menu
             var mydetails = e.Item as MyWineModel;
             await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
         }
-
     }
 }
