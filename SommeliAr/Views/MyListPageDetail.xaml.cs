@@ -82,7 +82,7 @@ namespace SommeliAr.Views
             new Command(async () =>
             await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
 
-            await DisplayAlert("Success!", itemName + " added correctly", "Ok");
+            await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
         }
     }
 }

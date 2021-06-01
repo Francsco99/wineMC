@@ -44,7 +44,7 @@ namespace SommeliAr.Services
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                await App.Current.MainPage.DisplayAlert("Alert", "Oh no !  Token expired", "OK");
+                await App.Current.MainPage.DisplayAlert("Attention.", "Oh no! Token expired.", "Ok");
             }
         }
 

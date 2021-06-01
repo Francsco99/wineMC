@@ -79,7 +79,7 @@ namespace SommeliAr.Views
         async void Remove_from_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             await DBFirebase.Instance.DeleteFavWine(itemName, Preferences.Get("UserEmailFirebase", ""));
-            await DisplayAlert("Success!", itemName + " removed correctly", "Ok");
+            await DisplayAlert("Success.", itemName + " removed correctly.", "Ok");
             Navigation.RemovePage(this);
         }
     }

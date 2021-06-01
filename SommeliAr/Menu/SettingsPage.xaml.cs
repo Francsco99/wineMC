@@ -112,7 +112,7 @@ namespace SommeliAr.Views.Menu
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Oops!", "Something went wrong, try again!", "Ok");
+                await DisplayAlert("Ops...", "Something went wrong, try again.", "Ok");
                 Console.WriteLine(ex.Message);
             }
            
@@ -123,13 +123,18 @@ namespace SommeliAr.Views.Menu
         {
             try
             {
-                await DisplayAlert("Attention!", "You are going to delete ALL your favourite wines,\n are you sure?", "Yes","No");
-                await DBFirebase.Instance.DeleteAllFavourites(Preferences.Get("UserEmailFirebase", ""));
-                await DisplayAlert("Success!", "Favourites cleared.", "Ok");
+               var action = await DisplayAlert("Attention!", "You are going to delete ALL your favourite wines,\n are you sure?", "Yes","No");
+
+                if (action)
+                {
+                    await DBFirebase.Instance.DeleteAllFavourites(Preferences.Get("UserEmailFirebase", ""));
+                    await DisplayAlert("Success!", "Favourites cleared.", "Ok");
+                }
+               
             }
             catch(Exception ex)
             {
-                await DisplayAlert("Oops!", "Something went wrong, try again!", "Ok");
+                await DisplayAlert("Ops...", "Something went wrong, try again.", "Ok");
                 Console.WriteLine(ex.Message);
             }
         }

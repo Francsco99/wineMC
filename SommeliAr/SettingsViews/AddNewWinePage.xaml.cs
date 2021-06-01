@@ -26,7 +26,7 @@ namespace SommeliAr.SettingsViews
 
         async void Add_wine_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            await DisplayAlert("Success!", "Wine correctly added.", "Ok");
+            await DisplayAlert("Success.", "Wine correctly added.", "Ok");
            await Navigation.PushAsync(new AllWinesPage());
         }
     }
