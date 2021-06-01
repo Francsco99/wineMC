@@ -146,5 +146,26 @@ namespace SommeliAr.Menu
                 await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
             }
         }
+
+        async void my_list_view_Refreshing(System.Object sender, System.EventArgs e)
+        {
+            if (this.favClicked)
+            {
+                //setting del BindingContext
+                MyFavoritesPageViewModel fav = new MyFavoritesPageViewModel();
+                await fav.GetInfoAsync();
+                BindingContext = fav;
+                my_list_view.EndRefresh();
+            }
+
+            else if (this.histClicked)
+            {
+                //setting del BindingContext
+                MyHistoryPageViewModel his = new MyHistoryPageViewModel();
+                await his.GetInfoAsync();
+                BindingContext = his;
+                my_list_view.EndRefresh();
+            }
+        }
     }
 }
