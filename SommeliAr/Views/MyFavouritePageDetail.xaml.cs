@@ -8,6 +8,7 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Views
 {
+    
     public partial class MyFavouritePageDetail : ContentPage
     {
         private string itemName { get; set; }
@@ -65,9 +66,9 @@ namespace SommeliAr.Views
             this.voto = Rating;
             MyItemNameShow.Text = Name;
             ProdArea.Text = ProductionArea;
-            SensNotes.Text =SensorialNotes;
+            SensNotes.Text = SensorialNotes;
             MyDishes.Text = Dishes;
-            Voto.Text =  voto;
+            Voto.Text = voto;
             MyImageCall.Source = new UriImageSource()
             {
                 Uri = new Uri(Source)

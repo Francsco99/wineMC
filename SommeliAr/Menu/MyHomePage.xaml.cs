@@ -11,6 +11,7 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Menu
 {
+
     public partial class MyHomePage : ContentPage
     {
         public MyHomePage()
@@ -147,7 +148,7 @@ namespace SommeliAr.Menu
             }
         }
 
-        async void my_list_view_Refreshing(System.Object sender, System.EventArgs e)
+       public async void My_list_view_Refreshing(System.Object sender, System.EventArgs e)
         {
             if (this.favClicked)
             {
