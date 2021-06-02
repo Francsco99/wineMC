@@ -15,12 +15,16 @@ namespace SommeliAr.Menu
         }
         public AfterScanPage()
         {
+            InitializeComponent();
+            OnPageSelected();
             if (Device.RuntimePlatform == Device.Android)
             {
                 Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+
+                Thickness margin = ScanResult.Margin;
+                margin.Top = 35;
+                ScanResult.Margin = margin;
             }
-            InitializeComponent();
-            OnPageSelected();
         }
 
         private async void OnItemSelected(object sender, ItemTappedEventArgs e)

@@ -15,6 +15,7 @@ namespace SommeliAr.Views.Menu
         public SettingsPage()
         {
             InitializeComponent();
+            
             NavigationPage.SetHasNavigationBar(this, false);
             GetProfileInformationAndRefreshToken();
         }
