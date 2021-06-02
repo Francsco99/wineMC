@@ -22,12 +22,12 @@ namespace SommeliAr.Views.Autentication
             try
             {
                 await authProvider.SendPasswordResetEmailAsync(Email);
-                await App.Current.MainPage.DisplayAlert("Alert", "Email Sent", "Ok");
+                await App.Current.MainPage.DisplayAlert("Success.", "Verification email sent.", "Ok");
                 await Navigation.PushAsync(new LoginPage());
             }
             catch (Exception)
             {
-                await App.Current.MainPage.DisplayAlert("Alert", "Invalid Email or password", "OK");
+                await App.Current.MainPage.DisplayAlert("Attention.", "Invalid Email or password.", "Ok");
             }
         }
     }

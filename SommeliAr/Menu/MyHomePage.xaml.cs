@@ -11,18 +11,19 @@ using Xamarin.Forms;
 
 namespace SommeliAr.Menu
 {
+
     public partial class MyHomePage : ContentPage
     {
         public MyHomePage()
         {
             InitializeComponent();
-
+            
             /*Toglie le righette di separazione delle entry della listview*/
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
             GetUserInformationAndRefreshToken();
             ResetView();
         }
-        private List<string> wineUrlList = new List<string>();
+        private List<string> wineNames = new List<string>();
         private bool favClicked = false;
         private bool histClicked = false;
         private static Color violetto = Color.FromHex("#8b52ff");
@@ -45,7 +46,7 @@ namespace SommeliAr.Menu
             History_btn.FontSize = 25;
             Favourites_btn.FontSize = 25;
             ShowWelcomeLabels();
-            WineURLlistSetup();
+            WineNamesList();
             WineURLSetup();
         }
 
@@ -75,18 +76,18 @@ namespace SommeliAr.Menu
             Welcome_msg.IsVisible = false;
         }
 
-        private void WineURLlistSetup()
+        private void WineNamesList()
         {
-            wineUrlList.Add("https://i.postimg.cc/x1xvbYRM/BARBARESCODOCGARPATINTDI-8012666505012-1.png");
-            wineUrlList.Add("https://i.postimg.cc/Pf3RTsGp/BAROLODOCGASCHERI-8018510001204-1.png");
-            wineUrlList.Add("https://i.postimg.cc/FRNwVD3N/AMARONEVALPOLICELLACLASDOCG-8008960146068-1.png");
+            wineNames.Add("Arpatin Barbaresco");
+            wineNames.Add("Ascheri Barolo");
+            wineNames.Add("Masi Campofiorin");
         }
 
         private void WineURLSetup()
         {
             Random rnd = new Random();
-            int r = rnd.Next(wineUrlList.Count);
-            Wine_bottle_img.Source = wineUrlList[r];
+            int r = rnd.Next(wineNames.Count);
+            Wine_bottle_img.Source = wineNames[r];
         }
 
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -144,6 +145,27 @@ namespace SommeliAr.Menu
             else if (favClicked)
             {
                 await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
+            }
+        }
+
+       public async void My_list_view_Refreshing(System.Object sender, System.EventArgs e)
+        {
+            if (this.favClicked)
+            {
+                //setting del BindingContext
+                MyFavoritesPageViewModel fav = new MyFavoritesPageViewModel();
+                await fav.GetInfoAsync();
+                BindingContext = fav;
+                my_list_view.EndRefresh();
+            }
+
+            else if (this.histClicked)
+            {
+                //setting del BindingContext
+                MyHistoryPageViewModel his = new MyHistoryPageViewModel();
+                await his.GetInfoAsync();
+                BindingContext = his;
+                my_list_view.EndRefresh();
             }
         }
     }

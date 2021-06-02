@@ -38,7 +38,7 @@ namespace SommeliAr.Views
 
                     if (content.User.IsEmailVerified == false)
                     {
-                        bool action = await App.Current.MainPage.DisplayAlert("Alert!", "Your account is not verified yet, Send verification email again?", "Yes", "No");
+                        bool action = await App.Current.MainPage.DisplayAlert("Attention.", "Your account is not verified yet.\n Send verification email again?", "Yes", "No");
                         if (action)
                         {
                             await authProvider.SendEmailVerificationAsync(content.FirebaseToken);
@@ -48,7 +48,7 @@ namespace SommeliAr.Views
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    await App.Current.MainPage.DisplayAlert("Alert!", "Invalid Email or password", "OK");
+                    await App.Current.MainPage.DisplayAlert("Alert.", "Invalid email or password.", "Ok");
                 }
             }
         }

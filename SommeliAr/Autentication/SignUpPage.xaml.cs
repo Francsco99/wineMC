@@ -191,7 +191,7 @@ namespace SommeliAr.Views
                     await authProvider.UpdateProfileAsync(auth.FirebaseToken, username, "");
                     Preferences.Set("UserEmailFirebase", emailLowerCase.Replace(".", "-").Replace("@", "-at-"));
                     //alert
-                    await App.Current.MainPage.DisplayAlert("Success!", "Don't forget to verify your Email!", "OK");
+                    await App.Current.MainPage.DisplayAlert("Success!", "Don't forget to verify your Email.", "Ok");
 
                     //aggiunto utente nel database
                     var viewModel = (MyUserViewModel)BindingContext;
@@ -207,7 +207,7 @@ namespace SommeliAr.Views
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong", "Try to Sign Up again", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong.", "Try to Sign Up again.", "Ok");
                 }
 
             }

@@ -69,14 +69,14 @@ namespace SommeliAr.Autentication
                     Preferences.Set("MyLoginToken", JsonConvert.SerializeObject(RefreshedContent));
                     //Cambio password utente
                     await authProvider.UpdateProfileAsync(savedfirebaseauth.FirebaseToken, newUsername, "");
-                    await App.Current.MainPage.DisplayAlert("Success!", "New Username set correctly!", "OK");
+                    await App.Current.MainPage.DisplayAlert("Success.", "New Username set correctly.", "Ok");
                     await Navigation.PushAsync(new LoginPage());
 
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    await App.Current.MainPage.DisplayAlert("Something went wrong!", "Try to logout and log back in", "OK");
+                    await App.Current.MainPage.DisplayAlert("Ops... Something went wrong.", "Try to logout and log back in.", "Ok");
                 }
             }
         }

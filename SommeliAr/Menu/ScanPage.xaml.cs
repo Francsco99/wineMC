@@ -59,7 +59,7 @@ namespace SommeliAr.Views.Menu
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
-                await DisplayAlert("No Camera", ":( No camera available.", "OK");
+                await DisplayAlert("No Camera.", ":( No camera available.", "Ok");
                 return;
             }
 
@@ -125,7 +125,7 @@ namespace SommeliAr.Views.Menu
 
             if (current != NetworkAccess.Internet)
             {
-                await DisplayAlert("No Connection", "In order to scan you need internet access, please turn on your internet connection", "OK");
+                await DisplayAlert("No Connection.", "In order to scan you need internet access,\n please turn on your internet connection.", "Ok");
                 return;
             }
             var imageBytes = GetImageAsByteData(stream);
