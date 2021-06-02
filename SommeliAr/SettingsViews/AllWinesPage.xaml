@@ -12,7 +12,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" >
+                            <Grid Padding="10" RowSpacing="10" ColumnSpacing="10" x:Name="AllWines">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>

@@ -11,11 +11,14 @@ namespace SommeliAr.SettingsViews
     {
         public AllWinesPage()
         {
+            InitializeComponent();
             if (Device.RuntimePlatform == Device.Android)
             {
                 Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                Thickness margin = my_list_view.Margin;
+                margin.Top = 35;
+                my_list_view.Margin = margin;
             }
-            InitializeComponent();
             BindingContext = new AllWinesViewModel();
         }
 
