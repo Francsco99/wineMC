@@ -2,6 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage" 
+
     x:Class="SommeliAr.Views.MyListPageDetail">
     <ContentPage.Content>
         <ScrollView>
@@ -26,11 +28,16 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <Image x:Name="MyImageCall"
+                        <pinch:PinchZoom>
+                            <pinch:PinchZoom.Content>
+                                <Image x:Name="MyImageCall"
                                HeightRequest="250"
                                WidthRequest="250"
-                               HorizontalOptions="End"
-                               />
+                               HorizontalOptions="End">
+                        </Image>
+                            </pinch:PinchZoom.Content>
+                        </pinch:PinchZoom>
+                        
                         <Frame x:Name="Round_frame"
                         CornerRadius="45"
                            HeightRequest="50"
@@ -73,7 +80,7 @@
                                TextColor="#b794ff"
                                FontSize="16"
                                FontFamily="OpenSans-Regular"/>
-                        
+
                         <Image Grid.Row="1"
                                Grid.Column="0"
                                Source="dining_room_64.png"
