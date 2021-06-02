@@ -317,7 +317,10 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
-            listbackgroundRect.Add(backgroundRect,tag);
+            if (! listbackgroundRect.ContainsKey(backgroundRect))
+            {
+                listbackgroundRect.Add(backgroundRect, tag);
+            }
 
             backgroundRect.Inflate(10, 10);
             
@@ -416,7 +419,7 @@ namespace SommeliAr.Views.Menu
                 if (CheckLocation(selectedPoint, rect))
                 {
                     var wineName = listbackgroundRect[rect];
-                    Console.WriteLine(listbackgroundRect[rect].ToString());
+                    //Console.WriteLine(listbackgroundRect[rect].ToString());
                     var vino = await DBFirebase.Instance.GetWineFromName(wineName);
                     await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
                 }
