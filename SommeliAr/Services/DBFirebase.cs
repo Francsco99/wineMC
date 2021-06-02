@@ -200,5 +200,15 @@ namespace SommeliAr.Services
                 .Child("favourites")
                 .DeleteAsync();
         }
+
+        /*Restituisce il vino in base al nome*/
+        public async Task<MyWineModel> GetWineFromName(string name)
+        {
+            var v = await client
+                .Child("AllWines")
+                .Child(name)
+                .OnceSingleAsync<MyWineModel>();
+            return v;
+        }
     }
 }

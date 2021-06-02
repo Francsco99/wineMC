@@ -5,6 +5,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SommeliAr.Menu;
 using SommeliAr.Services;
+using SommeliAr.SettingsViews;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,7 +30,7 @@ namespace SommeliAr.Views.Menu
         SKBitmap skImage;
 
         List<string> tagnames;
-        List<SKRect> listbackgroundRect;
+        Dictionary<SKRect,string> listbackgroundRect;
         public ScanPage()
         {
             InitializeComponent();
@@ -54,6 +55,7 @@ namespace SommeliAr.Views.Menu
             // svuoto skImage ad ogni Scan
             skImage = null;                                               
             tagnames = new List<string>();
+            listbackgroundRect = new Dictionary<SKRect,string>();
 
             await CrossMedia.Current.Initialize();
 
@@ -209,7 +211,7 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        static void DrawPredictions(SKCanvas canvas,
+        private void DrawPredictions(SKCanvas canvas,
             float left, float top, float scaleWidth, float scaleHeight,
             IEnumerable<PredictionModel> SKPrediction)
         {
@@ -243,7 +245,7 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        static void ClearCanvas(SKImageInfo info, SKCanvas canvas)
+        private void ClearCanvas(SKImageInfo info, SKCanvas canvas)
         {
             var paint = new SKPaint
             {
@@ -254,7 +256,7 @@ namespace SommeliAr.Views.Menu
             canvas.DrawRect(info.Rect, paint);
         }
 
-        static void LabelPrediction(SKCanvas canvas, string tag, BoundingBox box, float left, float top, float width, float height, bool addBox = true)
+        private void LabelPrediction(SKCanvas canvas, string tag, BoundingBox box, float left, float top, float width, float height, bool addBox = true)
         {
             var scaledBoxLeft = left + (width * (float)box.Left);
             var scaledBoxWidth = width * (float)box.Width;
@@ -267,7 +269,7 @@ namespace SommeliAr.Views.Menu
             DrawText(canvas, tag, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
         }
 
-        static void DrawText(SKCanvas canvas, string tag, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+        private void DrawText(SKCanvas canvas, string tag, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var textPaint = new SKPaint
             {
@@ -315,7 +317,8 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
-            //listbackgroundRect.Add(backgroundRect);   da implementare
+            listbackgroundRect.Add(backgroundRect,tag);
+
             backgroundRect.Inflate(10, 10);
             
             canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
@@ -359,7 +362,7 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        static void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+        private void DrawBox(SKCanvas canvas, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var outerstrokePaint = new SKPaint
             {
@@ -383,13 +386,13 @@ namespace SommeliAr.Views.Menu
             DrawBox(canvas, blurStrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
         }
 
-        static void DrawBox(SKCanvas canvas, SKPaint paint, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+        private void DrawBox(SKCanvas canvas, SKPaint paint, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var path = CreateBoxPath(startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
             canvas.DrawPath(path, paint);
         }
 
-        static SKPath CreateBoxPath(float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
+        private SKPath CreateBoxPath(float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var path = new SKPath();
             path.MoveTo(startLeft, startTop);
@@ -402,14 +405,28 @@ namespace SommeliAr.Views.Menu
             return path;
         }
 
-        private void ImageCanvas_Touch(object sender, SKTouchEventArgs e)
+        private async void ImageCanvas_Touch(object sender, SKTouchEventArgs e)
         {
             var selectedPoint = e.Location;
-            
-            /*foreach(SKRect rect in listbackgroundRect)
-            {
 
-            }*/
+            //Console.WriteLine(selectedPoint.ToString);
+
+            foreach(SKRect rect in listbackgroundRect.Keys)
+            {
+                if (CheckLocation(selectedPoint, rect))
+                {
+                    var wineName = listbackgroundRect[rect];
+                    Console.WriteLine(listbackgroundRect[rect].ToString());
+                    var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                    await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                }
+
+            }
+        }
+
+        private bool CheckLocation(SKPoint point, SKRect rect)
+        {
+            return rect.Contains(point);
         }
     }
 }

@@ -31,12 +31,12 @@ namespace SommeliAr.Views.Menu
                 user_displayName_txt_cell.Text = "Username:  " + user.DisplayName;
                 if (user.IsEmailVerified)
                 {
-                    user_is_verified_txt_cell.Text = "Verified!";
+                    user_is_verified_txt_cell.Text = "Email verified.";
                     user_is_verified_txt_cell.TextColor = Color.Green;
                 }
                 else
                 {
-                    user_is_verified_txt_cell.Text = "Verify your Email now!";
+                    user_is_verified_txt_cell.Text = "Email not verified.";
                     user_is_verified_txt_cell.TextColor = Color.Red;
                 }
             }

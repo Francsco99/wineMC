@@ -25,6 +25,7 @@
     <PackageReference Include="FirebaseAuthentication.net" Version="3.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Forms.PinchZoomImage" Version="1.1.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using SommeliAr.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -15,7 +14,7 @@ namespace SommeliAr.Views
         private string productionArea { get; set; }
         private string dishes { get; set; }
         private string voto { get; set; }
-
+        
         private Color SetFrameColor(string voto)
         {
             double votoDouble = Convert.ToDouble(voto); // non funziona bene con i voti puntati: es 7.2
@@ -84,5 +83,6 @@ namespace SommeliAr.Views
             await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
             await Navigation.PopAsync();
         }
+
     }
 }
