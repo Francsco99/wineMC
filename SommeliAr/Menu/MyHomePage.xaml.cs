@@ -14,30 +14,11 @@ namespace SommeliAr.Menu
 
     public partial class MyHomePage : ContentPage
     {
-        public MyHomePage()
+        private void ShowWelcomeLabels()
         {
-            InitializeComponent();
-            
-            /*Toglie le righette di separazione delle entry della listview*/
-            my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
-            GetUserInformationAndRefreshToken();
-            ResetView();
-        }
-        private List<string> wineNames = new List<string>();
-        private bool favClicked = false;
-        private bool histClicked = false;
-        private static Color violetto = Color.FromHex("#8b52ff");
+            Welcome_msg.IsVisible = true;
 
-        /*
-        private Color WineColor(string detail)
-        {
-            if (detail.Equals("Red"))
-            {
-                return Color.Red;
-            }
-            else return Color.Black;
         }
-        */
 
         private void ResetView()
         {
@@ -46,13 +27,10 @@ namespace SommeliAr.Menu
             History_btn.FontSize = 25;
             Favourites_btn.FontSize = 25;
             ShowWelcomeLabels();
-            WineNamesList();
-            WineURLSetup();
         }
 
         private void GetUserInformationAndRefreshToken()
         {
-
             User user = AuthFirebase.Instance.GetUserFromDB();
             try
             {
@@ -65,31 +43,57 @@ namespace SommeliAr.Menu
             }
         }
 
-        private void ShowWelcomeLabels()
+        public MyHomePage()
         {
-            Welcome_msg.IsVisible = true;
+            InitializeComponent();
+            
+            /*Toglie le righette di separazione delle entry della listview*/
+            my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
 
+            GetUserInformationAndRefreshToken();
+            ResetView();
+            SetUpList();
+            GetRandomWine();
         }
+        private List<string> wineNames = new List<string>();
+        private bool favClicked = false;
+        private bool histClicked = false;
+        private static Color violetto = Color.FromHex("#8b52ff");
+
+        private MyWineModel randWine;
 
         private void DeleteWelcomeLabels()
         {
             Welcome_msg.IsVisible = false;
         }
 
-        private void WineNamesList()
+        private void SetUpList()
         {
-            wineNames.Add("Arpatin Barbaresco");
-            wineNames.Add("Ascheri Barolo");
-            wineNames.Add("Masi Campofiorin");
+            this.wineNames.Add("Arpatin Barbaresco");
+            this.wineNames.Add("Ascheri Barolo");
+            this.wineNames.Add("Bolla Amarone della Valpolicella");
+            this.wineNames.Add("Borgo di Fradis Collio Friulano");
+            this.wineNames.Add("Masi Campofiorin");
+            this.wineNames.Add("Ribolla Schiopetto");
+            this.wineNames.Add("Sartori Valpolicella Classico");
+            this.wineNames.Add("Tavernello");
+            this.wineNames.Add("Terre Alte");
+            this.wineNames.Add("Villa Mondi Amarone della Valpolicella Classico");
+            this.wineNames.Add("Villa Mondi Valpolicella Ripasso Classico Superiore");
+            this.wineNames.Add("Volpe Pasini Sauvignon");
+            this.wineNames.Add("Volpe Pasini Togliano Merlot");
         }
 
-        private void WineURLSetup()
+        private async void GetRandomWine()
         {
-            Random rnd = new Random();
+            var rnd = new Random();
             int r = rnd.Next(wineNames.Count);
-            Wine_bottle_img.Source = wineNames[r];
+            var wine = await DBFirebase.Instance.GetWineFromName(wineNames[r]);
+            this.randWine = wine;
+            bottle_title.Text = wine.Name;
+            bottle_img.Source = wine.Image;
         }
-
+        
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             this.favClicked = true;
@@ -129,7 +133,6 @@ namespace SommeliAr.Menu
 
             //setting del colore in base al tema del dispositivo
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
-
             Favourites_btn.FontSize = 25;
             History_btn.TextColor = violetto;
             History_btn.FontSize = 28;
@@ -167,6 +170,16 @@ namespace SommeliAr.Menu
                 BindingContext = his;
                 my_list_view.EndRefresh();
             }
+        }
+
+        void Bottle_img_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new MyListPageDetail(randWine.Name, randWine.Description, randWine.SensorialNotes, randWine.ProductionArea, randWine.Dishes, randWine.Image, randWine.Rating));
+        }
+
+        void Refresh_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            this.GetRandomWine();
         }
     }
 }

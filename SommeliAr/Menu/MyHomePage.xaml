@@ -124,29 +124,67 @@
                      Grid.Row="2"
                      HorizontalOptions="Center"
                      VerticalOptions="Start">
-                <Label x:Name="User_name_lbl"
+                <Grid Padding="15"
+                      RowSpacing="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0"
+                           Grid.ColumnSpan="2"
+                       x:Name="User_name_lbl"
                        Text="Username"
                        FontFamily="OpenSans-Bold.ttf"
                        FontSize="Title"
-                       Margin="0,30,0,0"
+                       Margin="0,20,0,0"
                        TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
-                <Label x:Name="Welcome_lbl"
+
+                    <Label Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       x:Name="Welcome_lbl"
                        Text="Welcome back to SommeliAR!"
                        FontFamily="OpenSans-Regular.ttf"
-                       FontSize="Subtitle"
-                       Margin="0,10,0,0"/>
-                <Label Text="Wine of the day" Margin="0,60,0,0"
+                       FontSize="Subtitle"/>
+
+                    <Label Grid.Row="2" Grid.ColumnSpan="2"
+                      Text="Wine of the day:"
+                       Margin="0,40,0,0"
                        FontSize="25"
-                       FontFamily="OpenSans-Regular">
-                    
-                </Label>
-                <Image x:Name="Wine_bottle_img" Source="https://www.sartorinet.com/assets/images/vini/moderno/classici/Valpolicella-classico.png"
-                       HeightRequest="300"
-                       Margin="0,0,200,0">
-                </Image>
+                       FontFamily="OpenSans-Regular"/>
 
+                    <Label Grid.Row="3" Grid.Column="1"
+                       x:Name="bottle_title"
+                       FontFamily="OpenSans-Bold"
+                       FontSize="22"/>
+                    <Button Grid.Row="3" Grid.Column="1"
+                            x:Name="Refresh_btn"
+                            Text="Refresh"
+                            FontFamily="OpenSans-Regular"
+                            FontSize="20"
+                            CornerRadius="15"
+                            TextColor="White"
+                            BackgroundColor="#8b52ff"
+                            VerticalOptions="Center"
+                            Clicked="Refresh_btn_Clicked"/>
+
+                <Label Grid.Row="3" Grid.Column="1"
+                       Text="Click on the image to see details"
+                       FontFamily="OpenSans-Regular"
+                       VerticalOptions="End"/>
+
+                        <ImageButton Grid.Row="3" Grid.Column="0"
+                    x:Name="bottle_img"
+                       HeightRequest="350"
+                             Clicked="Bottle_img_Clicked"/>
+                </Grid>
             </StackLayout>
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
