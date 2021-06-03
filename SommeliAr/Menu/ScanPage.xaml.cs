@@ -5,7 +5,6 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using SommeliAr.Menu;
 using SommeliAr.Services;
-using SommeliAr.SettingsViews;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,8 +13,6 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace SommeliAr.Views.Menu
 {
