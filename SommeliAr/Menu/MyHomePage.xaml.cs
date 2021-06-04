@@ -88,10 +88,17 @@ namespace SommeliAr.Menu
         {
             var rnd = new Random();
             int r = rnd.Next(wineNames.Count);
+
+            bottle_img.IsVisible = false;
+            bottle_title.IsVisible = false;
+            Loading_small.IsVisible = true;
             var wine = await DBFirebase.Instance.GetWineFromName(wineNames[r]);
             this.randWine = wine;
             bottle_title.Text = wine.Name;
             bottle_img.Source = wine.Image;
+            bottle_img.IsVisible = true;
+            bottle_title.IsVisible = true;
+            Loading_small.IsVisible = false;
         }
         
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
