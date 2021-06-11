@@ -243,6 +243,9 @@
     <BundleResource Include="Resources\closed_eye_64.png" />
     <BundleResource Include="Resources\eye_64.png" />
     <BundleResource Include="Resources\box_important_64.png" />
+    <BundleResource Include="Resources\update_left_rotation_50.png" />
+    <BundleResource Include="Resources\camera_enhance_64.png" />
+    <BundleResource Include="Resources\up_left_50.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\error.imageset\" />

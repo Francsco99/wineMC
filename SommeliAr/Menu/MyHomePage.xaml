@@ -162,23 +162,28 @@
                        FontSize="25"
                        FontFamily="OpenSans-Regular"/>
 
+                     <!--REFRESH BUTTON-->
+                    <ImageButton x:Name="Refresh_btn"
+                            Grid.Row="2" Grid.Column="1"
+                            Source="update_left_rotation_50.png"
+                            Margin="0,45,10,0"
+                                 HeightRequest="35"
+                                 HorizontalOptions="End"
+                            Clicked="Refresh_btn_Clicked"/>
+
+
                     <!--BOTTLE TITLE-->
                     <Label x:Name="bottle_title"
                         Grid.Row="3" Grid.Column="1"
                         FontFamily="OpenSans-Bold"
                         FontSize="22"/>
 
-                    <!--REFRESH BUTTON-->
-                    <Button x:Name="Refresh_btn"
-                            Grid.Row="3" Grid.Column="1"
-                            Text="Refresh"
-                            FontFamily="OpenSans-Regular"
-                            FontSize="20"
-                            CornerRadius="15"
-                            TextColor="White"
-                            BackgroundColor="#8b52ff"
-                            VerticalOptions="Center"
-                            Clicked="Refresh_btn_Clicked"/>
+                    <Image Grid.Row="3" Grid.Column="1"
+                         Source="up_left_50.png"
+                           HorizontalOptions="Center"
+                           VerticalOptions="End"
+                           Margin="0,0,120,60"
+                           HeightRequest="50"/>
 
                     <Label Grid.Row="3" Grid.Column="1"
                             Text="Click on the image to see details"
