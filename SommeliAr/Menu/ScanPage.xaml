@@ -59,8 +59,11 @@
                                   IsVisible = "false"/>
 
         <!--BOTTONE SCAN-->
-        <StackLayout   Grid.Row="2" Grid.Column="1" VerticalOptions="Start">
-                <ImageButton x:Name="Scan_btn"
+        <StackLayout x:Name="scan_lyt"
+            Grid.Row="2"
+                       Grid.Column="1"
+                       VerticalOptions="Start">
+            <ImageButton x:Name="Scan_btn"
                         Source="scanicon.png"
                         WidthRequest="70"
                         BackgroundColor="Transparent"
@@ -82,5 +85,4 @@
                         Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
     </Grid>
-
 </ContentPage>

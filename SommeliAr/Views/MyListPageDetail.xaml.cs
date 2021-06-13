@@ -84,7 +84,8 @@ namespace SommeliAr.Views
             
             favourite_animation.IsVisible = true;
             favourite_animation.PlayAnimation();
-            //await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
+            await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
+            favourite_animation.IsVisible = false;
             await Navigation.PopAsync();
         }
 

@@ -27,15 +27,14 @@ namespace SommeliAr.Views.Menu
         SKBitmap skImage;
 
         List<string> tagnames;
-        Dictionary<SKRect,string> listbackgroundRect;
+        Dictionary<SKRect, string> listbackgroundRect;
         public ScanPage()
         {
             InitializeComponent();
 
         }
 
-
-        async void Scan()
+        async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             Preferences.Remove("ResultList");
 
@@ -116,11 +115,6 @@ namespace SommeliAr.Views.Menu
             else return 0.5;
         }
 
-        async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-            Scan();
-        }
-
         private async Task MakePredictionAsync(Stream stream)
         {
             var current = Connectivity.NetworkAccess;
@@ -147,16 +141,16 @@ namespace SommeliAr.Views.Menu
 
                     /*imposta la probabilità minima*/
                     var setProbability = SetProbability();
-                    
+
                     /*visualizza solo predizioni con sicurezza superiore a setProbability*/
-                    var result = predictions.Predictions.Where(p => p.Probability >= setProbability); 
+                    var result = predictions.Predictions.Where(p => p.Probability >= setProbability);
 
                     predictionsResult = result;
 
                     /*lista tagnames*/
                     foreach (var p in result)
                     {
-                        if (!p.TagName.Contains("Products") )
+                        if (!p.TagName.Contains("Products"))
                         {
                             await DBFirebase.Instance.AddHistoryWines(p.TagName, Preferences.Get("UserEmailFirebase", ""));
                             tagnames.Add(p.TagName);
@@ -216,7 +210,7 @@ namespace SommeliAr.Views.Menu
             IEnumerable<PredictionModel> SKPrediction)
         {
             List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
-           
+
             foreach (var element in SKPrediction)
             {
                 if (element.TagName.Contains("Other"))
@@ -317,13 +311,13 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
-            if (! listbackgroundRect.ContainsKey(backgroundRect))
+            if (!listbackgroundRect.ContainsKey(backgroundRect))
             {
                 listbackgroundRect.Add(backgroundRect, tag);
             }
 
             backgroundRect.Inflate(10, 10);
-            
+
             canvas.DrawRoundRect(backgroundRect, 5, 5, paint);
 
             /*per ogni parola del tag se sborda dal riquadro del vino accorcia il nome e aggiunge ...*/
@@ -332,7 +326,8 @@ namespace SommeliAr.Views.Menu
                 var textWidth = textPaint.MeasureText(subtext);
                 String subShortened = subtext;
 
-                if (Array.IndexOf(subs, subtext) <= 3) {
+                if (Array.IndexOf(subs, subtext) <= 3)
+                {
                     /*se il testo sborda o il nome è composto da più di quattro parole*/
                     if (textWidth > scaledBoxWidth || ((Array.IndexOf(subs, subtext) == 3) && (subs.Length >= 5)))
                     {
@@ -414,7 +409,8 @@ namespace SommeliAr.Views.Menu
 
             //Console.WriteLine(selectedPoint.ToString);
 
-            if(listbackgroundRect != null) {
+            if (listbackgroundRect != null)
+            {
                 foreach (SKRect rect in listbackgroundRect.Keys)
                 {
                     if (CheckLocation(selectedPoint, rect))

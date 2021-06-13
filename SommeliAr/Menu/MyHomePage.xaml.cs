@@ -21,6 +21,15 @@ namespace SommeliAr.Menu
 
         }
 
+        private async void WelcomeLabelsAnimations()
+        {
+            await User_name_lbl.TranslateTo(1000, 0,0);
+            await Welcome_lbl.TranslateTo(1000, 0, 0);
+
+            await User_name_lbl.TranslateTo(0, 0, 500, Easing.BounceIn);
+            await Welcome_lbl.TranslateTo(0, 0, 500, Easing.BounceIn);
+        }
+
         private void ResetView()
         {
             History_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
@@ -47,7 +56,7 @@ namespace SommeliAr.Menu
         public MyHomePage()
         {
             InitializeComponent();
-            
+
             /*Toglie le righette di separazione delle entry della listview*/
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
 
@@ -55,6 +64,7 @@ namespace SommeliAr.Menu
             ResetView();
             SetUpList();
             GetRandomWine();
+            WelcomeLabelsAnimations();
         }
         private List<string> wineNames = new List<string>();
         private bool favClicked = false;
@@ -87,25 +97,28 @@ namespace SommeliAr.Menu
 
         private async void GetRandomWine()
         {
-            await bottle_img.TranslateTo(130, 0, 250);
+            await bottle_img.TranslateTo(150, 0, 250, Easing.Linear);
 
+            //bottle_img.IsVisible = false;
+            //bottle_title.IsVisible = false;
+
+            /*calcolo nuova bottiglia*/
             var rnd = new Random();
             int r = rnd.Next(wineNames.Count);
-
-            bottle_img.IsVisible = false;
-            bottle_title.IsVisible = false;
-            
             var wine = await DBFirebase.Instance.GetWineFromName(wineNames[r]);
             this.randWine = wine;
+
+            bottle_title.Opacity = 0;
             bottle_title.Text = wine.Name;
             bottle_img.Source = wine.Image;
-            bottle_img.IsVisible = true;
-            bottle_title.IsVisible = true;
-            
-            await bottle_img.TranslateTo(-130, 0,0);
+
+            //bottle_img.IsVisible = true;
+            //bottle_title.IsVisible = true;
+            await bottle_img.TranslateTo(-150, 0, 0);
             await bottle_img.TranslateTo(0, 0, 600, Easing.Linear);
+            await bottle_title.FadeTo(1, 300);
         }
-        
+
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             this.favClicked = true;
@@ -155,15 +168,15 @@ namespace SommeliAr.Menu
             var mydetails = e.Item as MyWineModel;
             if (histClicked)
             {
-                await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
+                await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
             }
             else if (favClicked)
             {
-                await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description,mydetails.SensorialNotes,mydetails.ProductionArea,mydetails.Dishes, mydetails.Image, mydetails.Rating));
+                await Navigation.PushAsync(new MyFavouritePageDetail(mydetails.Name, mydetails.Description, mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
             }
         }
 
-       public async void My_list_view_Refreshing(System.Object sender, System.EventArgs e)
+        public async void My_list_view_Refreshing(System.Object sender, System.EventArgs e)
         {
             if (this.favClicked)
             {
@@ -192,7 +205,7 @@ namespace SommeliAr.Menu
         void Refresh_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             this.GetRandomWine();
-           
+
             Refresh_btn.PlayAnimation();
         }
     }

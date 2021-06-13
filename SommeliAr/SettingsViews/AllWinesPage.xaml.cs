@@ -12,13 +12,7 @@ namespace SommeliAr.SettingsViews
         public AllWinesPage()
         {
             InitializeComponent();
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-                Thickness margin = my_list_view.Margin;
-                margin.Top = 35;
-                my_list_view.Margin = margin;
-            }
+            setView();
             BindingContext = new AllWinesViewModel();
         }
 
@@ -27,6 +21,17 @@ namespace SommeliAr.SettingsViews
             var mydetails = e.Item as MyWineModel;
             await Navigation.PushAsync(new MyListPageDetail(mydetails.Name, mydetails.Description, mydetails.SensorialNotes, mydetails.ProductionArea, mydetails.Dishes, mydetails.Image, mydetails.Rating));
 
+        }
+
+        private void setView()
+        {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                Thickness margin = my_list_view.Margin;
+                margin.Top = 35;
+                my_list_view.Margin = margin;
+            }
         }
     }
 }
