@@ -2,7 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-      xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage" 
+    xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage" 
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
 
     x:Class="SommeliAr.Views.MyListPageDetail">
     <ContentPage.Content>
@@ -108,6 +109,15 @@
                                FontFamily="OpenSans-Regular"/>
                     </Grid>
                 </StackLayout>
+
+                <lottie:AnimationView x:Name="favourite_animation"
+                                      Animation="favourite.json"
+                                      Grid.Row="1"
+                                      WidthRequest="200"
+                                      AutoPlay="False"
+                                      IsVisible="False"
+                                      />
+
 
                 <StackLayout Grid.Row="4" HorizontalOptions="Center" Margin="0,20,0,0">
                     <Button x:Name="Add_to_fav_btn"

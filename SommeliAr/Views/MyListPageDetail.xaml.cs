@@ -76,11 +76,15 @@ namespace SommeliAr.Views
             Round_frame.BackgroundColor = SetFrameColor(voto);
         }
 
+
         async void Add_to_fav_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             new Command(async () =>
             await DBFirebase.Instance.AddFavWine(itemName, Preferences.Get("UserEmailFirebase", ""))).Execute(null);
-            await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
+            
+            favourite_animation.IsVisible = true;
+            favourite_animation.PlayAnimation();
+            //await DisplayAlert("Success.", itemName + " added correctly.", "Ok");
             await Navigation.PopAsync();
         }
 

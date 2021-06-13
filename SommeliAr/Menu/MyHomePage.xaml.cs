@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Firebase.Auth;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SommeliAr.Models;
 using SommeliAr.Services;
@@ -86,19 +87,23 @@ namespace SommeliAr.Menu
 
         private async void GetRandomWine()
         {
+            await bottle_img.TranslateTo(130, 0, 250);
+
             var rnd = new Random();
             int r = rnd.Next(wineNames.Count);
 
             bottle_img.IsVisible = false;
             bottle_title.IsVisible = false;
-            Loading_small.IsVisible = true;
+            
             var wine = await DBFirebase.Instance.GetWineFromName(wineNames[r]);
             this.randWine = wine;
             bottle_title.Text = wine.Name;
             bottle_img.Source = wine.Image;
             bottle_img.IsVisible = true;
             bottle_title.IsVisible = true;
-            Loading_small.IsVisible = false;
+            
+            await bottle_img.TranslateTo(-130, 0,0);
+            await bottle_img.TranslateTo(0, 0, 600, Easing.Linear);
         }
         
         async void Favourites_btn_Clicked(System.Object sender, System.EventArgs e)
@@ -187,6 +192,8 @@ namespace SommeliAr.Menu
         void Refresh_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             this.GetRandomWine();
+           
+            Refresh_btn.PlayAnimation();
         }
     }
 }

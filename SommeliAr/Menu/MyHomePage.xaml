@@ -137,6 +137,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--ETICHETTA USERNAME-->
@@ -157,56 +158,62 @@
 
                     <!--ETICHETTA WINE OF THE DAY-->
                     <Label Grid.Row="2" Grid.ColumnSpan="2"
-                       Text="Wine of the day:"
+                       Text="Our choice today:"
                        Margin="0,40,0,0"
                        FontSize="25"
                        FontFamily="OpenSans-Regular"/>
 
                      <!--REFRESH BUTTON-->
-                    <ImageButton x:Name="Refresh_btn"
-                            Grid.Row="2" Grid.Column="1"
-                            Source="update_left_rotation_50.png"
-                            Margin="0,45,10,0"
-                                 HeightRequest="35"
-                                 HorizontalOptions="End"
+                    <lottie:AnimationView x:Name="Refresh_btn"
+                            Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                            Animation="loadingWOTD.json"
+                            AutoPlay="False"
+                            Margin="0,35,20,0"
+                            HeightRequest="50"
+                            HorizontalOptions="Center"
+                            MinFrame="10"
+                            MaxFrame="95"
                             Clicked="Refresh_btn_Clicked"/>
 
+                    <!--WINE OF THE DAY-->
+                    <Frame CornerRadius="10" Padding="14" Grid.Row="3"
+                        OutlineColor="#bfa2fa" 
+                        BackgroundColor="#fcfaff"
+                        WidthRequest="300"
+                        HeightRequest="400"
+                        Grid.ColumnSpan="2"
+                        HasShadow="True">
 
-                    <!--BOTTLE TITLE-->
-                    <Label x:Name="bottle_title"
-                        Grid.Row="3" Grid.Column="1"
-                        FontFamily="OpenSans-Bold"
-                        FontSize="22"/>
+                        <StackLayout HorizontalOptions="CenterAndExpand">
 
-                    <Image Grid.Row="3" Grid.Column="1"
-                         Source="up_left_50.png"
-                           HorizontalOptions="Center"
-                           VerticalOptions="End"
-                           Margin="0,0,120,60"
-                           HeightRequest="50"/>
+                            <Grid>
 
-                    <Label Grid.Row="3" Grid.Column="1"
-                            Text="Click on the image to see details"
-                            FontFamily="OpenSans-Regular"
-                            VerticalOptions="End"/>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="4.2*"/>
+                                </Grid.RowDefinitions>
+                                
+                           
+                            
+                            <!--BOTTLE TITLE-->
+                            <Label x:Name="bottle_title"
+                                HorizontalOptions="Center"
+                                FontFamily="OpenSans-Regular"
+                                FontSize="19"
+                                Grid.Row="0"/>
 
-                    <!--IMMAGINE BOTTIGLIA-->
-                    <ImageButton x:Name="bottle_img"
-                                 Grid.Row="3" Grid.Column="0"
+                            <!--IMMAGINE BOTTIGLIA-->
+                            <ImageButton x:Name="bottle_img"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 BackgroundColor="Transparent"
                                  HeightRequest="350"
+                                 Grid.Row="1"
                                  Clicked="Bottle_img_Clicked"/>
+                            </Grid>
+                        </StackLayout>
 
-                    <!--LOTTIE BOTTIGLIA-->
-                    <lottie:AnimationView x:Name="Loading_small"
-                                          Grid.Row="3" Grid.Column="0"
-                                          HorizontalOptions="Center"
-                                          Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
-                                          RepeatMode="Infinite"
-                                          WidthRequest="300"
-                                          HeightRequest="300"
-                                          Scale="1.4"
-                                          Speed="1.8"
-                                          IsVisible = "false"/>
+                </Frame>
 
                 </Grid>
             </StackLayout>

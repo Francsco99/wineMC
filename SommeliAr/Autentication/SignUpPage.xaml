@@ -112,7 +112,7 @@
                                 TextColor="{AppThemeBinding Light=White, Dark=Black}"
                                 FontSize="Small"
                    FontFamily="OpenSans-Regular"
-                                Margin="50,0,20,0"/>
+                                Margin="50,0,50,0"/>
         </StackLayout>
 
         <!--CONFIRM PASSWORD-->
@@ -121,7 +121,7 @@
                 <Image Source="key_2_50.png"
                                     WidthRequest="25"
                                     HeightRequest="25"
-                                    Margin="50,10,10,0" />
+                                    Margin="50,10,10,0" />                                         
 
                 <Entry x:Name="Entry_ConfirmPassword"
                                    Placeholder="Confirm Password"

@@ -58,19 +58,17 @@
                                   Speed="1.5"
                                   IsVisible = "false"/>
 
+        <!--BOTTONE SCAN-->
         <StackLayout   Grid.Row="2" Grid.Column="1" VerticalOptions="Start">
-                <Button x:Name="Scan_btn"
-                        Text="Scan"
-                        TextColor="White"
-                        FontFamily="OpenSans-Regular.ttf"
-                        FontSize="25"                       
-                        BackgroundColor="#8b52ff"
-                        CornerRadius="15"
-                        HorizontalOptions="FillAndExpand"
+                <ImageButton x:Name="Scan_btn"
+                        Source="scanicon.png"
+                        WidthRequest="70"
+                        BackgroundColor="Transparent"
                         Clicked="Scan_btn_Clicked"/>
 
         </StackLayout>
 
+        <!--BOTTONE LISTA RISULTATI-->
         <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" Margin="0,0,10,0" >
             <Button x:Name="After_scan_btn" Text="Result list"
                         BackgroundColor="White"

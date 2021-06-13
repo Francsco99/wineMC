@@ -15,6 +15,7 @@ namespace SommeliAr.Views.Menu
             InitializeComponent();
             NavigationPage.SetHasNavigationBar(this, false);
             SetPreferencesAndRefreshToken();
+
         }
 
         private void SetPreferencesAndRefreshToken()
@@ -33,5 +34,19 @@ namespace SommeliAr.Views.Menu
                 Preferences.Set("UserEmailFirebase", user.Email.Replace(".", "-").Replace("@", "-at-"));
             }
         }
+
+        string currentPageName = "";  // VEDIAMO SE IMPLEMENTARLO IN QUESTO MODO
+       /* protected override void OnCurrentPageChanged()
+        {
+           base.OnCurrentPageChanged();
+
+           currentPageName = CurrentPage.Title;
+
+            if(CurrentPage.Title == "ScanPage")
+            {
+                
+            }
+        }*/
+       
     }
 }

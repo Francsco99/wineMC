@@ -92,6 +92,8 @@
     <AndroidAsset Include="Assets\star-rating.json" />
     <AndroidAsset Include="Assets\loading.json" />
     <AndroidAsset Include="Assets\loadingblack.json" />
+    <AndroidAsset Include="Assets\loadingWOTD.json" />
+    <AndroidAsset Include="Assets\favourite.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -266,16 +268,22 @@
       </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\camera_enhance_64.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\up_left_50.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\update_left_rotation_50.png">
-      <SubType></SubType>
-      <Generator></Generator>
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>

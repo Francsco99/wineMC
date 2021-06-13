@@ -31,28 +31,18 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
+
         }
 
 
-        /*Imposta la probabilità minima*/
-        private Double SetProbability()
+        async void Scan()
         {
-            if (Preferences.Get("Probability", "") != null)
-            {
-                return Convert.ToDouble(Preferences.Get("Probability", ""));
-            }
-            else return 0.5;
-        }
-
-        async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
-        {
-
             Preferences.Remove("ResultList");
 
             // svuoto skImage ad ogni Scan
-            skImage = null;                                               
+            skImage = null;
             tagnames = new List<string>();
-            listbackgroundRect = new Dictionary<SKRect,string>();
+            listbackgroundRect = new Dictionary<SKRect, string>();
 
             await CrossMedia.Current.Initialize();
 
@@ -65,7 +55,7 @@ namespace SommeliAr.Views.Menu
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 // fattore di compressione
-                CompressionQuality = 70,                                    
+                CompressionQuality = 70,
             });
 
             if (file == null)
@@ -87,7 +77,7 @@ namespace SommeliAr.Views.Menu
             {
                 skImage = SkiasharpServices.Rotate(streamRotated);
             }
-            else if(Device.RuntimePlatform == Device.Android)
+            else if (Device.RuntimePlatform == Device.Android)
             {
                 skImage = SKBitmap.Decode(streamDraw);
             }
@@ -113,9 +103,22 @@ namespace SommeliAr.Views.Menu
                 {
                     After_scan_btn.IsVisible = false;
                 }
-
             }
-            
+        }
+
+        /*Imposta la probabilità minima*/
+        private Double SetProbability()
+        {
+            if (Preferences.Get("Probability", "") != null)
+            {
+                return Convert.ToDouble(Preferences.Get("Probability", ""));
+            }
+            else return 0.5;
+        }
+
+        async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Scan();
         }
 
         private async Task MakePredictionAsync(Stream stream)
@@ -411,16 +414,17 @@ namespace SommeliAr.Views.Menu
 
             //Console.WriteLine(selectedPoint.ToString);
 
-            foreach(SKRect rect in listbackgroundRect.Keys)
-            {
-                if (CheckLocation(selectedPoint, rect))
+            if(listbackgroundRect != null) {
+                foreach (SKRect rect in listbackgroundRect.Keys)
                 {
-                    var wineName = listbackgroundRect[rect];
-                    //Console.WriteLine(listbackgroundRect[rect].ToString());
-                    var vino = await DBFirebase.Instance.GetWineFromName(wineName);
-                    await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                    if (CheckLocation(selectedPoint, rect))
+                    {
+                        var wineName = listbackgroundRect[rect];
+                        //Console.WriteLine(listbackgroundRect[rect].ToString());
+                        var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                        await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                    }
                 }
-
             }
         }
 
