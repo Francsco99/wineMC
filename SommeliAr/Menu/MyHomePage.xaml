@@ -52,6 +52,17 @@
                      BackgroundColor="{AppThemeBinding Light=Black, Dark=White}">
             </StackLayout>
 
+            <!--AGGIUNGI BOTTIGLIA
+            <ImageButton Grid.Column="2"
+                                 Grid.Row="3"
+                                 x:Name="add_wine_btn"
+                                 Source="add.png" 
+                                 VerticalOptions="End"
+                                 WidthRequest="55"
+                                 BackgroundColor="Transparent"
+                                 Margin="40, 0, 0, 10"
+                                 Clicked="add_wine_btn_Clicked"/>     -->
+
             <!--LISTA DEI VINI-->
             <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
                 <ListView x:Name="my_list_view"
@@ -149,6 +160,16 @@
                         Margin="0,20,0,0"
                         TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
 
+                    <ImageButton Grid.Column="2"
+                                 Grid.Row="3"
+                                 x:Name="add_wine_btn"
+                                 Source="add.png" 
+                                 VerticalOptions="End"
+                                 WidthRequest="55"
+                                 BackgroundColor="Transparent"
+                                 Margin="40, 0, 0, 10"
+                                 Clicked="add_wine_btn_Clicked"/>
+
                     <!--ETICHETTA WELCOME BACK-->
                     <Label x:Name="Welcome_lbl"
                         Grid.Row="1" Grid.ColumnSpan="3"
@@ -182,6 +203,8 @@
                         HeightRequest="375"
                         Grid.ColumnSpan="2"
                         HasShadow="True">
+                        
+                        
 
                         <StackLayout HorizontalOptions="CenterAndExpand">
                             <Grid>
@@ -209,15 +232,6 @@
                         </StackLayout>
                     </Frame>
 
-                    <ImageButton Grid.Column="2"
-                                 Grid.Row="3"
-                                 x:Name="add_wine_btn"
-                                 Source="add.png" 
-                                 VerticalOptions="End"
-                                 WidthRequest="60"
-                                 BackgroundColor="Transparent"
-                                 Margin="40, 0, 0, 10"
-                                 Clicked="add_wine_btn_Clicked"/>
                 </Grid>
             </StackLayout>
 
