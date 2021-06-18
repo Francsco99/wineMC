@@ -60,11 +60,11 @@
 
         <!--BOTTONE SCAN-->
         <StackLayout x:Name="scan_lyt"
-            Grid.Row="2"
+                       Grid.Row="2"
                        Grid.Column="1"
                        VerticalOptions="Start">
             <ImageButton x:Name="Scan_btn"
-                        Source="scanicon.png"
+                        Source="scan_icon_new.png"
                         WidthRequest="70"
                         BackgroundColor="Transparent"
                         Clicked="Scan_btn_Clicked"/>

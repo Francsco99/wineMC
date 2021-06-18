@@ -17,7 +17,7 @@ using Xamarin.Forms;
 namespace SommeliAr.Views.Menu
 {
     public partial class ScanPage : ContentPage
-    {
+    { 
         const float radius = 2.0f;
         const float xDrop = 2.0f;
         const float yDrop = 2.0f;
@@ -416,9 +416,14 @@ namespace SommeliAr.Views.Menu
                     if (CheckLocation(selectedPoint, rect))
                     {
                         var wineName = listbackgroundRect[rect];
-                        //Console.WriteLine(listbackgroundRect[rect].ToString());
-                        var vino = await DBFirebase.Instance.GetWineFromName(wineName);
-                        await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+
+                        var action = await DisplayAlert("Do you want to see more of: ", wineName, "YES","NO");
+                        if (action)
+                        {
+                            var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                            await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                        }
+                        
                     }
                 }
             }

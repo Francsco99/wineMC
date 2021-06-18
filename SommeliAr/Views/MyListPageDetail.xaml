@@ -2,7 +2,6 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage" 
     xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
 
     x:Class="SommeliAr.Views.MyListPageDetail">
@@ -29,16 +28,12 @@
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="0.4*"/>
                         </Grid.ColumnDefinitions>
-                        <pinch:PinchZoom>
-                            <pinch:PinchZoom.Content>
-                                <Image x:Name="MyImageCall"
+                        <Image x:Name="MyImageCall"
                                HeightRequest="250"
                                WidthRequest="250"
                                HorizontalOptions="End">
                         </Image>
-                            </pinch:PinchZoom.Content>
-                        </pinch:PinchZoom>
-                        
+
                         <Frame x:Name="Round_frame"
                         CornerRadius="45"
                            HeightRequest="50"

@@ -29,8 +29,6 @@
                         <TextCell x:Name="Delete_all_favourites_txt_cell" Text="Delete favourites" Tapped="Delete_all_favourites_txt_cell_Tapped"/>
                     </TableSection>
                     <TableSection Title="Support">
-                        <TextCell x:Name="Tutorial_txt_cell" Text="Tutorial" Tapped="Tutorial_txt_cell_Tapped"/>
-                        <TextCell x:Name="Our_website_txt_cell"  Text="Our website" Tapped="Our_website_txt_cell_Tapped"/>
                         <TextCell x:Name="min_probability_txt_cell" Tapped="Min_probability_txt_cell_Tapped"/>
                     </TableSection>
                     <TableSection>

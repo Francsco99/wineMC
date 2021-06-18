@@ -15,7 +15,7 @@ namespace SommeliAr.Views.Menu
         public SettingsPage()
         {
             InitializeComponent();
-            
+
             NavigationPage.SetHasNavigationBar(this, false);
             GetProfileInformationAndRefreshToken();
         }
@@ -79,11 +79,6 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new ChangePwdPage());
         }
 
-        void Tutorial_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new TutorialPage());
-        }
-
         void Add_wine_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new AddNewWinePage());
@@ -99,11 +94,6 @@ namespace SommeliAr.Views.Menu
             min_probability_txt_cell.Text = CheckProbabilityPreference();
         }
 
-        void Our_website_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            Navigation.PushAsync(new OurWebsitePage());
-        }
-
         async void Delete_history_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             try
@@ -116,24 +106,24 @@ namespace SommeliAr.Views.Menu
                 await DisplayAlert("Ops...", "Something went wrong, try again.", "Ok");
                 Console.WriteLine(ex.Message);
             }
-           
-           
+
+
         }
 
-       async void Delete_all_favourites_txt_cell_Tapped(System.Object sender, System.EventArgs e)
+        async void Delete_all_favourites_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             try
             {
-               var action = await DisplayAlert("Attention!", "You are going to delete ALL your favourite wines,\n are you sure?", "Yes","No");
+                var action = await DisplayAlert("Attention!", "You are going to delete ALL your favourite wines,\n are you sure?", "Yes", "No");
 
                 if (action)
                 {
                     await DBFirebase.Instance.DeleteAllFavourites(Preferences.Get("UserEmailFirebase", ""));
                     await DisplayAlert("Success!", "Favourites cleared.", "Ok");
                 }
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await DisplayAlert("Ops...", "Something went wrong, try again.", "Ok");
                 Console.WriteLine(ex.Message);

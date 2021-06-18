@@ -72,6 +72,8 @@
     <Compile Include="MyPageRenderer.cs" />
     <BundleResource Include="loadingWOTD.json" />
     <BundleResource Include="Resources\scanicon.png" />
+    <BundleResource Include="Resources\add.png" />
+    <BundleResource Include="Resources\scan_icon_new.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Assets.xcassets\Contents.json">

@@ -9,6 +9,7 @@ using SommeliAr.ViewModels;
 using SommeliAr.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using SommeliAr.SettingsViews;
 
 namespace SommeliAr.Menu
 {
@@ -207,6 +208,11 @@ namespace SommeliAr.Menu
             this.GetRandomWine();
 
             Refresh_btn.PlayAnimation();
+        }
+
+        void add_wine_btn_Clicked(System.Object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new AddNewWinePage());
         }
     }
 }

@@ -208,8 +208,20 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
+
+                    <ImageButton Grid.Column="2"
+                                 Grid.Row="3"
+                                 x:Name="add_wine_btn"
+                                 Source="add.png" 
+                                 VerticalOptions="End"
+                                 WidthRequest="60"
+                                 BackgroundColor="Transparent"
+                                 Margin="40, 0, 0, 10"
+                                 Clicked="add_wine_btn_Clicked"/>
                 </Grid>
             </StackLayout>
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
