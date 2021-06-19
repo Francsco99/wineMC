@@ -105,11 +105,17 @@ namespace SommeliAr.Menu
 
         private async void GetRandomWine()
         {
-            await bottle_img.TranslateTo(150, 0, 250, Easing.Linear);
-
-            //bottle_img.IsVisible = false;
-            //bottle_title.IsVisible = false;
-
+            /*esce vecchia bottiglia*/
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                await bottle_img.TranslateTo(150, 0, 250, Easing.Linear);
+            }
+            else
+            {
+                await bottle_img.ScaleTo(0.1, 800);
+                await bottle_img.FadeTo(0,300);
+            }
+            
             /*calcolo nuova bottiglia*/
             var rnd = new Random();
             int r = rnd.Next(wineNames.Count);
@@ -120,10 +126,20 @@ namespace SommeliAr.Menu
             bottle_title.Text = wine.Name;
             bottle_img.Source = wine.Image;
 
-            //bottle_img.IsVisible = true;
-            //bottle_title.IsVisible = true;
-            await bottle_img.TranslateTo(-150, 0, 0);
-            await bottle_img.TranslateTo(0, 0, 600, Easing.Linear);
+            /*entra nuuova bottiglia*/
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                await bottle_img.TranslateTo(-150, 0, 0);
+                await bottle_img.TranslateTo(0, 0, 600, Easing.Linear);
+            }
+
+            else
+            {
+               
+                await bottle_img.FadeTo(1, 300);
+                await bottle_img.ScaleTo(1, 800);
+
+            }
             await bottle_title.FadeTo(1, 300);
         }
 
