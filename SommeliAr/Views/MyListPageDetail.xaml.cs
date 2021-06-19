@@ -41,14 +41,6 @@ namespace SommeliAr.Views
             {
                 var navigationPage = Application.Current.MainPage as NavigationPage;
                 navigationPage.BarBackgroundColor = Color.Transparent;
-                
-                /*
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-
-                Thickness margin = WineName.Margin;
-                margin.Top = 60;
-                WineName.Margin = margin;
-                */
             }
         }
 

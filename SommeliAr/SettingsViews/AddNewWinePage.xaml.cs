@@ -13,7 +13,8 @@ namespace SommeliAr.SettingsViews
         {
             if (Device.RuntimePlatform == Device.Android)
             {
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                var navigationPage = Application.Current.MainPage as NavigationPage;
+                navigationPage.BarBackgroundColor = Color.Transparent;
             }
             InitializeComponent();
             BindingContext = new AllWinesViewModel();   

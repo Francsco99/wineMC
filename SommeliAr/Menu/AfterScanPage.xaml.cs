@@ -20,11 +20,8 @@ namespace SommeliAr.Menu
             OnPageSelected();
             if (Device.RuntimePlatform == Device.Android)
             {
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-
-                Thickness margin = ScanResult.Margin;
-                margin.Top = 35;
-                ScanResult.Margin = margin;
+                var navigationPage = Application.Current.MainPage as NavigationPage;
+                navigationPage.BarBackgroundColor = Color.Transparent;
             }
         }
 

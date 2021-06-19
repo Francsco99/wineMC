@@ -18,7 +18,8 @@ namespace SommeliAr.Autentication
         {
             if (Device.RuntimePlatform == Device.Android)
             {
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                var navigationPage = Application.Current.MainPage as NavigationPage;
+                navigationPage.BarBackgroundColor = Color.Transparent;
             }
             InitializeComponent();
         }

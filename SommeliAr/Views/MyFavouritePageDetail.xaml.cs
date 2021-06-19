@@ -23,13 +23,8 @@ namespace SommeliAr.Views
         {
             if (Device.RuntimePlatform == Device.Android)
             {
-                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
-                if (WineNameFavourite != null)
-                {
-                    Thickness margin = WineNameFavourite.Margin;
-                    margin.Top = 60;
-                    WineNameFavourite.Margin = margin;
-                }
+                var navigationPage = Application.Current.MainPage as NavigationPage;
+                navigationPage.BarBackgroundColor = Color.Transparent;
             }
         }
 
