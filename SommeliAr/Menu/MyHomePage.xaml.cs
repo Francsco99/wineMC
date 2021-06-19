@@ -23,7 +23,7 @@ namespace SommeliAr.Menu
 
         private async void WelcomeLabelsAnimations()
         {
-            await User_name_lbl.TranslateTo(1000, 0,0);
+            await User_name_lbl.TranslateTo(1000, 0, 0);
             await Welcome_lbl.TranslateTo(1000, 0, 0);
 
             await User_name_lbl.TranslateTo(0, 0, 500, Easing.BounceIn);
@@ -36,7 +36,14 @@ namespace SommeliAr.Menu
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
             History_btn.FontSize = 25;
             Favourites_btn.FontSize = 25;
-            add_wine_stack.Margin = new Thickness(0, 536, 20, 0);
+
+            if (Device.RuntimePlatform == Device.Android) {
+                //margine android
+            }
+            else {
+                add_wine_stack.Margin = new Thickness(0, 539, 18, 0);
+            }
+
             ShowWelcomeLabels();
         }
 

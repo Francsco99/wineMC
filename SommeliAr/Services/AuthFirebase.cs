@@ -15,6 +15,7 @@ namespace SommeliAr.Services
             return this.WebAPIKey;
         }
 
+   
         private static AuthFirebase instance;
 
         public static AuthFirebase Instance
@@ -62,5 +63,6 @@ namespace SommeliAr.Services
         {
             return JsonConvert.DeserializeObject<Firebase.Auth.FirebaseAuth>(Preferences.Get("MyLoginToken", "")).User;      
         }
+
     }
 }

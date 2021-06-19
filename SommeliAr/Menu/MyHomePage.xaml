@@ -52,17 +52,6 @@
                      BackgroundColor="{AppThemeBinding Light=Black, Dark=White}">
             </StackLayout>
 
-            <!--AGGIUNGI BOTTIGLIA
-            <ImageButton Grid.Column="2"
-                                 Grid.Row="3"
-                                 x:Name="add_wine_btn"
-                                 Source="add.png" 
-                                 VerticalOptions="End"
-                                 WidthRequest="55"
-                                 BackgroundColor="Transparent"
-                                 Margin="40, 0, 0, 10"
-                                 Clicked="add_wine_btn_Clicked"/>     -->
-
             <!--LISTA DEI VINI-->
             <StackLayout Grid.ColumnSpan="2" Grid.Row="2">
                 <ListView x:Name="my_list_view"
@@ -118,8 +107,8 @@
                 Grid.ColumnSpan="2"
                          Grid.Row="2">
                 <ImageButton
-                    Source="add.png" 
-                   WidthRequest="60"
+                    Source="add_new.png" 
+                   WidthRequest="55"
                     HorizontalOptions="End"
                     VerticalOptions="End"
                     BackgroundColor="Transparent"
@@ -172,14 +161,15 @@
                         Margin="0,20,0,0"
                         TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
 
+                    <!--Aggiungi bottiglia-->
                     <ImageButton Grid.Column="2"
                                  Grid.Row="3"
                                  x:Name="add_wine_btn"
-                                 Source="add.png" 
+                                 Source="add_new.png" 
                                  VerticalOptions="End"
                                  WidthRequest="55"
                                  BackgroundColor="Transparent"
-                                 Margin="40, 0, 0, 10"
+                                 Margin="50, 0, 0, 12"
                                  Clicked="add_wine_btn_Clicked"/>
 
                     <!--ETICHETTA WELCOME BACK-->
@@ -215,8 +205,8 @@
                         HeightRequest="375"
                         Grid.ColumnSpan="2"
                         HasShadow="True">
-                        
-                        
+
+
 
                         <StackLayout HorizontalOptions="CenterAndExpand">
                             <Grid>
@@ -246,8 +236,6 @@
 
                 </Grid>
             </StackLayout>
-
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>
