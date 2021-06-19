@@ -19,7 +19,6 @@ namespace SommeliAr.Menu
         private void ShowWelcomeLabels()
         {
             Welcome_msg.IsVisible = true;
-
         }
 
         private async void WelcomeLabelsAnimations()
@@ -37,6 +36,7 @@ namespace SommeliAr.Menu
             Favourites_btn.SetAppThemeColor(Label.TextColorProperty, Color.Black, Color.White);
             History_btn.FontSize = 25;
             Favourites_btn.FontSize = 25;
+            add_wine_stack.Margin = new Thickness(0, 536, 20, 0);
             ShowWelcomeLabels();
         }
 
