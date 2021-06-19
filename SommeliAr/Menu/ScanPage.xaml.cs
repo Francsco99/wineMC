@@ -38,7 +38,7 @@ namespace SommeliAr.Views.Menu
         {
             await scan_lyt.TranslateTo(0, 330, 200, Easing.Linear);
             await scan_lyt.ScaleTo(0.5, 250);
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(250);
             Preferences.Remove("ResultList");
             // svuoto skImage ad ogni Scan
             skImage = null;
