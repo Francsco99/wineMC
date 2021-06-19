@@ -31,13 +31,13 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
-
+            
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+            Animazione();
             Preferences.Remove("ResultList");
-
             // svuoto skImage ad ogni Scan
             skImage = null;
             tagnames = new List<string>();
@@ -433,5 +433,13 @@ namespace SommeliAr.Views.Menu
         {
             return rect.Contains(point);
         }
+
+
+        private async void Animazione()
+        {
+           await scan_lyt.TranslateTo(0, 330, 200, Easing.Linear);
+            await scan_lyt.ScaleTo(0.5, 250);
+        }
     }
+
 }
