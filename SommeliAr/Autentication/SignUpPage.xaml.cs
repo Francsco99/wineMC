@@ -13,7 +13,14 @@ namespace SommeliAr.Views
     {
         public SignUpPage()
         {
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                var navigationPage = Application.Current.MainPage as NavigationPage;
+                navigationPage.BarBackgroundColor = Color.Transparent;
+            }
+
             InitializeComponent();
+
             BindingContext = new MyUserViewModel();
         }
 

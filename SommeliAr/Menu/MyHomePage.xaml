@@ -104,7 +104,7 @@
             </StackLayout >
 
             <StackLayout x:Name="add_wine_stack"
-                Grid.ColumnSpan="2"
+                         Grid.ColumnSpan="2"
                          Grid.Row="2">
                 <ImageButton
                     Source="add_new.png" 
