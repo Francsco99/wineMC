@@ -38,7 +38,7 @@ namespace SommeliAr.Menu
             Favourites_btn.FontSize = 25;
 
             if (Device.RuntimePlatform == Device.Android) {
-                //margine android
+                add_wine_stack.Margin = new Thickness(0, 526, 20, 0);
             }
             else {
                 add_wine_stack.Margin = new Thickness(0, 539, 18, 0);
