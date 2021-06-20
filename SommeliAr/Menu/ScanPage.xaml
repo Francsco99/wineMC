@@ -89,6 +89,16 @@
                 Clicked="Media_Picker_btn_Clicked"/>
         </StackLayout>
 
+        <Label
+            x:Name="or_lbl"
+            Text="OR"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+             FontFamily="OpenSans-Regular.ttf"
+            FontSize="Large"
+            Grid.Row="1"
+            Grid.Column="1"/>
+
         <!--BOTTONE SCAN-->
         <StackLayout
             x:Name="scan_lyt"
@@ -100,6 +110,7 @@
             <Label
                 x:Name="scan_lbl"
                 Text="Take Photo"
+                 Margin="0,0,10,0"
                 HorizontalOptions="Center"
                 FontFamily="OpenSans-Bold.ttf"
                 FontSize="19"/>

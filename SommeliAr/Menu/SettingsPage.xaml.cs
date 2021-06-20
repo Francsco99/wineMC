@@ -16,7 +16,18 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
 
-            NavigationPage.SetHasNavigationBar(this, false);
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
+                if (settings_tbl != null)
+                {
+                    Thickness margin = settings_tbl.Margin;
+                    margin.Top = 60;
+                    settings_tbl.Margin = margin;
+                }
+            }
+
+                
             GetProfileInformationAndRefreshToken();
         }
 
@@ -43,18 +54,6 @@ namespace SommeliAr.Views.Menu
             catch
             {
                 AuthFirebase.Instance.RefreshToken();
-            }
-        }
-
-        private string CheckProbabilityPreference()
-        {
-            if (Preferences.Get("Probability", "") != null)
-            {
-                return "Min. Probability: " + Preferences.Get("Probability", "");
-            }
-            else
-            {
-                return "Min. Probability: not set yet.";
             }
         }
 
@@ -87,11 +86,6 @@ namespace SommeliAr.Views.Menu
         void Contact_us_txt_cell_Tapped(System.Object sender, System.EventArgs e)
         {
             Navigation.PushAsync(new ContactUsPage());
-        }
-
-        void Min_probability_txt_cell_Tapped(System.Object sender, System.EventArgs e)
-        {
-            min_probability_txt_cell.Text = CheckProbabilityPreference();
         }
 
         async void Delete_history_txt_cell_Tapped(System.Object sender, System.EventArgs e)

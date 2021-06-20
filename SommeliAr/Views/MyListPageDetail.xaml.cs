@@ -46,8 +46,7 @@ namespace SommeliAr.Views
                     margin.Top = 60;
                     WineName.Margin = margin;
                 }
-                //var navigationPage = Application.Current.MainPage as NavigationPage;
-                //navigationPage.BarBackgroundColor = Color.Transparent;
+                
             }
         }
 

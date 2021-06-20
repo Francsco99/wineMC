@@ -44,23 +44,35 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
 
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                After_scan_btn.Margin = new Thickness(0, 35, 30, 0);
+            }
+
         }
 
         async void Media_Picker_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             if (this.animate)
             {
+                await or_lbl.FadeTo(0, 300);
                 await scan_media_lyt.TranslateTo(-25, 330, 250, Easing.SinInOut);
-                await scan_media_lyt.ScaleTo(0.5, 250);
+                await scan_media_lyt.ScaleTo(0.55, 250);
                 await scan_media_lbl.FadeTo(0, 500);
 
                 await scan_lyt.TranslateTo(-110, 325, 250, Easing.SinInOut);
-                await scan_lyt.ScaleTo(0.55, 250);
+                await scan_lyt.ScaleTo(0.45, 250);
                 await scan_lbl.FadeTo(0, 500);
 
                 this.animate = false;
             }
-            
+
+            else
+            {
+                await scan_media_lyt.ScaleTo(0.55, 250);
+                await scan_lyt.ScaleTo(0.45, 250);
+            }
+
             // svuoto skImage ad ogni Scan
             skImage = null;
             tagnames = new List<string>();
@@ -91,14 +103,21 @@ namespace SommeliAr.Views.Menu
         {
             if (this.animate)
             {
+                await or_lbl.FadeTo(0, 300);
                 await scan_lyt.TranslateTo(-110, 325, 250, Easing.SinInOut);
                 await scan_lyt.ScaleTo(0.55, 250);
                 await scan_lbl.FadeTo(0, 500);
 
                 await scan_media_lyt.TranslateTo(-25, 330, 250, Easing.SinInOut);
-                await scan_media_lyt.ScaleTo(0.5, 250);
+                await scan_media_lyt.ScaleTo(0.45, 250);
                 await scan_media_lbl.FadeTo(0, 500);
                 this.animate = false;
+            }
+
+            else
+            {
+                await scan_media_lyt.ScaleTo(0.45, 250);
+                await scan_lyt.ScaleTo(0.55, 250);
             }
 
             Preferences.Remove("ResultList");
@@ -182,18 +201,18 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        /*Imposta la probabilità minima*/
-        private Double SetProbability()
+        //Imposta la probabilità minima
+       /* private Double SetProbability()
         {
             if (Preferences.Get("Probability", "") != null)
             {
                 return Convert.ToDouble(Preferences.Get("Probability", ""));
             }
-            /*Valode di default probabilità*/
+            //Valore di default probabilità
             else return this.defaultProbabilityValue;
-        }
+        }*/
 
-        /*Fai le predizioni*/
+        //Fai le predizioni
         private async Task MakePredictionAsync(Stream stream)
         {
             var current = Connectivity.NetworkAccess;
@@ -205,13 +224,13 @@ namespace SommeliAr.Views.Menu
                 return;
             }
 
-            /*Prendo lo stream e lo faccio diventare bitmap*/
+            //Prendo lo stream e lo faccio diventare bitmap
             var imageBytes = GetImageAsByteData(stream);
 
-            /*URL di CustomVision*/
+            //URL di CustomVision
             var url = SkiasharpServices.GetCustomVisionURL();
 
-            /*API key di CustomVision*/
+            //API key di CustomVision
             var predictionKey = SkiasharpServices.GetAPIKey();
 
             using (HttpClient client = new HttpClient())
@@ -226,15 +245,15 @@ namespace SommeliAr.Views.Menu
 
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
-                    /*imposta la probabilità minima*/
-                    var minProbability = SetProbability();
+                    //imposta la probabilità minima
+                    var minProbability = 0.6;
 
-                    /*visualizza solo predizioni con sicurezza superiore a setProbability*/
+                    //visualizza solo predizioni con sicurezza superiore a setProbability
                     var result = predictions.Predictions.Where(p => p.Probability >= minProbability);
 
                     predictionsResult = result;
 
-                    /*lista tagnames filtrata dagli other products*/
+                    //lista tagnames filtrata dagli other products
                     foreach (var p in result)
                     {
                         if (!p.TagName.Contains("Products"))
@@ -257,7 +276,7 @@ namespace SommeliAr.Views.Menu
         {
             Preferences.Remove("ResultList");
 
-            /*rendo la lista dei tagname composta da soli elementi distinti (filtro da eventuali doppioni)*/
+            //rendo la lista dei tagname composta da soli elementi distinti (filtro da eventuali doppioni)
             tagnames = tagnames.Distinct().ToList<String>();
 
             string delimiter = ",";
@@ -267,7 +286,7 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new AfterScanPage());
         }
 
-        /*Disegna sul canvas*/
+        //Disegna sul canvas
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             var info = args.Info;
@@ -293,7 +312,7 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        /*Disegna le predizioni levando gli other products*/
+        //Disegna le predizioni levando gli other products
         private void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
         {
             List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
@@ -326,19 +345,20 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        /*Pulisci il canvas*/
+        //Pulisci il canvas
         private void ClearCanvas(SKImageInfo info, SKCanvas canvas)
         {
             var paint = new SKPaint
             {
                 Style = SKPaintStyle.Fill,
-                Color = SKColors.White
+               
+                Color = SKColors.White 
             };
 
             canvas.DrawRect(info.Rect, paint);
         }
 
-        /*Disegna le etichette(i nomi) dei vini*/
+        //Disegna le etichette(i nomi) dei vini
         private void LabelPrediction(SKCanvas canvas, string tag, BoundingBox box, float left, float top, float width, float height, bool addBox = true)
         {
             var scaledBoxLeft = left + (width * (float)box.Left);
@@ -457,7 +477,7 @@ namespace SommeliAr.Views.Menu
                 IsAntialias = true,
                 Style = SKPaintStyle.Stroke,
                 Color = new SKColor(139, 82, 255, 100),
-                StrokeWidth = 7,
+                StrokeWidth = 8,
                 PathEffect = SKPathEffect.CreateDash(new[] { 20f, 20f }, 20f)
             };
             DrawBox(canvas, outerstrokePaint, startLeft, startTop, scaledBoxWidth, scaledBoxHeight);
