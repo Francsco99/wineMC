@@ -112,7 +112,7 @@ namespace SommeliAr.Menu
             }
             else
             {
-                await bottle_img.ScaleTo(0.1, 800);
+                await bottle_img.ScaleTo(0.1, 300);
                 await bottle_img.FadeTo(0,300);
             }
             
@@ -137,7 +137,7 @@ namespace SommeliAr.Menu
             {
                
                 await bottle_img.FadeTo(1, 300);
-                await bottle_img.ScaleTo(1, 800);
+                await bottle_img.ScaleTo(1, 300);
 
             }
             await bottle_title.FadeTo(1, 300);

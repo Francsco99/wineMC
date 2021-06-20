@@ -17,7 +17,7 @@ using Xamarin.Forms;
 namespace SommeliAr.Views.Menu
 {
     public partial class ScanPage : ContentPage
-    { 
+    {
         const float radius = 2.0f;
         const float xDrop = 2.0f;
         const float yDrop = 2.0f;
@@ -26,24 +26,44 @@ namespace SommeliAr.Views.Menu
         Stream streamDraw;
         SKBitmap skImage;
 
-        List<string> tagnames;
-        Dictionary<SKRect, string> listbackgroundRect;
+        /*Lista dei nomi dei vini trovati*/
+        private List<string> tagnames;
+
+        /*Mappa che ha come chiave il rettangolo del tagName del vino
+         e come valore il suo nome*/
+        private Dictionary<SKRect, string> rectTagNameMap;
+
+        /*Booleano che diventa false la prima volta che viene eseguita
+         l'animazione*/
+        private bool animate = true;
+
+        /*Valore di default della probabilità minima*/
+        private double defaultProbabilityValue = 0.5;
+
         public ScanPage()
         {
             InitializeComponent();
-            
+
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            await scan_lyt.TranslateTo(0, 330, 200, Easing.Linear);
-            await scan_lyt.ScaleTo(0.5, 250);
-            System.Threading.Thread.Sleep(250);
+            /*Le animazioni vengono eseguite solo la prima volta che si preme
+             su scan button*/
+            if (this.animate)
+            {
+                animate = false;
+                await scan_lyt.TranslateTo(0, 330, 200, Easing.Linear);
+                await scan_lyt.ScaleTo(0.5, 250);
+                System.Threading.Thread.Sleep(250);
+            }
+
             Preferences.Remove("ResultList");
-            // svuoto skImage ad ogni Scan
+
+            /*Ad ogni scan svuoto skImage e ricreo lista di tagnames e mappa rect-tag*/
             skImage = null;
             tagnames = new List<string>();
-            listbackgroundRect = new Dictionary<SKRect, string>();
+            rectTagNameMap = new Dictionary<SKRect, string>();
 
             await CrossMedia.Current.Initialize();
 
@@ -55,7 +75,7 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                // fattore di compressione
+                /*fattore di compressione*/
                 CompressionQuality = 70,
             });
 
@@ -68,12 +88,15 @@ namespace SommeliAr.Views.Menu
             streamDraw = file.GetStream();
             var streamRotated = file.GetStream();
 
-            // faccio capire all'animazione che è tempo di andare in scena
+            /*faccio capire all'animazione che è tempo di andare in scena*/
             Loading.IsVisible = true;
-            // esegui le predictions   
+
+            /*esegui le predictions*/
             await MakePredictionAsync(stream);
+
             Loading.IsVisible = false;
 
+            /*Bisogna ruotare l'immagine se siamo su iOS*/
             if (Device.RuntimePlatform == Device.iOS)
             {
                 skImage = SkiasharpServices.Rotate(streamRotated);
@@ -83,8 +106,11 @@ namespace SommeliAr.Views.Menu
                 skImage = SKBitmap.Decode(streamDraw);
             }
 
+            /*Pulisco il canvas per disegnarci sopra*/
             ImageCanvas.InvalidateSurface();
 
+            /*Se hai trovato qualcosa allora popola la lista dei tag
+             filtrandola dagli "Other Products"*/
             if (predictionsResult != null)
             {
                 var predictionsFiltered = new List<string>();
@@ -114,21 +140,31 @@ namespace SommeliAr.Views.Menu
             {
                 return Convert.ToDouble(Preferences.Get("Probability", ""));
             }
-            else return 0.5;
+            /*Valode di default probabilità*/
+            else return this.defaultProbabilityValue;
         }
 
+        /*Fai le predizioni*/
         private async Task MakePredictionAsync(Stream stream)
         {
             var current = Connectivity.NetworkAccess;
 
+            /*Se non c'è connessione notifica l'utente e interrompi il processo*/
             if (current != NetworkAccess.Internet)
             {
                 await DisplayAlert("No Connection.", "In order to scan you need internet access,\n please turn on your internet connection.", "Ok");
                 return;
             }
+
+            /*Prendo lo stream e lo faccio diventare bitmap*/
             var imageBytes = GetImageAsByteData(stream);
-            var url = "https://westeurope.api.cognitive.microsoft.com/customvision/v3.0/Prediction/25297b8e-0359-4a42-bd3e-8fcc1ed8b3f5/detect/iterations/Iteration7/image";
-            var predictionKey = "0b8a0ea4568b49a68d802140f9c494d1";
+
+            /*URL di CustomVision*/
+            var url = SkiasharpServices.GetCustomVisionURL();
+
+            /*API key di CustomVision*/
+            var predictionKey = SkiasharpServices.GetAPIKey();
+
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Prediction-Key", predictionKey);
@@ -142,14 +178,14 @@ namespace SommeliAr.Views.Menu
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
                     /*imposta la probabilità minima*/
-                    var setProbability = SetProbability();
+                    var minProbability = SetProbability();
 
                     /*visualizza solo predizioni con sicurezza superiore a setProbability*/
-                    var result = predictions.Predictions.Where(p => p.Probability >= setProbability);
+                    var result = predictions.Predictions.Where(p => p.Probability >= minProbability);
 
                     predictionsResult = result;
 
-                    /*lista tagnames*/
+                    /*lista tagnames filtrata dagli other products*/
                     foreach (var p in result)
                     {
                         if (!p.TagName.Contains("Products"))
@@ -182,6 +218,7 @@ namespace SommeliAr.Views.Menu
             Navigation.PushAsync(new AfterScanPage());
         }
 
+        /*Disegna sul canvas*/
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             var info = args.Info;
@@ -207,9 +244,8 @@ namespace SommeliAr.Views.Menu
             }
         }
 
-        private void DrawPredictions(SKCanvas canvas,
-            float left, float top, float scaleWidth, float scaleHeight,
-            IEnumerable<PredictionModel> SKPrediction)
+        /*Disegna le predizioni levando gli other products*/
+        private void DrawPredictions(SKCanvas canvas, float left, float top, float scaleWidth, float scaleHeight, IEnumerable<PredictionModel> SKPrediction)
         {
             List<PredictionModel> filteredSKPrediction = SKPrediction.ToList();
 
@@ -241,6 +277,7 @@ namespace SommeliAr.Views.Menu
             }
         }
 
+        /*Pulisci il canvas*/
         private void ClearCanvas(SKImageInfo info, SKCanvas canvas)
         {
             var paint = new SKPaint
@@ -252,6 +289,7 @@ namespace SommeliAr.Views.Menu
             canvas.DrawRect(info.Rect, paint);
         }
 
+        /*Disegna le etichette(i nomi) dei vini*/
         private void LabelPrediction(SKCanvas canvas, string tag, BoundingBox box, float left, float top, float width, float height, bool addBox = true)
         {
             var scaledBoxLeft = left + (width * (float)box.Left);
@@ -265,6 +303,7 @@ namespace SommeliAr.Views.Menu
             DrawText(canvas, tag, scaledBoxLeft, scaledBoxTop, scaledBoxWidth, scaledBoxHeight);
         }
 
+        /*Disegna il testo dei vini*/
         private void DrawText(SKCanvas canvas, string tag, float startLeft, float startTop, float scaledBoxWidth, float scaledBoxHeight)
         {
             var textPaint = new SKPaint
@@ -313,9 +352,9 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
-            if (!listbackgroundRect.ContainsKey(backgroundRect))
+            if (!rectTagNameMap.ContainsKey(backgroundRect))
             {
-                listbackgroundRect.Add(backgroundRect, tag);
+                rectTagNameMap.Add(backgroundRect, tag);
             }
 
             backgroundRect.Inflate(10, 10);
@@ -405,37 +444,38 @@ namespace SommeliAr.Views.Menu
             return path;
         }
 
-        private async void ImageCanvas_Touch(object sender, SKTouchEventArgs e)
-        {
-            var selectedPoint = e.Location;
-
-            //Console.WriteLine(selectedPoint.ToString);
-
-            if (listbackgroundRect != null)
-            {
-                foreach (SKRect rect in listbackgroundRect.Keys)
-                {
-                    if (CheckLocation(selectedPoint, rect))
-                    {
-                        var wineName = listbackgroundRect[rect];
-
-                        var action = await DisplayAlert("Do you want to see more of: ", wineName, "YES","NO");
-                        if (action)
-                        {
-                            var vino = await DBFirebase.Instance.GetWineFromName(wineName);
-                            await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
-                        }
-                        
-                    }
-                }
-            }
-        }
-
+        /*Controlla se un punto appartiene ad un rettangolo*/
         private bool CheckLocation(SKPoint point, SKRect rect)
         {
             return rect.Contains(point);
         }
 
+        /*Gestione del tocco su un tagName*/
+        private async void ImageCanvas_Touch(object sender, SKTouchEventArgs e)
+        {
+            /*Punto toccato dall'utente*/
+            var selectedPoint = e.Location;
+
+            /*Se la mappa rect-tag non è vuota allora procedi*/
+            if (rectTagNameMap != null)
+            {
+                foreach (SKRect rect in rectTagNameMap.Keys)
+                {
+                    /*Se il punto che viene toccato sta all'interno di un rettangolo tagName procedi*/
+                    if (CheckLocation(selectedPoint, rect))
+                    {
+                        var wineName = rectTagNameMap[rect];
+
+                        /*Se il tag name NON è "Nothing detected" procedi*/
+                        if (!wineName.Equals("Nothing detected"))
+                        {
+                            var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                            await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }
