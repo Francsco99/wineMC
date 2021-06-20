@@ -94,8 +94,7 @@
                 Text="Pick Picture"/>
             
             <ImageButton x:Name="Scan_media"
-                        Source="gallery.png"
-                         
+                        Source="media_pick_new.png"
                         BackgroundColor="Transparent"
                         Clicked="Media_Picker"/>
 
