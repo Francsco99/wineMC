@@ -17,7 +17,7 @@ using Xamarin.Forms;
 namespace SommeliAr.Views.Menu
 {
     public partial class ScanPage : ContentPage
-    { 
+    {
         const float radius = 2.0f;
         const float xDrop = 2.0f;
         const float yDrop = 2.0f;
@@ -31,15 +31,57 @@ namespace SommeliAr.Views.Menu
         public ScanPage()
         {
             InitializeComponent();
-            
+
+        }
+
+        async void Media_Picker(System.Object sender, System.EventArgs e)
+        {
+            await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
+            await scan_media_lyt.ScaleTo(0.45, 250);
+            scan_media_lbl.FadeTo(0, 500);
+
+            await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
+            await scan_lyt.ScaleTo(0.55, 250);
+            scan_lbl.FadeTo(0, 500);
+
+            // svuoto skImage ad ogni Scan
+            skImage = null;
+            tagnames = new List<string>();
+            listbackgroundRect = new Dictionary<SKRect, string>();
+
+            await CrossMedia.Current.Initialize();
+
+            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                // fattore di compressione
+                //CompressionQuality = 70,
+
+            });
+
+            if (file == null)
+            {
+                return;
+            }
+
+            var stream = file.GetStream();
+            streamDraw = file.GetStream();
+            var streamRotated = file.GetStream();
+            Scan(stream, streamRotated);
+
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
-            await scan_lyt.TranslateTo(0, 330, 200, Easing.Linear);
-            await scan_lyt.ScaleTo(0.5, 250);
-            System.Threading.Thread.Sleep(250);
+            await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
+            await scan_lyt.ScaleTo(0.6, 250);
+            scan_lbl.FadeTo(0, 500);
+
+            await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
+            await scan_media_lyt.ScaleTo(0.35, 250);
+            scan_media_lbl.FadeTo(0, 500);
+
             Preferences.Remove("ResultList");
+
             // svuoto skImage ad ogni Scan
             skImage = null;
             tagnames = new List<string>();
@@ -67,6 +109,11 @@ namespace SommeliAr.Views.Menu
             var stream = file.GetStream();
             streamDraw = file.GetStream();
             var streamRotated = file.GetStream();
+            Scan(stream, streamRotated);
+
+        }
+
+        public async void  Scan(Stream stream, Stream streamRotated) { 
 
             // faccio capire all'animazione che è tempo di andare in scena
             Loading.IsVisible = true;
@@ -143,7 +190,7 @@ namespace SommeliAr.Views.Menu
 
                     /*imposta la probabilità minima*/
                     var setProbability = SetProbability();
-
+                    
                     /*visualizza solo predizioni con sicurezza superiore a setProbability*/
                     var result = predictions.Predictions.Where(p => p.Probability >= setProbability);
 
@@ -313,7 +360,7 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
-            if (!listbackgroundRect.ContainsKey(backgroundRect))
+            if ( (!listbackgroundRect.ContainsKey(backgroundRect)) && (! tag.Equals("Nothing detected")) )
             {
                 listbackgroundRect.Add(backgroundRect, tag);
             }
@@ -411,24 +458,23 @@ namespace SommeliAr.Views.Menu
 
             //Console.WriteLine(selectedPoint.ToString);
 
-            if (listbackgroundRect != null)
-            {
+            //if (listbackgroundRect != null)
+            //{
+
                 foreach (SKRect rect in listbackgroundRect.Keys)
                 {
                     if (CheckLocation(selectedPoint, rect))
                     {
                         var wineName = listbackgroundRect[rect];
 
-                        var action = await DisplayAlert("Do you want to see more of: ", wineName, "YES","NO");
-                        if (action)
-                        {
-                            var vino = await DBFirebase.Instance.GetWineFromName(wineName);
-                            await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
-                        }
+                        var vino = await DBFirebase.Instance.GetWineFromName(wineName);
                         
+                        await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                        
+
                     }
                 }
-            }
+            //}
         }
 
         private bool CheckLocation(SKPoint point, SKRect rect)
