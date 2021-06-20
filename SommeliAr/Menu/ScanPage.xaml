@@ -7,111 +7,125 @@
              x:Class="SommeliAr.Views.Menu.ScanPage">
     <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
         <Grid.RowDefinitions>
-
-            <RowDefinition Height="0.11*"/>
             <!--Scritta let's scan...-->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.11*"/>
             <!--Canvas e animazione lottie-->
-            <RowDefinition Height="0.25*"/>
-            <!--bottone scan e bottone result-->
+            <RowDefinition Height="*"/>
+            <!--bottone scan, bottone pick media, bottone result-->
+            <RowDefinition Height="0.3*"/>
         </Grid.RowDefinitions>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
+
         <!--SCRITTA LET'S SCAN BOTTLES-->
-        <StackLayout  Grid.Row="0"
-                      Grid.ColumnSpan="3"
-                      HorizontalOptions="Center"
-                      VerticalOptions="End"
-                      Padding="0,35,0,0">
-            <Label Text="Let's scan bottles!"
-                       TextColor="#8b52ff"
-                       FontSize="35"
-                       FontFamily="OpenSans-Bold.ttf"
-                       />
+        <StackLayout
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="Center"
+            VerticalOptions="End"
+            Padding="0,35,0,0">
+
+            <Label
+                Text="Let's scan bottles!"
+                TextColor="#8b52ff"
+                FontSize="35"
+                FontFamily="OpenSans-Bold.ttf"/>
         </StackLayout>
 
         <!--IMAGE CANVAS-->
-
-        <skia:SKCanvasView x:Name="ImageCanvas"
-                              Grid.Row="1"
-                              Grid.ColumnSpan="3"
-                              HorizontalOptions="FillAndExpand"
-                              VerticalOptions="FillAndExpand"
-                              Margin="10"
-                              PaintSurface="OnCanvasViewPaintSurface"
-                              EnableTouchEvents="True"
-                              Touch="ImageCanvas_Touch"/>
+        <skia:SKCanvasView
+            x:Name="ImageCanvas"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Margin="10"
+            PaintSurface="OnCanvasViewPaintSurface"
+            EnableTouchEvents="True"
+            Touch="ImageCanvas_Touch"/>
 
 
         <!--LOTTIE CARICAMENTO-->
-        <lottie:AnimationView x:Name="Loading" Grid.Row="1" Grid.ColumnSpan="3"
-                                  HorizontalOptions="Center"
-                                  Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
-                                  RepeatMode="Infinite"
-                                  WidthRequest="600"
-                                  HeightRequest="600"
-                                  Scale="1.4"
-                                  Speed="1.5"
-                                  IsVisible = "false"/>
+        <lottie:AnimationView
+            x:Name="Loading"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            HorizontalOptions="Center"
+            Animation="{AppThemeBinding Light=loading.json,Dark=loadingblack.json}"
+            RepeatMode="Infinite"
+            WidthRequest="600"
+            HeightRequest="600"
+            Scale="1.4"
+            Speed="1.5"
+            IsVisible = "false"/>
 
-        <!--BOTTONE SCAN-->
-        <StackLayout x:Name="scan_lyt"
-                       Grid.Row="1"
-                       Grid.Column="1"
-                       Grid.ColumnSpan="2"
-                       Margin="120,0,0,0"
-                       VerticalOptions="Center">
-            <Label
-                x:Name="scan_lbl"
-                FontSize="Large"
-                FontFamily="OpenSans-Bold.ttf"
-                Text="Take Photo"/>
+        <!--*********************************BOTTONI***********************************************-->
 
-            <ImageButton x:Name="Scan_btn"
-                        Source="scan_icon_new.png"
-                        BackgroundColor="Transparent"
-                        
-                        Clicked="Scan_btn_Clicked"/>
+         <!--BOTTONE SCAN GALLERIA-->
+        <StackLayout
+            x:Name="scan_media_lyt"
+            Grid.Row="1"
+            Grid.Column="0"
+            VerticalOptions="Center"
+            Margin="10,0,0,0">
 
-        </StackLayout>
-
-        <!--BOTTONE SCAN GALLERIA-->
-        <StackLayout x:Name="scan_media_lyt"
-                       Grid.Row="1"
-                       Grid.ColumnSpan="2"
-                       Grid.Column="0"
-                     HorizontalOptions="End"
-                     Margin="0,0,100,0"
-                       VerticalOptions="Center">
             <Label
                 x:Name="scan_media_lbl"
-                FontSize="Large"
+                Text="Pick Picture"
+                HorizontalOptions="Center"
+                Margin="10,0,5,0"
                 FontFamily="OpenSans-Bold.ttf"
-                Text="Pick Picture"/>
-            
-            <ImageButton x:Name="Scan_media"
-                        Source="media_pick_new.png"
-                        BackgroundColor="Transparent"
-                        Clicked="Media_Picker"/>
+                FontSize="19"/>
 
+            <ImageButton
+                x:Name="Media_Picker_btn"
+                Source="media_pick_new.png"
+                BackgroundColor="Transparent"
+                Clicked="Media_Picker_btn_Clicked"/>
+        </StackLayout>
+
+        <!--BOTTONE SCAN-->
+        <StackLayout
+            x:Name="scan_lyt"
+            Grid.Row="1"
+            Grid.Column="2"
+            VerticalOptions="Center"
+            Margin="0,0,10,0">
+
+            <Label
+                x:Name="scan_lbl"
+                Text="Take Photo"
+                HorizontalOptions="Center"
+                FontFamily="OpenSans-Bold.ttf"
+                FontSize="19"/>
+
+            <ImageButton
+                x:Name="Scan_btn"
+                Source="scan_icon_new.png"
+                BackgroundColor="Transparent"
+                Clicked="Scan_btn_Clicked"/>
         </StackLayout>
 
         <!--BOTTONE LISTA RISULTATI-->
-        <StackLayout Grid.Row="2" Grid.Column="2" VerticalOptions="Start" Margin="0,0,10,0" >
-            <Button x:Name="After_scan_btn" Text="Result list"
-                        BackgroundColor="White"
-                    BorderColor="#8b52ff"
-                        TextColor="#8b52ff"
-                    BorderWidth="4"
-                        FontSize="20"
-                        FontFamily="OpenSans-Regular.ttf"
-                        CornerRadius="15"
-                        IsVisible="false"
-                        Clicked="After_scan_btn_Clicked"/>
+        <StackLayout
+                    Grid.Row="2"
+                    Grid.Column="2">
+
+            <ImageButton
+                x:Name="After_scan_btn" 
+                BorderColor="#8b52ff"
+                BackgroundColor="Transparent"
+                Source="result_new.png"
+                IsVisible="false"
+                WidthRequest="70"
+                Margin="0,9,20,0"
+                HorizontalOptions="End"
+                Clicked="After_scan_btn_Clicked"/>
         </StackLayout>
     </Grid>
 </ContentPage>

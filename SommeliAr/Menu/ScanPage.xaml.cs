@@ -46,15 +46,15 @@ namespace SommeliAr.Views.Menu
 
         }
 
-        async void Media_Picker(System.Object sender, System.EventArgs e)
+        async void Media_Picker_btn_Clicked(System.Object sender, System.EventArgs e)
         {
             if (this.animate)
             {
-                await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
-                await scan_media_lyt.ScaleTo(0.45, 250);
+                await scan_media_lyt.TranslateTo(-25, 330, 250, Easing.SinInOut);
+                await scan_media_lyt.ScaleTo(0.5, 250);
                 await scan_media_lbl.FadeTo(0, 500);
 
-                await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
+                await scan_lyt.TranslateTo(-110, 325, 250, Easing.SinInOut);
                 await scan_lyt.ScaleTo(0.55, 250);
                 await scan_lbl.FadeTo(0, 500);
 
@@ -91,12 +91,12 @@ namespace SommeliAr.Views.Menu
         {
             if (this.animate)
             {
-                await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
-                await scan_lyt.ScaleTo(0.6, 250);
+                await scan_lyt.TranslateTo(-110, 325, 250, Easing.SinInOut);
+                await scan_lyt.ScaleTo(0.55, 250);
                 await scan_lbl.FadeTo(0, 500);
 
-                await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
-                await scan_media_lyt.ScaleTo(0.35, 250);
+                await scan_media_lyt.TranslateTo(-25, 330, 250, Easing.SinInOut);
+                await scan_media_lyt.ScaleTo(0.5, 250);
                 await scan_media_lbl.FadeTo(0, 500);
                 this.animate = false;
             }
