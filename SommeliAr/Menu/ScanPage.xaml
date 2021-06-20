@@ -62,11 +62,42 @@
         <StackLayout x:Name="scan_lyt"
                        Grid.Row="1"
                        Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Margin="120,0,0,0"
                        VerticalOptions="Center">
+            <Label
+                x:Name="scan_lbl"
+                FontSize="Large"
+                FontFamily="OpenSans-Bold.ttf"
+                Text="Take Photo"/>
+
             <ImageButton x:Name="Scan_btn"
                         Source="scan_icon_new.png"
                         BackgroundColor="Transparent"
+                        
                         Clicked="Scan_btn_Clicked"/>
+
+        </StackLayout>
+
+        <!--BOTTONE SCAN GALLERIA-->
+        <StackLayout x:Name="scan_media_lyt"
+                       Grid.Row="1"
+                       Grid.ColumnSpan="2"
+                       Grid.Column="0"
+                     HorizontalOptions="End"
+                     Margin="0,0,100,0"
+                       VerticalOptions="Center">
+            <Label
+                x:Name="scan_media_lbl"
+                FontSize="Large"
+                FontFamily="OpenSans-Bold.ttf"
+                Text="Pick Picture"/>
+            
+            <ImageButton x:Name="Scan_media"
+                        Source="gallery.png"
+                         
+                        BackgroundColor="Transparent"
+                        Clicked="Media_Picker"/>
 
         </StackLayout>
 

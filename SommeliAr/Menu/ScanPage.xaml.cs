@@ -1,4 +1,4 @@
-﻿using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.Models;
+using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction.Models;
 using Newtonsoft.Json;
 using Plugin.Media;
 using SkiaSharp;
@@ -44,10 +44,50 @@ namespace SommeliAr.Views.Menu
         {
             InitializeComponent();
 
+<<<<<<< HEAD
+=======
+        }
+
+        async void Media_Picker(System.Object sender, System.EventArgs e)
+        {
+            await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
+            await scan_media_lyt.ScaleTo(0.45, 250);
+            scan_media_lbl.FadeTo(0, 500);
+
+            await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
+            await scan_lyt.ScaleTo(0.55, 250);
+            scan_lbl.FadeTo(0, 500);
+
+            // svuoto skImage ad ogni Scan
+            skImage = null;
+            tagnames = new List<string>();
+            listbackgroundRect = new Dictionary<SKRect, string>();
+
+            await CrossMedia.Current.Initialize();
+
+            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                // fattore di compressione
+                //CompressionQuality = 70,
+
+            });
+
+            if (file == null)
+            {
+                return;
+            }
+
+            var stream = file.GetStream();
+            streamDraw = file.GetStream();
+            var streamRotated = file.GetStream();
+            Scan(stream, streamRotated);
+
+>>>>>>> origin/master
         }
 
         async void Scan_btn_Clicked(System.Object sender, System.EventArgs e)
         {
+<<<<<<< HEAD
             /*Le animazioni vengono eseguite solo la prima volta che si preme
              su scan button*/
             if (this.animate)
@@ -61,6 +101,19 @@ namespace SommeliAr.Views.Menu
             Preferences.Remove("ResultList");
 
             /*Ad ogni scan svuoto skImage e ricreo lista di tagnames e mappa rect-tag*/
+=======
+            await scan_lyt.TranslateTo(-124, 330, 250, Easing.SinInOut);
+            await scan_lyt.ScaleTo(0.6, 250);
+            scan_lbl.FadeTo(0, 500);
+
+            await scan_media_lyt.TranslateTo(0, 320, 250, Easing.SinInOut);
+            await scan_media_lyt.ScaleTo(0.35, 250);
+            scan_media_lbl.FadeTo(0, 500);
+
+            Preferences.Remove("ResultList");
+
+            // svuoto skImage ad ogni Scan
+>>>>>>> origin/master
             skImage = null;
             tagnames = new List<string>();
             rectTagNameMap = new Dictionary<SKRect, string>();
@@ -87,6 +140,11 @@ namespace SommeliAr.Views.Menu
             var stream = file.GetStream();
             streamDraw = file.GetStream();
             var streamRotated = file.GetStream();
+            Scan(stream, streamRotated);
+
+        }
+
+        public async void  Scan(Stream stream, Stream streamRotated) { 
 
             /*faccio capire all'animazione che è tempo di andare in scena*/
             Loading.IsVisible = true;
@@ -178,8 +236,13 @@ namespace SommeliAr.Views.Menu
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
                     /*imposta la probabilità minima*/
+<<<<<<< HEAD
                     var minProbability = SetProbability();
 
+=======
+                    var setProbability = SetProbability();
+                    
+>>>>>>> origin/master
                     /*visualizza solo predizioni con sicurezza superiore a setProbability*/
                     var result = predictions.Predictions.Where(p => p.Probability >= minProbability);
 
@@ -352,7 +415,11 @@ namespace SommeliAr.Views.Menu
 
             var backgroundRect = new SKRect((startLeft + 20), yText, (startLeft + scaledBoxWidth - 20), (yBackgroundText + 20));
 
+<<<<<<< HEAD
             if (!rectTagNameMap.ContainsKey(backgroundRect))
+=======
+            if ( (!listbackgroundRect.ContainsKey(backgroundRect)) && (! tag.Equals("Nothing detected")) )
+>>>>>>> origin/master
             {
                 rectTagNameMap.Add(backgroundRect, tag);
             }
@@ -456,25 +523,42 @@ namespace SommeliAr.Views.Menu
             /*Punto toccato dall'utente*/
             var selectedPoint = e.Location;
 
+<<<<<<< HEAD
             /*Se la mappa rect-tag non è vuota allora procedi*/
             if (rectTagNameMap != null)
             {
                 foreach (SKRect rect in rectTagNameMap.Keys)
+=======
+            //Console.WriteLine(selectedPoint.ToString);
+
+            //if (listbackgroundRect != null)
+            //{
+
+                foreach (SKRect rect in listbackgroundRect.Keys)
+>>>>>>> origin/master
                 {
                     /*Se il punto che viene toccato sta all'interno di un rettangolo tagName procedi*/
                     if (CheckLocation(selectedPoint, rect))
                     {
                         var wineName = rectTagNameMap[rect];
 
+<<<<<<< HEAD
                         /*Se il tag name NON è "Nothing detected" procedi*/
                         if (!wineName.Equals("Nothing detected"))
                         {
                             var vino = await DBFirebase.Instance.GetWineFromName(wineName);
                             await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
                         }
+=======
+                        var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                        
+                        await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                        
+
+>>>>>>> origin/master
                     }
                 }
-            }
+            //}
         }
     }
 
