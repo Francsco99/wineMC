@@ -43,7 +43,7 @@ namespace SommeliAr.Views
                 {
                     case true:
                         ErrorLabelText.Opacity = 0;
-                        Email_err_lbl.TextColor = Color.White;
+                        Email_err_lbl.TextColor = Color.Transparent;
                         break;
 
                     case false:
@@ -75,7 +75,7 @@ namespace SommeliAr.Views
             {
                 ErrorPwdLabelText.Opacity = 0;
                 passwordConfirmOk = true;
-                Pwd_conf_err_lbl.TextColor = Color.White;
+                Pwd_conf_err_lbl.TextColor = Color.Transparent;
             }
             return passwordConfirmOk;
         }
@@ -84,14 +84,14 @@ namespace SommeliAr.Views
         {
             bool usernameOk;
             //Deve contenere tra i 6 e i 18 caratteri alfanumerici
-            string userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";
+            string userPattern = "[A-Za-z][A-Za-z0-9._]{5,17}";
 
             if (username != null)
             {
                 if (Regex.IsMatch(username, userPattern))
                 {
                     usernameOk = true;
-                    User_err_lbl.TextColor = Color.White;
+                    User_err_lbl.TextColor = Color.Transparent;
                     UserErrorIcon.Opacity = 0;
                 }
 
@@ -122,7 +122,7 @@ namespace SommeliAr.Views
                 if (Regex.IsMatch(pwd, passwordPattern))
                 {
                     passwordOk = true;
-                    Pwd_err_lbl.TextColor = Color.White;
+                    Pwd_err_lbl.TextColor = Color.Transparent;
                     PwdErrorIcon.Opacity = 0;
                 }
 
@@ -151,7 +151,7 @@ namespace SommeliAr.Views
             if (timespan >= 6570)
             {
                 ageOk = true;
-                ErrorBirthLabelText.TextColor = Color.White;
+                ErrorBirthLabelText.TextColor = Color.Transparent;
                 Bday_err_lbl.Opacity = 0;
             }
 

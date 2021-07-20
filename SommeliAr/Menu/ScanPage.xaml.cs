@@ -82,8 +82,7 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
             {
-                // fattore di compressione
-                //CompressionQuality = 70,
+                CompressionQuality = 70,
 
             });
 
@@ -246,7 +245,7 @@ namespace SommeliAr.Views.Menu
                     var predictions = JsonConvert.DeserializeObject<Response>(responseString);
 
                     //imposta la probabilità minima
-                    var minProbability = 0.6;
+                    var minProbability = 0.7;
 
                     //visualizza solo predizioni con sicurezza superiore a setProbability
                     var result = predictions.Predictions.Where(p => p.Probability >= minProbability);
@@ -525,17 +524,22 @@ namespace SommeliAr.Views.Menu
             /*Punto toccato dall'utente*/
             var selectedPoint = e.Location;
 
-            foreach (SKRect rect in rectTagNameMap.Keys)
+            /*Se la mappa rect-tag non è vuota allora procedi*/
+            if (rectTagNameMap != null)
             {
-                /*Se il punto che viene toccato sta all'interno di un rettangolo tagName procedi*/
-                if (CheckLocation(selectedPoint, rect))
+
+                foreach (SKRect rect in rectTagNameMap.Keys)
                 {
-                    var wineName = rectTagNameMap[rect];
+                    /*Se il punto che viene toccato sta all'interno di un rettangolo tagName procedi*/
+                    if (CheckLocation(selectedPoint, rect))
+                    {
+                        var wineName = rectTagNameMap[rect];
 
-                    var vino = await DBFirebase.Instance.GetWineFromName(wineName);
+                        var vino = await DBFirebase.Instance.GetWineFromName(wineName);
 
-                    await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
+                        await Navigation.PushAsync(new MyListPageDetail(vino.Name, vino.Description, vino.SensorialNotes, vino.ProductionArea, vino.Dishes, vino.Image, vino.Rating));
 
+                    }
                 }
             }
         }

@@ -136,19 +136,20 @@
             </StackLayout>
 
             <!--SIGN IN NOW BUTTON-->
-            <StackLayout Grid.Row="8" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center" Margin="0,0,0,20">
+            <StackLayout Grid.Row="8" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="Center">
                 <Label Text="Don't have an account yet?"
                        FontSize="16"
                        FontFamily="OpenSans-Regular"
                        TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     HorizontalOptions="Center"
                        VerticalOptions="Center"/>
+                
                 <Button x:Name="Sign_up_btn"
                         Text="Sign up now"
                         FontSize="16"
                         FontFamily="OpenSans-Regular"
                         TextColor="#8b52ff"
-                        BackgroundColor="Transparent"
+                         BackgroundColor="Transparent"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         Clicked="Sign_up_btn_Clicked"/>

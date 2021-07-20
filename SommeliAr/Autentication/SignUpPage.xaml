@@ -10,7 +10,7 @@
             <!--username-->
             <RowDefinition Height="*"/>
             <!--password-->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.2*"/>
             <!--confirm password-->
             <RowDefinition Height="*"/>
             <!--email-->
@@ -68,7 +68,7 @@
             <!--USERNAME ERROR MESSAGE-->
             <Label x:Name="User_err_lbl"
                                 Text="Between 6-20 digits"
-                                TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                                TextColor="Transparent"
                                 FontSize="Small"
                    FontFamily="OpenSans-Regular"
                                 Margin="50,0,0,0"/>
@@ -108,8 +108,8 @@
 
             <!--PASSWORD ERROR MESSAGE-->
             <Label x:Name="Pwd_err_lbl"
-                                Text="8-20 digits, one upper case, one lower case, one number, and one special character"
-                                TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                                Text="8-20 digits, at least one upper case, lower case, number and special character"
+                                TextColor="Transparent"
                                 FontSize="Small"
                    FontFamily="OpenSans-Regular"
                                 Margin="50,0,50,0"/>
@@ -141,7 +141,7 @@
 
             <Label x:Name="Pwd_conf_err_lbl"
                                Text="Not matching"
-                               TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                               TextColor="Transparent"
                                FontSize="Small"
                    FontFamily="OpenSans-Regular"
                                Margin="50,0,0,0"/>
@@ -190,7 +190,7 @@
                                    Margin="50,0,10,0"/>
 
                     <DatePicker  x:Name="Birthdate_entry"
-                                 Date="01/01/2006"
+                                 Date="01/01/1994"
                                          MinimumDate="01/01/1921"
                                          MaximumDate="01/01/2006"
                        
@@ -208,7 +208,7 @@
                 <!--BDAY ERROR MESSAGE-->
                 <Label x:Name="ErrorBirthLabelText"
                                Text="You must be at least 18"
-                               TextColor="{AppThemeBinding Light=White, Dark=Black}"
+                               TextColor="Transparent"
                                FontSize="Small"
                        FontFamily="OpenSans-Regular"
                        Margin="50,0,0,0"/>
@@ -256,7 +256,7 @@
             <Button x:Name="Sign_in_btn"
                                 Text="Sign in now"
                                 FontSize="16"
-                    FontFamily="OpenSans-Regular"
+                                FontFamily="OpenSans-Regular"
                                 TextColor="#8b52ff"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="Center"

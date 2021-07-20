@@ -24,7 +24,6 @@
                     </TableSection>
                     <TableSection Title="Wines database">
                         <TextCell x:Name="Add_wine_txt_cell" Text="Add a wine!" Tapped="Add_wine_txt_cell_Tapped"/>
-                        <TextCell x:Name="Contact_us_txt_cell" Text="Change Probability" Tapped="Contact_us_txt_cell_Tapped"/>
                         <TextCell x:Name="Delete_history_txt_cell" Text="Delete history" Tapped="Delete_history_txt_cell_Tapped"/>
                         <TextCell x:Name="Delete_all_favourites_txt_cell" Text="Delete favourites" Tapped="Delete_all_favourites_txt_cell_Tapped"/>
                     </TableSection>

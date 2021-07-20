@@ -65,6 +65,15 @@ namespace SommeliAr.Menu
         {
             InitializeComponent();
 
+            var current = Connectivity.NetworkAccess;
+
+            /*Se non c'è connessione notifica l'utente e interrompi il processo*/
+            if (current != NetworkAccess.Internet)
+            {
+                DisplayAlert("No Connection.", "In order to scan you need internet access,\n please turn on your internet connection.", "Ok");
+                return;
+            }
+
             /*Toglie le righette di separazione delle entry della listview*/
             my_list_view.SeparatorVisibility = (SeparatorVisibility)1;
 
