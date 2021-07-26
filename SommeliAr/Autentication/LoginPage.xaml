@@ -5,7 +5,7 @@
     xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="SommeliAr.Views.LoginPage">
     <ContentPage.Content>
-        <Grid BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+        <Grid>
             <Grid.RowDefinitions>
                 <!--benvenuto-->
                 <RowDefinition Height="*"/>
@@ -140,8 +140,7 @@
                 <Label Text="Don't have an account yet?"
                        FontSize="16"
                        FontFamily="OpenSans-Regular"
-                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    HorizontalOptions="Center"
+                       HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 
                 <Button x:Name="Sign_up_btn"

@@ -34,14 +34,14 @@ namespace SommeliAr.Autentication
             void UsernameValidation()
             {
                 //deve contenere tra i 6 e i 18 caratteri alfanumerici
-                var userPattern = "[A-Za-z][A-Za-z0-9._]{6,18}";         
+                var userPattern = "[A-Za-z][A-Za-z0-9._]{5,17}";         
 
                 if (newUsername != null)
                 {
                     if (Regex.IsMatch(newUsername, userPattern))
                     {
                         usernameOk = true;
-                        LabelUserError.TextColor = Color.White;
+                        LabelUserError.TextColor = Color.Transparent;
                     }
 
                     else

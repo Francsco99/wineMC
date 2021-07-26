@@ -29,7 +29,7 @@
                 <Label x:Name="LabelUserError"
                        Text="Between 6-20 digits"
                        FontFamily="OpenSans-Regular"
-                       TextColor="{AppThemeBinding Dark=Black,Light=White}"
+                       TextColor="Transparent"
                        FontSize="Small"
                        Margin="20,0,20,0"/>
             </StackLayout>

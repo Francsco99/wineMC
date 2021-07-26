@@ -82,7 +82,7 @@ namespace SommeliAr.Views.Menu
 
             var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
             {
-                CompressionQuality = 70,
+                CompressionQuality = 60,
 
             });
 
@@ -137,7 +137,7 @@ namespace SommeliAr.Views.Menu
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
                 /*fattore di compressione*/
-                CompressionQuality = 70,
+                CompressionQuality = 60,
             });
 
             if (file == null)
@@ -351,7 +351,7 @@ namespace SommeliAr.Views.Menu
             {
                 Style = SKPaintStyle.Fill,
                
-                Color = SKColors.White 
+                Color = new SKColor(250, 250, 250, 255)
             };
 
             canvas.DrawRect(info.Rect, paint);

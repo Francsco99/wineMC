@@ -44,7 +44,7 @@ namespace SommeliAr.Autentication
                     if (Regex.IsMatch(userNewPwd, passwordPattern))
                     {
                         passwordOk = true;
-                        LabelPwdError.TextColor = Color.White;
+                        LabelPwdError.TextColor = Color.Transparent;
 
                     }
 
@@ -72,7 +72,7 @@ namespace SommeliAr.Autentication
                 else
                 {
                     passwordOk = true;
-                    LabelConfirmPwdError.TextColor = Color.White;
+                    LabelConfirmPwdError.TextColor = Color.Transparent;
                 }
             }
 

@@ -28,10 +28,10 @@
                        Margin="20,0,20,0"/>
                 <!--PASSWORD ERROR MESSAGE-->
                 <Label x:Name="LabelPwdError"
-                           Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
-                           TextColor="{AppThemeBinding Dark=Black,Light=White}"
+                       Text="Between 8-20 digits, one upper case, one lower case, one number, and one special character"
+                       TextColor="Transparent"
                        FontFamily="OpenSans-Regular"
-                           FontSize="Small"
+                       FontSize="Small"
                        Margin="20,0,20,0"/>
             </StackLayout>
 
